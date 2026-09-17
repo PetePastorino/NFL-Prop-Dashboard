@@ -1,0 +1,1 @@
+- [Prop line parsing](prop-line-parser.md) — prefer the longest matching stat alias so specific phrases like “receiving yards” beat short aliases such as “rec”.

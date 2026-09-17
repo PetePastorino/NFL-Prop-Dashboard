@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import sourceText from '@assets/0_prop_matchup_dashboard_(1)_1789679044969.jsx?raw';
+import { INITIAL_PROP_LINES } from '@/data/initial-prop-lines';
 import {
   Activity,
   AlertTriangle,
@@ -149,19 +150,25 @@ function leanFromLine(stat: StatSnapshot | undefined, line: string) {
 }
 
 function normalized(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  return value
+    .toLowerCase()
+    .replace(/[.'’]/g, '')
+    .replace(/\b(jr|sr|ii|iii|iv)\b/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function statKeyFromText(value: string, position?: Position) {
   const availableStats = position ? STAT_TYPES[position] : Object.values(STAT_TYPES).flat();
+  const normalizedValue = normalized(value);
   return availableStats
-    .slice()
-    .sort((a, b) => b.label.length - a.label.length)
-    .find((stat) =>
-      [stat.key, stat.label, ...(STAT_ALIASES[stat.key] ?? [])].some((alias) =>
-        normalized(value).includes(normalized(alias)),
-      ),
-    )?.key;
+    .flatMap((stat) =>
+      [stat.key, stat.label, ...(STAT_ALIASES[stat.key] ?? [])]
+        .map((alias) => ({ key: stat.key, alias: normalized(alias) }))
+        .filter(({ alias }) => alias && normalizedValue.includes(alias)),
+    )
+    .sort((a, b) => b.alias.length - a.alias.length)[0]?.key;
 }
 
 function getConfidence(player: Player, stat: StatSnapshot, line: string) {
@@ -190,6 +197,7 @@ function parseBulkLines(input: string) {
   );
   const accepted: { key: string; line: string }[] = [];
   const errors: string[] = [];
+  let currentStatKey: string | undefined;
 
   input
     .split(/\r?\n|;/)
@@ -200,8 +208,17 @@ function parseBulkLines(input: string) {
       const match = allPlayers
         .slice()
         .sort((a, b) => b.player.name.length - a.player.name.length)
-        .find(({ player }) => normalizedEntry.includes(normalized(player.name)));
-      const statKey = match ? statKeyFromText(entry, match.position) : undefined;
+        .find(({ player }) => {
+          const playerName = normalized(player.name);
+          return normalizedEntry.includes(playerName) ||
+            normalizedEntry.replace(/\s/g, '').includes(playerName.replace(/\s/g, ''));
+        });
+      const headingStatKey = statKeyFromText(entry);
+      if (!match && headingStatKey && /yards|receptions|reception/i.test(entry)) {
+        currentStatKey = headingStatKey;
+        return;
+      }
+      const statKey = match ? statKeyFromText(entry, match.position) ?? currentStatKey : undefined;
       const numbers = entry.match(/-?\d+(?:\.\d+)?/g);
       const line = numbers?.at(-1);
 
@@ -246,11 +263,17 @@ function AppShell() {
     PLAYER_DATA.WR?.[0]?.name ?? null,
   );
   const [search, setSearch] = useState('');
-  const [lines, setLines] = useState<Record<string, string>>({});
+  const initialImport = useMemo(() => parseBulkLines(INITIAL_PROP_LINES), []);
+  const [lines, setLines] = useState<Record<string, string>>(() =>
+    Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
+  );
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [bulkLines, setBulkLines] = useState('');
+  const [bulkLines, setBulkLines] = useState(INITIAL_PROP_LINES);
   const [bulkOpen, setBulkOpen] = useState(true);
-  const [importFeedback, setImportFeedback] = useState<{ accepted: number; errors: string[] } | null>(null);
+  const [importFeedback, setImportFeedback] = useState<{ accepted: number; errors: string[] } | null>(() => ({
+    accepted: initialImport.accepted.length,
+    errors: initialImport.errors,
+  }));
 
   const players = PLAYER_DATA[position] ?? [];
   const filteredPlayers = useMemo(() => {
