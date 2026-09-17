@@ -112,7 +112,7 @@ const STAT_ALIASES: Record<string, string[]> = {
   pass_yards: ['passing yards', 'pass yards', 'pass yds', 'passing yds', 'pass yard'],
   rush_yards: ['rushing yards', 'rush yards', 'rush yds', 'rushing yds', 'rush yard'],
   rec_yards: ['receiving yards', 'rec yards', 'receiving yds', 'rec yds', 'rec yard'],
-  receptions: ['receptions', 'reception', 'catches', 'catch', 'rec'],
+  receptions: ['receptions', 'reception', 'catches', 'catch', 'rec pts', 'recpt'],
 };
 
 function parsePlayerData(source: string): PlayerData {
@@ -218,7 +218,9 @@ function parseBulkLines(input: string) {
         currentStatKey = headingStatKey;
         return;
       }
-      const statKey = match ? statKeyFromText(entry, match.position) ?? currentStatKey : undefined;
+      const statKey = match
+        ? currentStatKey ?? statKeyFromText(entry, match.position)
+        : undefined;
       const numbers = entry.match(/-?\d+(?:\.\d+)?/g);
       const line = numbers?.at(-1);
 
