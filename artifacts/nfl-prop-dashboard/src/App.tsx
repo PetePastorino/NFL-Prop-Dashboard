@@ -171,6 +171,14 @@ function statKeyFromText(value: string, position?: Position) {
     .sort((a, b) => b.alias.length - a.alias.length)[0]?.key;
 }
 
+function matchupKey(player: Pick<Player, 'team' | 'week2Opp'>) {
+  return [player.team, player.week2Opp].sort().join('|');
+}
+
+function matchupLabel(key: string) {
+  return key.split('|').join(' vs ');
+}
+
 function getConfidence(player: Player, stat: StatSnapshot, line: string) {
   const lean = leanFromLine(stat, line);
   if (lean.edgePct === null || lean.edge === null) {
@@ -265,6 +273,7 @@ function AppShell() {
     PLAYER_DATA.WR?.[0]?.name ?? null,
   );
   const [search, setSearch] = useState('');
+  const [gameFilter, setGameFilter] = useState('all');
   const initialImport = useMemo(() => parseBulkLines(INITIAL_PROP_LINES), []);
   const [lines, setLines] = useState<Record<string, string>>(() =>
     Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
@@ -278,18 +287,35 @@ function AppShell() {
   }));
 
   const players = PLAYER_DATA[position] ?? [];
+  const gameOptions = useMemo(() => {
+    const keys = new Set(
+      (Object.values(PLAYER_DATA) as Player[][])
+        .flat()
+        .map((player) => matchupKey(player)),
+    );
+    return Array.from(keys)
+      .sort()
+      .map((key) => ({ key, label: matchupLabel(key) }));
+  }, []);
+  const playersForGame = useMemo(
+    () =>
+      gameFilter === 'all'
+        ? players
+        : players.filter((player) => matchupKey(player) === gameFilter),
+    [gameFilter, players],
+  );
   const filteredPlayers = useMemo(() => {
     const query = search.trim().toLowerCase();
-    if (!query) return players;
-    return players.filter((player) =>
+    if (!query) return playersForGame;
+    return playersForGame.filter((player) =>
       [player.name, player.team, player.week2Opp].some((value) =>
         value.toLowerCase().includes(query),
       ),
     );
-  }, [players, search]);
+  }, [playersForGame, search]);
 
   const activePlayer =
-    players.find((player) => player.name === selectedName) ?? null;
+    playersForGame.find((player) => player.name === selectedName) ?? null;
   const statLabel =
     STAT_TYPES[position].find((stat) => stat.key === statKey)?.label ?? '';
   const lineKey = `${position}:${statKey}:${selectedName ?? ''}`;
@@ -323,21 +349,40 @@ function AppShell() {
       )
       .sort((a, b) => b.confidenceScore - a.confidenceScore);
   }, [lines]);
+  const gameRankedProps = useMemo(
+    () =>
+      gameFilter === 'all'
+        ? rankedProps
+        : rankedProps.filter((prop) => matchupKey(prop.player) === gameFilter),
+    [gameFilter, rankedProps],
+  );
   const playerCount = Object.values(PLAYER_DATA).reduce(
     (total, roster) => total + roster.length,
     0,
   );
-  const lowConfidenceCount = players.filter((player) => player.isLowConfidence).length;
-  const weekOneCount = players.filter(
+  const lowConfidenceCount = playersForGame.filter((player) => player.isLowConfidence).length;
+  const weekOneCount = playersForGame.filter(
     (player) => player.stats[statKey]?.week1Actual !== null && player.stats[statKey]?.week1Actual !== undefined,
   ).length;
 
   const changePosition = (nextPosition: Position) => {
     setPosition(nextPosition);
     setStatKey(STAT_TYPES[nextPosition][0].key);
-    setSelectedName(PLAYER_DATA[nextPosition]?.[0]?.name ?? null);
+    const nextPlayers = (PLAYER_DATA[nextPosition] ?? []).filter(
+      (player) => gameFilter === 'all' || matchupKey(player) === gameFilter,
+    );
+    setSelectedName(nextPlayers[0]?.name ?? null);
     setSearch('');
     setMobileNavOpen(false);
+  };
+
+  const changeGame = (nextGame: string) => {
+    setGameFilter(nextGame);
+    setSearch('');
+    const nextPlayers = players.filter(
+      (player) => nextGame === 'all' || matchupKey(player) === nextGame,
+    );
+    setSelectedName(nextPlayers[0]?.name ?? null);
   };
 
   const importLines = () => {
@@ -458,9 +503,9 @@ function AppShell() {
               <div className="overview-icon"><Database size={19} /></div>
               <div><span className="overview-kicker">Loaded research set</span><strong>{playerCount} players across four position groups</strong></div>
             </div>
-            <div className="overview-stat"><span>Current pool</span><strong>{players.length}</strong><small>{position} players</small></div>
+            <div className="overview-stat"><span>Current pool</span><strong>{playersForGame.length}</strong><small>{position} players</small></div>
             <div className="overview-stat"><span>Limited history</span><strong>{lowConfidenceCount}</strong><small>low-confidence flags</small></div>
-            <div className="overview-stat"><span>Week 1 coverage</span><strong>{weekOneCount}<small> / {players.length}</small></strong><small>actuals in view</small></div>
+            <div className="overview-stat"><span>Week 1 coverage</span><strong>{weekOneCount}<small> / {playersForGame.length}</small></strong><small>actuals in view</small></div>
           </section>
 
           <section className="control-deck">
@@ -469,17 +514,26 @@ function AppShell() {
                 <span className="section-index">01</span>
                 <h2>Choose a lens</h2>
               </div>
-              <div className="search-wrap">
-                <Search size={16} />
-                <input
-                  type="search"
-                  value={search}
-                  onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Search player, team, or opponent"
-                  aria-label="Search player, team, or opponent"
-                  data-testid="input-player-search"
-                />
-                {search && <button type="button" aria-label="Clear search" data-testid="button-clear-search" onClick={() => setSearch('')}><X size={15} /></button>}
+              <div className="control-tools">
+                <div className="search-wrap">
+                  <Search size={16} />
+                  <input
+                    type="search"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                    placeholder="Search player, team, or opponent"
+                    aria-label="Search player, team, or opponent"
+                    data-testid="input-player-search"
+                  />
+                  {search && <button type="button" aria-label="Clear search" data-testid="button-clear-search" onClick={() => setSearch('')}><X size={15} /></button>}
+                </div>
+                <label className="game-filter">
+                  <span>Game</span>
+                  <select value={gameFilter} onChange={(event) => changeGame(event.target.value)} aria-label="Filter by game" data-testid="select-game-filter">
+                    <option value="all">All games</option>
+                    {gameOptions.map((game) => <option key={game.key} value={game.key}>{game.label}</option>)}
+                  </select>
+                </label>
               </div>
             </div>
             <div className="segmented-row">
@@ -552,11 +606,11 @@ function AppShell() {
                 <span className="section-index">02</span>
                 <div><h2>Confidence board</h2><p>Ranked from edge size, history depth, and availability flags.</p></div>
               </div>
-              <div className="confidence-summary"><ListFilter size={15} /> {rankedProps.length ? `${rankedProps.length} lines ranked` : 'Waiting for lines'}</div>
+              <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
-            {rankedProps.length ? (
+            {gameRankedProps.length ? (
               <div className="ranking-list">
-                {rankedProps.slice(0, 10).map((prop, index) => (
+                {gameRankedProps.slice(0, 10).map((prop, index) => (
                   <button type="button" className="ranking-row" key={prop.key} onClick={() => selectRankedProp(prop)} data-testid={`button-ranked-prop-${index + 1}`}>
                     <span className="ranking-number">{String(index + 1).padStart(2, '0')}</span>
                     <span className="ranking-player">
@@ -582,7 +636,7 @@ function AppShell() {
             <div className="roster-panel">
               <div className="panel-heading">
                 <div><span className="section-index">03</span><h2>Player board</h2></div>
-                <span className="result-count">{filteredPlayers.length} of {players.length}</span>
+                <span className="result-count">{filteredPlayers.length} of {playersForGame.length}</span>
               </div>
               <div className="roster-list">
                 {filteredPlayers.length ? filteredPlayers.map((player, index) => (

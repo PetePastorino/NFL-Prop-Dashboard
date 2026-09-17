@@ -561,11 +561,16 @@ h1 em { font-style: normal; color: #a3884a; }
 .control-heading > div:first-child, .panel-heading > div:first-child { display: flex; align-items: center; gap: 10px; }
 .section-index { color: #a88a42; font-family: var(--app-font-mono); font-size: 9px; font-weight: 500; letter-spacing: .08em; }
 .control-heading h2, .panel-heading h2 { color: #2b3741; font-size: 13px; letter-spacing: -.02em; font-weight: 800; }
+.control-tools { display: flex; align-items: center; gap: 8px; }
 .search-wrap { min-width: 240px; height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid #d7dcde; border-radius: 6px; color: #86909a; background: #f7f8f5; }
 .search-wrap:focus-within { border-color: #a8b7b0; box-shadow: 0 0 0 3px rgba(37,127,115,.08); }
 .search-wrap input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 10px; }
 .search-wrap input::placeholder { color: #9da5ac; }
 .search-wrap button { border: 0; padding: 0; display: grid; place-items: center; background: transparent; color: #8e979d; cursor: pointer; }
+.game-filter { height: 32px; display: flex; align-items: center; gap: 7px; padding: 0 9px; border: 1px solid #d7dcde; border-radius: 6px; background: #f7f8f5; color: #849097; }
+.game-filter span { font-family: var(--app-font-mono); font-size: 8px; text-transform: uppercase; letter-spacing: .08em; }
+.game-filter select { max-width: 145px; border: 0; outline: 0; background: transparent; color: #46545d; font-size: 9px; font-weight: 700; cursor: pointer; }
+.game-filter:focus-within { border-color: #a8b7b0; box-shadow: 0 0 0 3px rgba(37,127,115,.08); }
 .segmented-row { display: flex; align-items: center; gap: 16px; margin-top: 17px; }
 .segmented-group { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
 .segmented-group button { border: 1px solid transparent; border-radius: 5px; padding: 6px 12px; background: transparent; color: #7c8791; font-size: 10px; font-weight: 700; cursor: pointer; transition: color .17s ease, background .17s ease, border-color .17s ease, transform .17s ease; }
@@ -775,7 +780,10 @@ h1 em { font-style: normal; color: #a3884a; }
   .overview-stat strong { font-size: 16px; }
   .control-deck { padding: 15px 13px 13px; }
   .control-heading { align-items: stretch; flex-direction: column; }
+  .control-tools { align-items: stretch; flex-direction: column; }
   .search-wrap { min-width: 0; width: 100%; }
+  .game-filter { width: 100%; }
+  .game-filter select { flex: 1; max-width: none; }
   .segmented-row { align-items: flex-start; flex-direction: column; gap: 11px; }
   .divider-vertical { display: none; }
   .stat-segment { border-top: 1px solid #e3e5e3; padding-top: 10px; width: 100%; }
