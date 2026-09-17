@@ -6,11 +6,14 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   BarChart3,
+  Check,
+  ClipboardPaste,
   ChevronDown,
   CircleHelp,
   Database,
   Gauge,
   House,
+  ListFilter,
   Menu,
   Minus,
   Search,
@@ -62,6 +65,18 @@ type Player = {
 type PlayerData = Record<string, Player[]>;
 type Position = 'QB' | 'RB' | 'WR' | 'TE';
 type Lean = 'OVER' | 'UNDER' | 'PASS' | '—';
+type RankedProp = {
+  key: string;
+  position: Position;
+  statKey: string;
+  statLabel: string;
+  player: Player;
+  stat: StatSnapshot;
+  line: string;
+  lean: ReturnType<typeof leanFromLine>;
+  confidence: 'High' | 'Medium' | 'Low';
+  confidenceScore: number;
+};
 
 const PLAYER_DATA = parsePlayerData(sourceText);
 
@@ -91,6 +106,12 @@ const positionDescriptions: Record<Position, string> = {
   RB: 'Running backs',
   WR: 'Wide receivers',
   TE: 'Tight ends',
+};
+const STAT_ALIASES: Record<string, string[]> = {
+  pass_yards: ['passing yards', 'pass yards', 'pass yds', 'passing yds', 'pass yard'],
+  rush_yards: ['rushing yards', 'rush yards', 'rush yds', 'rushing yds', 'rush yard'],
+  rec_yards: ['receiving yards', 'rec yards', 'receiving yds', 'rec yds', 'rec yard'],
+  receptions: ['receptions', 'reception', 'catches', 'catch', 'rec'],
 };
 
 function parsePlayerData(source: string): PlayerData {
@@ -127,6 +148,89 @@ function leanFromLine(stat: StatSnapshot | undefined, line: string) {
   return { lean, confidence, edge, edgePct };
 }
 
+function normalized(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function statKeyFromText(value: string, position?: Position) {
+  const availableStats = position ? STAT_TYPES[position] : Object.values(STAT_TYPES).flat();
+  return availableStats
+    .slice()
+    .sort((a, b) => b.label.length - a.label.length)
+    .find((stat) =>
+      [stat.key, stat.label, ...(STAT_ALIASES[stat.key] ?? [])].some((alias) =>
+        normalized(value).includes(normalized(alias)),
+      ),
+    )?.key;
+}
+
+function getConfidence(player: Player, stat: StatSnapshot, line: string) {
+  const lean = leanFromLine(stat, line);
+  if (lean.edgePct === null || lean.edge === null) {
+    return { confidence: 'Low' as const, confidenceScore: 0 };
+  }
+
+  const edgeScore = Math.min(Math.abs(lean.edgePct) * 100, 32);
+  const historyScore = Math.min(stat.nPriorGames / 50, 1) * 42;
+  const limitedHistoryPenalty = player.isLowConfidence ? 18 : 0;
+  const injuryPenalty = player.injuryStatus ? 10 : 0;
+  const confidenceScore = Math.max(
+    0,
+    Math.min(100, Math.round(edgeScore + historyScore + 26 - limitedHistoryPenalty - injuryPenalty)),
+  );
+  const confidence: 'High' | 'Medium' | 'Low' =
+    confidenceScore >= 72 ? 'High' : confidenceScore >= 48 ? 'Medium' : 'Low';
+
+  return { confidence, confidenceScore };
+}
+
+function parseBulkLines(input: string) {
+  const allPlayers = (Object.entries(PLAYER_DATA) as [Position, Player[]][]).flatMap(
+    ([position, roster]) => roster.map((player) => ({ position, player })),
+  );
+  const accepted: { key: string; line: string }[] = [];
+  const errors: string[] = [];
+
+  input
+    .split(/\r?\n|;/)
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .forEach((entry) => {
+      const normalizedEntry = normalized(entry);
+      const match = allPlayers
+        .slice()
+        .sort((a, b) => b.player.name.length - a.player.name.length)
+        .find(({ player }) => normalizedEntry.includes(normalized(player.name)));
+      const statKey = match ? statKeyFromText(entry, match.position) : undefined;
+      const numbers = entry.match(/-?\d+(?:\.\d+)?/g);
+      const line = numbers?.at(-1);
+
+      if (!match) {
+        errors.push(`Could not match a player: “${entry}”`);
+        return;
+      }
+      if (!statKey) {
+        errors.push(`Add a stat type for ${match.player.name} (for example, rec yards).`);
+        return;
+      }
+      if (!line || Number.isNaN(Number(line))) {
+        errors.push(`Could not find a prop line for ${match.player.name}.`);
+        return;
+      }
+      if (!match.player.stats[statKey]?.projection && match.player.stats[statKey]?.projection !== 0) {
+        errors.push(`No ${STAT_TYPES[match.position].find((stat) => stat.key === statKey)?.label.toLowerCase()} projection for ${match.player.name}.`);
+        return;
+      }
+
+      accepted.push({
+        key: `${match.position}:${statKey}:${match.player.name}`,
+        line,
+      });
+    });
+
+  return { accepted, errors };
+}
+
 function initials(name: string) {
   return name
     .split(' ')
@@ -144,6 +248,9 @@ function AppShell() {
   const [search, setSearch] = useState('');
   const [lines, setLines] = useState<Record<string, string>>({});
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [bulkLines, setBulkLines] = useState('');
+  const [bulkOpen, setBulkOpen] = useState(true);
+  const [importFeedback, setImportFeedback] = useState<{ accepted: number; errors: string[] } | null>(null);
 
   const players = PLAYER_DATA[position] ?? [];
   const filteredPlayers = useMemo(() => {
@@ -164,6 +271,33 @@ function AppShell() {
   const activeLine = lines[lineKey] ?? '';
   const activeStat = activePlayer?.stats[statKey];
   const lean = leanFromLine(activeStat, activeLine);
+  const rankedProps = useMemo<RankedProp[]>(() => {
+    return (Object.entries(PLAYER_DATA) as [Position, Player[]][])
+      .flatMap(([entryPosition, roster]) =>
+        roster.flatMap((player) =>
+          STAT_TYPES[entryPosition].flatMap((statDefinition) => {
+            const key = `${entryPosition}:${statDefinition.key}:${player.name}`;
+            const line = lines[key];
+            const stat = player.stats[statDefinition.key];
+            if (!line || !stat || stat.projection === null || stat.projection === undefined) return [];
+            const lineLean = leanFromLine(stat, line);
+            const confidence = getConfidence(player, stat, line);
+            return [{
+              key,
+              position: entryPosition,
+              statKey: statDefinition.key,
+              statLabel: statDefinition.label,
+              player,
+              stat,
+              line,
+              lean: lineLean,
+              ...confidence,
+            }];
+          }),
+        ),
+      )
+      .sort((a, b) => b.confidenceScore - a.confidenceScore);
+  }, [lines]);
   const playerCount = Object.values(PLAYER_DATA).reduce(
     (total, roster) => total + roster.length,
     0,
@@ -179,6 +313,27 @@ function AppShell() {
     setSelectedName(PLAYER_DATA[nextPosition]?.[0]?.name ?? null);
     setSearch('');
     setMobileNavOpen(false);
+  };
+
+  const importLines = () => {
+    const result = parseBulkLines(bulkLines);
+    if (result.accepted.length) {
+      setLines((previous) => ({
+        ...previous,
+        ...Object.fromEntries(result.accepted.map((item) => [item.key, item.line])),
+      }));
+    }
+    setImportFeedback({ accepted: result.accepted.length, errors: result.errors });
+  };
+
+  const selectRankedProp = (prop: RankedProp) => {
+    setPosition(prop.position);
+    setStatKey(prop.statKey);
+    setSelectedName(prop.player.name);
+    setSearch('');
+    window.requestAnimationFrame(() => {
+      document.querySelector('.detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   };
 
   return (
@@ -327,12 +482,81 @@ function AppShell() {
                 ))}
               </div>
             </div>
+            <div className="bulk-import">
+              <div className="bulk-import-heading">
+                <div className="bulk-import-title">
+                  <span className="bulk-import-icon"><ClipboardPaste size={15} /></span>
+                  <div><strong>Paste multiple prop lines</strong><span>One player per line · player + stat + number</span></div>
+                </div>
+                <button type="button" className="text-button" onClick={() => setBulkOpen((open) => !open)} data-testid="button-toggle-bulk-import">
+                  {bulkOpen ? 'Hide importer' : 'Show importer'} <ChevronDown size={13} className={bulkOpen ? 'rotate-chevron' : ''} />
+                </button>
+              </div>
+              {bulkOpen && (
+                <div className="bulk-import-body">
+                  <textarea
+                    value={bulkLines}
+                    onChange={(event) => {
+                      setBulkLines(event.target.value);
+                      setImportFeedback(null);
+                    }}
+                    placeholder={'Puka Nacua rec yards 75.5\nJosh Allen pass yards 245.5\nBijan Robinson rush yards 78.5'}
+                    aria-label="Paste prop lines"
+                    data-testid="textarea-bulk-lines"
+                  />
+                  <div className="bulk-import-actions">
+                    <span>Over/under words are optional — the number is used as the line.</span>
+                    <button type="button" className="apply-lines-button" onClick={importLines} disabled={!bulkLines.trim()} data-testid="button-apply-lines">
+                      <Check size={14} /> Apply lines
+                    </button>
+                  </div>
+                  {importFeedback && (
+                    <div className={`import-feedback ${importFeedback.errors.length ? 'has-errors' : 'success'}`}>
+                      <strong>{importFeedback.accepted ? `${importFeedback.accepted} line${importFeedback.accepted === 1 ? '' : 's'} loaded` : 'No lines loaded'}</strong>
+                      {importFeedback.errors.length > 0 && <span>{importFeedback.errors.slice(0, 2).join(' ') }{importFeedback.errors.length > 2 ? ` + ${importFeedback.errors.length - 2} more` : ''}</span>}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </section>
+
+          <section className="confidence-panel" aria-label="Confidence rankings">
+            <div className="confidence-panel-heading">
+              <div className="confidence-title">
+                <span className="section-index">02</span>
+                <div><h2>Confidence board</h2><p>Ranked from edge size, history depth, and availability flags.</p></div>
+              </div>
+              <div className="confidence-summary"><ListFilter size={15} /> {rankedProps.length ? `${rankedProps.length} lines ranked` : 'Waiting for lines'}</div>
+            </div>
+            {rankedProps.length ? (
+              <div className="ranking-list">
+                {rankedProps.slice(0, 10).map((prop, index) => (
+                  <button type="button" className="ranking-row" key={prop.key} onClick={() => selectRankedProp(prop)} data-testid={`button-ranked-prop-${index + 1}`}>
+                    <span className="ranking-number">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="ranking-player">
+                      <strong>{prop.player.name}</strong>
+                      <span>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</span>
+                    </span>
+                    <span className="ranking-line">{prop.line}</span>
+                    <LeanPill lean={prop.lean.lean} confidence={prop.confidence} compact />
+                    <span className={`confidence-score confidence-${prop.confidence.toLowerCase()}`}>{prop.confidenceScore}<small>/100</small></span>
+                    <ArrowUpRight size={14} className="ranking-arrow" />
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="confidence-empty">
+                <div className="confidence-empty-icon"><ListFilter size={18} /></div>
+                <div><strong>Your strongest signals will appear here</strong><span>Paste your sportsbook lines above to rank every loaded prop by model confidence.</span></div>
+              </div>
+            )}
           </section>
 
           <section className="workspace-grid">
             <div className="roster-panel">
               <div className="panel-heading">
-                <div><span className="section-index">02</span><h2>Player board</h2></div>
+                <div><span className="section-index">03</span><h2>Player board</h2></div>
                 <span className="result-count">{filteredPlayers.length} of {players.length}</span>
               </div>
               <div className="roster-list">
@@ -447,7 +671,7 @@ function DetailPanel({
     return (
       <section className="detail-panel detail-empty">
         <div className="empty-detail-art"><Target size={34} /></div>
-        <span className="section-index">03</span>
+        <span className="section-index">04</span>
         <h2>Load a player signal</h2>
         <p>Select a player from the board to compare the model projection against their baseline, recent form, and matchup environment.</p>
       </section>
