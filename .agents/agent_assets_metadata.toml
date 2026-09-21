@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "-48DyNHoFpUcDB9GWQ8M6"
+uri = "file://artifacts/nfl-prop-dashboard/index.html"
+type = "html"
+title = "NFL Prop Matchup Dashboard entry HTML"
+description = "The current Vite/React entry HTML for the NFL Prop Matchup Dashboard."
+logical_id = "6012813b-6b81-4c69-9354-e9e18079e725"
+content_hash = "sha256:bf4983841df7fc88ab6599964a2b865f0a5125ca33df7804553bfb9b5c0c5729"
+size = 1370
+mtime_ms = 1789679127445
+storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:f1bbc851-8b04-4c1a-9166-9ab19f4a99a9/6012813b-6b81-4c69-9354-e9e18079e725/2877e65c-7077-4b4b-a939-18de9893333a"
+storage_version_token = "1790029846805292"
+content_type = "text/html"
