@@ -14,3 +14,17 @@ mtime_ms = 1789679127445
 storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:f1bbc851-8b04-4c1a-9166-9ab19f4a99a9/6012813b-6b81-4c69-9354-e9e18079e725/2877e65c-7077-4b4b-a939-18de9893333a"
 storage_version_token = "1790029846805292"
 content_type = "text/html"
+
+[[outputs]]
+id = "bqicgSWLmc78K8wvwXWGC"
+uri = "file://handoff/nfl-prop-matchup-dashboard-source.zip"
+type = "unspecified"
+title = "NFL Prop Matchup Dashboard source handoff"
+description = "Source-only handoff archive with HANDOFF.md, manifests, lockfile, application source, data asset, configuration, and no dependencies, build output, caches, or secrets."
+logical_id = "10b6cdea-d69a-4f23-8f20-b1e81674bc2c"
+content_hash = "sha256:de51027e00e083d7336a864905f2b25f0241c8234db3f3682cd23c3061d8744d"
+size = 273068
+mtime_ms = 1790031277223
+storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:f1bbc851-8b04-4c1a-9166-9ab19f4a99a9/10b6cdea-d69a-4f23-8f20-b1e81674bc2c/fdb430cf-b098-4a98-b2de-4bfd31ed0a68"
+storage_version_token = "1790031286175463"
+content_type = "application/octet-stream"
