@@ -183,6 +183,11 @@ function venueLabel(isHome: boolean | null | undefined) {
   return isHome ? 'Home' : 'Away';
 }
 
+function playerMatchupLabel(player: Pick<Player, 'team' | 'week2Opp'>, isHome: boolean | null | undefined) {
+  if (isHome === null) return `${player.team} vs ${player.week2Opp}`;
+  return isHome ? `${player.week2Opp} @ ${player.team}` : `${player.team} @ ${player.week2Opp}`;
+}
+
 function formatValue(value: number | null | undefined, decimals = 1) {
   if (value === null || value === undefined || Number.isNaN(value)) return '—';
   return Number(value).toFixed(decimals).replace(/\.0$/, '');
@@ -768,7 +773,7 @@ function PlayerRow({
       <span className="player-avatar">{initials(player.name)}</span>
       <span className="player-info">
         <strong>{player.name}</strong>
-        <span>{player.team} <i>@</i> {player.week2Opp} <i>·</i> {venueLabel(stat?.isHome)}</span>
+        <span>{playerMatchupLabel(player, stat?.isHome)} <i>·</i> {venueLabel(stat?.isHome)}</span>
       </span>
       <span className="player-row-right">
         {lean.lean !== '—' && <LeanPill lean={lean.lean} compact />}
