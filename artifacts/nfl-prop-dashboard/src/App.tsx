@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import sourceText from '@assets/0_prop_matchup_dashboard_(1)_1789679044969.jsx?raw';
 import { INITIAL_PROP_LINES } from '@/data/initial-prop-lines';
+import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
   Activity,
   AlertTriangle,
@@ -13,6 +14,7 @@ import {
   CircleHelp,
   Database,
   Gauge,
+  History,
   House,
   ListFilter,
   Menu,
@@ -21,6 +23,7 @@ import {
   Shield,
   Sparkles,
   Target,
+  Trophy,
   X,
 } from 'lucide-react';
 import {
@@ -151,12 +154,13 @@ const STAT_ALIASES: Record<string, string[]> = {
 };
 
 function parsePlayerData(source: string): PlayerData {
+  const normalizedSource = source.replace(/\r\n/g, '\n');
   const startMarker = 'const PLAYER_DATA = ';
   const endMarker = ';\n\nconst C';
-  const start = source.indexOf(startMarker);
-  const end = source.indexOf(endMarker, start);
+  const start = normalizedSource.indexOf(startMarker);
+  const end = normalizedSource.indexOf(endMarker, start);
   if (start < 0 || end < 0) return {};
-  const data = JSON.parse(source.slice(start + startMarker.length, end)) as PlayerData;
+  const data = JSON.parse(normalizedSource.slice(start + startMarker.length, end)) as PlayerData;
   return Object.fromEntries(
     Object.entries(data).map(([position, players]) => [
       position,
@@ -331,6 +335,7 @@ function initials(name: string) {
 }
 
 function AppShell() {
+  const [workspaceView, setWorkspaceView] = useState<'dashboard' | 'history'>('dashboard');
   const [position, setPosition] = useState<Position>('WR');
   const [statKey, setStatKey] = useState(STAT_TYPES.WR[0].key);
   const [selectedName, setSelectedName] = useState(
@@ -493,15 +498,18 @@ function AppShell() {
         <div className="sidebar-rule" />
         <div className="side-label">Workspace</div>
         <div className="side-nav">
-          <button className="side-nav-item active" type="button" data-testid="button-workspace-dashboard" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <button className={`side-nav-item ${workspaceView === 'dashboard' ? 'active' : ''}`} type="button" data-testid="button-workspace-dashboard" onClick={() => { setWorkspaceView('dashboard'); setMobileNavOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
             <BarChart3 size={17} /> Dashboard <span className="nav-pip" />
           </button>
-          <button className="side-nav-item" type="button" data-testid="button-workspace-methodology" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
+          <button className={`side-nav-item ${workspaceView === 'history' ? 'active' : ''}`} type="button" data-testid="button-workspace-history" onClick={() => { setWorkspaceView('history'); setMobileNavOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <History size={17} /> History {workspaceView === 'history' && <span className="nav-pip" />}
+          </button>
+          <button className="side-nav-item" type="button" data-testid="button-workspace-methodology" onClick={() => { setWorkspaceView('dashboard'); setMobileNavOpen(false); window.setTimeout(() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0); }}>
             <CircleHelp size={17} /> Methodology
           </button>
         </div>
 
-        <div className="side-label position-label">Positions</div>
+        {workspaceView === 'dashboard' && <><div className="side-label position-label">Positions</div>
         <div className="position-nav">
           {POSITIONS.map((item) => (
             <button
@@ -516,7 +524,7 @@ function AppShell() {
               <span className="position-count">{PLAYER_DATA[item]?.length ?? 0}</span>
             </button>
           ))}
-        </div>
+        </div></>}
 
         <div className="sidebar-bottom">
           <div className="dataset-status">
@@ -541,7 +549,7 @@ function AppShell() {
           >
             <Menu size={20} />
           </button>
-          <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>Prop board</strong></div>
+          <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : 'Prop board'}</strong></div>
           <div className="topbar-right">
             <span className="live-indicator"><span /> Week 3 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
@@ -550,6 +558,7 @@ function AppShell() {
         </header>
 
         <div className="content-wrap">
+          {workspaceView === 'history' ? <HistoryView /> : <>
           <section className="intro-row">
             <div>
               <div className="eyebrow"><span className="eyebrow-line" /> MATCHUP LAB / 01</div>
@@ -739,8 +748,112 @@ function AppShell() {
             <div><span className="footer-mark">FN</span><span>Field Note Research Cockpit</span></div>
             <span>Model output is a trend signal, not a recommendation.</span>
           </footer>
+          </>}
         </div>
       </main>
+    </div>
+  );
+}
+
+function recordTotal(record: RecordSummary) {
+  return record.wins + record.losses + record.pushes;
+}
+
+function hitRate(record: RecordSummary) {
+  const decisions = record.wins + record.losses;
+  return decisions ? `${((record.wins / decisions) * 100).toFixed(1)}%` : '—';
+}
+
+function recordLabel(record: RecordSummary) {
+  return `${record.wins}–${record.losses}${record.pushes ? `–${record.pushes}` : ''}`;
+}
+
+function HistoryView() {
+  const career = WEEKLY_HISTORY.reduce<RecordSummary>(
+    (total, week) => ({
+      wins: total.wins + week.allLeans.wins,
+      losses: total.losses + week.allLeans.losses,
+      pushes: total.pushes + week.allLeans.pushes,
+    }),
+    { wins: 0, losses: 0, pushes: 0 },
+  );
+  const topCareer = WEEKLY_HISTORY.reduce<RecordSummary>(
+    (total, week) => ({
+      wins: total.wins + week.topPicks.wins,
+      losses: total.losses + week.topPicks.losses,
+      pushes: total.pushes + week.topPicks.pushes,
+    }),
+    { wins: 0, losses: 0, pushes: 0 },
+  );
+
+  return (
+    <div className="history-view">
+      <section className="history-hero">
+        <div>
+          <div className="eyebrow"><span className="eyebrow-line" /> RESULTS LEDGER / 02</div>
+          <h1>Track the calls.<br /><em>Keep the receipts.</em></h1>
+          <p className="intro-copy">A permanent week-by-week record of every official lean and the confidence board’s strongest picks.</p>
+        </div>
+        <div className="history-seal"><Trophy size={26} /><span>Top picks</span><strong>{recordLabel(topCareer)}</strong><small>{hitRate(topCareer)} hit rate</small></div>
+      </section>
+
+      <section className="history-overview" aria-label="Season record summary">
+        <HistoryRecordCard label="All official leans" record={career} detail={`${recordTotal(career)} graded decisions`} />
+        <HistoryRecordCard label="Top confidence picks" record={topCareer} detail={`${recordTotal(topCareer)} tracked picks`} featured />
+        <div className="history-stat-card"><span>Weeks tracked</span><strong>{WEEKLY_HISTORY.length}</strong><small>2026 season</small></div>
+        <div className="history-stat-card"><span>Last updated</span><strong>W{WEEKLY_HISTORY[0]?.week ?? '—'}</strong><small>All games final</small></div>
+      </section>
+
+      <section className="history-ledger">
+        <div className="history-section-heading">
+          <div><span className="section-index">01</span><h2>Weekly ledger</h2></div>
+          <span>{WEEKLY_HISTORY.length} completed week{WEEKLY_HISTORY.length === 1 ? '' : 's'}</span>
+        </div>
+        {WEEKLY_HISTORY.map((week) => (
+          <article className="week-card" key={`${week.season}-${week.week}`}>
+            <div className="week-card-head">
+              <div><span className="week-badge">WEEK {week.week}</span><h3>{week.season} regular season</h3><p>{week.label} · {week.gamesGraded}/{week.gamesScheduled} games graded</p></div>
+              <span className="final-chip"><Check size={13} /> Final</span>
+            </div>
+            <div className="week-record-grid">
+              <HistoryRecordCard label="All leans" record={week.allLeans} detail={`${recordTotal(week.allLeans)} decisions`} />
+              <HistoryRecordCard label="High confidence" record={week.highConfidence} detail={`${recordTotal(week.highConfidence)} decisions`} />
+              <HistoryRecordCard label={`Top ${week.topPickLimit} board`} record={week.topPicks} detail={`${recordTotal(week.topPicks)} picks`} featured />
+            </div>
+            <div className="history-table-wrap">
+              <table className="history-table">
+                <thead><tr><th>#</th><th>Player</th><th>Prop</th><th>Call</th><th>Line</th><th>Projection</th><th>Actual</th><th>Result</th></tr></thead>
+                <tbody>
+                  {week.picks.map((pick, index) => (
+                    <tr key={`${week.week}-${pick.player}-${pick.stat}`}>
+                      <td>{String(index + 1).padStart(2, '0')}</td>
+                      <td><strong>{pick.player}</strong><span>{pick.position}</span></td>
+                      <td>{pick.stat}</td>
+                      <td><span className={`history-call ${pick.lean.toLowerCase()}`}>{pick.lean}</span></td>
+                      <td>{formatValue(pick.line)}</td>
+                      <td>{formatValue(pick.projection)}</td>
+                      <td>{formatValue(pick.actual)}</td>
+                      <td><span className={`result-pill ${pick.result.toLowerCase()}`}>{pick.result}</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {week.note && <p className="week-note"><CircleHelp size={13} /> {week.note}</p>}
+          </article>
+        ))}
+      </section>
+      <footer className="page-footer"><div><span className="footer-mark">FN</span><span>Field Note Results Ledger</span></div><span>Records use imported lines and exclude PASS calls.</span></footer>
+    </div>
+  );
+}
+
+function HistoryRecordCard({ label, record, detail, featured = false }: { label: string; record: RecordSummary; detail: string; featured?: boolean }) {
+  return (
+    <div className={`history-record-card ${featured ? 'featured' : ''}`}>
+      <span>{label}</span>
+      <div><strong>{recordLabel(record)}</strong><em>{hitRate(record)}</em></div>
+      <small>{detail} · W–L{record.pushes ? '–P' : ''}</small>
     </div>
   );
 }
