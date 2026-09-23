@@ -49,7 +49,7 @@ type StatSnapshot = {
   priorAvg?: number | null;
   priorLast5?: number | null;
   matchupFactor?: number | null;
-  isHome?: boolean;
+  isHome?: boolean | null;
   week1Actual?: number | null;
 };
 
@@ -77,6 +77,41 @@ type RankedProp = {
   lean: ReturnType<typeof leanFromLine>;
   confidence: 'High' | 'Medium' | 'Low';
   confidenceScore: number;
+};
+
+const WEEK_3_MATCHUPS: Record<string, { opponent: string; isHome: boolean | null }> = {
+  ATL: { opponent: 'GNB', isHome: false },
+  GNB: { opponent: 'ATL', isHome: true },
+  LAC: { opponent: 'BUF', isHome: false },
+  BUF: { opponent: 'LAC', isHome: true },
+  CAR: { opponent: 'CLE', isHome: false },
+  CLE: { opponent: 'CAR', isHome: true },
+  NYJ: { opponent: 'DET', isHome: false },
+  DET: { opponent: 'NYJ', isHome: true },
+  HOU: { opponent: 'IND', isHome: false },
+  IND: { opponent: 'HOU', isHome: true },
+  KAN: { opponent: 'MIA', isHome: false },
+  MIA: { opponent: 'KAN', isHome: true },
+  TEN: { opponent: 'NYG', isHome: false },
+  NYG: { opponent: 'TEN', isHome: true },
+  CIN: { opponent: 'PIT', isHome: false },
+  PIT: { opponent: 'CIN', isHome: true },
+  SEA: { opponent: 'WAS', isHome: false },
+  WAS: { opponent: 'SEA', isHome: true },
+  NWE: { opponent: 'JAX', isHome: false },
+  JAX: { opponent: 'NWE', isHome: true },
+  ARI: { opponent: 'SFO', isHome: false },
+  SFO: { opponent: 'ARI', isHome: true },
+  MIN: { opponent: 'TAM', isHome: false },
+  TAM: { opponent: 'MIN', isHome: true },
+  BAL: { opponent: 'DAL', isHome: null },
+  DAL: { opponent: 'BAL', isHome: null },
+  LVR: { opponent: 'NOR', isHome: false },
+  NOR: { opponent: 'LVR', isHome: true },
+  LAR: { opponent: 'DEN', isHome: false },
+  DEN: { opponent: 'LAR', isHome: true },
+  PHI: { opponent: 'CHI', isHome: false },
+  CHI: { opponent: 'PHI', isHome: true },
 };
 
 const PLAYER_DATA = parsePlayerData(sourceText);
@@ -121,7 +156,31 @@ function parsePlayerData(source: string): PlayerData {
   const start = source.indexOf(startMarker);
   const end = source.indexOf(endMarker, start);
   if (start < 0 || end < 0) return {};
-  return JSON.parse(source.slice(start + startMarker.length, end)) as PlayerData;
+  const data = JSON.parse(source.slice(start + startMarker.length, end)) as PlayerData;
+  return Object.fromEntries(
+    Object.entries(data).map(([position, players]) => [
+      position,
+      players.map((player) => {
+        const matchup = WEEK_3_MATCHUPS[player.team];
+        if (!matchup) return player;
+        return {
+          ...player,
+          week2Opp: matchup.opponent,
+          stats: Object.fromEntries(
+            Object.entries(player.stats).map(([statKey, stat]) => [
+              statKey,
+              { ...stat, isHome: matchup.isHome },
+            ]),
+          ),
+        };
+      }),
+    ]),
+  ) as PlayerData;
+}
+
+function venueLabel(isHome: boolean | null | undefined) {
+  if (isHome === null) return 'Neutral';
+  return isHome ? 'Home' : 'Away';
 }
 
 function formatValue(value: number | null | undefined, decimals = 1) {
@@ -479,7 +538,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>Prop board</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week 2 slate</span>
+            <span className="live-indicator"><span /> Week 3 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -709,7 +768,7 @@ function PlayerRow({
       <span className="player-avatar">{initials(player.name)}</span>
       <span className="player-info">
         <strong>{player.name}</strong>
-        <span>{player.team} <i>@</i> {player.week2Opp} <i>·</i> {stat?.isHome ? 'Home' : 'Away'}</span>
+        <span>{player.team} <i>@</i> {player.week2Opp} <i>·</i> {venueLabel(stat?.isHome)}</span>
       </span>
       <span className="player-row-right">
         {lean.lean !== '—' && <LeanPill lean={lean.lean} compact />}
@@ -778,7 +837,7 @@ function DetailPanel({
           <div>
             <div className="detail-kicker">{position} / {statLabel}</div>
             <h2 data-testid="text-selected-player">{player.name}</h2>
-            <div className="detail-context"><strong>{player.team}</strong><span>vs</span><strong>{player.week2Opp}</strong><span className="context-home">{stat?.isHome ? <><House size={13} /> Home</> : 'Away'}</span></div>
+            <div className="detail-context"><strong>{player.team}</strong><span>vs</span><strong>{player.week2Opp}</strong><span className="context-home">{stat?.isHome === true ? <><House size={13} /> Home</> : venueLabel(stat?.isHome)}</span></div>
           </div>
         </div>
         <div className="line-control">
@@ -861,7 +920,7 @@ function DetailPanel({
               <div className="card-header"><div><span className="card-overline">Context readout</span><h3>Three things to know</h3></div><Sparkles size={17} /></div>
               <SignalRow icon={<Activity size={16} />} label="Recent shape" value={trendLabel(stat.priorAvg, stat.priorLast5)} detail={trendDetail(stat.priorAvg, stat.priorLast5)} />
               <SignalRow icon={<Target size={16} />} label="Opponent matchup" value={`${formatValue(stat.matchupFactor, 2)}x · ${matchupLabel}`} detail="Relative environment adjustment in model" tone={matchupLabel === 'Favorable' ? 'positive' : matchupLabel === 'Difficult' ? 'negative' : undefined} />
-              <SignalRow icon={<House size={16} />} label="Venue context" value={stat.isHome ? 'Home field' : 'On the road'} detail="Included as a model input" />
+              <SignalRow icon={<House size={16} />} label="Venue context" value={stat.isHome === null ? 'Neutral site' : stat.isHome ? 'Home field' : 'On the road'} detail="Included as a model input" />
               <div className="signal-note"><CircleHelp size={14} /><span>Use the projection as a starting point, then inspect what is driving the gap.</span></div>
             </div>
           </div>
