@@ -1,135 +1,137 @@
 export const INITIAL_PROP_LINES = `Pass Yards
-C.J. StroudO 224.5
-Bryce YoungU 224.5
-Deshaun WatsonO 174.5
-Drake MayeO 224.5
-Malik WillisO 184.5
-Kirk CousinsU 199.5
-Josh AllenU 249.5
-Patrick Mahomes IIO 224.5
-Jordan LoveU 249.5
-Jaxson DartU 213.5
-Joe BurrowU 249.5
-Daniel JonesU 224.5
-Brock PurdyO 238.5
-Trevor LawrenceU 224.5
-Jalen HurtsO 206.5
-Caleb WilliamsU 224.5
-Jayden DanielsO 217.5
-Baker MayfieldO 210.5
 Dak PrescottO 266.5
-Cam WardU 188.5
-Drew LockO 207.5
-Aaron RodgersU 207.5
-Matthew StaffordO 245.5
-Carson WentzU 216.5
-Lamar JacksonU 213.5
-
-Receiving Yards
-Rashod BatemanO 9.5
-Tre' HarrisO 9.5
-Jalen McMillanO 9.5
-Alec PierceO 45.5
-Kyle Pitts Sr.O 32.5
-Malik NabersU 65.5
-George PickensO 64.5
-Jauan JenningsO 19.5 / O 20.5
-Colby ParkinsonO 9.5
-Chris Godwin Jr.U 47.5
-David NjokuO 9.5
-Darnell MooneyO 9.5
-Harold Fannin Jr.O 29.5
-Jack BechU 24.5
-Calvin RidleyO 17.5
-Terrance FergusonO 9.5
-Makai LemonO 22.5
-Malik WashingtonU 33.5
-Roman WilsonU 24.5
-Tyquan ThorntonO 14.5
-Jahan DotsonU 22.5
-Ryan FlournoyU 30.5
-Pat BryantU 30.5
-Bryce LanceU 20.5
-Isaiah WilliamsU 13.5
-Drake LondonO 59.5
-Jalen CokerU 50.5
-Jake FergusonO 26.5
-Michael Pittman Jr.O 34.5
-Adonai MitchellU 33.5
-Jerry JeudyO 29.5
-Justin JeffersonU 79.5
-Jaylin NoelU 25.5
-Tommy TrembleU 14.5
-Dalton SchultzU 39.5
-Erick All Jr.O 2.5
-Matthew GoldenU 49.5
-DeVonta SmithO 59.5
-Marvin Harrison Jr.O 34.5
-DeMario DouglasU 34.5
-Bucky IrvingO 14.5
-Tyjae SpearsU 16.5
-Juwan JohnsonO 37.5
-Ted Hurst IIIO 9.5
-Jameson WilliamsU 57.5
-Isaiah LikelyU 44.5
-Cooper KuppO 23.5
-Darren WallerO 17.5
-Ashton JeantyU 24.5
-Jaylen WarrenU 19.5
-Rashee RiceO 54.5
-Mike EvansO 49.5
-Chris BellO 21.5
-Rashid ShaheedO 24.5
-Dallas GoedertO 39.5
-Devaughn VeleU 39.5
-Tee HigginsU 55.5
-T.J. HockensonU 27.5
-Amon-Ra St. BrownU 79.5
-Josh DownsU 39.5
-Omarion HamptonO 11.5
-AJ BarnerO 20.5
-Deebo Samuel Sr.O 35.5
-Greg DulcichO 24.5
-Christian McCaffreyU 39.5
-George HolaniU 9.5
-Travis KelceO 42.5
-Denzel BostonO 31.5
-Brian Thomas Jr.O 34.5
-Evan EngramU 23.5
-KC Concepcion Jr.O 31.5
-Hunter HenryO 39.5
+Jared GoffO 256.5
+Joe BurrowO 251.5
+Tyler ShoughO 248.5
+Matthew StaffordO 244.5
+Josh AllenO 243.5
+Lamar JacksonO 239.5
+Jordan LoveO 226.5
+Trevor LawrenceO 224.5
+Justin HerbertO 217.5
+Aaron RodgersO 219.5
+Geno SmithO 216.5
+Jalen HurtsO 210.5
+Baker MayfieldO 217.5
+Drake MayeO 213.5
+Kirk CousinsO 215.5
+Bo NixO 212.5
+Kyler MurrayO 208.5
+Michael PenixO 200.5
 
 Rushing Yards
-Emari DemercadoO 10.5
-Kenneth Walker IIIU 79.5
-Cam SkatteboO 49.5
-Jonathan TaylorU 86.5
-Bhayshul TutenU 49.5
-Tyler AllgeierU 35.5
-Deshaun WatsonU 22.5
-Jahmyr GibbsO 89.5
-Bijan RobinsonO 80.5
-Keaton MitchellU 29.5
-Quinshon JudkinsO 49.5
-Jeremiyah LoveO 39.5
-George HolaniU 34.5
-Devin SingletaryU 19.5
-Brian Robinson Jr.O 23.5
-RJ HarveyU 27.5
-Jacoby BrissettO 5.5
-Kyren WilliamsO 61.5
-De'Von AchaneO 59.5
-Kendre MillerU 19.5
-Rhamondre StevensonU 49.5
-Kaelon BlackU 39.5
-Woody MarksO 26.5
-Drew LockO 6.5
-Malik WillisU 35.5
-Tony PollardO 44.5
-Justice HillU 13.5
-Alvin KamaraU 18.5
-Christian McCaffreyO 59.5
-Caleb WilliamsU 24.5
-J.K. DobbinsU 59.5
-Bucky IrvingU 58.5
-Raheim SandersO 4.5`;
+Derrick HenryO 88.5
+Jahmyr GibbsO 84.5
+James CookO 82.5
+Bijan RobinsonO 76.5
+Saquon BarkleyO 75.5
+Chase BrownO 62.5
+Omarion HamptonO 60.5
+Javonte WilliamsO 58.5
+Breece HallO 56.5
+Bucky IrvingO 53.5
+Kyren WilliamsO 55.5
+Bhayshul TutenO 52.5
+TreVeyon HendersonO 41.5
+Lamar JacksonO 38.5
+Rhamondre StevensonO 38.5
+Josh AllenO 34.5
+Drake MayeO 25.5
+Jalen HurtsO 24.5
+Kyler MurrayO 21.5
+Justin HerbertO 19.5
+Baker MayfieldO 17.5
+Bo NixO 17.5
+Trevor LawrenceO 15.5
+Dak PrescottO 13.5
+Jordan LoveO 7.5
+Michael PenixO 3.5
+Matthew StaffordO 0.5
+
+Receiving Yards
+CeeDee LambO 85.5
+Ja'Marr ChaseO 77.5
+Amon-Ra St. BrownO 76.5
+Zay FlowersO 75.5
+Justin JeffersonO 69.5
+Christian WatsonO 68.5
+Drake LondonO 66.5
+Parker WashingtonO 62.5
+Garrett WilsonO 61.5
+George PickensO 59.5
+Jaylen WaddleO 59.5
+Jameson WilliamsO 55.5
+Tee HigginsO 53.5
+DK MetcalfO 51.5
+Ladd McConkeyO 51.5
+DJ MooreO 50.5
+Emeka EgbukaO 47.5
+Tucker KraftO 44.5
+Sam LaPortaO 45.5
+Romeo DoubsO 42.5
+Hunter HenryO 42.5
+Dontayvion WicksO 39.5
+Bijan RobinsonO 39.5
+Brian ThomasO 38.5
+Kyle PittsO 35.5
+Chris GodwinO 33.5
+Jahmyr GibbsO 35.5
+Quentin JohnstonO 34.5
+Jordan AddisonO 32.5
+TJ HockensonO 28.5
+DeMario DouglasO 29.5
+Jake FergusonO 27.5
+Brenton StrangeO 28.5
+Cade OttonO 27.5
+Chase BrownO 22.5
+Breece HallO 21.5
+Javonte WilliamsO 17.5
+Saquon BarkleyO 14.5
+Rhamondre StevensonO 13.5
+Omarion HamptonO 11.5
+TreVeyon HendersonO 8.5
+Bhayshul TutenO 9.5
+
+Receptions
+Amon-Ra St. BrownO 7.5
+CeeDee LambO 7.5
+Ja'Marr ChaseO 6.5
+Drake LondonO 5.5
+Justin JeffersonO 5.5
+Garrett WilsonO 5.5
+Zay FlowersO 5.5
+George PickensO 4.5
+Bijan RobinsonO 4.5
+Jahmyr GibbsO 4.5
+Jameson WilliamsO 3.5
+Jaylen WaddleO 4.5
+Christian WatsonO 4.5
+Sam LaPortaO 4.5
+DK MetcalfO 4.5
+Tee HigginsO 4.5
+Parker WashingtonO 4.5
+Ladd McConkeyO 4.5
+Emeka EgbukaO 4.5
+Dontayvion WicksO 2.5
+Chris GodwinO 3.5
+Breece HallO 3.5
+Chase BrownO 3.5
+DJ MooreO 3.5
+Quentin JohnstonO 3.5
+Kyle PittsO 3.5
+TJ HockensonO 3.5
+Jake FergusonO 3.5
+Romeo DoubsO 3.5
+Cade OttonO 2.5
+Hunter HenryO 3.5
+Tucker KraftO 3.5
+Brenton StrangeO 3.5
+Brian ThomasO 2.5
+Saquon BarkleyO 2.5
+Javonte WilliamsO 2.5
+Rhamondre StevensonO 2.5
+DeMario DouglasO 2.5
+Jordan AddisonO 2.5
+TreVeyon HendersonO 1.5
+Omarion HamptonO 1.5
+Bhayshul TutenO 1.5`;
