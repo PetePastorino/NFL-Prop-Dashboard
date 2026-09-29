@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "nfl-prop-dashboard",
+  "compatibility_date": "2026-09-29",
+  "assets": {
+    "directory": "./artifacts/nfl-prop-dashboard/dist/public",
+    "not_found_handling": "single-page-application"
+  }
+}
