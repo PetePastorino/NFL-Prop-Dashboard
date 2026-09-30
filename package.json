@@ -5,6 +5,7 @@
   "scripts": {
     "preinstall": "node scripts/preinstall.mjs",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "import:projections": "node scripts/import-projections.mjs",
     "deploy": "wrangler deploy",
     "deploy:dry-run": "wrangler deploy --dry-run",
     "typecheck:libs": "tsc --build",

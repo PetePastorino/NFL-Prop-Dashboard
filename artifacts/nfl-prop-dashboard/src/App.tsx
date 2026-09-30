@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import sourceText from '@assets/0_prop_matchup_dashboard_(1)_1789679044969.jsx?raw';
+import playerDataJson from '@/data/player-data.json';
 import { INITIAL_PROP_LINES } from '@/data/initial-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
@@ -54,6 +54,8 @@ type StatSnapshot = {
   matchupFactor?: number | null;
   isHome?: boolean | null;
   week1Actual?: number | null;
+  week2Actual?: number | null;
+  week3Actual?: number | null;
 };
 
 type Player = {
@@ -82,42 +84,7 @@ type RankedProp = {
   confidenceScore: number;
 };
 
-const WEEK_3_MATCHUPS: Record<string, { opponent: string; isHome: boolean | null }> = {
-  ATL: { opponent: 'GNB', isHome: false },
-  GNB: { opponent: 'ATL', isHome: true },
-  LAC: { opponent: 'BUF', isHome: false },
-  BUF: { opponent: 'LAC', isHome: true },
-  CAR: { opponent: 'CLE', isHome: false },
-  CLE: { opponent: 'CAR', isHome: true },
-  NYJ: { opponent: 'DET', isHome: false },
-  DET: { opponent: 'NYJ', isHome: true },
-  HOU: { opponent: 'IND', isHome: false },
-  IND: { opponent: 'HOU', isHome: true },
-  KAN: { opponent: 'MIA', isHome: false },
-  MIA: { opponent: 'KAN', isHome: true },
-  TEN: { opponent: 'NYG', isHome: false },
-  NYG: { opponent: 'TEN', isHome: true },
-  CIN: { opponent: 'PIT', isHome: false },
-  PIT: { opponent: 'CIN', isHome: true },
-  SEA: { opponent: 'WAS', isHome: false },
-  WAS: { opponent: 'SEA', isHome: true },
-  NWE: { opponent: 'JAX', isHome: false },
-  JAX: { opponent: 'NWE', isHome: true },
-  ARI: { opponent: 'SFO', isHome: false },
-  SFO: { opponent: 'ARI', isHome: true },
-  MIN: { opponent: 'TAM', isHome: false },
-  TAM: { opponent: 'MIN', isHome: true },
-  BAL: { opponent: 'DAL', isHome: null },
-  DAL: { opponent: 'BAL', isHome: null },
-  LVR: { opponent: 'NOR', isHome: false },
-  NOR: { opponent: 'LVR', isHome: true },
-  LAR: { opponent: 'DEN', isHome: false },
-  DEN: { opponent: 'LAR', isHome: true },
-  PHI: { opponent: 'CHI', isHome: false },
-  CHI: { opponent: 'PHI', isHome: true },
-};
-
-const PLAYER_DATA = parsePlayerData(sourceText);
+const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
   QB: [
@@ -152,35 +119,6 @@ const STAT_ALIASES: Record<string, string[]> = {
   rec_yards: ['receiving yards', 'rec yards', 'receiving yds', 'rec yds', 'rec yard'],
   receptions: ['receptions', 'reception', 'catches', 'catch', 'rec pts', 'recpt'],
 };
-
-function parsePlayerData(source: string): PlayerData {
-  const normalizedSource = source.replace(/\r\n/g, '\n');
-  const startMarker = 'const PLAYER_DATA = ';
-  const endMarker = ';\n\nconst C';
-  const start = normalizedSource.indexOf(startMarker);
-  const end = normalizedSource.indexOf(endMarker, start);
-  if (start < 0 || end < 0) return {};
-  const data = JSON.parse(normalizedSource.slice(start + startMarker.length, end)) as PlayerData;
-  return Object.fromEntries(
-    Object.entries(data).map(([position, players]) => [
-      position,
-      players.map((player) => {
-        const matchup = WEEK_3_MATCHUPS[player.team];
-        if (!matchup) return player;
-        return {
-          ...player,
-          week2Opp: matchup.opponent,
-          stats: Object.fromEntries(
-            Object.entries(player.stats).map(([statKey, stat]) => [
-              statKey,
-              { ...stat, isHome: matchup.isHome },
-            ]),
-          ),
-        };
-      }),
-    ]),
-  ) as PlayerData;
-}
 
 function venueLabel(isHome: boolean | null | undefined) {
   if (isHome === null) return 'Neutral';
@@ -430,8 +368,8 @@ function AppShell() {
     0,
   );
   const lowConfidenceCount = playersForGame.filter((player) => player.isLowConfidence).length;
-  const weekOneCount = playersForGame.filter(
-    (player) => player.stats[statKey]?.week1Actual !== null && player.stats[statKey]?.week1Actual !== undefined,
+  const currentWeekCount = playersForGame.filter(
+    (player) => player.stats[statKey]?.week3Actual !== null && player.stats[statKey]?.week3Actual !== undefined,
   ).length;
 
   const changePosition = (nextPosition: Position) => {
@@ -551,7 +489,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : 'Prop board'}</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week 3 slate</span>
+            <span className="live-indicator"><span /> Week 4 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -578,7 +516,7 @@ function AppShell() {
             </div>
             <div className="overview-stat"><span>Current pool</span><strong>{playersForGame.length}</strong><small>{position} players</small></div>
             <div className="overview-stat"><span>Limited history</span><strong>{lowConfidenceCount}</strong><small>low-confidence flags</small></div>
-            <div className="overview-stat"><span>Week 1 coverage</span><strong>{weekOneCount}<small> / {playersForGame.length}</small></strong><small>actuals in view</small></div>
+            <div className="overview-stat"><span>Week 3 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
           </section>
 
           <section className="control-deck">
@@ -1010,6 +948,8 @@ function DetailPanel({
             <MetricCard label="Last 5 average" value={stat.priorLast5} sub={stat.priorLast5 && stat.priorAvg ? `${stat.priorLast5 >= stat.priorAvg ? '+' : ''}${formatValue(stat.priorLast5 - stat.priorAvg)} vs career` : 'Not available'} />
             <MetricCard label="Matchup factor" value={stat.matchupFactor === null || stat.matchupFactor === undefined ? null : stat.matchupFactor} suffix="x" sub={matchupLabel} tone={matchupLabel === 'Favorable' ? 'positive' : matchupLabel === 'Difficult' ? 'negative' : undefined} />
             <MetricCard label="Week 1 actual" value={stat.week1Actual} sub={stat.week1Actual === null || stat.week1Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
+            <MetricCard label="Week 2 actual" value={stat.week2Actual} sub={stat.week2Actual === null || stat.week2Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
+            <MetricCard label="Week 3 actual" value={stat.week3Actual} sub={stat.week3Actual === null || stat.week3Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
           </div>
 
           <div className="comparison-grid">
