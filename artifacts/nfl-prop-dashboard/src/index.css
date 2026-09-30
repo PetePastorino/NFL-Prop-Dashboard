@@ -1143,3 +1143,23 @@ select option { color: #fff; background: #0e2a3f; }
 .main-canvas .week-note { border-top-color: #2a4a66; background: #143650; }
 .main-canvas .history-call.over { color: #2ee59d !important; }
 .main-canvas .history-call.under { color: #ff6b6b !important; }
+
+/* Stable visual vocabulary for player identity and prop direction. */
+.main-canvas .player-avatar,
+.main-canvas .large-avatar,
+.main-canvas .player-row.active .player-avatar {
+  color: #fff !important;
+  background: #0878ff;
+}
+.main-canvas .lean-over,
+.main-canvas .lean-over :where(b, small),
+.main-canvas .player-row.active .lean-over,
+.main-canvas .ranking-row.selected .lean-over {
+  color: #2ee59d !important;
+}
+.main-canvas .lean-under,
+.main-canvas .lean-under :where(b, small),
+.main-canvas .player-row.active .lean-under,
+.main-canvas .ranking-row.selected .lean-under {
+  color: #ff6b6b !important;
+}

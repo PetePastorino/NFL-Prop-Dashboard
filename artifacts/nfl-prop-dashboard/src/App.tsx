@@ -897,8 +897,8 @@ function DetailPanel({
       : stat.matchupFactor < 0.95 ? 'Difficult' : 'Neutral';
   const chartData = [
     { label: 'Career baseline', value: stat?.priorAvg ?? null, fill: '#8b97a8' },
-    { label: 'Last 5 average', value: stat?.priorLast5 ?? null, fill: '#4f6477' },
-    { label: 'Model projection', value: stat?.projection ?? null, fill: player.isLowConfidence ? '#31a68d' : '#eab84c' },
+    { label: 'Last 5 average', value: stat?.priorLast5 ?? null, fill: '#0878ff' },
+    { label: 'Model projection', value: stat?.projection ?? null, fill: '#22d3ee' },
   ].filter((item) => item.value !== null);
 
   return (
