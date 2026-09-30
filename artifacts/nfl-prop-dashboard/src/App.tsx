@@ -355,7 +355,7 @@ function AppShell() {
             const stat = player.stats[statDefinition.key];
             if (!line || !stat || stat.projection === null || stat.projection === undefined) return [];
             const lineLean = leanFromLine(stat, line);
-            const confidence = getConfidence(player, stat, line, statKey);
+            const confidence = getConfidence(player, stat, line, statDefinition.key);
             return [{
               key,
               position: entryPosition,
