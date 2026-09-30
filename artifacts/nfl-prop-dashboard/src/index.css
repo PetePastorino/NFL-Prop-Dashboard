@@ -1051,3 +1051,44 @@ select option { color: #fff; background: #0e2a3f; }
   .stat-segment { border-top-color: #2a4a66; }
   .decision-copy { border-bottom-color: #2a4a66; }
 }
+
+/* High-contrast text pass. The background artwork contains several mid-tone
+ * blue areas, so secondary copy remains white instead of muted gray. */
+.main-canvas :where(h1, h2, h3, p, span, strong, small, label),
+.sidebar :where(span, strong, small, p),
+.breadcrumbs,
+.live-indicator,
+.page-footer {
+  color: #fff !important;
+}
+.main-canvas input,
+.main-canvas select,
+.main-canvas textarea,
+.main-canvas button {
+  color: #fff;
+}
+.main-canvas input::placeholder,
+.main-canvas textarea::placeholder {
+  color: #fff;
+  opacity: .82;
+}
+.main-canvas .recharts-text,
+.main-canvas .recharts-cartesian-axis-tick-value {
+  fill: #fff;
+}
+.main-canvas .lean-over,
+.main-canvas .tone-positive,
+.main-canvas .record-win,
+.main-canvas .result-win { color: #2ee59d !important; }
+.main-canvas .lean-under,
+.main-canvas .tone-negative,
+.main-canvas .record-loss,
+.main-canvas .result-loss { color: #ff6b6b !important; }
+.main-canvas .record-push,
+.main-canvas .result-push { color: #ffc14d !important; }
+.main-canvas .position-segment button.active,
+.main-canvas .stat-segment button.active,
+.main-canvas .view-toggle button.active,
+.main-canvas .bulk-import-actions button.primary {
+  color: #04121c !important;
+}
