@@ -120,6 +120,15 @@ const STAT_ALIASES: Record<string, string[]> = {
   receptions: ['receptions', 'reception', 'catches', 'catch', 'rec pts', 'recpt'],
 };
 
+// Percentage-only edge scoring becomes unstable for tiny sportsbook lines.
+// Require an edge to be meaningful both proportionally and in market units.
+const CONFIDENCE_EDGE_TARGETS: Record<string, number> = {
+  pass_yards: 30,
+  rush_yards: 15,
+  rec_yards: 15,
+  receptions: 1.5,
+};
+
 function venueLabel(isHome: boolean | null | undefined) {
   if (isHome === null) return 'Neutral';
   return isHome ? 'Home' : 'Away';
@@ -185,19 +194,26 @@ function matchupLabel(key: string) {
   return key.split('|').join(' vs ');
 }
 
-function getConfidence(player: Player, stat: StatSnapshot, line: string) {
+function getConfidence(player: Player, stat: StatSnapshot, line: string, statKey: string) {
   const lean = leanFromLine(stat, line);
   if (lean.edgePct === null || lean.edge === null) {
     return { confidence: 'Low' as const, confidenceScore: 0 };
   }
 
-  const edgeScore = Math.min(Math.abs(lean.edgePct) * 100, 32);
-  const historyScore = Math.min(stat.nPriorGames / 50, 1) * 42;
+  if (lean.lean === 'PASS') {
+    return { confidence: 'Low' as const, confidenceScore: 0 };
+  }
+
+  const edgeTarget = CONFIDENCE_EDGE_TARGETS[statKey] ?? 15;
+  const relativeEdgeScore = Math.min(Math.abs(lean.edgePct) * 200, 50);
+  const absoluteEdgeScore = Math.min((Math.abs(lean.edge) / edgeTarget) * 50, 50);
+  const edgeScore = Math.min(relativeEdgeScore, absoluteEdgeScore);
+  const historyScore = Math.min(stat.nPriorGames / 50, 1) * 35;
   const limitedHistoryPenalty = player.isLowConfidence ? 18 : 0;
   const injuryPenalty = player.injuryStatus ? 10 : 0;
   const confidenceScore = Math.max(
     0,
-    Math.min(100, Math.round(edgeScore + historyScore + 26 - limitedHistoryPenalty - injuryPenalty)),
+    Math.min(100, Math.round(edgeScore + historyScore + 15 - limitedHistoryPenalty - injuryPenalty)),
   );
   const confidence: 'High' | 'Medium' | 'Low' =
     confidenceScore >= 72 ? 'High' : confidenceScore >= 48 ? 'Medium' : 'Low';
@@ -339,7 +355,7 @@ function AppShell() {
             const stat = player.stats[statDefinition.key];
             if (!line || !stat || stat.projection === null || stat.projection === undefined) return [];
             const lineLean = leanFromLine(stat, line);
-            const confidence = getConfidence(player, stat, line);
+            const confidence = getConfidence(player, stat, line, statKey);
             return [{
               key,
               position: entryPosition,
