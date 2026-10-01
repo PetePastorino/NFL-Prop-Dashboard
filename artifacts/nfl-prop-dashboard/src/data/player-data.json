@@ -3264,8 +3264,8 @@
       "team": "PIT",
       "week2Opp": "CLE",
       "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Out",
+      "injury": "Toe",
       "stats": {
         "rush_yards": {
           "projection": 16.8,

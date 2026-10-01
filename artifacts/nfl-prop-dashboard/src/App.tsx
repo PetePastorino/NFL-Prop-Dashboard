@@ -71,6 +71,11 @@ type Player = {
 type PlayerData = Record<string, Player[]>;
 type Position = 'QB' | 'RB' | 'WR' | 'TE';
 type Lean = 'OVER' | 'UNDER' | 'PASS' | '—';
+
+const isPlayerUnavailable = (player: Player) =>
+  /(?:^|\b)(?:out|injured reserve|ir|pup|suspended)(?:\b|$)/i.test(
+    player.injuryStatus ?? '',
+  );
 type RankedProp = {
   key: string;
   position: Position;
@@ -350,6 +355,7 @@ function AppShell() {
       .flatMap(([entryPosition, roster]) =>
         roster.flatMap((player) =>
           STAT_TYPES[entryPosition].flatMap((statDefinition) => {
+            if (isPlayerUnavailable(player)) return [];
             const key = `${entryPosition}:${statDefinition.key}:${player.name}`;
             const line = lines[key];
             const stat = player.stats[statDefinition.key];
