@@ -6409,42 +6409,42 @@
     },
     {
       "name": "Darius Slayton",
-      "team": "NYG",
-      "week2Opp": "ARI",
-      "isLowConfidence": false,
+      "team": "IND",
+      "week2Opp": "WAS",
+      "isLowConfidence": true,
       "injuryStatus": null,
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 38.5,
-          "rawProjection": 40.4,
-          "lowConfidence": false,
+          "projection": 55.9,
+          "rawProjection": 49.5,
+          "lowConfidence": true,
           "nPriorGames": 106,
           "priorAvg": 41.8,
           "priorLast5": 34.4,
-          "matchupFactor": 0.99,
-          "isHome": true,
-          "gameEnvFactor": 0.95
+          "matchupFactor": 1.23,
+          "isHome": false,
+          "gameEnvFactor": 1.13
         },
         "receptions": {
-          "projection": 2.6,
-          "rawProjection": 2.7,
-          "lowConfidence": false,
+          "projection": 3.9,
+          "rawProjection": 3.4,
+          "lowConfidence": true,
           "nPriorGames": 106,
           "priorAvg": 2.8,
           "priorLast5": 2.6,
-          "matchupFactor": 0.92,
-          "isHome": true,
-          "gameEnvFactor": 0.95
+          "matchupFactor": 1.2,
+          "isHome": false,
+          "gameEnvFactor": 1.13
         },
         "anytime_td": {
-          "probability": 0.327,
-          "rawProbability": 0.338,
-          "gameEnvFactor": 0.95,
-          "lowConfidence": false,
+          "probability": 0.396,
+          "rawProbability": 0.368,
+          "gameEnvFactor": 1.13,
+          "lowConfidence": true,
           "nPriorGames": 106,
           "priorTdRate": 0.17,
-          "matchupFactor": 1.43
+          "matchupFactor": 1.57
         }
       }
     },
