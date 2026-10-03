@@ -226,7 +226,7 @@ function getConfidence(player: Player, stat: StatSnapshot, line: string, statKey
   return { confidence, confidenceScore };
 }
 
-function parseBulkLines(input: string) {
+function parseBulkLines(input: string, ignoreUnsupported = false) {
   const allPlayers = (Object.entries(PLAYER_DATA) as [Position, Player[]][]).flatMap(
     ([position, roster]) => roster.map((player) => ({ position, player })),
   );
@@ -260,11 +260,11 @@ function parseBulkLines(input: string) {
       const line = numbers?.at(-1);
 
       if (!match) {
-        errors.push(`Could not match a player: “${entry}”`);
+        if (!ignoreUnsupported) errors.push(`Could not match a player: “${entry}”`);
         return;
       }
       if (!statKey) {
-        errors.push(`Add a stat type for ${match.player.name} (for example, rec yards).`);
+        if (!ignoreUnsupported) errors.push(`Add a stat type for ${match.player.name} (for example, rec yards).`);
         return;
       }
       if (!line || Number.isNaN(Number(line))) {
@@ -272,7 +272,7 @@ function parseBulkLines(input: string) {
         return;
       }
       if (!match.player.stats[statKey]?.projection && match.player.stats[statKey]?.projection !== 0) {
-        errors.push(`No ${STAT_TYPES[match.position].find((stat) => stat.key === statKey)?.label.toLowerCase()} projection for ${match.player.name}.`);
+        if (!ignoreUnsupported) errors.push(`No ${STAT_TYPES[match.position].find((stat) => stat.key === statKey)?.label.toLowerCase()} projection for ${match.player.name}.`);
         return;
       }
 
@@ -302,7 +302,7 @@ function AppShell() {
   );
   const [search, setSearch] = useState('');
   const [gameFilter, setGameFilter] = useState('all');
-  const initialImport = useMemo(() => parseBulkLines(INITIAL_PROP_LINES), []);
+  const initialImport = useMemo(() => parseBulkLines(INITIAL_PROP_LINES, true), []);
   const [lines, setLines] = useState<Record<string, string>>(() =>
     Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
   );
