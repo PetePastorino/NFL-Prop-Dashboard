@@ -249,12 +249,17 @@ function parseBulkLines(input: string, ignoreUnsupported = false) {
             normalizedEntry.replace(/\s/g, '').includes(playerName.replace(/\s/g, ''));
         });
       const headingStatKey = statKeyFromText(entry);
-      if (!match && headingStatKey && /yards|receptions|reception/i.test(entry)) {
+      // Treat text-only rows as optional section headings. An unmatched
+      // player line still contains a number and must never change the market
+      // applied to later entries.
+      if (!match && !/-?\d+(?:\.\d+)?/.test(entry) && headingStatKey && /yards|receptions|reception/i.test(entry)) {
         currentStatKey = headingStatKey;
         return;
       }
       const statKey = match
-        ? currentStatKey ?? statKeyFromText(entry, match.position)
+        // An explicit market on the player row always wins over a remembered
+        // section heading (for example, Receiving Yards vs Receptions).
+        ? statKeyFromText(entry, match.position) ?? currentStatKey
         : undefined;
       const numbers = entry.match(/-?\d+(?:\.\d+)?/g);
       const line = numbers?.at(-1);
