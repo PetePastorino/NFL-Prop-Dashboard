@@ -56,6 +56,7 @@ type StatSnapshot = {
   week1Actual?: number | null;
   week2Actual?: number | null;
   week3Actual?: number | null;
+  week4Actual?: number | null;
 };
 
 type Player = {
@@ -976,7 +977,7 @@ function DetailPanel({
             <MetricCard label="Matchup factor" value={stat.matchupFactor === null || stat.matchupFactor === undefined ? null : stat.matchupFactor} suffix="x" sub={matchupLabel} tone={matchupLabel === 'Favorable' ? 'positive' : matchupLabel === 'Difficult' ? 'negative' : undefined} />
             <MetricCard label="Week 1 actual" value={stat.week1Actual} sub={stat.week1Actual === null || stat.week1Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
             <MetricCard label="Week 2 actual" value={stat.week2Actual} sub={stat.week2Actual === null || stat.week2Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
-            <MetricCard label="Week 3 actual" value={stat.week3Actual} sub={stat.week3Actual === null || stat.week3Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
+            <MetricCard label="Week 4 actual" value={stat.week4Actual} sub={stat.week4Actual === null || stat.week4Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
           </div>
 
           <div className="comparison-grid">

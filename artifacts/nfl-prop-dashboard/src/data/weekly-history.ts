@@ -29,6 +29,30 @@ export type WeeklyHistory = {
 
 export const WEEKLY_HISTORY: WeeklyHistory[] = [
   {
+    week: 4,
+    season: 2026,
+    label: 'October 1–5, 2026',
+    gamesGraded: 16,
+    gamesScheduled: 16,
+    allLeans: { wins: 128, losses: 121, pushes: 0 },
+    highConfidence: { wins: 54, losses: 24, pushes: 0 },
+    topPicks: { wins: 9, losses: 1, pushes: 0 },
+    topPickLimit: 10,
+    note: 'Final results cover all 16 games. PASS recommendations and props for players without a recorded Week 4 appearance are excluded from the record.',
+    picks: [
+      { player: 'Lamar Jackson', position: 'QB', stat: 'Pass Yards', lean: 'OVER', line: 215.5, projection: 286.3, actual: 222, result: 'WIN' },
+      { player: 'Rhamondre Stevenson', position: 'RB', stat: 'Rush Yards', lean: 'OVER', line: 32.5, projection: 56.1, actual: 47, result: 'WIN' },
+      { player: 'Kyren Williams', position: 'RB', stat: 'Rush Yards', lean: 'OVER', line: 58.5, projection: 73.8, actual: 80, result: 'WIN' },
+      { player: 'Alvin Kamara', position: 'RB', stat: 'Rush Yards', lean: 'OVER', line: 37.5, projection: 54, actual: 23, result: 'LOSS' },
+      { player: 'Garrett Wilson', position: 'WR', stat: 'Rec Yards', lean: 'UNDER', line: 73.5, projection: 51.4, actual: 27, result: 'WIN' },
+      { player: 'Garrett Wilson', position: 'WR', stat: 'Receptions', lean: 'UNDER', line: 6.5, projection: 4.4, actual: 3, result: 'WIN' },
+      { player: 'Jameson Williams', position: 'WR', stat: 'Rec Yards', lean: 'OVER', line: 50.5, projection: 65.4, actual: 102, result: 'WIN' },
+      { player: 'Tee Higgins', position: 'WR', stat: 'Rec Yards', lean: 'OVER', line: 63.5, projection: 81.6, actual: 157, result: 'WIN' },
+      { player: 'Rashod Bateman', position: 'WR', stat: 'Rec Yards', lean: 'OVER', line: 25.5, projection: 47, actual: 46, result: 'WIN' },
+      { player: 'Kyle Pitts', position: 'TE', stat: 'Rec Yards', lean: 'OVER', line: 28.5, projection: 47.2, actual: 47, result: 'WIN' },
+    ],
+  },
+  {
     week: 3,
     season: 2026,
     label: 'September 24–28, 2026',

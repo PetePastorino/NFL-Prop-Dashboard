@@ -105,7 +105,11 @@ function parseBulkLines(input, playerData) {
         currentStatKey = headingStatKey;
         return;
       }
-      const statKey = match ? currentStatKey ?? statKeyFromText(entry, match.position) : undefined;
+      // Prefer the market explicitly named on each prop row. A remembered
+      // section heading is only a fallback for rows that omit the market.
+      // This prevents a Receptions heading from relabeling Receiving Yards
+      // (and vice versa) when bulk input contains both markets.
+      const statKey = match ? statKeyFromText(entry, match.position) ?? currentStatKey : undefined;
       const numbers = entry.match(/-?\d+(?:\.\d+)?/g);
       const line = numbers?.at(-1);
 
