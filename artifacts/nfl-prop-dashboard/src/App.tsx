@@ -912,6 +912,12 @@ function DetailPanel({
     { label: 'Last 5 average', value: stat?.priorLast5 ?? null, fill: '#0878ff' },
     { label: 'Model projection', value: stat?.projection ?? null, fill: '#22d3ee' },
   ].filter((item) => item.value !== null);
+  const recentGames = [
+    { week: 1, value: stat?.week1Actual },
+    { week: 2, value: stat?.week2Actual },
+    { week: 3, value: stat?.week3Actual },
+    { week: 4, value: stat?.week4Actual },
+  ].slice(-5);
 
   return (
     <section className="detail-panel">
@@ -975,9 +981,14 @@ function DetailPanel({
             <MetricCard label="Career baseline" value={stat.priorAvg} sub={stat.nPriorGames ? `${stat.nPriorGames} games on record` : 'No history'} />
             <MetricCard label="Last 5 average" value={stat.priorLast5} sub={stat.priorLast5 && stat.priorAvg ? `${stat.priorLast5 >= stat.priorAvg ? '+' : ''}${formatValue(stat.priorLast5 - stat.priorAvg)} vs career` : 'Not available'} />
             <MetricCard label="Matchup factor" value={stat.matchupFactor === null || stat.matchupFactor === undefined ? null : stat.matchupFactor} suffix="x" sub={matchupLabel} tone={matchupLabel === 'Favorable' ? 'positive' : matchupLabel === 'Difficult' ? 'negative' : undefined} />
-            <MetricCard label="Week 1 actual" value={stat.week1Actual} sub={stat.week1Actual === null || stat.week1Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
-            <MetricCard label="Week 2 actual" value={stat.week2Actual} sub={stat.week2Actual === null || stat.week2Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
-            <MetricCard label="Week 4 actual" value={stat.week4Actual} sub={stat.week4Actual === null || stat.week4Actual === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`} />
+            {recentGames.map(({ week, value }) => (
+              <MetricCard
+                key={week}
+                label={`Week ${week} actual`}
+                value={value}
+                sub={value === null || value === undefined ? 'Not in source data' : `${statLabel.toLowerCase()} logged`}
+              />
+            ))}
           </div>
 
           <div className="comparison-grid">
