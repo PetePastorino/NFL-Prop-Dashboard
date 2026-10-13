@@ -16,6 +16,15 @@ if (!resultsDir) {
 
 const sourcePath = path.join(repoRoot, 'attached_assets', '0_prop_matchup_dashboard_(1)_1789679044969.jsx');
 const linesPath = path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'initial-prop-lines.ts');
+const confidenceCalibrationPath = path.join(
+  repoRoot,
+  'artifacts',
+  'nfl-prop-dashboard',
+  'src',
+  'data',
+  'confidence-calibration.json',
+);
+const confidenceCalibration = JSON.parse(fs.readFileSync(confidenceCalibrationPath, 'utf8'));
 
 function normalized(value) {
   return value
@@ -247,18 +256,25 @@ function getConfidence(player, stat, line, statKey) {
     };
   }
   if (lean.lean === 'PASS') return { confidence: 'Low', confidenceScore: 0 };
-  const edgeTarget = CONFIDENCE_EDGE_TARGETS[statKey] ?? 15;
-  const relativeEdgeScore = Math.min(Math.abs(lean.edgePct) * 200, 50);
-  const absoluteEdgeScore = Math.min((Math.abs(lean.edge) / edgeTarget) * 50, 50);
-  const edgeScore = Math.min(relativeEdgeScore, absoluteEdgeScore);
-  const historyScore = Math.min(stat.nPriorGames / 50, 1) * 35;
-  const limitedHistoryPenalty = player.isLowConfidence ? 18 : 0;
-  const injuryPenalty = player.injuryStatus ? 10 : 0;
-  const confidenceScore = Math.max(
-    0,
-    Math.min(100, Math.round(edgeScore + historyScore + 15 - limitedHistoryPenalty - injuryPenalty)),
-  );
-  return { confidence: confidenceScore >= 72 ? 'High' : confidenceScore >= 48 ? 'Medium' : 'Low', confidenceScore };
+  const edgeBand = confidenceCalibration.edgeBands.find(
+    ({ min, max }) => Math.abs(lean.edgePct) >= min && Math.abs(lean.edgePct) < max,
+  )?.key;
+  const calibratedRate = edgeBand
+    ? confidenceCalibration.rates[statKey]?.[lean.lean]?.[edgeBand]
+    : undefined;
+  let confidenceScore = Math.round(calibratedRate ?? confidenceCalibration.breakevenPct);
+  if (player.isLowConfidence || stat.lowConfidence) {
+    confidenceScore = Math.min(confidenceScore, confidenceCalibration.lowHistoryCap);
+  }
+  if (player.injuryStatus) {
+    confidenceScore = Math.min(confidenceScore, confidenceCalibration.injuryCap);
+  }
+  const confidence = confidenceScore >= confidenceCalibration.highThreshold
+    ? 'High'
+    : confidenceScore >= confidenceCalibration.mediumThreshold
+      ? 'Medium'
+      : 'Low';
+  return { confidence, confidenceScore };
 }
 
 function recordFor(props) {

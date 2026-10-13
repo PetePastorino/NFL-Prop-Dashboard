@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
+import confidenceCalibrationJson from '@/data/confidence-calibration.json';
 import { WEEK6_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week6-initial-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
@@ -73,6 +74,17 @@ type Player = {
 type PlayerData = Record<string, Player[]>;
 type Position = 'QB' | 'RB' | 'WR' | 'TE';
 type Lean = 'OVER' | 'UNDER' | 'PASS' | '—';
+type PickLean = 'OVER' | 'UNDER';
+type EdgeBandKey = '4-7' | '7-10' | '10-15' | '15-25' | '25+';
+type ConfidenceCalibration = {
+  breakevenPct: number;
+  highThreshold: number;
+  mediumThreshold: number;
+  lowHistoryCap: number;
+  injuryCap: number;
+  edgeBands: { key: EdgeBandKey; min: number; max: number }[];
+  rates: Record<string, Record<PickLean, Record<EdgeBandKey, number>>>;
+};
 
 const isPlayerUnavailable = (player: Player) =>
   /(?:^|\b)(?:out|injured reserve|ir|pup|suspended)(?:\b|$)/i.test(
@@ -92,6 +104,7 @@ type RankedProp = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
+const CONFIDENCE_CALIBRATION = confidenceCalibrationJson as ConfidenceCalibration;
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
   QB: [
@@ -228,19 +241,25 @@ function getConfidence(player: Player, stat: StatSnapshot, line: string, statKey
     return { confidence: 'Low' as const, confidenceScore: 0 };
   }
 
-  const edgeTarget = CONFIDENCE_EDGE_TARGETS[statKey] ?? 15;
-  const relativeEdgeScore = Math.min(Math.abs(lean.edgePct) * 200, 50);
-  const absoluteEdgeScore = Math.min((Math.abs(lean.edge) / edgeTarget) * 50, 50);
-  const edgeScore = Math.min(relativeEdgeScore, absoluteEdgeScore);
-  const historyScore = Math.min(stat.nPriorGames / 50, 1) * 35;
-  const limitedHistoryPenalty = player.isLowConfidence ? 18 : 0;
-  const injuryPenalty = player.injuryStatus ? 10 : 0;
-  const confidenceScore = Math.max(
-    0,
-    Math.min(100, Math.round(edgeScore + historyScore + 15 - limitedHistoryPenalty - injuryPenalty)),
-  );
+  const edgeBand = CONFIDENCE_CALIBRATION.edgeBands.find(
+    ({ min, max }) => Math.abs(lean.edgePct!) >= min && Math.abs(lean.edgePct!) < max,
+  )?.key;
+  const calibratedRate = edgeBand
+    ? CONFIDENCE_CALIBRATION.rates[statKey]?.[lean.lean as PickLean]?.[edgeBand]
+    : undefined;
+  let confidenceScore = Math.round(calibratedRate ?? CONFIDENCE_CALIBRATION.breakevenPct);
+  if (player.isLowConfidence || stat.lowConfidence) {
+    confidenceScore = Math.min(confidenceScore, CONFIDENCE_CALIBRATION.lowHistoryCap);
+  }
+  if (player.injuryStatus) {
+    confidenceScore = Math.min(confidenceScore, CONFIDENCE_CALIBRATION.injuryCap);
+  }
   const confidence: 'High' | 'Medium' | 'Low' =
-    confidenceScore >= 72 ? 'High' : confidenceScore >= 48 ? 'Medium' : 'Low';
+    confidenceScore >= CONFIDENCE_CALIBRATION.highThreshold
+      ? 'High'
+      : confidenceScore >= CONFIDENCE_CALIBRATION.mediumThreshold
+        ? 'Medium'
+        : 'Low';
 
   return { confidence, confidenceScore };
 }
@@ -669,7 +688,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Ranked from edge size, history depth, and availability flags. Each player appears once.</p></div>
+                <div><h2>Confidence board</h2><p>Estimated hit rate calibrated by prop type, pick direction, and edge band. Each player appears once.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
@@ -1010,7 +1029,7 @@ function DetailPanel({
             <div className="edge-meter">
               <div className="meter-label"><span>Confidence</span><strong>{effectiveConfidence ?? '—'}</strong></div>
               <div className="meter-track"><span style={{ width: `${effectiveConfidence === 'High' ? 88 : effectiveConfidence === 'Medium' ? 61 : effectiveConfidence === 'Low' ? 34 : 8}%` }} /></div>
-              <div className="meter-note">Based on edge and history depth</div>
+              <div className="meter-note">Estimated hit rate from historical calibration</div>
             </div>
           </div>
 
