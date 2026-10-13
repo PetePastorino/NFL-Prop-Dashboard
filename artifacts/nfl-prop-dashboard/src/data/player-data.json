@@ -21,7 +21,8 @@
           "week1Actual": 410,
           "week2Actual": 252,
           "week3Actual": 255,
-          "week4Actual": 286
+          "week4Actual": 286,
+          "week5Actual": 96
         },
         "rush_yards": {
           "projection": 17,
@@ -36,7 +37,8 @@
           "week1Actual": 8,
           "week2Actual": 23,
           "week3Actual": 36,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.161,
@@ -117,7 +119,8 @@
           "week1Actual": 387,
           "week2Actual": 145,
           "week3Actual": 312,
-          "week4Actual": 197
+          "week4Actual": 197,
+          "week5Actual": 367
         },
         "rush_yards": {
           "projection": 10.6,
@@ -132,7 +135,8 @@
           "week1Actual": 0,
           "week2Actual": 0,
           "week3Actual": 0,
-          "week4Actual": -8
+          "week4Actual": -8,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.139,
@@ -166,7 +170,8 @@
           "week1Actual": 155,
           "week2Actual": 327,
           "week3Actual": 390,
-          "week4Actual": 317
+          "week4Actual": 317,
+          "week5Actual": 383
         },
         "rush_yards": {
           "projection": 10.2,
@@ -181,7 +186,8 @@
           "week1Actual": -1,
           "week2Actual": -1,
           "week3Actual": 13,
-          "week4Actual": 10
+          "week4Actual": 10,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.163,
@@ -214,7 +220,8 @@
           "gameEnvFactor": 0.98,
           "week1Actual": 18,
           "week3Actual": 168,
-          "week4Actual": 247
+          "week4Actual": 247,
+          "week5Actual": 229
         },
         "rush_yards": {
           "projection": 1.2,
@@ -228,7 +235,8 @@
           "gameEnvFactor": 0.98,
           "week1Actual": 9,
           "week3Actual": 17,
-          "week4Actual": 16
+          "week4Actual": 16,
+          "week5Actual": 51
         },
         "anytime_td": {
           "probability": 0.066,
@@ -262,7 +270,8 @@
           "week1Actual": 206,
           "week2Actual": 327,
           "week3Actual": 269,
-          "week4Actual": 412
+          "week4Actual": 412,
+          "week5Actual": 271
         },
         "rush_yards": {
           "projection": 4.9,
@@ -277,7 +286,8 @@
           "week1Actual": 2,
           "week2Actual": 7,
           "week3Actual": 6,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.084,
@@ -360,7 +370,8 @@
           "week1Actual": 209,
           "week2Actual": 192,
           "week3Actual": 226,
-          "week4Actual": 189
+          "week4Actual": 189,
+          "week5Actual": 121
         },
         "rush_yards": {
           "projection": 20.7,
@@ -375,7 +386,8 @@
           "week1Actual": 29,
           "week2Actual": 2,
           "week3Actual": 17,
-          "week4Actual": 40
+          "week4Actual": 40,
+          "week5Actual": 54
         },
         "anytime_td": {
           "probability": 0.131,
@@ -409,7 +421,8 @@
           "week1Actual": 131,
           "week2Actual": 288,
           "week3Actual": 186,
-          "week4Actual": 214
+          "week4Actual": 214,
+          "week5Actual": 123
         },
         "rush_yards": {
           "projection": 19.2,
@@ -424,7 +437,8 @@
           "week1Actual": 2,
           "week2Actual": 6,
           "week3Actual": 7,
-          "week4Actual": 10
+          "week4Actual": 10,
+          "week5Actual": 10
         },
         "anytime_td": {
           "probability": 0.164,
@@ -548,7 +562,8 @@
           "week1Actual": 205,
           "week2Actual": 287,
           "week3Actual": 297,
-          "week4Actual": 218
+          "week4Actual": 218,
+          "week5Actual": 189
         },
         "rush_yards": {
           "projection": 21.3,
@@ -563,7 +578,8 @@
           "week1Actual": 29,
           "week2Actual": 30,
           "week3Actual": 34,
-          "week4Actual": 29
+          "week4Actual": 29,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.19,
@@ -597,7 +613,8 @@
           "week1Actual": 245,
           "week2Actual": 189,
           "week3Actual": 182,
-          "week4Actual": 227
+          "week4Actual": 227,
+          "week5Actual": 331
         },
         "rush_yards": {
           "projection": 17.3,
@@ -612,7 +629,8 @@
           "week1Actual": 3,
           "week2Actual": 6,
           "week3Actual": 25,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 25
         },
         "anytime_td": {
           "probability": 0.201,
@@ -646,7 +664,8 @@
           "week1Actual": 175,
           "week2Actual": 279,
           "week3Actual": 276,
-          "week4Actual": 335
+          "week4Actual": 335,
+          "week5Actual": 316
         },
         "rush_yards": {
           "projection": 17.9,
@@ -661,7 +680,8 @@
           "week1Actual": 14,
           "week2Actual": 26,
           "week3Actual": 19,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.202,
@@ -695,7 +715,8 @@
           "week1Actual": 254,
           "week2Actual": 207,
           "week3Actual": 282,
-          "week4Actual": 428
+          "week4Actual": 428,
+          "week5Actual": 190
         },
         "rush_yards": {
           "projection": 13.3,
@@ -710,7 +731,8 @@
           "week1Actual": 20,
           "week2Actual": -1,
           "week3Actual": 13,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 10
         },
         "anytime_td": {
           "probability": 0.151,
@@ -789,7 +811,8 @@
           "week1Actual": 203,
           "week2Actual": 264,
           "week3Actual": 153,
-          "week4Actual": 93
+          "week4Actual": 93,
+          "week5Actual": 220
         },
         "rush_yards": {
           "projection": 24.8,
@@ -804,7 +827,8 @@
           "week1Actual": 46,
           "week2Actual": 16,
           "week3Actual": 25,
-          "week4Actual": 18
+          "week4Actual": 18,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.259,
@@ -838,7 +862,8 @@
           "week1Actual": 178,
           "week2Actual": 208,
           "week3Actual": 199,
-          "week4Actual": 269
+          "week4Actual": 269,
+          "week5Actual": 374
         },
         "rush_yards": {
           "projection": 25.6,
@@ -853,7 +878,8 @@
           "week1Actual": 47,
           "week2Actual": 17,
           "week3Actual": 18,
-          "week4Actual": 54
+          "week4Actual": 54,
+          "week5Actual": 25
         },
         "anytime_td": {
           "probability": 0.152,
@@ -936,7 +962,8 @@
           "week1Actual": 334,
           "week2Actual": 248,
           "week3Actual": 204,
-          "week4Actual": 253
+          "week4Actual": 253,
+          "week5Actual": 210
         },
         "rush_yards": {
           "projection": 31,
@@ -951,7 +978,8 @@
           "week1Actual": 23,
           "week2Actual": 69,
           "week3Actual": 22,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 121
         },
         "anytime_td": {
           "probability": 0.366,
@@ -985,7 +1013,8 @@
           "week1Actual": 220,
           "week2Actual": 197,
           "week3Actual": 210,
-          "week4Actual": 85
+          "week4Actual": 85,
+          "week5Actual": 137
         },
         "rush_yards": {
           "projection": 20.8,
@@ -1000,7 +1029,8 @@
           "week1Actual": 39,
           "week2Actual": 6,
           "week3Actual": 56,
-          "week4Actual": 11
+          "week4Actual": 11,
+          "week5Actual": 74
         },
         "anytime_td": {
           "probability": 0.178,
@@ -1033,7 +1063,8 @@
           "gameEnvFactor": 1.12,
           "week1Actual": 13,
           "week3Actual": 379,
-          "week4Actual": 168
+          "week4Actual": 168,
+          "week5Actual": 195
         },
         "rush_yards": {
           "projection": 4.1,
@@ -1047,7 +1078,8 @@
           "gameEnvFactor": 1.12,
           "week1Actual": 0,
           "week3Actual": 5,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.068,
@@ -1081,7 +1113,8 @@
           "week1Actual": 205,
           "week2Actual": 238,
           "week3Actual": 144,
-          "week4Actual": 268
+          "week4Actual": 268,
+          "week5Actual": 155
         },
         "rush_yards": {
           "projection": 11.6,
@@ -1096,7 +1129,8 @@
           "week1Actual": 38,
           "week2Actual": 22,
           "week3Actual": 45,
-          "week4Actual": 22
+          "week4Actual": 22,
+          "week5Actual": 40
         },
         "anytime_td": {
           "probability": 0.088,
@@ -1130,7 +1164,8 @@
           "week1Actual": 277,
           "week2Actual": 95,
           "week3Actual": 280,
-          "week4Actual": 166
+          "week4Actual": 166,
+          "week5Actual": 292
         },
         "rush_yards": {
           "projection": 13.4,
@@ -1145,7 +1180,8 @@
           "week1Actual": 14,
           "week2Actual": 7,
           "week3Actual": 4,
-          "week4Actual": 18
+          "week4Actual": 18,
+          "week5Actual": 19
         },
         "anytime_td": {
           "probability": 0.159,
@@ -1179,7 +1215,8 @@
           "week1Actual": 221,
           "week2Actual": 187,
           "week3Actual": 292,
-          "week4Actual": 299
+          "week4Actual": 299,
+          "week5Actual": 235
         },
         "rush_yards": {
           "projection": 3.5,
@@ -1194,7 +1231,8 @@
           "week1Actual": -3,
           "week2Actual": 5,
           "week3Actual": 10,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.113,
@@ -1228,7 +1266,8 @@
           "week1Actual": 215,
           "week2Actual": 247,
           "week3Actual": 321,
-          "week4Actual": 119
+          "week4Actual": 119,
+          "week5Actual": 182
         },
         "rush_yards": {
           "projection": 13.4,
@@ -1243,7 +1282,8 @@
           "week1Actual": 7,
           "week2Actual": 17,
           "week3Actual": 12,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 7
         },
         "anytime_td": {
           "probability": 0.101,
@@ -1277,7 +1317,8 @@
           "week1Actual": 166,
           "week2Actual": 210,
           "week3Actual": 235,
-          "week4Actual": 143
+          "week4Actual": 143,
+          "week5Actual": 267
         },
         "rush_yards": {
           "projection": 11.9,
@@ -1292,7 +1333,8 @@
           "week1Actual": 4,
           "week2Actual": 10,
           "week3Actual": 5,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.169,
@@ -1326,7 +1368,8 @@
           "week1Actual": 140,
           "week2Actual": 183,
           "week3Actual": 181,
-          "week4Actual": 222
+          "week4Actual": 222,
+          "week5Actual": 170
         },
         "rush_yards": {
           "projection": 10.4,
@@ -1341,7 +1384,8 @@
           "week1Actual": 21,
           "week2Actual": 7,
           "week3Actual": 2,
-          "week4Actual": 27
+          "week4Actual": 27,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.107,
@@ -1424,7 +1468,8 @@
           "week1Actual": 274,
           "week2Actual": 353,
           "week3Actual": 167,
-          "week4Actual": 347
+          "week4Actual": 347,
+          "week5Actual": 261
         },
         "rush_yards": {
           "projection": 13.3,
@@ -1439,7 +1484,8 @@
           "week1Actual": 15,
           "week2Actual": 29,
           "week3Actual": 10,
-          "week4Actual": 12
+          "week4Actual": 12,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.131,
@@ -1473,7 +1519,8 @@
           "week1Actual": 160,
           "week2Actual": 253,
           "week3Actual": 248,
-          "week4Actual": 365
+          "week4Actual": 365,
+          "week5Actual": 243
         },
         "rush_yards": {
           "projection": -0.2,
@@ -1488,7 +1535,8 @@
           "week1Actual": -6,
           "week2Actual": 1,
           "week3Actual": 3,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.068,
@@ -1520,7 +1568,8 @@
           "isHome": true,
           "gameEnvFactor": 1.04,
           "week3Actual": 256,
-          "week4Actual": 223
+          "week4Actual": 223,
+          "week5Actual": 240
         },
         "rush_yards": {
           "projection": 6.9,
@@ -1533,7 +1582,8 @@
           "isHome": true,
           "gameEnvFactor": 1.04,
           "week3Actual": -2,
-          "week4Actual": -2
+          "week4Actual": -2,
+          "week5Actual": 8
         },
         "anytime_td": {
           "probability": 0.147,
@@ -1700,7 +1750,8 @@
           "nPriorGames": 2,
           "gameEnvFactor": 0.87,
           "week3Actual": 0,
-          "week4Actual": 148
+          "week4Actual": 148,
+          "week5Actual": 189
         },
         "rush_yards": {
           "projection": 27.7,
@@ -1709,7 +1760,8 @@
           "nPriorGames": 2,
           "gameEnvFactor": 0.87,
           "week3Actual": 9,
-          "week4Actual": 55
+          "week4Actual": 55,
+          "week5Actual": 23
         },
         "anytime_td": {
           "probability": null,
@@ -1802,7 +1854,8 @@
           "week1Actual": 41,
           "week2Actual": 30,
           "week3Actual": 98,
-          "week4Actual": 62
+          "week4Actual": 62,
+          "week5Actual": 45
         },
         "rec_yards": {
           "projection": 36.8,
@@ -1817,7 +1870,8 @@
           "week1Actual": 31,
           "week2Actual": 20,
           "week3Actual": 5,
-          "week4Actual": 21
+          "week4Actual": 21,
+          "week5Actual": 17
         },
         "receptions": {
           "projection": 4.6,
@@ -1832,7 +1886,8 @@
           "week1Actual": 5,
           "week2Actual": 3,
           "week3Actual": 2,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.478,
@@ -1866,7 +1921,8 @@
           "week1Actual": 43,
           "week2Actual": 94,
           "week3Actual": 56,
-          "week4Actual": 45
+          "week4Actual": 45,
+          "week5Actual": 33
         },
         "rec_yards": {
           "projection": 13.2,
@@ -1881,7 +1937,8 @@
           "week1Actual": 0,
           "week2Actual": 21,
           "week3Actual": 0,
-          "week4Actual": 8
+          "week4Actual": 8,
+          "week5Actual": 6
         },
         "receptions": {
           "projection": 1.4,
@@ -1896,7 +1953,8 @@
           "week1Actual": 0,
           "week2Actual": 2,
           "week3Actual": 0,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.49,
@@ -2058,7 +2116,8 @@
           "week1Actual": 35,
           "week2Actual": 64,
           "week3Actual": 74,
-          "week4Actual": 48
+          "week4Actual": 48,
+          "week5Actual": 52
         },
         "rec_yards": {
           "projection": 5.5,
@@ -2073,7 +2132,8 @@
           "week1Actual": -1,
           "week2Actual": 1,
           "week3Actual": 22,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 1.2,
@@ -2088,7 +2148,8 @@
           "week1Actual": 1,
           "week2Actual": 1,
           "week3Actual": 4,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.289,
@@ -2122,7 +2183,8 @@
           "week1Actual": 36,
           "week2Actual": 36,
           "week3Actual": 49,
-          "week4Actual": 40
+          "week4Actual": 40,
+          "week5Actual": 68
         },
         "rec_yards": {
           "projection": -2,
@@ -2137,7 +2199,8 @@
           "week1Actual": 0,
           "week2Actual": 0,
           "week3Actual": 4,
-          "week4Actual": 12
+          "week4Actual": 12,
+          "week5Actual": 6
         },
         "receptions": {
           "projection": 0.7,
@@ -2152,7 +2215,8 @@
           "week1Actual": 0,
           "week2Actual": 0,
           "week3Actual": 1,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.284,
@@ -2186,7 +2250,8 @@
           "week1Actual": 51,
           "week2Actual": 43,
           "week3Actual": 22,
-          "week4Actual": 47
+          "week4Actual": 47,
+          "week5Actual": 64
         },
         "rec_yards": {
           "projection": 20.1,
@@ -2201,7 +2266,8 @@
           "week1Actual": 44,
           "week2Actual": 3,
           "week3Actual": 16,
-          "week4Actual": 27
+          "week4Actual": 27,
+          "week5Actual": 21
         },
         "receptions": {
           "projection": 2.7,
@@ -2216,7 +2282,8 @@
           "week1Actual": 5,
           "week2Actual": 1,
           "week3Actual": 3,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.442,
@@ -2250,7 +2317,8 @@
           "week1Actual": 66,
           "week2Actual": 65,
           "week3Actual": 73,
-          "week4Actual": 73
+          "week4Actual": 73,
+          "week5Actual": 72
         },
         "rec_yards": {
           "projection": 14.2,
@@ -2265,7 +2333,8 @@
           "week1Actual": 22,
           "week2Actual": -3,
           "week3Actual": 17,
-          "week4Actual": 18
+          "week4Actual": 18,
+          "week5Actual": 24
         },
         "receptions": {
           "projection": 1.5,
@@ -2280,7 +2349,8 @@
           "week1Actual": 1,
           "week2Actual": 2,
           "week3Actual": 2,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.505,
@@ -2314,7 +2384,8 @@
           "week1Actual": 33,
           "week2Actual": 21,
           "week3Actual": 70,
-          "week4Actual": 53
+          "week4Actual": 53,
+          "week5Actual": 44
         },
         "rec_yards": {
           "projection": 18.6,
@@ -2329,7 +2400,8 @@
           "week1Actual": 17,
           "week2Actual": 27,
           "week3Actual": 9,
-          "week4Actual": 43
+          "week4Actual": 43,
+          "week5Actual": 6
         },
         "receptions": {
           "projection": 2.1,
@@ -2344,7 +2416,8 @@
           "week1Actual": 2,
           "week2Actual": 5,
           "week3Actual": 2,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.58,
@@ -2378,7 +2451,8 @@
           "week1Actual": 45,
           "week2Actual": 89,
           "week3Actual": 46,
-          "week4Actual": 61
+          "week4Actual": 61,
+          "week5Actual": 165
         },
         "rec_yards": {
           "projection": 20.8,
@@ -2393,7 +2467,8 @@
           "week1Actual": 48,
           "week2Actual": 1,
           "week3Actual": 12,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 10
         },
         "receptions": {
           "projection": 2.2,
@@ -2408,7 +2483,8 @@
           "week1Actual": 7,
           "week2Actual": 4,
           "week3Actual": 2,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.498,
@@ -2506,7 +2582,8 @@
           "week1Actual": 60,
           "week2Actual": 10,
           "week3Actual": 33,
-          "week4Actual": 24
+          "week4Actual": 24,
+          "week5Actual": 11
         },
         "rec_yards": {
           "projection": 4.3,
@@ -2521,7 +2598,8 @@
           "week1Actual": 19,
           "week2Actual": 14,
           "week3Actual": 15,
-          "week4Actual": 19
+          "week4Actual": 19,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 0.4,
@@ -2536,7 +2614,8 @@
           "week1Actual": 3,
           "week2Actual": 2,
           "week3Actual": 2,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.415,
@@ -2631,7 +2710,8 @@
           "week1Actual": 124,
           "week2Actual": 45,
           "week3Actual": 84,
-          "week4Actual": 58
+          "week4Actual": 58,
+          "week5Actual": 43
         },
         "rec_yards": {
           "projection": 15.6,
@@ -2646,7 +2726,8 @@
           "week1Actual": 10,
           "week2Actual": 54,
           "week3Actual": 4,
-          "week4Actual": 16
+          "week4Actual": 16,
+          "week5Actual": 30
         },
         "receptions": {
           "projection": 2,
@@ -2661,7 +2742,8 @@
           "week1Actual": 1,
           "week2Actual": 5,
           "week3Actual": 2,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.474,
@@ -2695,7 +2777,8 @@
           "week1Actual": 41,
           "week2Actual": 85,
           "week3Actual": 88,
-          "week4Actual": 80
+          "week4Actual": 80,
+          "week5Actual": 49
         },
         "rec_yards": {
           "projection": 32.4,
@@ -2710,7 +2793,8 @@
           "week1Actual": 24,
           "week2Actual": 12,
           "week3Actual": 70,
-          "week4Actual": 67
+          "week4Actual": 67,
+          "week5Actual": 27
         },
         "receptions": {
           "projection": 4.7,
@@ -2725,7 +2809,8 @@
           "week1Actual": 3,
           "week2Actual": 2,
           "week3Actual": 6,
-          "week4Actual": 10
+          "week4Actual": 10,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.711,
@@ -2759,7 +2844,8 @@
           "week1Actual": 46,
           "week2Actual": 43,
           "week3Actual": 127,
-          "week4Actual": 93
+          "week4Actual": 93,
+          "week5Actual": 101
         },
         "rec_yards": {
           "projection": 26.6,
@@ -2774,7 +2860,8 @@
           "week1Actual": 27,
           "week2Actual": 34,
           "week3Actual": 49,
-          "week4Actual": 33
+          "week4Actual": 33,
+          "week5Actual": 87
         },
         "receptions": {
           "projection": 2.4,
@@ -2789,7 +2876,8 @@
           "week1Actual": 5,
           "week2Actual": 2,
           "week3Actual": 3,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.396,
@@ -2822,7 +2910,8 @@
           "gameEnvFactor": 1.09,
           "week2Actual": 76,
           "week3Actual": 23,
-          "week4Actual": 42
+          "week4Actual": 42,
+          "week5Actual": 22
         },
         "rec_yards": {
           "projection": 9.5,
@@ -2836,7 +2925,8 @@
           "gameEnvFactor": 1.09,
           "week2Actual": 0,
           "week3Actual": 6,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 16
         },
         "receptions": {
           "projection": 1.6,
@@ -2850,7 +2940,8 @@
           "gameEnvFactor": 1.09,
           "week2Actual": 0,
           "week3Actual": 1,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.438,
@@ -2884,7 +2975,8 @@
           "week1Actual": 144,
           "week2Actual": 68,
           "week3Actual": 89,
-          "week4Actual": 73
+          "week4Actual": 73,
+          "week5Actual": 102
         },
         "rec_yards": {
           "projection": 6.6,
@@ -2899,7 +2991,8 @@
           "week1Actual": 19,
           "week2Actual": 19,
           "week3Actual": 0,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 18
         },
         "receptions": {
           "projection": 1.5,
@@ -2914,7 +3007,8 @@
           "week1Actual": 1,
           "week2Actual": 3,
           "week3Actual": 1,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.471,
@@ -2948,7 +3042,8 @@
           "week1Actual": 102,
           "week2Actual": 48,
           "week3Actual": 56,
-          "week4Actual": 58
+          "week4Actual": 58,
+          "week5Actual": 27
         },
         "rec_yards": {
           "projection": 28.2,
@@ -2963,7 +3058,8 @@
           "week1Actual": 45,
           "week2Actual": 15,
           "week3Actual": 37,
-          "week4Actual": 68
+          "week4Actual": 68,
+          "week5Actual": 50
         },
         "receptions": {
           "projection": 3.6,
@@ -2978,7 +3074,8 @@
           "week1Actual": 6,
           "week2Actual": 4,
           "week3Actual": 3,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.303,
@@ -3012,7 +3109,8 @@
           "week1Actual": 56,
           "week2Actual": 80,
           "week3Actual": 61,
-          "week4Actual": 10
+          "week4Actual": 10,
+          "week5Actual": 39
         },
         "rec_yards": {
           "projection": 34.3,
@@ -3027,7 +3125,8 @@
           "week1Actual": 22,
           "week2Actual": 2,
           "week3Actual": 8,
-          "week4Actual": 71
+          "week4Actual": 71,
+          "week5Actual": 21
         },
         "receptions": {
           "projection": 5.4,
@@ -3042,7 +3141,8 @@
           "week1Actual": 5,
           "week2Actual": 3,
           "week3Actual": 2,
-          "week4Actual": 11
+          "week4Actual": 11,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.563,
@@ -3137,7 +3237,8 @@
           "week1Actual": 57,
           "week2Actual": 135,
           "week3Actual": 154,
-          "week4Actual": 75
+          "week4Actual": 75,
+          "week5Actual": 111
         },
         "rec_yards": {
           "projection": 19.1,
@@ -3152,7 +3253,8 @@
           "week1Actual": 12,
           "week2Actual": 4,
           "week3Actual": 0,
-          "week4Actual": 8
+          "week4Actual": 8,
+          "week5Actual": 7
         },
         "receptions": {
           "projection": 2.8,
@@ -3167,7 +3269,8 @@
           "week1Actual": 3,
           "week2Actual": 1,
           "week3Actual": 0,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.298,
@@ -3201,7 +3304,8 @@
           "week1Actual": 98,
           "week2Actual": 92,
           "week3Actual": 68,
-          "week4Actual": 95
+          "week4Actual": 95,
+          "week5Actual": 45
         },
         "rec_yards": {
           "projection": 18,
@@ -3216,7 +3320,8 @@
           "week1Actual": 23,
           "week2Actual": 40,
           "week3Actual": 4,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 37
         },
         "receptions": {
           "projection": 2.3,
@@ -3231,7 +3336,8 @@
           "week1Actual": 3,
           "week2Actual": 4,
           "week3Actual": 2,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.369,
@@ -3265,7 +3371,8 @@
           "week1Actual": 68,
           "week2Actual": 23,
           "week3Actual": 75,
-          "week4Actual": 52
+          "week4Actual": 52,
+          "week5Actual": 68
         },
         "rec_yards": {
           "projection": 35.2,
@@ -3280,7 +3387,8 @@
           "week1Actual": 20,
           "week2Actual": 43,
           "week3Actual": 41,
-          "week4Actual": 18
+          "week4Actual": 18,
+          "week5Actual": 15
         },
         "receptions": {
           "projection": 5,
@@ -3295,7 +3403,8 @@
           "week1Actual": 5,
           "week2Actual": 4,
           "week3Actual": 4,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.394,
@@ -3329,7 +3438,8 @@
           "week1Actual": 83,
           "week2Actual": 72,
           "week3Actual": 194,
-          "week4Actual": 145
+          "week4Actual": 145,
+          "week5Actual": 86
         },
         "rec_yards": {
           "projection": 30.8,
@@ -3344,7 +3454,8 @@
           "week1Actual": 90,
           "week2Actual": 9,
           "week3Actual": 19,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 32
         },
         "receptions": {
           "projection": 4.3,
@@ -3359,7 +3470,8 @@
           "week1Actual": 8,
           "week2Actual": 3,
           "week3Actual": 2,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.531,
@@ -3393,7 +3505,8 @@
           "week1Actual": 156,
           "week2Actual": 52,
           "week3Actual": 99,
-          "week4Actual": 46
+          "week4Actual": 46,
+          "week5Actual": 151
         },
         "rec_yards": {
           "projection": 44,
@@ -3408,7 +3521,8 @@
           "week1Actual": 30,
           "week2Actual": 61,
           "week3Actual": 65,
-          "week4Actual": 31
+          "week4Actual": 31,
+          "week5Actual": 56
         },
         "receptions": {
           "projection": 5.3,
@@ -3423,7 +3537,8 @@
           "week1Actual": 5,
           "week2Actual": 6,
           "week3Actual": 7,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.627,
@@ -3553,7 +3668,8 @@
           "gameEnvFactor": 1.02,
           "week1Actual": 18,
           "week3Actual": 6,
-          "week4Actual": 25
+          "week4Actual": 25,
+          "week5Actual": 7
         },
         "rec_yards": {
           "projection": 22.9,
@@ -3567,7 +3683,8 @@
           "gameEnvFactor": 1.02,
           "week1Actual": 23,
           "week3Actual": 41,
-          "week4Actual": 68
+          "week4Actual": 68,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 3.8,
@@ -3581,7 +3698,8 @@
           "gameEnvFactor": 1.02,
           "week1Actual": 4,
           "week3Actual": 6,
-          "week4Actual": 10
+          "week4Actual": 10,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.37,
@@ -3676,7 +3794,8 @@
           "week1Actual": 40,
           "week2Actual": 105,
           "week3Actual": 58,
-          "week4Actual": 94
+          "week4Actual": 94,
+          "week5Actual": 113
         },
         "rec_yards": {
           "projection": 18.3,
@@ -3691,7 +3810,8 @@
           "week1Actual": 0,
           "week2Actual": 0,
           "week3Actual": 34,
-          "week4Actual": 34
+          "week4Actual": 34,
+          "week5Actual": 4
         },
         "receptions": {
           "projection": 2.7,
@@ -3706,7 +3826,8 @@
           "week1Actual": 0,
           "week2Actual": 0,
           "week3Actual": 5,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.418,
@@ -3739,7 +3860,8 @@
           "gameEnvFactor": 0.91,
           "week2Actual": 15,
           "week3Actual": 36,
-          "week4Actual": 23
+          "week4Actual": 23,
+          "week5Actual": 12
         },
         "rec_yards": {
           "projection": 22.6,
@@ -3753,7 +3875,8 @@
           "gameEnvFactor": 0.91,
           "week2Actual": 7,
           "week3Actual": 5,
-          "week4Actual": 35
+          "week4Actual": 35,
+          "week5Actual": -6
         },
         "receptions": {
           "projection": 2.7,
@@ -3767,7 +3890,8 @@
           "gameEnvFactor": 0.91,
           "week2Actual": 5,
           "week3Actual": 1,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.226,
@@ -3990,7 +4114,8 @@
           "week1Actual": 41,
           "week2Actual": 29,
           "week3Actual": 90,
-          "week4Actual": 63
+          "week4Actual": 63,
+          "week5Actual": 22
         },
         "rec_yards": {
           "projection": 8.8,
@@ -4005,7 +4130,8 @@
           "week1Actual": 9,
           "week2Actual": 16,
           "week3Actual": 19,
-          "week4Actual": -8
+          "week4Actual": -8,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 2.4,
@@ -4020,7 +4146,8 @@
           "week1Actual": 2,
           "week2Actual": 3,
           "week3Actual": 5,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.445,
@@ -4054,7 +4181,8 @@
           "week1Actual": 37,
           "week2Actual": 20,
           "week3Actual": 11,
-          "week4Actual": 13
+          "week4Actual": 13,
+          "week5Actual": 31
         },
         "rec_yards": {
           "projection": 13.7,
@@ -4069,7 +4197,8 @@
           "week1Actual": 0,
           "week2Actual": 6,
           "week3Actual": 7,
-          "week4Actual": 36
+          "week4Actual": 36,
+          "week5Actual": 6
         },
         "receptions": {
           "projection": 1.7,
@@ -4084,7 +4213,8 @@
           "week1Actual": 0,
           "week2Actual": 2,
           "week3Actual": 2,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.291,
@@ -4118,7 +4248,8 @@
           "week1Actual": 12,
           "week2Actual": 41,
           "week3Actual": 5,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 0
         },
         "rec_yards": {
           "projection": 9.9,
@@ -4133,7 +4264,8 @@
           "week1Actual": 12,
           "week2Actual": 29,
           "week3Actual": 0,
-          "week4Actual": -1
+          "week4Actual": -1,
+          "week5Actual": 28
         },
         "receptions": {
           "projection": 1.3,
@@ -4148,7 +4280,8 @@
           "week1Actual": 2,
           "week2Actual": 2,
           "week3Actual": 0,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 9
         },
         "anytime_td": {
           "probability": 0.245,
@@ -4182,7 +4315,8 @@
           "week1Actual": 54,
           "week2Actual": 79,
           "week3Actual": 15,
-          "week4Actual": 14
+          "week4Actual": 14,
+          "week5Actual": 19
         },
         "rec_yards": {
           "projection": 2.3,
@@ -4197,7 +4331,8 @@
           "week1Actual": 0,
           "week2Actual": 13,
           "week3Actual": 0,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 53
         },
         "receptions": {
           "projection": 1.1,
@@ -4212,7 +4347,8 @@
           "week1Actual": 0,
           "week2Actual": 1,
           "week3Actual": 2,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.603,
@@ -4288,7 +4424,8 @@
           "week1Actual": 65,
           "week2Actual": 25,
           "week3Actual": 17,
-          "week4Actual": 13
+          "week4Actual": 13,
+          "week5Actual": 16
         },
         "rec_yards": {
           "projection": 5.7,
@@ -4303,7 +4440,8 @@
           "week1Actual": 5,
           "week2Actual": 0,
           "week3Actual": 0,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 1.6,
@@ -4318,7 +4456,8 @@
           "week1Actual": 1,
           "week2Actual": 0,
           "week3Actual": 0,
-          "week4Actual": 0
+          "week4Actual": 0,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.182,
@@ -4354,7 +4493,8 @@
           "week1Actual": 67,
           "week2Actual": 142,
           "week3Actual": 19,
-          "week4Actual": 75
+          "week4Actual": 75,
+          "week5Actual": 69
         },
         "receptions": {
           "projection": 8,
@@ -4369,7 +4509,8 @@
           "week1Actual": 10,
           "week2Actual": 9,
           "week3Actual": 4,
-          "week4Actual": 8
+          "week4Actual": 8,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.582,
@@ -4401,7 +4542,8 @@
           "isHome": true,
           "gameEnvFactor": 1.28,
           "week1Actual": 74,
-          "week4Actual": 125
+          "week4Actual": 125,
+          "week5Actual": 138
         },
         "receptions": {
           "projection": 8.4,
@@ -4414,7 +4556,8 @@
           "isHome": true,
           "gameEnvFactor": 1.28,
           "week1Actual": 5,
-          "week4Actual": 9
+          "week4Actual": 9,
+          "week5Actual": 17
         },
         "anytime_td": {
           "probability": 0.495,
@@ -4448,7 +4591,8 @@
           "week1Actual": 122,
           "week2Actual": 155,
           "week3Actual": 128,
-          "week4Actual": 76
+          "week4Actual": 76,
+          "week5Actual": 102
         },
         "receptions": {
           "projection": 6.9,
@@ -4463,7 +4607,8 @@
           "week1Actual": 8,
           "week2Actual": 9,
           "week3Actual": 10,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.356,
@@ -4544,7 +4689,8 @@
           "week1Actual": 37,
           "week2Actual": 72,
           "week3Actual": 77,
-          "week4Actual": 16
+          "week4Actual": 16,
+          "week5Actual": 47
         },
         "receptions": {
           "projection": 3.9,
@@ -4559,7 +4705,8 @@
           "week1Actual": 2,
           "week2Actual": 7,
           "week3Actual": 5,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.224,
@@ -4691,7 +4838,8 @@
           "week1Actual": 147,
           "week2Actual": 41,
           "week3Actual": 96,
-          "week4Actual": 47
+          "week4Actual": 47,
+          "week5Actual": 143
         },
         "receptions": {
           "projection": 3.6,
@@ -4706,7 +4854,8 @@
           "week1Actual": 6,
           "week2Actual": 4,
           "week3Actual": 7,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.381,
@@ -4740,7 +4889,8 @@
           "week1Actual": 52,
           "week2Actual": 43,
           "week3Actual": 44,
-          "week4Actual": 94
+          "week4Actual": 94,
+          "week5Actual": 40
         },
         "receptions": {
           "projection": 3.8,
@@ -4755,7 +4905,8 @@
           "week1Actual": 2,
           "week2Actual": 3,
           "week3Actual": 3,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.286,
@@ -4789,7 +4940,8 @@
           "week1Actual": 63,
           "week2Actual": 32,
           "week3Actual": 61,
-          "week4Actual": 63
+          "week4Actual": 63,
+          "week5Actual": 47
         },
         "receptions": {
           "projection": 4.6,
@@ -4804,7 +4956,8 @@
           "week1Actual": 5,
           "week2Actual": 3,
           "week3Actual": 7,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.278,
@@ -4885,7 +5038,8 @@
           "week1Actual": 49,
           "week2Actual": 54,
           "week3Actual": 34,
-          "week4Actual": 76
+          "week4Actual": 76,
+          "week5Actual": 113
         },
         "receptions": {
           "projection": 3.6,
@@ -4900,7 +5054,8 @@
           "week1Actual": 6,
           "week2Actual": 3,
           "week3Actual": 3,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 7
         },
         "anytime_td": {
           "probability": 0.229,
@@ -4934,7 +5089,8 @@
           "week1Actual": 79,
           "week2Actual": 57,
           "week3Actual": 107,
-          "week4Actual": 27
+          "week4Actual": 27,
+          "week5Actual": 104
         },
         "receptions": {
           "projection": 4.4,
@@ -4949,7 +5105,8 @@
           "week1Actual": 6,
           "week2Actual": 5,
           "week3Actual": 10,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 7
         },
         "anytime_td": {
           "probability": 0.466,
@@ -5030,7 +5187,8 @@
           "week1Actual": 48,
           "week2Actual": 31,
           "week3Actual": 80,
-          "week4Actual": 26
+          "week4Actual": 26,
+          "week5Actual": 21
         },
         "receptions": {
           "projection": 3,
@@ -5045,7 +5203,8 @@
           "week1Actual": 6,
           "week2Actual": 3,
           "week3Actual": 0,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.232,
@@ -5173,7 +5332,8 @@
           "week1Actual": 83,
           "week2Actual": 98,
           "week3Actual": 40,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 124
         },
         "receptions": {
           "projection": 4.2,
@@ -5188,7 +5348,8 @@
           "week1Actual": 5,
           "week2Actual": 7,
           "week3Actual": 3,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.25,
@@ -5222,7 +5383,8 @@
           "week1Actual": 40,
           "week2Actual": 27,
           "week3Actual": 31,
-          "week4Actual": 115
+          "week4Actual": 115,
+          "week5Actual": 12
         },
         "receptions": {
           "projection": 4.4,
@@ -5237,7 +5399,8 @@
           "week1Actual": 4,
           "week2Actual": 4,
           "week3Actual": 3,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.308,
@@ -5271,7 +5434,8 @@
           "week1Actual": 2,
           "week2Actual": 138,
           "week3Actual": 10,
-          "week4Actual": 35
+          "week4Actual": 35,
+          "week5Actual": 19
         },
         "receptions": {
           "projection": 3.9,
@@ -5286,7 +5450,8 @@
           "week1Actual": 1,
           "week2Actual": 8,
           "week3Actual": 2,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.205,
@@ -5320,7 +5485,8 @@
           "week1Actual": 63,
           "week2Actual": 16,
           "week3Actual": 62,
-          "week4Actual": 13
+          "week4Actual": 13,
+          "week5Actual": 38
         },
         "receptions": {
           "projection": 3,
@@ -5335,7 +5501,8 @@
           "week1Actual": 5,
           "week2Actual": 3,
           "week3Actual": 5,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.377,
@@ -5369,7 +5536,8 @@
           "week1Actual": 44,
           "week2Actual": 153,
           "week3Actual": 112,
-          "week4Actual": 189
+          "week4Actual": 189,
+          "week5Actual": 9
         },
         "receptions": {
           "projection": 7.6,
@@ -5384,7 +5552,8 @@
           "week1Actual": 5,
           "week2Actual": 8,
           "week3Actual": 7,
-          "week4Actual": 17
+          "week4Actual": 17,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.398,
@@ -5418,7 +5587,8 @@
           "week1Actual": 38,
           "week2Actual": 9,
           "week3Actual": 57,
-          "week4Actual": 19
+          "week4Actual": 19,
+          "week5Actual": 53
         },
         "receptions": {
           "projection": 2.9,
@@ -5433,7 +5603,8 @@
           "week1Actual": 5,
           "week2Actual": 1,
           "week3Actual": 7,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.264,
@@ -5516,7 +5687,8 @@
           "week1Actual": 45,
           "week2Actual": 33,
           "week3Actual": 49,
-          "week4Actual": 102
+          "week4Actual": 102,
+          "week5Actual": 47
         },
         "receptions": {
           "projection": 5.2,
@@ -5531,7 +5703,8 @@
           "week1Actual": 4,
           "week2Actual": 2,
           "week3Actual": 4,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.448,
@@ -5563,7 +5736,8 @@
           "isHome": false,
           "gameEnvFactor": 1.03,
           "week1Actual": 75,
-          "week4Actual": 118
+          "week4Actual": 118,
+          "week5Actual": 56
         },
         "receptions": {
           "projection": 5.1,
@@ -5576,7 +5750,8 @@
           "isHome": false,
           "gameEnvFactor": 1.03,
           "week1Actual": 7,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.345,
@@ -5640,7 +5815,8 @@
           "gameEnvFactor": 0.93,
           "week1Actual": 150,
           "week3Actual": 84,
-          "week4Actual": 118
+          "week4Actual": 118,
+          "week5Actual": 53
         },
         "receptions": {
           "projection": 4.7,
@@ -5654,7 +5830,8 @@
           "gameEnvFactor": 0.93,
           "week1Actual": 5,
           "week3Actual": 5,
-          "week4Actual": 8
+          "week4Actual": 8,
+          "week5Actual": 8
         },
         "anytime_td": {
           "probability": 0.401,
@@ -5688,7 +5865,8 @@
           "week1Actual": 182,
           "week2Actual": 86,
           "week3Actual": 107,
-          "week4Actual": 116
+          "week4Actual": 116,
+          "week5Actual": 46
         },
         "receptions": {
           "projection": 5.5,
@@ -5703,7 +5881,8 @@
           "week1Actual": 10,
           "week2Actual": 8,
           "week3Actual": 9,
-          "week4Actual": 8
+          "week4Actual": 8,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.287,
@@ -5737,7 +5916,8 @@
           "week1Actual": 28,
           "week2Actual": 40,
           "week3Actual": 82,
-          "week4Actual": 75
+          "week4Actual": 75,
+          "week5Actual": 130
         },
         "receptions": {
           "projection": 5.3,
@@ -5752,7 +5932,8 @@
           "week1Actual": 3,
           "week2Actual": 6,
           "week3Actual": 7,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 9
         },
         "anytime_td": {
           "probability": 0.309,
@@ -5786,7 +5967,8 @@
           "week1Actual": 12,
           "week2Actual": 75,
           "week3Actual": 98,
-          "week4Actual": 27
+          "week4Actual": 27,
+          "week5Actual": 77
         },
         "receptions": {
           "projection": 6.3,
@@ -5801,7 +5983,8 @@
           "week1Actual": 2,
           "week2Actual": 7,
           "week3Actual": 9,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.344,
@@ -5977,7 +6160,8 @@
           "gameEnvFactor": 0.98,
           "week1Actual": 92,
           "week2Actual": 55,
-          "week3Actual": 32
+          "week3Actual": 32,
+          "week5Actual": 79
         },
         "receptions": {
           "projection": 4,
@@ -5991,7 +6175,8 @@
           "gameEnvFactor": 0.98,
           "week1Actual": 8,
           "week2Actual": 3,
-          "week3Actual": 2
+          "week3Actual": 2,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.324,
@@ -6025,7 +6210,8 @@
           "week1Actual": 59,
           "week2Actual": 95,
           "week3Actual": 90,
-          "week4Actual": 157
+          "week4Actual": 157,
+          "week5Actual": 22
         },
         "receptions": {
           "projection": 5.3,
@@ -6040,7 +6226,8 @@
           "week1Actual": 3,
           "week2Actual": 5,
           "week3Actual": 6,
-          "week4Actual": 11
+          "week4Actual": 11,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.323,
@@ -6123,7 +6310,8 @@
           "week1Actual": 29,
           "week2Actual": 51,
           "week3Actual": 194,
-          "week4Actual": 96
+          "week4Actual": 96,
+          "week5Actual": 118
         },
         "receptions": {
           "projection": 5.5,
@@ -6138,7 +6326,8 @@
           "week1Actual": 2,
           "week2Actual": 4,
           "week3Actual": 9,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 7
         },
         "anytime_td": {
           "probability": 0.306,
@@ -6172,7 +6361,8 @@
           "week1Actual": 11,
           "week2Actual": 25,
           "week3Actual": 46,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 18
         },
         "receptions": {
           "projection": 3.4,
@@ -6187,7 +6377,8 @@
           "week1Actual": 2,
           "week2Actual": 3,
           "week3Actual": 3,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.216,
@@ -6221,7 +6412,8 @@
           "week1Actual": 26,
           "week2Actual": 195,
           "week3Actual": 137,
-          "week4Actual": 32
+          "week4Actual": 32,
+          "week5Actual": 51
         },
         "receptions": {
           "projection": 5.5,
@@ -6236,7 +6428,8 @@
           "week1Actual": 3,
           "week2Actual": 8,
           "week3Actual": 7,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.466,
@@ -6270,7 +6463,8 @@
           "week1Actual": 20,
           "week2Actual": 9,
           "week3Actual": 38,
-          "week4Actual": 15
+          "week4Actual": 15,
+          "week5Actual": 65
         },
         "receptions": {
           "projection": 2.5,
@@ -6285,7 +6479,8 @@
           "week1Actual": 5,
           "week2Actual": 1,
           "week3Actual": 1,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.203,
@@ -6368,7 +6563,8 @@
           "week1Actual": 0,
           "week2Actual": 96,
           "week3Actual": 49,
-          "week4Actual": 58
+          "week4Actual": 58,
+          "week5Actual": 16
         },
         "receptions": {
           "projection": 3.4,
@@ -6383,7 +6579,8 @@
           "week1Actual": 0,
           "week2Actual": 3,
           "week3Actual": 3,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.257,
@@ -6417,7 +6614,8 @@
           "week1Actual": 40,
           "week2Actual": 46,
           "week3Actual": 25,
-          "week4Actual": 31
+          "week4Actual": 31,
+          "week5Actual": 37
         },
         "receptions": {
           "projection": 3.7,
@@ -6432,7 +6630,8 @@
           "week1Actual": 4,
           "week2Actual": 3,
           "week3Actual": 3,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.4,
@@ -6466,7 +6665,8 @@
           "week1Actual": 0,
           "week2Actual": 88,
           "week3Actual": 37,
-          "week4Actual": 46
+          "week4Actual": 46,
+          "week5Actual": 62
         },
         "receptions": {
           "projection": 2.5,
@@ -6481,7 +6681,8 @@
           "week1Actual": 0,
           "week2Actual": 7,
           "week3Actual": 2,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.261,
@@ -6515,7 +6716,8 @@
           "week1Actual": 50,
           "week2Actual": 38,
           "week3Actual": 6,
-          "week4Actual": 82
+          "week4Actual": 82,
+          "week5Actual": 80
         },
         "receptions": {
           "projection": 4.2,
@@ -6530,7 +6732,8 @@
           "week1Actual": 4,
           "week2Actual": 3,
           "week3Actual": 1,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.274,
@@ -6608,7 +6811,8 @@
           "gameEnvFactor": 0.83,
           "week1Actual": 26,
           "week2Actual": 0,
-          "week4Actual": 36
+          "week4Actual": 36,
+          "week5Actual": 19
         },
         "receptions": {
           "projection": 2.4,
@@ -6622,7 +6826,8 @@
           "gameEnvFactor": 0.83,
           "week1Actual": 2,
           "week2Actual": 0,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.219,
@@ -6705,7 +6910,8 @@
           "week1Actual": 40,
           "week2Actual": 40,
           "week3Actual": 8,
-          "week4Actual": 17
+          "week4Actual": 17,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 3.4,
@@ -6720,7 +6926,8 @@
           "week1Actual": 3,
           "week2Actual": 3,
           "week3Actual": 1,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.233,
@@ -6803,7 +7010,8 @@
           "week1Actual": 73,
           "week2Actual": 74,
           "week3Actual": 32,
-          "week4Actual": 18
+          "week4Actual": 18,
+          "week5Actual": 63
         },
         "receptions": {
           "projection": 2.8,
@@ -6818,7 +7026,8 @@
           "week1Actual": 2,
           "week2Actual": 5,
           "week3Actual": 2,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.16,
@@ -6852,7 +7061,8 @@
           "week1Actual": 4,
           "week2Actual": 35,
           "week3Actual": 14,
-          "week4Actual": 20
+          "week4Actual": 20,
+          "week5Actual": 23
         },
         "receptions": {
           "projection": 2.5,
@@ -6867,7 +7077,8 @@
           "week1Actual": 1,
           "week2Actual": 3,
           "week3Actual": 2,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.199,
@@ -6942,7 +7153,8 @@
           "week1Actual": 95,
           "week2Actual": 58,
           "week3Actual": 100,
-          "week4Actual": 21
+          "week4Actual": 21,
+          "week5Actual": 123
         },
         "receptions": {
           "projection": 2.6,
@@ -6957,7 +7169,8 @@
           "week1Actual": 6,
           "week2Actual": 4,
           "week3Actual": 5,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.282,
@@ -6990,7 +7203,8 @@
           "gameEnvFactor": 0.94,
           "week1Actual": 32,
           "week2Actual": 5,
-          "week3Actual": 63
+          "week3Actual": 63,
+          "week5Actual": 45
         },
         "receptions": {
           "projection": 4.1,
@@ -7004,7 +7218,8 @@
           "gameEnvFactor": 0.94,
           "week1Actual": 6,
           "week2Actual": 1,
-          "week3Actual": 6
+          "week3Actual": 6,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.274,
@@ -7038,7 +7253,8 @@
           "week1Actual": 27,
           "week2Actual": 119,
           "week3Actual": 43,
-          "week4Actual": 44
+          "week4Actual": 44,
+          "week5Actual": 41
         },
         "receptions": {
           "projection": 3,
@@ -7053,7 +7269,8 @@
           "week1Actual": 2,
           "week2Actual": 5,
           "week3Actual": 4,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.272,
@@ -7087,7 +7304,8 @@
           "week1Actual": 35,
           "week2Actual": 20,
           "week3Actual": 46,
-          "week4Actual": 13
+          "week4Actual": 13,
+          "week5Actual": 15
         },
         "receptions": {
           "projection": 3.1,
@@ -7102,7 +7320,8 @@
           "week1Actual": 2,
           "week2Actual": 2,
           "week3Actual": 4,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.23,
@@ -7136,7 +7355,8 @@
           "week1Actual": 38,
           "week2Actual": 27,
           "week3Actual": 58,
-          "week4Actual": 145
+          "week4Actual": 145,
+          "week5Actual": 6
         },
         "receptions": {
           "projection": 3.8,
@@ -7151,7 +7371,8 @@
           "week1Actual": 4,
           "week2Actual": 3,
           "week3Actual": 6,
-          "week4Actual": 9
+          "week4Actual": 9,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.206,
@@ -7185,7 +7406,8 @@
           "week1Actual": 53,
           "week2Actual": 43,
           "week3Actual": 56,
-          "week4Actual": 67
+          "week4Actual": 67,
+          "week5Actual": 43
         },
         "receptions": {
           "projection": 2.2,
@@ -7200,7 +7422,8 @@
           "week1Actual": 3,
           "week2Actual": 4,
           "week3Actual": 5,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.165,
@@ -7234,7 +7457,8 @@
           "week1Actual": 40,
           "week2Actual": 28,
           "week3Actual": 64,
-          "week4Actual": 33
+          "week4Actual": 33,
+          "week5Actual": 37
         },
         "receptions": {
           "projection": 4.4,
@@ -7249,7 +7473,8 @@
           "week1Actual": 2,
           "week2Actual": 1,
           "week3Actual": 7,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.257,
@@ -7283,7 +7508,8 @@
           "week1Actual": 43,
           "week2Actual": 28,
           "week3Actual": 9,
-          "week4Actual": 64
+          "week4Actual": 64,
+          "week5Actual": 5
         },
         "receptions": {
           "projection": 3.4,
@@ -7298,7 +7524,8 @@
           "week1Actual": 4,
           "week2Actual": 6,
           "week3Actual": 2,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.202,
@@ -7332,7 +7559,8 @@
           "week1Actual": 59,
           "week2Actual": 95,
           "week3Actual": 41,
-          "week4Actual": 89
+          "week4Actual": 89,
+          "week5Actual": 46
         },
         "receptions": {
           "projection": 2.7,
@@ -7347,7 +7575,8 @@
           "week1Actual": 2,
           "week2Actual": 5,
           "week3Actual": 2,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.272,
@@ -7383,7 +7612,8 @@
           "week1Actual": 28,
           "week2Actual": 13,
           "week3Actual": 14,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 2.1,
@@ -7398,7 +7628,8 @@
           "week1Actual": 4,
           "week2Actual": 2,
           "week3Actual": 2,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.084,
@@ -7432,7 +7663,8 @@
           "week1Actual": 32,
           "week2Actual": 18,
           "week3Actual": 0,
-          "week4Actual": 36
+          "week4Actual": 36,
+          "week5Actual": 0
         },
         "receptions": {
           "projection": 2.9,
@@ -7447,7 +7679,8 @@
           "week1Actual": 2,
           "week2Actual": 2,
           "week3Actual": 0,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 0
         },
         "anytime_td": {
           "probability": 0.179,
@@ -7481,7 +7714,8 @@
           "week1Actual": 13,
           "week2Actual": 8,
           "week3Actual": 69,
-          "week4Actual": 12
+          "week4Actual": 12,
+          "week5Actual": 20
         },
         "receptions": {
           "projection": 3.5,
@@ -7496,7 +7730,8 @@
           "week1Actual": 2,
           "week2Actual": 1,
           "week3Actual": 5,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.182,
@@ -7563,7 +7798,8 @@
           "week1Actual": 35,
           "week2Actual": 140,
           "week3Actual": 30,
-          "week4Actual": 9
+          "week4Actual": 9,
+          "week5Actual": 30
         },
         "receptions": {
           "projection": 3.9,
@@ -7578,7 +7814,8 @@
           "week1Actual": 4,
           "week2Actual": 12,
           "week3Actual": 3,
-          "week4Actual": 2
+          "week4Actual": 2,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.258,
@@ -7612,7 +7849,8 @@
           "week1Actual": 26,
           "week2Actual": 40,
           "week3Actual": 5,
-          "week4Actual": 62
+          "week4Actual": 62,
+          "week5Actual": 44
         },
         "receptions": {
           "projection": 3.9,
@@ -7627,7 +7865,8 @@
           "week1Actual": 3,
           "week2Actual": 3,
           "week3Actual": 1,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.431,
@@ -7661,7 +7900,8 @@
           "week1Actual": 36,
           "week2Actual": 29,
           "week3Actual": 11,
-          "week4Actual": 119
+          "week4Actual": 119,
+          "week5Actual": 7
         },
         "receptions": {
           "projection": 5.1,
@@ -7676,7 +7916,8 @@
           "week1Actual": 4,
           "week2Actual": 3,
           "week3Actual": 2,
-          "week4Actual": 13
+          "week4Actual": 13,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.262,
@@ -7759,7 +8000,8 @@
           "week1Actual": 49,
           "week2Actual": 49,
           "week3Actual": 24,
-          "week4Actual": 27
+          "week4Actual": 27,
+          "week5Actual": 28
         },
         "receptions": {
           "projection": 3.4,
@@ -7774,7 +8016,8 @@
           "week1Actual": 4,
           "week2Actual": 6,
           "week3Actual": 3,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.266,
@@ -7808,7 +8051,8 @@
           "week1Actual": 130,
           "week2Actual": 95,
           "week3Actual": 38,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 7
         },
         "receptions": {
           "projection": 3.1,
@@ -7823,7 +8067,8 @@
           "week1Actual": 5,
           "week2Actual": 7,
           "week3Actual": 2,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.253,
@@ -7906,7 +8151,8 @@
           "week1Actual": 21,
           "week2Actual": 54,
           "week3Actual": 51,
-          "week4Actual": 27
+          "week4Actual": 27,
+          "week5Actual": 4
         },
         "receptions": {
           "projection": 3.7,
@@ -7921,7 +8167,8 @@
           "week1Actual": 2,
           "week2Actual": 5,
           "week3Actual": 7,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.195,
@@ -7955,7 +8202,8 @@
           "week1Actual": 6,
           "week2Actual": 43,
           "week3Actual": 23,
-          "week4Actual": 11
+          "week4Actual": 11,
+          "week5Actual": 19
         },
         "receptions": {
           "projection": 4.5,
@@ -7970,7 +8218,8 @@
           "week1Actual": 2,
           "week2Actual": 4,
           "week3Actual": 3,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.486,
@@ -8004,7 +8253,8 @@
           "week1Actual": 0,
           "week2Actual": 15,
           "week3Actual": 5,
-          "week4Actual": 47
+          "week4Actual": 47,
+          "week5Actual": 42
         },
         "receptions": {
           "projection": 4,
@@ -8019,7 +8269,8 @@
           "week1Actual": 0,
           "week2Actual": 1,
           "week3Actual": 1,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.192,
@@ -8053,7 +8304,8 @@
           "week1Actual": 48,
           "week2Actual": 52,
           "week3Actual": 44,
-          "week4Actual": 84
+          "week4Actual": 84,
+          "week5Actual": 88
         },
         "receptions": {
           "projection": 6.3,
@@ -8068,7 +8320,8 @@
           "week1Actual": 5,
           "week2Actual": 6,
           "week3Actual": 3,
-          "week4Actual": 8
+          "week4Actual": 8,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.535,
@@ -8100,7 +8353,8 @@
           "isHome": false,
           "gameEnvFactor": 0.8,
           "week1Actual": 77,
-          "week2Actual": 4
+          "week2Actual": 4,
+          "week5Actual": 38
         },
         "receptions": {
           "projection": 2.4,
@@ -8113,7 +8367,8 @@
           "isHome": false,
           "gameEnvFactor": 0.8,
           "week1Actual": 4,
-          "week2Actual": 1
+          "week2Actual": 1,
+          "week5Actual": 6
         },
         "anytime_td": {
           "probability": 0.24,
@@ -8147,7 +8402,8 @@
           "week1Actual": 0,
           "week2Actual": 3,
           "week3Actual": 31,
-          "week4Actual": 57
+          "week4Actual": 57,
+          "week5Actual": 19
         },
         "receptions": {
           "projection": 4,
@@ -8162,7 +8418,8 @@
           "week1Actual": 0,
           "week2Actual": 1,
           "week3Actual": 4,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.237,
@@ -8196,7 +8453,8 @@
           "week1Actual": 54,
           "week2Actual": 66,
           "week3Actual": 53,
-          "week4Actual": 59
+          "week4Actual": 59,
+          "week5Actual": 16
         },
         "receptions": {
           "projection": 3.3,
@@ -8211,7 +8469,8 @@
           "week1Actual": 3,
           "week2Actual": 4,
           "week3Actual": 8,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.119,
@@ -8245,7 +8504,8 @@
           "week1Actual": 13,
           "week2Actual": 21,
           "week3Actual": 55,
-          "week4Actual": 41
+          "week4Actual": 41,
+          "week5Actual": 83
         },
         "receptions": {
           "projection": 3.8,
@@ -8260,7 +8520,8 @@
           "week1Actual": 3,
           "week2Actual": 6,
           "week3Actual": 9,
-          "week4Actual": 5
+          "week4Actual": 5,
+          "week5Actual": 7
         },
         "anytime_td": {
           "probability": 0.408,
@@ -8294,7 +8555,8 @@
           "week1Actual": 65,
           "week2Actual": 15,
           "week3Actual": 26,
-          "week4Actual": 42
+          "week4Actual": 42,
+          "week5Actual": 64
         },
         "receptions": {
           "projection": 3.4,
@@ -8309,7 +8571,8 @@
           "week1Actual": 3,
           "week2Actual": 2,
           "week3Actual": 4,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.128,
@@ -8343,7 +8606,8 @@
           "week1Actual": 23,
           "week2Actual": 17,
           "week3Actual": 32,
-          "week4Actual": 95
+          "week4Actual": 95,
+          "week5Actual": 68
         },
         "receptions": {
           "projection": 3,
@@ -8358,7 +8622,8 @@
           "week1Actual": 2,
           "week2Actual": 2,
           "week3Actual": 3,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 7
         },
         "anytime_td": {
           "probability": 0.1,
@@ -8392,7 +8657,8 @@
           "week1Actual": 12,
           "week2Actual": 80,
           "week3Actual": 82,
-          "week4Actual": 70
+          "week4Actual": 70,
+          "week5Actual": 24
         },
         "receptions": {
           "projection": 4.4,
@@ -8407,7 +8673,8 @@
           "week1Actual": 2,
           "week2Actual": 4,
           "week3Actual": 6,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.294,
@@ -8438,7 +8705,8 @@
           "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 0.94,
-          "week1Actual": -2
+          "week1Actual": -2,
+          "week5Actual": 24
         },
         "receptions": {
           "projection": 3.6,
@@ -8450,7 +8718,8 @@
           "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 0.94,
-          "week1Actual": 2
+          "week1Actual": 2,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.228,
@@ -8483,7 +8752,8 @@
           "gameEnvFactor": 1.1,
           "week1Actual": 78,
           "week3Actual": 37,
-          "week4Actual": 40
+          "week4Actual": 40,
+          "week5Actual": 4
         },
         "receptions": {
           "projection": 4.4,
@@ -8497,7 +8767,8 @@
           "gameEnvFactor": 1.1,
           "week1Actual": 5,
           "week3Actual": 3,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 1
         },
         "anytime_td": {
           "probability": 0.267,
@@ -8531,7 +8802,8 @@
           "week1Actual": 35,
           "week2Actual": 41,
           "week3Actual": 75,
-          "week4Actual": 31
+          "week4Actual": 31,
+          "week5Actual": 66
         },
         "receptions": {
           "projection": 7.2,
@@ -8546,7 +8818,8 @@
           "week1Actual": 1,
           "week2Actual": 8,
           "week3Actual": 9,
-          "week4Actual": 7
+          "week4Actual": 7,
+          "week5Actual": 9
         },
         "anytime_td": {
           "probability": 0.765,
@@ -8578,7 +8851,8 @@
           "isHome": false,
           "gameEnvFactor": 0.93,
           "week3Actual": 116,
-          "week4Actual": 86
+          "week4Actual": 86,
+          "week5Actual": 110
         },
         "receptions": {
           "projection": 4.6,
@@ -8591,7 +8865,8 @@
           "isHome": false,
           "gameEnvFactor": 0.93,
           "week3Actual": 10,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 8
         },
         "anytime_td": {
           "probability": 0.204,
@@ -8625,7 +8900,8 @@
           "week1Actual": 26,
           "week2Actual": 38,
           "week3Actual": 56,
-          "week4Actual": 37
+          "week4Actual": 37,
+          "week5Actual": 25
         },
         "receptions": {
           "projection": 3,
@@ -8640,7 +8916,8 @@
           "week1Actual": 3,
           "week2Actual": 5,
           "week3Actual": 3,
-          "week4Actual": 4
+          "week4Actual": 4,
+          "week5Actual": 3
         },
         "anytime_td": {
           "probability": 0.228,
@@ -8674,7 +8951,8 @@
           "week1Actual": 18,
           "week2Actual": 7,
           "week3Actual": 67,
-          "week4Actual": 27
+          "week4Actual": 27,
+          "week5Actual": 12
         },
         "receptions": {
           "projection": 3.1,
@@ -8689,7 +8967,8 @@
           "week1Actual": 2,
           "week2Actual": 1,
           "week3Actual": 3,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 2
         },
         "anytime_td": {
           "probability": 0.145,
@@ -8723,7 +9002,8 @@
           "week1Actual": 43,
           "week2Actual": 17,
           "week3Actual": 0,
-          "week4Actual": 6
+          "week4Actual": 6,
+          "week5Actual": 55
         },
         "receptions": {
           "projection": 2.8,
@@ -8738,7 +9018,8 @@
           "week1Actual": 4,
           "week2Actual": 1,
           "week3Actual": 0,
-          "week4Actual": 1
+          "week4Actual": 1,
+          "week5Actual": 4
         },
         "anytime_td": {
           "probability": 0.158,
@@ -8772,7 +9053,8 @@
           "week1Actual": 46,
           "week2Actual": 32,
           "week3Actual": 30,
-          "week4Actual": 17
+          "week4Actual": 17,
+          "week5Actual": 44
         },
         "receptions": {
           "projection": 3.6,
@@ -8787,7 +9069,8 @@
           "week1Actual": 5,
           "week2Actual": 4,
           "week3Actual": 2,
-          "week4Actual": 3
+          "week4Actual": 3,
+          "week5Actual": 5
         },
         "anytime_td": {
           "probability": 0.209,

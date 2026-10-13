@@ -912,12 +912,15 @@ function DetailPanel({
     { label: 'Last 5 average', value: stat?.priorLast5 ?? null, fill: '#0878ff' },
     { label: 'Model projection', value: stat?.projection ?? null, fill: '#22d3ee' },
   ].filter((item) => item.value !== null);
-  const recentGames = [
-    { week: 1, value: stat?.week1Actual },
-    { week: 2, value: stat?.week2Actual },
-    { week: 3, value: stat?.week3Actual },
-    { week: 4, value: stat?.week4Actual },
-  ].slice(-5);
+  const recentGames = Object.entries(stat ?? {})
+    .flatMap(([key, value]) => {
+      const match = key.match(/^week(\d+)Actual$/);
+      return match && typeof value === 'number'
+        ? [{ week: Number(match[1]), value }]
+        : [];
+    })
+    .sort((a, b) => a.week - b.week)
+    .slice(-5);
 
   return (
     <section className="detail-panel">

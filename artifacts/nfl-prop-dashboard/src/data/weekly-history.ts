@@ -29,6 +29,30 @@ export type WeeklyHistory = {
 
 export const WEEKLY_HISTORY: WeeklyHistory[] = [
   {
+    week: 5,
+    season: 2026,
+    label: 'October 8–12, 2026',
+    gamesGraded: 14,
+    gamesScheduled: 14,
+    allLeans: { wins: 101, losses: 90, pushes: 0 },
+    highConfidence: { wins: 25, losses: 40, pushes: 0 },
+    topPicks: { wins: 4, losses: 6, pushes: 0 },
+    topPickLimit: 10,
+    note: 'Final results cover all 14 games. Carolina, Kansas City, the New York Giants, and Washington were on bye. PASS recommendations and props for players without a recorded Week 5 appearance are excluded from the record.',
+    picks: [
+      { player: 'Dak Prescott', position: 'QB', stat: 'Pass Yards', lean: 'OVER', line: 264.5, projection: 342.9, actual: 316, result: 'WIN' },
+      { player: 'Joe Burrow', position: 'QB', stat: 'Pass Yards', lean: 'OVER', line: 234.5, projection: 293.9, actual: 190, result: 'LOSS' },
+      { player: 'Kyren Williams', position: 'RB', stat: 'Rush Yards', lean: 'OVER', line: 69.5, projection: 94.6, actual: 49, result: 'LOSS' },
+      { player: 'Kyren Williams', position: 'RB', stat: 'Receptions', lean: 'OVER', line: 2.5, projection: 4.7, actual: 6, result: 'WIN' },
+      { player: 'Garrett Wilson', position: 'WR', stat: 'Rec Yards', lean: 'UNDER', line: 69.5, projection: 48.6, actual: 104, result: 'LOSS' },
+      { player: 'Garrett Wilson', position: 'WR', stat: 'Receptions', lean: 'UNDER', line: 6.5, projection: 4.4, actual: 7, result: 'LOSS' },
+      { player: 'Jameson Williams', position: 'WR', stat: 'Rec Yards', lean: 'OVER', line: 53.5, projection: 86.4, actual: 47, result: 'LOSS' },
+      { player: 'Jameson Williams', position: 'WR', stat: 'Receptions', lean: 'OVER', line: 3.5, projection: 5.2, actual: 2, result: 'LOSS' },
+      { player: 'Chris Godwin', position: 'WR', stat: 'Rec Yards', lean: 'OVER', line: 29.5, projection: 44.6, actual: 37, result: 'WIN' },
+      { player: 'Rashod Bateman', position: 'WR', stat: 'Rec Yards', lean: 'OVER', line: 17.5, projection: 37.9, actual: 62, result: 'WIN' },
+    ],
+  },
+  {
     week: 4,
     season: 2026,
     label: 'October 1–5, 2026',
