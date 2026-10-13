@@ -735,11 +735,11 @@ function recordLabel(record: RecordSummary) {
 }
 
 function HistoryView() {
-  const career = WEEKLY_HISTORY.reduce<RecordSummary>(
+  const confidenceCareer = WEEKLY_HISTORY.reduce<RecordSummary>(
     (total, week) => ({
-      wins: total.wins + week.allLeans.wins,
-      losses: total.losses + week.allLeans.losses,
-      pushes: total.pushes + week.allLeans.pushes,
+      wins: total.wins + week.highConfidence.wins,
+      losses: total.losses + week.highConfidence.losses,
+      pushes: total.pushes + week.highConfidence.pushes,
     }),
     { wins: 0, losses: 0, pushes: 0 },
   );
@@ -758,13 +758,13 @@ function HistoryView() {
         <div>
           <div className="eyebrow"><span className="eyebrow-line" /> RESULTS LEDGER / 02</div>
           <h1>Track the calls.<br /><em>Keep the receipts.</em></h1>
-          <p className="intro-copy">A permanent week-by-week record of every official lean and the confidence board’s strongest picks.</p>
+          <p className="intro-copy">A permanent week-by-week record of every high-confidence call and the confidence board’s strongest picks.</p>
         </div>
         <div className="history-seal"><Trophy size={26} /><span>Top picks</span><strong>{recordLabel(topCareer)}</strong><small>{hitRate(topCareer)} hit rate</small></div>
       </section>
 
       <section className="history-overview" aria-label="Season record summary">
-        <HistoryRecordCard label="All official leans" record={career} detail={`${recordTotal(career)} graded decisions`} />
+        <HistoryRecordCard label="All high-confidence picks" record={confidenceCareer} detail={`${recordTotal(confidenceCareer)} graded picks`} />
         <HistoryRecordCard label="Top confidence picks" record={topCareer} detail={`${recordTotal(topCareer)} tracked picks`} featured />
         <div className="history-stat-card"><span>Weeks tracked</span><strong>{WEEKLY_HISTORY.length}</strong><small>2026 season</small></div>
         <div className="history-stat-card"><span>Last updated</span><strong>W{WEEKLY_HISTORY[0]?.week ?? '—'}</strong><small>All games final</small></div>
@@ -775,22 +775,29 @@ function HistoryView() {
           <div><span className="section-index">01</span><h2>Weekly ledger</h2></div>
           <span>{WEEKLY_HISTORY.length} completed week{WEEKLY_HISTORY.length === 1 ? '' : 's'}</span>
         </div>
-        {WEEKLY_HISTORY.map((week) => (
+        {WEEKLY_HISTORY.map((week) => {
+          const displayedPicks = week.highConfidencePicks ?? week.picks;
+          const hasFullConfidenceBoard = Boolean(week.highConfidencePicks);
+
+          return (
           <article className="week-card" key={`${week.season}-${week.week}`}>
             <div className="week-card-head">
               <div><span className="week-badge">WEEK {week.week}</span><h3>{week.season} regular season</h3><p>{week.label} · {week.gamesGraded}/{week.gamesScheduled} games graded</p></div>
               <span className="final-chip"><Check size={13} /> Final</span>
             </div>
             <div className="week-record-grid">
-              <HistoryRecordCard label="All leans" record={week.allLeans} detail={`${recordTotal(week.allLeans)} decisions`} />
-              <HistoryRecordCard label="High confidence" record={week.highConfidence} detail={`${recordTotal(week.highConfidence)} decisions`} />
+              <HistoryRecordCard label="All high-confidence picks" record={week.highConfidence} detail={`${recordTotal(week.highConfidence)} graded picks`} />
               <HistoryRecordCard label={`Top ${week.topPickLimit} board`} record={week.topPicks} detail={`${recordTotal(week.topPicks)} picks`} featured />
+            </div>
+            <div className="history-table-heading">
+              <strong>{hasFullConfidenceBoard ? 'All high-confidence picks' : `Top ${week.topPickLimit} archived picks`}</strong>
+              <span>{displayedPicks.length} picks shown</span>
             </div>
             <div className="history-table-wrap">
               <table className="history-table">
                 <thead><tr><th>#</th><th>Player</th><th>Prop</th><th>Call</th><th>Line</th><th>Projection</th><th>Actual</th><th>Result</th></tr></thead>
                 <tbody>
-                  {week.picks.map((pick, index) => (
+                  {displayedPicks.map((pick, index) => (
                     <tr key={`${week.week}-${pick.player}-${pick.stat}`}>
                       <td>{String(index + 1).padStart(2, '0')}</td>
                       <td><strong>{pick.player}</strong><span>{pick.position}</span></td>
@@ -807,9 +814,10 @@ function HistoryView() {
             </div>
             {week.note && <p className="week-note"><CircleHelp size={13} /> {week.note}</p>}
           </article>
-        ))}
+          );
+        })}
       </section>
-      <footer className="page-footer"><div><span className="footer-mark">FN</span><span>Field Note Results Ledger</span></div><span>Records use imported lines and exclude PASS calls.</span></footer>
+      <footer className="page-footer"><div><span className="footer-mark">FN</span><span>Field Note Results Ledger</span></div><span>Records use imported lines and exclude PASS calls. Full high-confidence detail begins with Week 4.</span></footer>
     </div>
   );
 }

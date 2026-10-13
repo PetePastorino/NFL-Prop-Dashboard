@@ -1,12 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 const repoRoot = path.resolve(import.meta.dirname, '..');
 const resultsDir = process.argv[2];
 const projectionsPath = process.argv[3];
+const gitRefFlag = process.argv.indexOf('--git-ref');
+const gitRef = gitRefFlag >= 0 ? process.argv[gitRefFlag + 1] : undefined;
+let useLegacyConfidence = false;
 
 if (!resultsDir) {
-  console.error('Usage: node scripts/grade-week-history.mjs <results-directory> [projections-json]');
+  console.error('Usage: node scripts/grade-week-history.mjs <results-directory> [projections-json] [--git-ref <ref>]');
   process.exit(1);
 }
 
@@ -37,6 +41,24 @@ function parseInitialLines(source) {
   const match = source.match(/export const INITIAL_PROP_LINES = `([\s\S]*?)`;\s*$/);
   if (!match) throw new Error('Could not locate INITIAL_PROP_LINES.');
   return match[1];
+}
+
+function readGitFile(filePath) {
+  return execFileSync('git', ['show', `${gitRef}:${filePath}`], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'ignore'],
+  });
+}
+
+function playerDataForGitRef() {
+  const dataPath = 'artifacts/nfl-prop-dashboard/src/data/player-data.json';
+  try {
+    return JSON.parse(readGitFile(dataPath));
+  } catch {
+    useLegacyConfidence = true;
+    return parsePlayerData(readGitFile('attached_assets/0_prop_matchup_dashboard_(1)_1789679044969.jsx'));
+  }
 }
 
 const STAT_TYPES = {
@@ -209,6 +231,21 @@ const CONFIDENCE_EDGE_TARGETS = {
 
 function getConfidence(player, stat, line, statKey) {
   const lean = leanFromLine(stat, line);
+  if (useLegacyConfidence) {
+    if (lean.edgePct === null || lean.edge === null) return { confidence: 'Low', confidenceScore: 0 };
+    const edgeScore = Math.min(Math.abs(lean.edgePct) * 100, 32);
+    const historyScore = Math.min(stat.nPriorGames / 50, 1) * 42;
+    const limitedHistoryPenalty = player.isLowConfidence ? 18 : 0;
+    const injuryPenalty = player.injuryStatus ? 10 : 0;
+    const confidenceScore = Math.max(
+      0,
+      Math.min(100, Math.round(edgeScore + historyScore + 26 - limitedHistoryPenalty - injuryPenalty)),
+    );
+    return {
+      confidence: confidenceScore >= 72 ? 'High' : confidenceScore >= 48 ? 'Medium' : 'Low',
+      confidenceScore,
+    };
+  }
   if (lean.lean === 'PASS') return { confidence: 'Low', confidenceScore: 0 };
   const edgeTarget = CONFIDENCE_EDGE_TARGETS[statKey] ?? 15;
   const relativeEdgeScore = Math.min(Math.abs(lean.edgePct) * 200, 50);
@@ -236,10 +273,16 @@ function recordFor(props) {
   );
 }
 
-const playerData = projectionsPath
-  ? JSON.parse(fs.readFileSync(path.resolve(projectionsPath), 'utf8'))
-  : parsePlayerData(fs.readFileSync(sourcePath, 'utf8'));
-const initialLines = parseInitialLines(fs.readFileSync(linesPath, 'utf8'));
+const playerData = gitRef
+  ? playerDataForGitRef()
+  : projectionsPath
+    ? JSON.parse(fs.readFileSync(path.resolve(projectionsPath), 'utf8'))
+    : parsePlayerData(fs.readFileSync(sourcePath, 'utf8'));
+const initialLines = parseInitialLines(
+  gitRef
+    ? readGitFile('artifacts/nfl-prop-dashboard/src/data/initial-prop-lines.ts')
+    : fs.readFileSync(linesPath, 'utf8'),
+);
 const parsedLines = parseBulkLines(initialLines, playerData);
 const lineMap = new Map(parsedLines.accepted.map(({ key, line }) => [key, line]));
 const { csvFiles, actuals, duplicates } = readActuals(path.resolve(resultsDir));
@@ -322,6 +365,7 @@ console.log(JSON.stringify({
   passCount: graded.filter((prop) => prop.lean === 'PASS').length,
   allLeans: recordFor(gradedNonPass),
   highConfidence: recordFor(gradedNonPass.filter((prop) => prop.confidence === 'High')),
+  highConfidencePicks: gradedNonPass.filter((prop) => prop.confidence === 'High'),
   topPicks: recordFor(rankedTopTen),
   topTen: rankedTopTen,
   missingActuals,
