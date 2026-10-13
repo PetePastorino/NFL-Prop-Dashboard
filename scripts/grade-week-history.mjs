@@ -25,6 +25,19 @@ const confidenceCalibrationPath = path.join(
   'confidence-calibration.json',
 );
 const confidenceCalibration = JSON.parse(fs.readFileSync(confidenceCalibrationPath, 'utf8'));
+const calibratedRateValues = Object.values(confidenceCalibration.rates).flatMap((byLean) =>
+  Object.values(byLean).flatMap((byBand) => Object.values(byBand)),
+);
+const minCalibratedRate = Math.min(...calibratedRateValues);
+const maxCalibratedRate = Math.max(...calibratedRateValues);
+
+function strengthScoreFromRate(calibratedRate) {
+  if (maxCalibratedRate <= minCalibratedRate) return 50;
+  return Math.max(
+    0,
+    Math.min(100, Math.round(((calibratedRate - minCalibratedRate) / (maxCalibratedRate - minCalibratedRate)) * 100)),
+  );
+}
 
 function normalized(value) {
   return value
@@ -262,18 +275,19 @@ function getConfidence(player, stat, line, statKey) {
   const calibratedRate = edgeBand
     ? confidenceCalibration.rates[statKey]?.[lean.lean]?.[edgeBand]
     : undefined;
-  let confidenceScore = Math.round(calibratedRate ?? confidenceCalibration.breakevenPct);
+  let calibratedHitRate = calibratedRate ?? confidenceCalibration.breakevenPct;
   if (player.isLowConfidence || stat.lowConfidence) {
-    confidenceScore = Math.min(confidenceScore, confidenceCalibration.lowHistoryCap);
+    calibratedHitRate = Math.min(calibratedHitRate, confidenceCalibration.lowHistoryCap);
   }
   if (player.injuryStatus) {
-    confidenceScore = Math.min(confidenceScore, confidenceCalibration.injuryCap);
+    calibratedHitRate = Math.min(calibratedHitRate, confidenceCalibration.injuryCap);
   }
-  const confidence = confidenceScore >= confidenceCalibration.highThreshold
+  const confidence = calibratedHitRate >= confidenceCalibration.highThreshold
     ? 'High'
-    : confidenceScore >= confidenceCalibration.mediumThreshold
+    : calibratedHitRate >= confidenceCalibration.mediumThreshold
       ? 'Medium'
       : 'Low';
+  const confidenceScore = strengthScoreFromRate(calibratedHitRate);
   return { confidence, confidenceScore };
 }
 

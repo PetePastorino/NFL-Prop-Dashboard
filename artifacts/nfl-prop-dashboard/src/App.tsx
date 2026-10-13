@@ -105,6 +105,24 @@ type RankedProp = {
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 const CONFIDENCE_CALIBRATION = confidenceCalibrationJson as ConfidenceCalibration;
+const CALIBRATED_RATE_VALUES = Object.values(CONFIDENCE_CALIBRATION.rates).flatMap((byLean) =>
+  Object.values(byLean).flatMap((byBand) => Object.values(byBand)),
+);
+const MIN_CALIBRATED_RATE = Math.min(...CALIBRATED_RATE_VALUES);
+const MAX_CALIBRATED_RATE = Math.max(...CALIBRATED_RATE_VALUES);
+
+function strengthScoreFromRate(calibratedRate: number) {
+  if (MAX_CALIBRATED_RATE <= MIN_CALIBRATED_RATE) return 50;
+  return Math.max(
+    0,
+    Math.min(
+      100,
+      Math.round(
+        ((calibratedRate - MIN_CALIBRATED_RATE) / (MAX_CALIBRATED_RATE - MIN_CALIBRATED_RATE)) * 100,
+      ),
+    ),
+  );
+}
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
   QB: [
@@ -247,19 +265,20 @@ function getConfidence(player: Player, stat: StatSnapshot, line: string, statKey
   const calibratedRate = edgeBand
     ? CONFIDENCE_CALIBRATION.rates[statKey]?.[lean.lean as PickLean]?.[edgeBand]
     : undefined;
-  let confidenceScore = Math.round(calibratedRate ?? CONFIDENCE_CALIBRATION.breakevenPct);
+  let calibratedHitRate = calibratedRate ?? CONFIDENCE_CALIBRATION.breakevenPct;
   if (player.isLowConfidence || stat.lowConfidence) {
-    confidenceScore = Math.min(confidenceScore, CONFIDENCE_CALIBRATION.lowHistoryCap);
+    calibratedHitRate = Math.min(calibratedHitRate, CONFIDENCE_CALIBRATION.lowHistoryCap);
   }
   if (player.injuryStatus) {
-    confidenceScore = Math.min(confidenceScore, CONFIDENCE_CALIBRATION.injuryCap);
+    calibratedHitRate = Math.min(calibratedHitRate, CONFIDENCE_CALIBRATION.injuryCap);
   }
   const confidence: 'High' | 'Medium' | 'Low' =
-    confidenceScore >= CONFIDENCE_CALIBRATION.highThreshold
+    calibratedHitRate >= CONFIDENCE_CALIBRATION.highThreshold
       ? 'High'
-      : confidenceScore >= CONFIDENCE_CALIBRATION.mediumThreshold
+      : calibratedHitRate >= CONFIDENCE_CALIBRATION.mediumThreshold
         ? 'Medium'
         : 'Low';
+  const confidenceScore = strengthScoreFromRate(calibratedHitRate);
 
   return { confidence, confidenceScore };
 }
@@ -688,7 +707,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Estimated hit rate calibrated by prop type, pick direction, and edge band. Each player appears once.</p></div>
+                <div><h2>Confidence board</h2><p>Relative strength calibrated by prop type, pick direction, and edge band. A 100 marks the strongest supported signal.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
@@ -1029,7 +1048,7 @@ function DetailPanel({
             <div className="edge-meter">
               <div className="meter-label"><span>Confidence</span><strong>{effectiveConfidence ?? '—'}</strong></div>
               <div className="meter-track"><span style={{ width: `${effectiveConfidence === 'High' ? 88 : effectiveConfidence === 'Medium' ? 61 : effectiveConfidence === 'Low' ? 34 : 8}%` }} /></div>
-              <div className="meter-note">Estimated hit rate from historical calibration</div>
+              <div className="meter-note">Relative strength from historical calibration</div>
             </div>
           </div>
 
