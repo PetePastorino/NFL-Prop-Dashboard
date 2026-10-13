@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
-import { INITIAL_PROP_LINES } from '@/data/initial-prop-lines';
+import { WEEK6_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week6-initial-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
   Activity,
@@ -57,6 +57,7 @@ type StatSnapshot = {
   week2Actual?: number | null;
   week3Actual?: number | null;
   week4Actual?: number | null;
+  week5Actual?: number | null;
 };
 
 type Player = {
@@ -422,7 +423,7 @@ function AppShell() {
   );
   const lowConfidenceCount = playersForGame.filter((player) => player.isLowConfidence).length;
   const currentWeekCount = playersForGame.filter(
-    (player) => player.stats[statKey]?.week3Actual !== null && player.stats[statKey]?.week3Actual !== undefined,
+    (player) => player.stats[statKey]?.week5Actual !== null && player.stats[statKey]?.week5Actual !== undefined,
   ).length;
 
   const changePosition = (nextPosition: Position) => {
@@ -542,7 +543,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : 'Prop board'}</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week 5 slate</span>
+            <span className="live-indicator"><span /> Week 6 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -569,7 +570,7 @@ function AppShell() {
             </div>
             <div className="overview-stat"><span>Current pool</span><strong>{playersForGame.length}</strong><small>{position} players</small></div>
             <div className="overview-stat"><span>Limited history</span><strong>{lowConfidenceCount}</strong><small>low-confidence flags</small></div>
-            <div className="overview-stat"><span>Week 3 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
+            <div className="overview-stat"><span>Week 5 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
           </section>
 
           <section className="control-deck">
