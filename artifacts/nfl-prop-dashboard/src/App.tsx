@@ -239,6 +239,21 @@ function confidenceTieBreaker(prop: RankedProp) {
   return Math.min(relativeEdge, absoluteEdge);
 }
 
+function spreadBoardStrengthScores(props: RankedProp[]) {
+  const sorted = [...props].sort((a, b) =>
+    b.confidenceScore - a.confidenceScore
+    || confidenceTieBreaker(b) - confidenceTieBreaker(a)
+    || a.key.localeCompare(b.key),
+  );
+  if (sorted.length <= 1) {
+    return sorted.map((prop) => ({ ...prop, confidenceScore: 100 }));
+  }
+  return sorted.map((prop, index) => ({
+    ...prop,
+    confidenceScore: Math.max(1, Math.round(100 - (index / (sorted.length - 1)) * 99)),
+  }));
+}
+
 function strongestPropPerPlayer(props: RankedProp[]) {
   const includedPlayers = new Set<string>();
   return props.filter((prop) => {
@@ -413,7 +428,7 @@ function AppShell() {
   const activeStat = activePlayer?.stats[statKey];
   const lean = leanFromLine(activeStat, activeLine);
   const rankedProps = useMemo<RankedProp[]>(() => {
-    return (Object.entries(PLAYER_DATA) as [Position, Player[]][])
+    const props = (Object.entries(PLAYER_DATA) as [Position, Player[]][])
       .flatMap(([entryPosition, roster]) =>
         roster.flatMap((player) =>
           STAT_TYPES[entryPosition].flatMap((statDefinition) => {
@@ -437,12 +452,8 @@ function AppShell() {
             }];
           }),
         ),
-      )
-      .sort((a, b) =>
-        b.confidenceScore - a.confidenceScore
-        || confidenceTieBreaker(b) - confidenceTieBreaker(a)
-        || a.key.localeCompare(b.key),
       );
+    return spreadBoardStrengthScores(props);
   }, [lines]);
   const gameRankedProps = useMemo(
     () =>

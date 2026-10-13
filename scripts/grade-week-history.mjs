@@ -310,6 +310,21 @@ function confidenceTieBreaker(prop) {
   return Math.min(relativeEdge, absoluteEdge);
 }
 
+function spreadBoardStrengthScores(props) {
+  const sorted = [...props].sort((a, b) =>
+    b.confidenceScore - a.confidenceScore
+    || confidenceTieBreaker(b) - confidenceTieBreaker(a)
+    || a.key.localeCompare(b.key),
+  );
+  if (sorted.length <= 1) {
+    return sorted.map((prop) => ({ ...prop, confidenceScore: 100 }));
+  }
+  return sorted.map((prop, index) => ({
+    ...prop,
+    confidenceScore: Math.max(1, Math.round(100 - (index / (sorted.length - 1)) * 99)),
+  }));
+}
+
 function strongestPropPerPlayer(props) {
   const includedPlayers = new Set();
   return props.filter((prop) => {
@@ -334,7 +349,7 @@ const parsedLines = parseBulkLines(initialLines, playerData);
 const lineMap = new Map(parsedLines.accepted.map(({ key, line }) => [key, line]));
 const { csvFiles, actuals, duplicates } = readActuals(path.resolve(resultsDir));
 
-const rankedProps = Object.entries(playerData)
+const rankedProps = spreadBoardStrengthScores(Object.entries(playerData)
   .flatMap(([position, roster]) => roster.flatMap((player) =>
     STAT_TYPES[position].flatMap((statDefinition) => {
       const key = `${position}:${statDefinition.key}:${player.name}`;
@@ -353,12 +368,7 @@ const rankedProps = Object.entries(playerData)
         ...getConfidence(player, stat, line, statDefinition.key),
       }];
     }),
-  ))
-  .sort((a, b) =>
-    b.confidenceScore - a.confidenceScore
-    || confidenceTieBreaker(b) - confidenceTieBreaker(a)
-    || a.key.localeCompare(b.key),
-  );
+  )));
 
 const missingActuals = [];
 const graded = rankedProps.flatMap((prop) => {
