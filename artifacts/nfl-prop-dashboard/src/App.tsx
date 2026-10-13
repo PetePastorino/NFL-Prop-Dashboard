@@ -200,6 +200,23 @@ function matchupLabel(key: string) {
   return key.split('|').join(' vs ');
 }
 
+function confidenceTieBreaker(prop: RankedProp) {
+  const relativeEdge = Math.abs(prop.lean.edgePct ?? 0) * 200;
+  const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
+  const absoluteEdge = (Math.abs(prop.lean.edge ?? 0) / edgeTarget) * 50;
+  return Math.min(relativeEdge, absoluteEdge);
+}
+
+function strongestPropPerPlayer(props: RankedProp[]) {
+  const includedPlayers = new Set<string>();
+  return props.filter((prop) => {
+    const playerKey = normalized(prop.player.name);
+    if (includedPlayers.has(playerKey)) return false;
+    includedPlayers.add(playerKey);
+    return true;
+  });
+}
+
 function getConfidence(player: Player, stat: StatSnapshot, line: string, statKey: string) {
   const lean = leanFromLine(stat, line);
   if (lean.edgePct === null || lean.edge === null) {
@@ -382,7 +399,11 @@ function AppShell() {
           }),
         ),
       )
-      .sort((a, b) => b.confidenceScore - a.confidenceScore);
+      .sort((a, b) =>
+        b.confidenceScore - a.confidenceScore
+        || confidenceTieBreaker(b) - confidenceTieBreaker(a)
+        || a.key.localeCompare(b.key),
+      );
   }, [lines]);
   const gameRankedProps = useMemo(
     () =>
@@ -390,6 +411,10 @@ function AppShell() {
         ? rankedProps
         : rankedProps.filter((prop) => matchupKey(prop.player) === gameFilter),
     [gameFilter, rankedProps],
+  );
+  const topPlayerProps = useMemo(
+    () => strongestPropPerPlayer(gameRankedProps).slice(0, 10),
+    [gameRankedProps],
   );
   const playerCount = Object.values(PLAYER_DATA).reduce(
     (total, roster) => total + roster.length,
@@ -643,13 +668,13 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Ranked from edge size, history depth, and availability flags.</p></div>
+                <div><h2>Confidence board</h2><p>Ranked from edge size, history depth, and availability flags. Each player appears once.</p></div>
               </div>
-              <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
+              <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
-            {gameRankedProps.length ? (
+            {topPlayerProps.length ? (
               <div className="ranking-list">
-                {gameRankedProps.slice(0, 10).map((prop, index) => (
+                {topPlayerProps.map((prop, index) => (
                   <button type="button" className="ranking-row" key={prop.key} onClick={() => selectRankedProp(prop)} data-testid={`button-ranked-prop-${index + 1}`}>
                     <span className="ranking-number">{String(index + 1).padStart(2, '0')}</span>
                     <span className="ranking-player">

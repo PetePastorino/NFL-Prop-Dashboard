@@ -273,6 +273,23 @@ function recordFor(props) {
   );
 }
 
+function confidenceTieBreaker(prop) {
+  const relativeEdge = Math.abs(prop.edgePct ?? 0) * 200;
+  const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
+  const absoluteEdge = (Math.abs(prop.edge ?? 0) / edgeTarget) * 50;
+  return Math.min(relativeEdge, absoluteEdge);
+}
+
+function strongestPropPerPlayer(props) {
+  const includedPlayers = new Set();
+  return props.filter((prop) => {
+    const playerKey = normalized(prop.player.name);
+    if (includedPlayers.has(playerKey)) return false;
+    includedPlayers.add(playerKey);
+    return true;
+  });
+}
+
 const playerData = gitRef
   ? playerDataForGitRef()
   : projectionsPath
@@ -307,7 +324,11 @@ const rankedProps = Object.entries(playerData)
       }];
     }),
   ))
-  .sort((a, b) => b.confidenceScore - a.confidenceScore);
+  .sort((a, b) =>
+    b.confidenceScore - a.confidenceScore
+    || confidenceTieBreaker(b) - confidenceTieBreaker(a)
+    || a.key.localeCompare(b.key),
+  );
 
 const missingActuals = [];
 const graded = rankedProps.flatMap((prop) => {
@@ -352,7 +373,11 @@ const graded = rankedProps.flatMap((prop) => {
 });
 
 const gradedNonPass = graded.filter((prop) => prop.lean !== 'PASS');
-const topTenKeys = new Set(rankedProps.filter((prop) => prop.lean !== 'PASS').slice(0, 10).map((prop) => prop.key));
+const topTenKeys = new Set(
+  strongestPropPerPlayer(rankedProps.filter((prop) => prop.lean !== 'PASS'))
+    .slice(0, 10)
+    .map((prop) => prop.key),
+);
 const rankedTopTen = gradedNonPass.filter((prop) => topTenKeys.has(prop.key));
 
 console.log(JSON.stringify({
