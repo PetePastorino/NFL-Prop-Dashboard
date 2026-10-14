@@ -32,4 +32,4 @@ const duplicates = accepted.filter((key, index) => accepted.indexOf(key) !== ind
 const acceptedByMarket = Object.fromEntries(['pass_yards', 'rush_yards', 'rec_yards', 'receptions']
   .map((market) => [market, accepted.filter((key) => key.includes(`:${market}:`)).length]));
 console.log(JSON.stringify({ total: accepted.length + rejected.length, accepted: accepted.length, acceptedByMarket, rejected, duplicates }, null, 2));
-if (accepted.length !== 72 || rejected.length !== 22 || duplicates.length) process.exitCode = 1;
+if (accepted.length !== 134 || rejected.length !== 36 || duplicates.length) process.exitCode = 1;
