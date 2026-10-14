@@ -25,8 +25,8 @@ const confidenceCalibrationPath = path.join(
   'confidence-calibration.json',
 );
 const confidenceCalibration = JSON.parse(fs.readFileSync(confidenceCalibrationPath, 'utf8'));
-const calibratedRateValues = Object.values(confidenceCalibration.rates).flatMap((byLean) =>
-  Object.values(byLean).flatMap((byBand) => Object.values(byBand)),
+const calibratedRateValues = Object.values(confidenceCalibration.baseRates).flatMap((byBand) =>
+  Object.values(byBand),
 );
 const minCalibratedRate = Math.min(...calibratedRateValues);
 const maxCalibratedRate = Math.max(...calibratedRateValues);
@@ -273,7 +273,7 @@ function getConfidence(player, stat, line, statKey) {
     ({ min, max }) => Math.abs(lean.edgePct) >= min && Math.abs(lean.edgePct) < max,
   )?.key;
   const calibratedRate = edgeBand
-    ? confidenceCalibration.rates[statKey]?.[lean.lean]?.[edgeBand]
+    ? confidenceCalibration.baseRates[statKey]?.[edgeBand]
     : undefined;
   let calibratedHitRate = calibratedRate ?? confidenceCalibration.breakevenPct;
   if (player.isLowConfidence || stat.lowConfidence) {
@@ -310,10 +310,26 @@ function confidenceTieBreaker(prop) {
   return Math.min(relativeEdge, absoluteEdge);
 }
 
+function directionCalibrationTieBreaker(prop) {
+  const edgePct = Math.abs(prop.edgePct ?? 0);
+  const edgeBand = confidenceCalibration.edgeBands.find(
+    ({ min, max }) => edgePct >= min && edgePct < max,
+  )?.key;
+  if (!edgeBand || prop.lean === 'PASS') return 0;
+  const baseRate = confidenceCalibration.baseRates[prop.statKey]?.[edgeBand];
+  const directionRate = confidenceCalibration.rates[prop.statKey]?.[prop.lean]?.[edgeBand];
+  if (baseRate === undefined || directionRate === undefined) return 0;
+  return Math.max(
+    -confidenceCalibration.directionAdjustmentCap,
+    Math.min(confidenceCalibration.directionAdjustmentCap, directionRate - baseRate),
+  );
+}
+
 function spreadBoardStrengthScores(props) {
   const sorted = [...props].sort((a, b) =>
     b.confidenceScore - a.confidenceScore
     || confidenceTieBreaker(b) - confidenceTieBreaker(a)
+    || directionCalibrationTieBreaker(b) - directionCalibrationTieBreaker(a)
     || a.key.localeCompare(b.key),
   );
   if (sorted.length <= 1) {

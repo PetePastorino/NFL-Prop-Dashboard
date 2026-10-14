@@ -78,11 +78,13 @@ type PickLean = 'OVER' | 'UNDER';
 type EdgeBandKey = '4-7' | '7-10' | '10-15' | '15-25' | '25+';
 type ConfidenceCalibration = {
   breakevenPct: number;
+  directionAdjustmentCap: number;
   highThreshold: number;
   mediumThreshold: number;
   lowHistoryCap: number;
   injuryCap: number;
   edgeBands: { key: EdgeBandKey; min: number; max: number }[];
+  baseRates: Record<string, Record<EdgeBandKey, number>>;
   rates: Record<string, Record<PickLean, Record<EdgeBandKey, number>>>;
 };
 
@@ -105,8 +107,8 @@ type RankedProp = {
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 const CONFIDENCE_CALIBRATION = confidenceCalibrationJson as ConfidenceCalibration;
-const CALIBRATED_RATE_VALUES = Object.values(CONFIDENCE_CALIBRATION.rates).flatMap((byLean) =>
-  Object.values(byLean).flatMap((byBand) => Object.values(byBand)),
+const CALIBRATED_RATE_VALUES = Object.values(CONFIDENCE_CALIBRATION.baseRates).flatMap((byBand) =>
+  Object.values(byBand),
 );
 const MIN_CALIBRATED_RATE = Math.min(...CALIBRATED_RATE_VALUES);
 const MAX_CALIBRATED_RATE = Math.max(...CALIBRATED_RATE_VALUES);
@@ -239,10 +241,26 @@ function confidenceTieBreaker(prop: RankedProp) {
   return Math.min(relativeEdge, absoluteEdge);
 }
 
+function directionCalibrationTieBreaker(prop: RankedProp) {
+  const edgePct = Math.abs(prop.lean.edgePct ?? 0);
+  const edgeBand = CONFIDENCE_CALIBRATION.edgeBands.find(
+    ({ min, max }) => edgePct >= min && edgePct < max,
+  )?.key;
+  if (!edgeBand || prop.lean.lean === 'PASS' || prop.lean.lean === '—') return 0;
+  const baseRate = CONFIDENCE_CALIBRATION.baseRates[prop.statKey]?.[edgeBand];
+  const directionRate = CONFIDENCE_CALIBRATION.rates[prop.statKey]?.[prop.lean.lean]?.[edgeBand];
+  if (baseRate === undefined || directionRate === undefined) return 0;
+  return Math.max(
+    -CONFIDENCE_CALIBRATION.directionAdjustmentCap,
+    Math.min(CONFIDENCE_CALIBRATION.directionAdjustmentCap, directionRate - baseRate),
+  );
+}
+
 function spreadBoardStrengthScores(props: RankedProp[]) {
   const sorted = [...props].sort((a, b) =>
     b.confidenceScore - a.confidenceScore
     || confidenceTieBreaker(b) - confidenceTieBreaker(a)
+    || directionCalibrationTieBreaker(b) - directionCalibrationTieBreaker(a)
     || a.key.localeCompare(b.key),
   );
   if (sorted.length <= 1) {
@@ -278,7 +296,7 @@ function getConfidence(player: Player, stat: StatSnapshot, line: string, statKey
     ({ min, max }) => Math.abs(lean.edgePct!) >= min && Math.abs(lean.edgePct!) < max,
   )?.key;
   const calibratedRate = edgeBand
-    ? CONFIDENCE_CALIBRATION.rates[statKey]?.[lean.lean as PickLean]?.[edgeBand]
+    ? CONFIDENCE_CALIBRATION.baseRates[statKey]?.[edgeBand]
     : undefined;
   let calibratedHitRate = calibratedRate ?? CONFIDENCE_CALIBRATION.breakevenPct;
   if (player.isLowConfidence || stat.lowConfidence) {
@@ -718,7 +736,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Relative strength calibrated by prop type, pick direction, and edge band. A 100 marks the strongest supported signal.</p></div>
+                <div><h2>Confidence board</h2><p>Relative strength calibrated by prop type and edge size, with direction used only as a capped tiebreaker. A 100 marks the strongest supported signal.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
