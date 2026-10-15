@@ -19,21 +19,12 @@ for (const position of positions) {
 
 const existingPlayers = positions.flatMap((position) => existing[position] ?? []);
 const existingByName = new Map(existingPlayers.map((player) => [player.name, player]));
-const injuries = new Map(Object.entries({
-  'Lamar Jackson': ['Out', 'Ankle'], 'DJ Moore': ['Out', 'Shoulder (AC joint)'],
-  'Jalen Coker': ['Questionable', 'Quadriceps'], 'Caleb Williams': ['Out', 'Hamstring'],
-  'KC Concepcion': ['Questionable', 'Concussion'], 'Quinshon Judkins': ['Questionable', 'Foot'],
-  'CeeDee Lamb': ['Questionable', 'Quadriceps'], 'David Montgomery': ['Doubtful', 'Groin'],
-  'Alec Pierce': ['Injured Reserve', 'Heel'], 'Darius Slayton': ['Out', 'Knee'],
-  'Rashee Rice': ['Questionable', 'Hamstring'], 'Ladd McConkey': ['Questionable', 'Foot'],
-  'Quentin Johnston': ['Out', 'Chest'], 'Jordan Addison': ['Out', 'Hamstring'],
-  'TJ Hockenson': ['Questionable', 'Concussion'], 'AJ Brown': ['Injured Reserve', 'Ankle'],
-  'TreVeyon Henderson': ['Doubtful', 'Ankle'], 'Breece Hall': ['Out', 'Quadriceps'],
-  'DeVonta Smith': ['Out', 'Hamstring'], 'Saquon Barkley': ['Out', 'Hamstring'],
-  'Rico Dowdle': ['Out', 'Toe'], 'Drew Lock': ['Questionable', 'Forearm'],
-  'Jaxon Smith-Njigba': ['Questionable', 'Ankle'], 'Baker Mayfield': ['Out', 'Thumb'],
-  'Marcus Mariota': ['Out', 'Knee (MCL)'], 'Stefon Diggs': ['Out', 'Hamstring'],
-}));
+const injuries = new Map(
+  positions
+    .flatMap((position) => data[position])
+    .filter((player) => player.injuryStatus)
+    .map((player) => [player.name, [player.injuryStatus, player.injury]]),
+);
 
 for (const position of positions) {
   for (const player of data[position]) {
