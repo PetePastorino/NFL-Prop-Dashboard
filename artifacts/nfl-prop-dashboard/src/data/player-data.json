@@ -7336,6 +7336,57 @@
       }
     },
     {
+      "name": "Carnell Tate",
+      "team": "TEN",
+      "week2Opp": "IND",
+      "isLowConfidence": true,
+      "injuryStatus": null,
+      "injury": null,
+      "stats": {
+        "rec_yards": {
+          "projection": 45.9,
+          "rawProjection": 56,
+          "lowConfidence": true,
+          "nPriorGames": 5,
+          "priorAvg": 54.8,
+          "priorLast5": 54.8,
+          "matchupFactor": 1.17,
+          "isHome": false,
+          "gameEnvFactor": 0.82,
+          "week1Actual": 38,
+          "week2Actual": 27,
+          "week3Actual": 58,
+          "week4Actual": 145,
+          "week5Actual": 6
+        },
+        "receptions": {
+          "projection": 3.9,
+          "rawProjection": 4.8,
+          "lowConfidence": true,
+          "nPriorGames": 5,
+          "priorAvg": 4.6,
+          "priorLast5": 4.6,
+          "matchupFactor": 1.13,
+          "isHome": false,
+          "gameEnvFactor": 0.82,
+          "week1Actual": 4,
+          "week2Actual": 3,
+          "week3Actual": 6,
+          "week4Actual": 9,
+          "week5Actual": 1
+        },
+        "anytime_td": {
+          "probability": 0.203,
+          "rawProbability": 0.237,
+          "gameEnvFactor": 0.82,
+          "lowConfidence": true,
+          "nPriorGames": 5,
+          "priorTdRate": 0,
+          "matchupFactor": 0.97
+        }
+      }
+    },
+    {
       "name": "Malik Washington",
       "team": "MIA",
       "week2Opp": null,
@@ -7536,58 +7587,6 @@
           "nPriorGames": 5,
           "priorTdRate": 0.6,
           "matchupFactor": 0.88
-        }
-      }
-    },
-    {
-      "name": "Carnell Tate",
-      "team": "TEN",
-      "week2Opp": "IND",
-      "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
-      "stats": {
-        "rec_yards": {
-          "projection": null,
-          "rawProjection": null,
-          "lowConfidence": true,
-          "nPriorGames": 4,
-          "priorAvg": 67,
-          "priorLast5": 67,
-          "matchupFactor": 1.1,
-          "isHome": false,
-          "gameEnvFactor": 0.73,
-          "week1Actual": 38,
-          "week2Actual": 27,
-          "week3Actual": 58,
-          "week4Actual": 145,
-          "week5Actual": 6
-        },
-        "receptions": {
-          "projection": null,
-          "rawProjection": null,
-          "lowConfidence": true,
-          "nPriorGames": 4,
-          "priorAvg": 5.5,
-          "priorLast5": 5.5,
-          "matchupFactor": 1.04,
-          "isHome": false,
-          "gameEnvFactor": 0.73,
-          "week1Actual": 4,
-          "week2Actual": 3,
-          "week3Actual": 6,
-          "week4Actual": 9,
-          "week5Actual": 1
-        },
-        "anytime_td": {
-          "probability": 0.206,
-          "rawProbability": 0.263,
-          "gameEnvFactor": 0.73,
-          "lowConfidence": true,
-          "nPriorGames": 4,
-          "priorTdRate": 0,
-          "matchupFactor": 1.02,
-          "isHome": false
         }
       }
     }
