@@ -106,6 +106,7 @@ type RankedProp = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
+const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara']);
 const CONFIDENCE_CALIBRATION = confidenceCalibrationJson as ConfidenceCalibration;
 const CALIBRATED_RATE_VALUES = Object.values(CONFIDENCE_CALIBRATION.baseRates).flatMap((byBand) =>
   Object.values(byBand),
@@ -743,11 +744,20 @@ function AppShell() {
             {topPlayerProps.length ? (
               <div className="ranking-list">
                 {topPlayerProps.map((prop, index) => (
-                  <button type="button" className="ranking-row" key={prop.key} onClick={() => selectRankedProp(prop)} data-testid={`button-ranked-prop-${index + 1}`}>
+                  <button
+                    type="button"
+                    className={`ranking-row${PETES_NO_BET_PLAYERS.has(prop.player.name) ? ' petes-no-bet' : ''}`}
+                    key={prop.key}
+                    onClick={() => selectRankedProp(prop)}
+                    data-testid={`button-ranked-prop-${index + 1}`}
+                  >
                     <span className="ranking-number">{String(index + 1).padStart(2, '0')}</span>
                     <span className="ranking-player">
                       <strong>{prop.player.name}</strong>
                       <span>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</span>
+                      {PETES_NO_BET_PLAYERS.has(prop.player.name) && (
+                        <span className="petes-no-bet-badge"><AlertTriangle size={10} /> Pete's no bet</span>
+                      )}
                     </span>
                     <span className="ranking-line">{prop.line}</span>
                     <LeanPill lean={prop.lean.lean} confidence={prop.confidence} compact />
