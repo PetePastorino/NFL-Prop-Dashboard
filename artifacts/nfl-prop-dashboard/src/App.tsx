@@ -214,6 +214,7 @@ function continuousEdgeStrength(prop: RankedProp) {
   const relativeEdge = Math.abs(prop.lean.edgePct ?? 0) / 0.25;
   const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
   const absoluteEdge = Math.abs(prop.lean.edge ?? 0) / edgeTarget;
+  if (prop.statKey === 'pass_yards') return (absoluteEdge * 0.7) + (relativeEdge * 0.3);
   return Math.min(relativeEdge, absoluteEdge);
 }
 
@@ -226,13 +227,13 @@ function spreadBoardStrengthScores(props: RankedProp[]) {
     continuousEdgeStrength(b) - continuousEdgeStrength(a)
     || a.key.localeCompare(b.key),
   );
-  const strongestEdge = Math.max(...sorted.map(continuousEdgeStrength), 0);
-  return sorted.map((prop) => {
+  return sorted.map((prop, index) => {
     const strength = continuousEdgeStrength(prop);
-    const baseScore = strongestEdge > 0 && strength > 0
-      ? Math.max(1, Math.round((strength / strongestEdge) * 100))
+    const baseScore = strength > 0
+      ? Math.max(1, Math.round(50 * Math.sqrt(strength)))
       : 0;
-    const confidenceScore = baseScore === 100 ? 100 : Math.min(99, Math.round(baseScore * 1.15));
+    const liftedScore = Math.min(99, Math.round(baseScore * 1.15));
+    const confidenceScore = index === 0 && strength > 0 ? 100 : liftedScore;
     return {
       ...prop,
       confidence: confidenceLabel(confidenceScore),
@@ -672,7 +673,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Continuous relative strength based on both percentage edge and prop-type-adjusted absolute edge. A 100 marks the strongest current signal; all other scores receive the requested 1.15× display lift and remain capped at 99.</p></div>
+                <div><h2>Confidence board</h2><p>Continuous signal strength based on both percentage edge and prop-type-adjusted absolute edge. Scores are anchored to the size of each edge rather than the day’s top pick; the strongest current signal receives 100.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
@@ -1028,7 +1029,7 @@ function DetailPanel({
             <div className="edge-meter">
               <div className="meter-label"><span>Confidence</span><strong>{confidenceScore === null ? (effectiveConfidence ?? '—') : `${confidenceScore}/100`}</strong></div>
               <div className="meter-track"><span style={{ width: `${confidenceScore ?? (effectiveConfidence === 'High' ? 88 : effectiveConfidence === 'Medium' ? 61 : effectiveConfidence === 'Low' ? 34 : 8)}%` }} /></div>
-              <div className="meter-note">Continuous relative strength from the current board edge</div>
+              <div className="meter-note">Continuous prop-adjusted strength from this player’s edge</div>
             </div>
           </div>
 

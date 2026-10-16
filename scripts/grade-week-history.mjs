@@ -265,6 +265,7 @@ function continuousEdgeStrength(prop) {
   const relativeEdge = Math.abs(prop.edgePct ?? 0) / 0.25;
   const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
   const absoluteEdge = Math.abs(prop.edge ?? 0) / edgeTarget;
+  if (prop.statKey === 'pass_yards') return (absoluteEdge * 0.7) + (relativeEdge * 0.3);
   return Math.min(relativeEdge, absoluteEdge);
 }
 
@@ -277,13 +278,13 @@ function spreadBoardStrengthScores(props) {
     continuousEdgeStrength(b) - continuousEdgeStrength(a)
     || a.key.localeCompare(b.key),
   );
-  const strongestEdge = Math.max(...sorted.map(continuousEdgeStrength), 0);
-  return sorted.map((prop) => {
+  return sorted.map((prop, index) => {
     const strength = continuousEdgeStrength(prop);
-    const baseScore = strongestEdge > 0 && strength > 0
-      ? Math.max(1, Math.round((strength / strongestEdge) * 100))
+    const baseScore = strength > 0
+      ? Math.max(1, Math.round(50 * Math.sqrt(strength)))
       : 0;
-    const confidenceScore = baseScore === 100 ? 100 : Math.min(99, Math.round(baseScore * 1.15));
+    const liftedScore = Math.min(99, Math.round(baseScore * 1.15));
+    const confidenceScore = index === 0 && strength > 0 ? 100 : liftedScore;
     return {
       ...prop,
       confidence: confidenceLabel(confidenceScore),
