@@ -280,9 +280,10 @@ function spreadBoardStrengthScores(props) {
   const strongestEdge = Math.max(...sorted.map(continuousEdgeStrength), 0);
   return sorted.map((prop) => {
     const strength = continuousEdgeStrength(prop);
-    const confidenceScore = strongestEdge > 0 && strength > 0
+    const baseScore = strongestEdge > 0 && strength > 0
       ? Math.max(1, Math.round((strength / strongestEdge) * 100))
       : 0;
+    const confidenceScore = baseScore === 100 ? 100 : Math.min(99, Math.round(baseScore * 1.15));
     return {
       ...prop,
       confidence: confidenceLabel(confidenceScore),

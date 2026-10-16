@@ -47,6 +47,13 @@ import NotFound from '@/pages/not-found';
 
 type StatSnapshot = {
   projection: number | null;
+  rawProjection?: number | null;
+  gameEnvFactor?: number | null;
+  projectionBeforeRoleAdjustment?: number | null;
+  currentSeasonAvg?: number | null;
+  currentDepthRole?: string | null;
+  currentSeasonWeight?: number | null;
+  appliedGameEnvFactor?: number | null;
   lowConfidence?: boolean;
   nPriorGames: number;
   priorAvg?: number | null;
@@ -75,7 +82,7 @@ type Position = 'QB' | 'RB' | 'WR' | 'TE';
 type Lean = 'OVER' | 'UNDER' | 'PASS' | '—';
 
 const isPlayerUnavailable = (player: Player) =>
-  /(?:^|\b)(?:out|injured reserve|ir|pup|suspended)(?:\b|$)/i.test(
+  /(?:^|\b)(?:out|doubtful|injured reserve|reserve-ret|ir|pup|nfi|suspended)(?:\b|$)/i.test(
     player.injuryStatus ?? '',
   );
 type RankedProp = {
@@ -222,9 +229,10 @@ function spreadBoardStrengthScores(props: RankedProp[]) {
   const strongestEdge = Math.max(...sorted.map(continuousEdgeStrength), 0);
   return sorted.map((prop) => {
     const strength = continuousEdgeStrength(prop);
-    const confidenceScore = strongestEdge > 0 && strength > 0
+    const baseScore = strongestEdge > 0 && strength > 0
       ? Math.max(1, Math.round((strength / strongestEdge) * 100))
       : 0;
+    const confidenceScore = baseScore === 100 ? 100 : Math.min(99, Math.round(baseScore * 1.15));
     return {
       ...prop,
       confidence: confidenceLabel(confidenceScore),
@@ -359,7 +367,7 @@ function AppShell() {
     if (!query) return playersForGame;
     return playersForGame.filter((player) =>
       [player.name, player.team, player.week2Opp].some((value) =>
-        value.toLowerCase().includes(query),
+        String(value ?? '').toLowerCase().includes(query),
       ),
     );
   }, [playersForGame, search]);
@@ -664,7 +672,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Continuous relative strength based on both percentage edge and prop-type-adjusted absolute edge. A 100 marks the strongest current signal.</p></div>
+                <div><h2>Confidence board</h2><p>Continuous relative strength based on both percentage edge and prop-type-adjusted absolute edge. A 100 marks the strongest current signal; all other scores receive the requested 1.15× display lift and remain capped at 99.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
@@ -1071,7 +1079,7 @@ function DetailPanel({
 
           <div className="method-note">
             <div className="method-icon"><Shield size={17} /></div>
-            <div><strong>How to read this panel</strong><p>{player.isLowConfidence ? `This player has only ${stat?.nPriorGames ?? 0} prior game${stat?.nPriorGames === 1 ? '' : 's'} in the current-team sample. Treat the projection and baseline comparison as directional.` : 'The model blends career baseline, recent form, home/away context, team performance, and opponent matchup variables selected through cross-validated historical testing.'} This dashboard is a trend and matchup research aid — not betting advice.</p></div>
+            <div><strong>How to read this panel</strong><p>{player.isLowConfidence ? `This player has only ${stat?.nPriorGames ?? 0} prior game${stat?.nPriorGames === 1 ? '' : 's'} in the current-team sample. Treat the projection and baseline comparison as directional.` : 'The model blends career baseline, recent form, home/away context, team performance, and opponent matchup variables selected through cross-validated historical testing.'}{position === 'RB' && statKey === 'rush_yards' ? ' Running-back rushing projections are also blended toward 2026 production according to the current active depth-chart role, with the game-environment adjustment limited to ±10%.' : ''} This dashboard is a trend and matchup research aid — not betting advice.</p></div>
           </div>
         </>
       )}

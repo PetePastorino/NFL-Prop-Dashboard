@@ -56,8 +56,8 @@
       "team": "TAM",
       "week2Opp": "PIT",
       "isLowConfidence": false,
-      "injuryStatus": "Doubtful",
-      "injury": "Thumb",
+      "injuryStatus": "Out",
+      "injury": "Oct 16: Mayfield (thumb) will not play Sunday, Brianna Dix of the Buccaneers' official site reports.",
       "stats": {
         "pass_yards": {
           "projection": 204.8,
@@ -457,7 +457,7 @@
       "week2Opp": "NOR",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Knee - Meniscus",
+      "injury": "Sep 30: Dart recently underwent surgery to repair the meniscus and MCL in his left knee, Dan Duggan of The Athletic reports.",
       "stats": {
         "pass_yards": {
           "projection": 189.3,
@@ -502,7 +502,7 @@
       "week2Opp": "ATL",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injury": "Oct 16: Williams (hamstring) is listed as questionable for Sunday's game against Atlanta.",
       "stats": {
         "pass_yards": {
           "projection": 246.4,
@@ -796,7 +796,7 @@
       "week2Opp": "CAR",
       "isLowConfidence": false,
       "injuryStatus": "Out",
-      "injury": "Calf",
+      "injury": "Oct 15: The Eagles have ruled Hurts out for Sunday's game against the Panthers after a follow-up ultrasound performed on his calf Wednesday revealed movement in a small blood clot, Ian Rapoport of NFL Network reports.",
       "stats": {
         "pass_yards": {
           "projection": 199.3,
@@ -897,8 +897,8 @@
       "team": "BAL",
       "week2Opp": "CLE",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": "Out",
+      "injury": "Oct 16: Head coach Jesse Minter said Friday that the Ravens have ruled out Jackson (ankle) for Sunday's game at Cleveland, Brian Wacker of The Baltimore Sun reports.",
       "stats": {
         "pass_yards": {
           "projection": 197.7,
@@ -1653,7 +1653,7 @@
       "week2Opp": "SFO",
       "isLowConfidence": false,
       "injuryStatus": "Doubtful",
-      "injury": "Knee - MCL",
+      "injury": "Oct 15: Mariota (knee) did not participate at practice Thursday.",
       "stats": {
         "pass_yards": {
           "projection": 175.2,
@@ -1797,8 +1797,8 @@
       "team": "NYJ",
       "week2Opp": "NWE",
       "isLowConfidence": false,
-      "injuryStatus": "Doubtful",
-      "injury": "Quadriceps",
+      "injuryStatus": "Out",
+      "injury": "Oct 16: Hall (quadriceps) is out for Sunday's game, Brian Costello of the New York Post reports.",
       "stats": {
         "rush_yards": {
           "projection": 42.4,
@@ -1862,7 +1862,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 72.1,
+          "projection": 64.6,
           "rawProjection": 64.6,
           "lowConfidence": false,
           "nPriorGames": 21,
@@ -1875,7 +1875,12 @@
           "week2Actual": 30,
           "week3Actual": 98,
           "week4Actual": 62,
-          "week5Actual": 45
+          "week5Actual": 45,
+          "projectionBeforeRoleAdjustment": 72.1,
+          "currentSeasonAvg": 55.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 16,
@@ -1929,7 +1934,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 37,
+          "projection": 47.3,
           "rawProjection": 49.7,
           "lowConfidence": false,
           "nPriorGames": 14,
@@ -1942,7 +1947,12 @@
           "week2Actual": 94,
           "week3Actual": 56,
           "week4Actual": 45,
-          "week5Actual": 33
+          "week5Actual": 33,
+          "projectionBeforeRoleAdjustment": 37,
+          "currentSeasonAvg": 54.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 11.2,
@@ -1996,7 +2006,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 111.7,
+          "projection": 128.9,
           "rawProjection": 100.2,
           "lowConfidence": true,
           "nPriorGames": 4,
@@ -2008,7 +2018,12 @@
           "week1Actual": 173,
           "week2Actual": 117,
           "week3Actual": 70,
-          "week4Actual": 177
+          "week4Actual": 177,
+          "projectionBeforeRoleAdjustment": 111.7,
+          "currentSeasonAvg": 134.3,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.5,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 23.2,
@@ -2057,10 +2072,10 @@
       "week2Opp": "CAR",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injury": "Oct 16: Barkley (hamstring) wasn't spotted at Friday's practice, Jimmy Kempski of PhillyVoice.com reports.",
       "stats": {
         "rush_yards": {
-          "projection": 69.3,
+          "projection": 56,
           "rawProjection": 73.7,
           "lowConfidence": false,
           "nPriorGames": 36,
@@ -2072,7 +2087,12 @@
           "week1Actual": 83,
           "week2Actual": 9,
           "week3Actual": 82,
-          "week4Actual": 8
+          "week4Actual": 8,
+          "projectionBeforeRoleAdjustment": 69.3,
+          "currentSeasonAvg": 45.5,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.5,
+          "appliedGameEnvFactor": 0.94
         },
         "rec_yards": {
           "projection": 13.7,
@@ -2124,7 +2144,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 48.3,
+          "projection": 50.6,
           "rawProjection": 58.9,
           "lowConfidence": false,
           "nPriorGames": 38,
@@ -2137,7 +2157,12 @@
           "week2Actual": 64,
           "week3Actual": 74,
           "week4Actual": 48,
-          "week5Actual": 52
+          "week5Actual": 52,
+          "projectionBeforeRoleAdjustment": 48.3,
+          "currentSeasonAvg": 54.6,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 9,
@@ -2191,7 +2216,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 40.3,
+          "projection": 42.1,
           "rawProjection": 48.5,
           "lowConfidence": false,
           "nPriorGames": 15,
@@ -2204,7 +2229,12 @@
           "week2Actual": 36,
           "week3Actual": 49,
           "week4Actual": 40,
-          "week5Actual": 68
+          "week5Actual": 68,
+          "projectionBeforeRoleAdjustment": 40.3,
+          "currentSeasonAvg": 45.8,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 8.1,
@@ -2258,7 +2288,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 68.4,
+          "projection": 56.5,
           "rawProjection": 61.3,
           "lowConfidence": false,
           "nPriorGames": 75,
@@ -2271,7 +2301,12 @@
           "week2Actual": 43,
           "week3Actual": 22,
           "week4Actual": 47,
-          "week5Actual": 64
+          "week5Actual": 64,
+          "projectionBeforeRoleAdjustment": 68.4,
+          "currentSeasonAvg": 45.4,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 22.3,
@@ -2325,7 +2360,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 46.7,
+          "projection": 61.2,
           "rawProjection": 46.9,
           "lowConfidence": false,
           "nPriorGames": 20,
@@ -2338,7 +2373,12 @@
           "week2Actual": 65,
           "week3Actual": 73,
           "week4Actual": 73,
-          "week5Actual": 72
+          "week5Actual": 72,
+          "projectionBeforeRoleAdjustment": 46.7,
+          "currentSeasonAvg": 69.8,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1
         },
         "rec_yards": {
           "projection": 7.7,
@@ -2389,10 +2429,10 @@
       "week2Opp": "BAL",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Foot",
+      "injury": "Oct 16: Judkins (foot) is listed as questionable for Sunday's game against Baltimore, Zac Jackson of The Athletic reports.",
       "stats": {
         "rush_yards": {
-          "projection": 40,
+          "projection": 42,
           "rawProjection": 50.8,
           "lowConfidence": false,
           "nPriorGames": 19,
@@ -2405,7 +2445,12 @@
           "week2Actual": 21,
           "week3Actual": 70,
           "week4Actual": 53,
-          "week5Actual": 44
+          "week5Actual": 44,
+          "projectionBeforeRoleAdjustment": 40,
+          "currentSeasonAvg": 44.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 16.2,
@@ -2459,7 +2504,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 60.4,
+          "projection": 70.5,
           "rawProjection": 73.6,
           "lowConfidence": false,
           "nPriorGames": 32,
@@ -2472,7 +2517,12 @@
           "week2Actual": 89,
           "week3Actual": 46,
           "week4Actual": 61,
-          "week5Actual": 165
+          "week5Actual": 165,
+          "projectionBeforeRoleAdjustment": 60.4,
+          "currentSeasonAvg": 81.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 17.8,
@@ -2526,7 +2576,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 66.9,
+          "projection": 63.7,
           "rawProjection": 65,
           "lowConfidence": false,
           "nPriorGames": 12,
@@ -2538,7 +2588,12 @@
           "week1Actual": 81,
           "week2Actual": 36,
           "week3Actual": 60,
-          "week4Actual": 58
+          "week4Actual": 58,
+          "projectionBeforeRoleAdjustment": 66.9,
+          "currentSeasonAvg": 58.8,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.5,
+          "appliedGameEnvFactor": 1.03
         },
         "rec_yards": {
           "projection": 15,
@@ -2586,8 +2641,8 @@
       "team": "HOU",
       "week2Opp": "JAX",
       "isLowConfidence": true,
-      "injuryStatus": "Doubtful",
-      "injury": "Groin",
+      "injuryStatus": "Out",
+      "injury": "Oct 15: The Texans ruled Montgomery (groin) out for Sunday's game against the Jaguars in London.",
       "stats": {
         "rush_yards": {
           "projection": 20.4,
@@ -2654,7 +2709,7 @@
       "week2Opp": "NYG",
       "isLowConfidence": true,
       "injuryStatus": "Injured Reserve",
-      "injury": "Hamstring",
+      "injury": "Oct 1: The Saints are placing Etienne (hamstring) on injured reserve, Katherine Terrell of ESPN.com reports.",
       "stats": {
         "rush_yards": {
           "projection": 49.6,
@@ -2702,7 +2757,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 70.3,
+          "projection": 73.9,
           "rawProjection": 61.2,
           "lowConfidence": false,
           "nPriorGames": 38,
@@ -2715,7 +2770,12 @@
           "week2Actual": 45,
           "week3Actual": 84,
           "week4Actual": 58,
-          "week5Actual": 43
+          "week5Actual": 43,
+          "projectionBeforeRoleAdjustment": 70.3,
+          "currentSeasonAvg": 70.8,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 21.9,
@@ -2769,7 +2829,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 107.8,
+          "projection": 78,
           "rawProjection": 74.7,
           "lowConfidence": false,
           "nPriorGames": 60,
@@ -2782,7 +2842,12 @@
           "week2Actual": 85,
           "week3Actual": 88,
           "week4Actual": 80,
-          "week5Actual": 49
+          "week5Actual": 49,
+          "projectionBeforeRoleAdjustment": 107.8,
+          "currentSeasonAvg": 68.6,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 34.7,
@@ -2836,7 +2901,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 54.7,
+          "projection": 72.7,
           "rawProjection": 57.5,
           "lowConfidence": false,
           "nPriorGames": 69,
@@ -2849,7 +2914,12 @@
           "week2Actual": 43,
           "week3Actual": 127,
           "week4Actual": 93,
-          "week5Actual": 101
+          "week5Actual": 101,
+          "projectionBeforeRoleAdjustment": 54.7,
+          "currentSeasonAvg": 82,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.775,
+          "appliedGameEnvFactor": 0.95
         },
         "rec_yards": {
           "projection": 39,
@@ -2900,10 +2970,10 @@
       "week2Opp": "NYJ",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injury": "Oct 16: Henderson said Friday that an MRI revealed he sustained a high-ankle sprain but that he is \"hoping to play\" Sunday against the Jets, Doug Kyed of the Boston Herald reports.",
       "stats": {
         "rush_yards": {
-          "projection": 65.8,
+          "projection": 55.4,
           "rawProjection": 59,
           "lowConfidence": false,
           "nPriorGames": 21,
@@ -2916,7 +2986,12 @@
           "week3Actual": 23,
           "week4Actual": 42,
           "week5Actual": 22,
-          "week1Actual": 76
+          "week1Actual": 76,
+          "projectionBeforeRoleAdjustment": 65.8,
+          "currentSeasonAvg": 47.8,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.775,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 14.1,
@@ -2970,7 +3045,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 86.3,
+          "projection": 90.5,
           "rawProjection": 87.7,
           "lowConfidence": false,
           "nPriorGames": 38,
@@ -2983,7 +3058,12 @@
           "week3Actual": 89,
           "week4Actual": 73,
           "week5Actual": 102,
-          "week2Actual": 68
+          "week2Actual": 68,
+          "projectionBeforeRoleAdjustment": 86.3,
+          "currentSeasonAvg": 95.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.98
         },
         "rec_yards": {
           "projection": 3.2,
@@ -3037,7 +3117,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 62.3,
+          "projection": 61.2,
           "rawProjection": 59.9,
           "lowConfidence": false,
           "nPriorGames": 22,
@@ -3050,7 +3130,12 @@
           "week2Actual": 48,
           "week3Actual": 56,
           "week4Actual": 58,
-          "week5Actual": 27
+          "week5Actual": 27,
+          "projectionBeforeRoleAdjustment": 62.3,
+          "currentSeasonAvg": 58.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.04
         },
         "rec_yards": {
           "projection": 34.7,
@@ -3104,7 +3189,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 52.6,
+          "projection": 50.5,
           "rawProjection": 52.6,
           "lowConfidence": false,
           "nPriorGames": 50,
@@ -3117,7 +3202,12 @@
           "week2Actual": 80,
           "week3Actual": 61,
           "week4Actual": 10,
-          "week5Actual": 39
+          "week5Actual": 39,
+          "projectionBeforeRoleAdjustment": 52.6,
+          "currentSeasonAvg": 49.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1
         },
         "rec_yards": {
           "projection": 27,
@@ -3168,7 +3258,7 @@
       "week2Opp": null,
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Knee - ACL",
+      "injury": "Sep 28: The Dolphins placed Achane (knee) on injured reserve Monday.",
       "stats": {
         "rush_yards": {
           "projection": 61.7,
@@ -3232,7 +3322,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 109.8,
+          "projection": 108,
           "rawProjection": 84.4,
           "lowConfidence": false,
           "nPriorGames": 71,
@@ -3245,7 +3335,12 @@
           "week2Actual": 135,
           "week3Actual": 154,
           "week4Actual": 75,
-          "week5Actual": 111
+          "week5Actual": 111,
+          "projectionBeforeRoleAdjustment": 109.8,
+          "currentSeasonAvg": 106.4,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 16.5,
@@ -3299,7 +3394,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 83.5,
+          "projection": 85.3,
           "rawProjection": 74.1,
           "lowConfidence": false,
           "nPriorGames": 89,
@@ -3312,7 +3407,12 @@
           "week2Actual": 92,
           "week3Actual": 68,
           "week4Actual": 95,
-          "week5Actual": 45
+          "week5Actual": 45,
+          "projectionBeforeRoleAdjustment": 83.5,
+          "currentSeasonAvg": 79.6,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 13.7,
@@ -3366,7 +3466,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 87.7,
+          "projection": 67.8,
           "rawProjection": 69.1,
           "lowConfidence": false,
           "nPriorGames": 53,
@@ -3379,7 +3479,12 @@
           "week2Actual": 23,
           "week3Actual": 75,
           "week4Actual": 52,
-          "week5Actual": 68
+          "week5Actual": 68,
+          "projectionBeforeRoleAdjustment": 87.7,
+          "currentSeasonAvg": 57.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 41.3,
@@ -3433,7 +3538,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 89.3,
+          "projection": 107.5,
           "rawProjection": 87.8,
           "lowConfidence": false,
           "nPriorGames": 56,
@@ -3446,7 +3551,12 @@
           "week2Actual": 72,
           "week3Actual": 194,
           "week4Actual": 145,
-          "week5Actual": 86
+          "week5Actual": 86,
+          "projectionBeforeRoleAdjustment": 89.3,
+          "currentSeasonAvg": 116,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.02
         },
         "rec_yards": {
           "projection": 26.7,
@@ -3500,7 +3610,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 78.2,
+          "projection": 92.3,
           "rawProjection": 78.2,
           "lowConfidence": false,
           "nPriorGames": 54,
@@ -3513,7 +3623,12 @@
           "week2Actual": 52,
           "week3Actual": 99,
           "week4Actual": 46,
-          "week5Actual": 151
+          "week5Actual": 151,
+          "projectionBeforeRoleAdjustment": 78.2,
+          "currentSeasonAvg": 100.8,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1
         },
         "rec_yards": {
           "projection": 36.8,
@@ -3564,7 +3679,7 @@
       "week2Opp": "TAM",
       "isLowConfidence": true,
       "injuryStatus": "Questionable",
-      "injury": "Toe",
+      "injury": "Oct 16: Dowdle (toe) is listed as questionable for Sunday's game against the Buccaneers after being a full participant in practice Thursday and Friday.",
       "stats": {
         "rush_yards": {
           "projection": 17.6,
@@ -3606,7 +3721,7 @@
       "week2Opp": null,
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Thumb",
+      "injury": "Oct 15: The Vikings are hopeful that Mason (thumb) will be ready to return from injured reserve for their Week 7 game versus the Colts, Jeremy Fowler of ESPN.com reports.",
       "stats": {
         "rush_yards": {
           "projection": 54.7,
@@ -3664,7 +3779,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 23.9,
+          "projection": 17.3,
           "rawProjection": 28.8,
           "lowConfidence": false,
           "nPriorGames": 21,
@@ -3676,7 +3791,12 @@
           "week1Actual": 18,
           "week3Actual": 6,
           "week4Actual": 25,
-          "week5Actual": 7
+          "week5Actual": 7,
+          "projectionBeforeRoleAdjustment": 23.9,
+          "currentSeasonAvg": 14,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.65,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 25.2,
@@ -3728,7 +3848,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 39.2,
+          "projection": 35.1,
           "rawProjection": 41.7,
           "lowConfidence": true,
           "nPriorGames": 3,
@@ -3739,7 +3859,12 @@
           "gameEnvFactor": 0.94,
           "week1Actual": 22,
           "week2Actual": 43,
-          "week3Actual": 35
+          "week3Actual": 35,
+          "projectionBeforeRoleAdjustment": 39.2,
+          "currentSeasonAvg": 33.3,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.525,
+          "appliedGameEnvFactor": 0.94
         },
         "rec_yards": {
           "projection": 20.6,
@@ -3789,7 +3914,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 67.2,
+          "projection": 76.5,
           "rawProjection": 67.2,
           "lowConfidence": false,
           "nPriorGames": 33,
@@ -3802,7 +3927,12 @@
           "week2Actual": 105,
           "week3Actual": 58,
           "week5Actual": 113,
-          "week4Actual": 94
+          "week4Actual": 94,
+          "projectionBeforeRoleAdjustment": 67.2,
+          "currentSeasonAvg": 82,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1
         },
         "rec_yards": {
           "projection": 18.2,
@@ -3853,10 +3983,10 @@
       "week2Opp": "NYG",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Back",
+      "injury": "Oct 16: Kamara (back) practiced on a limited basis Friday is listed as questionable for Sunday's game at the Giants, Katherine Terrell of ESPN.com reports.",
       "stats": {
         "rush_yards": {
-          "projection": 55.2,
+          "projection": 35.3,
           "rawProjection": 57.4,
           "lowConfidence": false,
           "nPriorGames": 129,
@@ -3869,7 +3999,12 @@
           "week4Actual": 23,
           "week5Actual": 12,
           "week1Actual": 36,
-          "week2Actual": 15
+          "week2Actual": 15,
+          "projectionBeforeRoleAdjustment": 55.2,
+          "currentSeasonAvg": 24.4,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.96
         },
         "rec_yards": {
           "projection": 25.9,
@@ -3923,7 +4058,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 58,
+          "projection": 64.3,
           "rawProjection": 66.3,
           "lowConfidence": false,
           "nPriorGames": 83,
@@ -3935,7 +4070,12 @@
           "week1Actual": 49,
           "week2Actual": 53,
           "week3Actual": 82,
-          "week4Actual": 122
+          "week4Actual": 122,
+          "projectionBeforeRoleAdjustment": 58,
+          "currentSeasonAvg": 76.5,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.5,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 14.3,
@@ -3984,7 +4124,7 @@
       "week2Opp": "DEN",
       "isLowConfidence": true,
       "injuryStatus": "Injured Reserve",
-      "injury": "Chest",
+      "injury": "Oct 16: Head coach Mike Macdonald said Friday that Price \"should be looking at a sooner rather than later return after\" the Seahawks' next game in Week 7, Brady Henderson of ESPN.com reports.",
       "stats": {
         "rush_yards": {
           "projection": 36,
@@ -4044,11 +4184,11 @@
       "team": "WAS",
       "week2Opp": "SFO",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 16: Croskey-Merritt (groin) wasn't present for Friday's practice, Tashan Reed of The Washington Post reports.",
       "stats": {
         "rush_yards": {
-          "projection": 44.5,
+          "projection": 40.7,
           "rawProjection": 47.3,
           "lowConfidence": false,
           "nPriorGames": 21,
@@ -4060,7 +4200,12 @@
           "week1Actual": 63,
           "week2Actual": 43,
           "week3Actual": 36,
-          "week4Actual": 15
+          "week4Actual": 15,
+          "projectionBeforeRoleAdjustment": 44.5,
+          "currentSeasonAvg": 39.3,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.5,
+          "appliedGameEnvFactor": 0.94
         },
         "rec_yards": {
           "projection": 13.6,
@@ -4108,8 +4253,8 @@
       "team": "ARI",
       "week2Opp": "LAR",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": "Out",
+      "injury": "Oct 16: Love (ankle) has been ruled out for Sunday's game at the Rams, Darren Urban of the Cardinals' official site reports.",
       "stats": {
         "rush_yards": {
           "projection": 43.2,
@@ -4179,7 +4324,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 45.8,
+          "projection": 31.4,
           "rawProjection": 38.8,
           "lowConfidence": false,
           "nPriorGames": 6,
@@ -4192,7 +4337,12 @@
           "week2Actual": 20,
           "week3Actual": 11,
           "week4Actual": 13,
-          "week5Actual": 31
+          "week5Actual": 31,
+          "projectionBeforeRoleAdjustment": 45.8,
+          "currentSeasonAvg": 22.4,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 22.3,
@@ -4243,10 +4393,10 @@
       "week2Opp": "IND",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Knee",
+      "injury": "Oct 15: Spears (knee) didn't practice Thursday.",
       "stats": {
         "rush_yards": {
-          "projection": 26.7,
+          "projection": 15.7,
           "rawProjection": 32.6,
           "lowConfidence": false,
           "nPriorGames": 47,
@@ -4259,7 +4409,12 @@
           "week2Actual": 41,
           "week3Actual": 5,
           "week4Actual": 7,
-          "week5Actual": 0
+          "week5Actual": 0,
+          "projectionBeforeRoleAdjustment": 26.7,
+          "currentSeasonAvg": 13,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.775,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 15.7,
@@ -4313,7 +4468,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 73.3,
+          "projection": 43.4,
           "rawProjection": 50.8,
           "lowConfidence": false,
           "nPriorGames": 39,
@@ -4326,7 +4481,12 @@
           "week2Actual": 79,
           "week3Actual": 15,
           "week4Actual": 14,
-          "week5Actual": 19
+          "week5Actual": 19,
+          "projectionBeforeRoleAdjustment": 73.3,
+          "currentSeasonAvg": 36.2,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.775,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 14.7,
@@ -4425,7 +4585,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 55.1,
+          "projection": 33.9,
           "rawProjection": 43.4,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4438,7 +4598,12 @@
           "week2Actual": 25,
           "week3Actual": 17,
           "week4Actual": 13,
-          "week5Actual": 16
+          "week5Actual": 16,
+          "projectionBeforeRoleAdjustment": 55.1,
+          "currentSeasonAvg": 27.2,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.775,
+          "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
           "projection": 2.9,
@@ -4559,7 +4724,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 30.1,
+          "projection": 25.3,
           "rawProjection": 35.3,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4572,7 +4737,12 @@
           "week2Actual": 10,
           "week3Actual": -1,
           "week4Actual": 42,
-          "week5Actual": 7
+          "week5Actual": 7,
+          "projectionBeforeRoleAdjustment": 30.1,
+          "currentSeasonAvg": 23.8,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 10.8,
@@ -4626,7 +4796,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 49.9,
+          "projection": 44.4,
           "rawProjection": 49,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4639,7 +4809,12 @@
           "week2Actual": 51,
           "week3Actual": 50,
           "week4Actual": 62,
-          "week5Actual": 16
+          "week5Actual": 16,
+          "projectionBeforeRoleAdjustment": 49.9,
+          "currentSeasonAvg": 42,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.775,
+          "appliedGameEnvFactor": 1.02
         },
         "rec_yards": {
           "projection": 0.8,
@@ -4693,7 +4868,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 43.9,
+          "projection": 28.3,
           "rawProjection": 45.6,
           "lowConfidence": false,
           "nPriorGames": 25,
@@ -4705,7 +4880,12 @@
           "week1Actual": 30,
           "week3Actual": 14,
           "week4Actual": 9,
-          "week5Actual": 30
+          "week5Actual": 30,
+          "projectionBeforeRoleAdjustment": 43.9,
+          "currentSeasonAvg": 20.8,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.65,
+          "appliedGameEnvFactor": 0.96
         },
         "rec_yards": {
           "projection": 3,
@@ -4757,7 +4937,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 26.8,
+          "projection": 27.2,
           "rawProjection": 31,
           "lowConfidence": false,
           "nPriorGames": 21,
@@ -4770,7 +4950,12 @@
           "week2Actual": 8,
           "week3Actual": 15,
           "week4Actual": 22,
-          "week5Actual": 62
+          "week5Actual": 62,
+          "projectionBeforeRoleAdjustment": 26.8,
+          "currentSeasonAvg": 29.8,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 15.2,
@@ -4824,7 +5009,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 50.1,
+          "projection": 48.2,
           "rawProjection": 53.2,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4837,7 +5022,12 @@
           "week2Actual": 92,
           "week3Actual": 14,
           "week4Actual": 81,
-          "week5Actual": 61
+          "week5Actual": 61,
+          "projectionBeforeRoleAdjustment": 50.1,
+          "currentSeasonAvg": 50.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.94
         },
         "rec_yards": {
           "projection": 9.3,
@@ -4891,7 +5081,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 34.3,
+          "projection": 41.3,
           "rawProjection": 43.6,
           "lowConfidence": false,
           "nPriorGames": 26,
@@ -4904,7 +5094,12 @@
           "week2Actual": 7,
           "week3Actual": 14,
           "week4Actual": 59,
-          "week5Actual": 116
+          "week5Actual": 116,
+          "projectionBeforeRoleAdjustment": 34.3,
+          "currentSeasonAvg": 47.2,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.625,
+          "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
           "projection": 5.6,
@@ -4958,7 +5153,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 26.7,
+          "projection": 23.5,
           "rawProjection": 26.8,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4971,7 +5166,12 @@
           "week2Actual": 13,
           "week3Actual": 37,
           "week4Actual": 35,
-          "week5Actual": 5
+          "week5Actual": 5,
+          "projectionBeforeRoleAdjustment": 26.7,
+          "currentSeasonAvg": 22.6,
+          "currentDepthRole": "RB2",
+          "currentSeasonWeight": 0.775,
+          "appliedGameEnvFactor": 1
         },
         "rec_yards": {
           "projection": -1.4,
@@ -5219,8 +5419,8 @@
       "team": "IND",
       "week2Opp": "TEN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 60.8,
@@ -5271,7 +5471,7 @@
       "week2Opp": "LVR",
       "isLowConfidence": true,
       "injuryStatus": "Questionable",
-      "injury": "Shoulder - AC Joint",
+      "injury": "Oct 15: Moore (shoulder) officially didn't practice Thursday.",
       "stats": {
         "rec_yards": {
           "projection": 69.6,
@@ -5521,8 +5721,8 @@
       "team": "WAS",
       "week2Opp": "SFO",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 16: McLaurin is getting a veteran rest day Friday, John Keim of ESPN.com reports.",
       "stats": {
         "rec_yards": {
           "projection": 50.8,
@@ -5568,8 +5768,8 @@
       "team": "SFO",
       "week2Opp": "WAS",
       "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 15: Head coach Kyle Shanahan said Evans won't practice Thursday due to rib and Achilles injuries, Cam Inman of The San Jose Mercury News reports.",
       "stats": {
         "rec_yards": {
           "projection": 88.3,
@@ -5670,8 +5870,8 @@
       "team": "KAN",
       "week2Opp": "LAC",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injuryStatus": "Out",
+      "injury": "Oct 16: Rice (hamstring/knee) will not play Sunday against the Chargers, Sam McDowell of The Kansas City Star reports.",
       "stats": {
         "rec_yards": {
           "projection": 65.5,
@@ -5718,7 +5918,7 @@
       "week2Opp": "WAS",
       "isLowConfidence": false,
       "injuryStatus": "Out",
-      "injury": "Hamstring",
+      "injury": "Oct 15: Head coach Kyle Shanahan said Thursday that the 49ers will \"hold off\" on placing Samuel (hamstring) on IR due to the team's bye in Week 8, Vic Tafur of the Athletic reports.",
       "stats": {
         "rec_yards": {
           "projection": 62.2,
@@ -5768,8 +5968,8 @@
       "team": "LAC",
       "week2Opp": "KAN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Foot",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 28.3,
@@ -5818,7 +6018,7 @@
       "week2Opp": "TEN",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Heel",
+      "injury": "Oct 14: Pierce was spotted without a cast on his left ankle/heel Wednesday, James Boyd of The Athletic reports.",
       "stats": {
         "rec_yards": {
           "projection": 67.8,
@@ -5913,8 +6113,8 @@
       "team": "PIT",
       "week2Opp": "TAM",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 16: Metcalf is listed as questionable for Sunday's game against the Buccaneers after missing Friday's practice due to an illness.",
       "stats": {
         "rec_yards": {
           "projection": 50,
@@ -6169,7 +6369,7 @@
       "week2Opp": "SFO",
       "isLowConfidence": true,
       "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injury": "Oct 16: Diggs (hamstring) was going through stretching at Friday's practice, John Keim of ESPN.com reports.",
       "stats": {
         "rec_yards": {
           "projection": 39.7,
@@ -6316,7 +6516,7 @@
       "week2Opp": "NYJ",
       "isLowConfidence": true,
       "injuryStatus": "Injured Reserve",
-      "injury": "Ankle",
+      "injury": "Oct 16: Head coach Mike Vrabel said Friday that the Patriots won't make a call on Brown's (ankle) status for Sunday's game against the Jets until Saturday, Doug Kyed of the Boston Herald reports.",
       "stats": {
         "rec_yards": {
           "projection": 29,
@@ -6346,8 +6546,8 @@
       "team": "BAL",
       "week2Opp": "CLE",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 16: Flowers (toe) is practicing Friday after being added to the injury report Thursday, Jamison Hensley of ESPN.com reports.",
       "stats": {
         "rec_yards": {
           "projection": 74.1,
@@ -6396,7 +6596,7 @@
       "week2Opp": "NYG",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Illness",
+      "injury": "Oct 16: Olave (illness) was limited at Friday's practice and will be listed as questionable for Week 6.",
       "stats": {
         "rec_yards": {
           "projection": 81.6,
@@ -6548,7 +6748,7 @@
       "team": "MIN",
       "week2Opp": null,
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "rec_yards": {
@@ -6598,7 +6798,7 @@
       "week2Opp": "TAM",
       "isLowConfidence": true,
       "injuryStatus": "Injured Reserve",
-      "injury": "Foot",
+      "injury": "Oct 10: The Steelers placed Pittman (foot) on injured reserve Saturday.",
       "stats": {
         "rec_yards": {
           "projection": 39.6,
@@ -6645,7 +6845,7 @@
       "week2Opp": "CAR",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injury": "Oct 16: Smith (hamstring) said Friday that he is \"good\" and that his availability for Week 6 is \"up to the doctors,\" Tim McManus of ESPN.com reports.",
       "stats": {
         "rec_yards": {
           "projection": 52.2,
@@ -7044,8 +7244,8 @@
       "team": "LAC",
       "week2Opp": "KAN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Chest",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 28.2,
@@ -7196,7 +7396,7 @@
       "week2Opp": "CLE",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Shoulder",
+      "injury": "Oct 15: Bateman (shoulder) didn't practice Thursday.",
       "stats": {
         "rec_yards": {
           "projection": 28.8,
@@ -7298,7 +7498,7 @@
       "week2Opp": "DAL",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Neck",
+      "injury": "Sep 30: The Packers are expected to place Reed (neck) on injured reserve Wednesday, Adam Schefter of ESPN reports.",
       "stats": {
         "rec_yards": {
           "projection": 48.3,
@@ -7541,7 +7741,7 @@
       "week2Opp": "CAR",
       "isLowConfidence": true,
       "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injury": "Oct 16: Wicks (hamstring) is practicing Friday, Andrew DiCecco reports.",
       "stats": {
         "rec_yards": {
           "projection": 49.7,
@@ -8026,8 +8226,8 @@
       "team": "CLE",
       "week2Opp": "BAL",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Concussion",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 36.9,
@@ -8078,7 +8278,7 @@
       "week2Opp": "BAL",
       "isLowConfidence": true,
       "injuryStatus": "Questionable",
-      "injury": "Foot",
+      "injury": "Oct 15: Boston (foot) remained limited at Thursday's practice.",
       "stats": {
         "rec_yards": {
           "projection": 55.1,
@@ -8877,8 +9077,8 @@
       "team": "MIN",
       "week2Opp": null,
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 11: The Vikings downgraded Hockenson to out for Sunday's game against the Saints due to a concussion.",
       "stats": {
         "rec_yards": {
           "projection": 36.5,
@@ -9830,8 +10030,8 @@
       "team": "LVR",
       "week2Opp": "BUF",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Knee",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 56.3,
