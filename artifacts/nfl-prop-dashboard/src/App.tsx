@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
-import confidenceCalibrationJson from '@/data/confidence-calibration.json';
 import { WEEK6_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week6-initial-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
@@ -74,19 +73,6 @@ type Player = {
 type PlayerData = Record<string, Player[]>;
 type Position = 'QB' | 'RB' | 'WR' | 'TE';
 type Lean = 'OVER' | 'UNDER' | 'PASS' | '—';
-type PickLean = 'OVER' | 'UNDER';
-type EdgeBandKey = '4-7' | '7-10' | '10-15' | '15-25' | '25+';
-type ConfidenceCalibration = {
-  breakevenPct: number;
-  directionAdjustmentCap: number;
-  highThreshold: number;
-  mediumThreshold: number;
-  lowHistoryCap: number;
-  injuryCap: number;
-  edgeBands: { key: EdgeBandKey; min: number; max: number }[];
-  baseRates: Record<string, Record<EdgeBandKey, number>>;
-  rates: Record<string, Record<PickLean, Record<EdgeBandKey, number>>>;
-};
 
 const isPlayerUnavailable = (player: Player) =>
   /(?:^|\b)(?:out|injured reserve|ir|pup|suspended)(?:\b|$)/i.test(
@@ -107,25 +93,6 @@ type RankedProp = {
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara']);
-const CONFIDENCE_CALIBRATION = confidenceCalibrationJson as ConfidenceCalibration;
-const CALIBRATED_RATE_VALUES = Object.values(CONFIDENCE_CALIBRATION.baseRates).flatMap((byBand) =>
-  Object.values(byBand),
-);
-const MIN_CALIBRATED_RATE = Math.min(...CALIBRATED_RATE_VALUES);
-const MAX_CALIBRATED_RATE = Math.max(...CALIBRATED_RATE_VALUES);
-
-function strengthScoreFromRate(calibratedRate: number) {
-  if (MAX_CALIBRATED_RATE <= MIN_CALIBRATED_RATE) return 50;
-  return Math.max(
-    0,
-    Math.min(
-      100,
-      Math.round(
-        ((calibratedRate - MIN_CALIBRATED_RATE) / (MAX_CALIBRATED_RATE - MIN_CALIBRATED_RATE)) * 100,
-      ),
-    ),
-  );
-}
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
   QB: [
@@ -235,42 +202,35 @@ function matchupLabel(key: string) {
   return key.split('|').join(' vs ');
 }
 
-function confidenceTieBreaker(prop: RankedProp) {
-  const relativeEdge = Math.abs(prop.lean.edgePct ?? 0) * 200;
+function continuousEdgeStrength(prop: RankedProp) {
+  if (prop.lean.lean === 'PASS' || prop.lean.lean === '—') return 0;
+  const relativeEdge = Math.abs(prop.lean.edgePct ?? 0) / 0.25;
   const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
-  const absoluteEdge = (Math.abs(prop.lean.edge ?? 0) / edgeTarget) * 50;
+  const absoluteEdge = Math.abs(prop.lean.edge ?? 0) / edgeTarget;
   return Math.min(relativeEdge, absoluteEdge);
 }
 
-function directionCalibrationTieBreaker(prop: RankedProp) {
-  const edgePct = Math.abs(prop.lean.edgePct ?? 0);
-  const edgeBand = CONFIDENCE_CALIBRATION.edgeBands.find(
-    ({ min, max }) => edgePct >= min && edgePct < max,
-  )?.key;
-  if (!edgeBand || prop.lean.lean === 'PASS' || prop.lean.lean === '—') return 0;
-  const baseRate = CONFIDENCE_CALIBRATION.baseRates[prop.statKey]?.[edgeBand];
-  const directionRate = CONFIDENCE_CALIBRATION.rates[prop.statKey]?.[prop.lean.lean]?.[edgeBand];
-  if (baseRate === undefined || directionRate === undefined) return 0;
-  return Math.max(
-    -CONFIDENCE_CALIBRATION.directionAdjustmentCap,
-    Math.min(CONFIDENCE_CALIBRATION.directionAdjustmentCap, directionRate - baseRate),
-  );
+function confidenceLabel(score: number): 'High' | 'Medium' | 'Low' {
+  return score >= 72 ? 'High' : score >= 48 ? 'Medium' : 'Low';
 }
 
 function spreadBoardStrengthScores(props: RankedProp[]) {
   const sorted = [...props].sort((a, b) =>
-    b.confidenceScore - a.confidenceScore
-    || confidenceTieBreaker(b) - confidenceTieBreaker(a)
-    || directionCalibrationTieBreaker(b) - directionCalibrationTieBreaker(a)
+    continuousEdgeStrength(b) - continuousEdgeStrength(a)
     || a.key.localeCompare(b.key),
   );
-  if (sorted.length <= 1) {
-    return sorted.map((prop) => ({ ...prop, confidenceScore: 100 }));
-  }
-  return sorted.map((prop, index) => ({
-    ...prop,
-    confidenceScore: Math.max(1, Math.round(100 - (index / (sorted.length - 1)) * 99)),
-  }));
+  const strongestEdge = Math.max(...sorted.map(continuousEdgeStrength), 0);
+  return sorted.map((prop) => {
+    const strength = continuousEdgeStrength(prop);
+    const confidenceScore = strongestEdge > 0 && strength > 0
+      ? Math.max(1, Math.round((strength / strongestEdge) * 100))
+      : 0;
+    return {
+      ...prop,
+      confidence: confidenceLabel(confidenceScore),
+      confidenceScore,
+    };
+  });
 }
 
 function strongestPropPerPlayer(props: RankedProp[]) {
@@ -281,40 +241,6 @@ function strongestPropPerPlayer(props: RankedProp[]) {
     includedPlayers.add(playerKey);
     return true;
   });
-}
-
-function getConfidence(player: Player, stat: StatSnapshot, line: string, statKey: string) {
-  const lean = leanFromLine(stat, line);
-  if (lean.edgePct === null || lean.edge === null) {
-    return { confidence: 'Low' as const, confidenceScore: 0 };
-  }
-
-  if (lean.lean === 'PASS') {
-    return { confidence: 'Low' as const, confidenceScore: 0 };
-  }
-
-  const edgeBand = CONFIDENCE_CALIBRATION.edgeBands.find(
-    ({ min, max }) => Math.abs(lean.edgePct!) >= min && Math.abs(lean.edgePct!) < max,
-  )?.key;
-  const calibratedRate = edgeBand
-    ? CONFIDENCE_CALIBRATION.baseRates[statKey]?.[edgeBand]
-    : undefined;
-  let calibratedHitRate = calibratedRate ?? CONFIDENCE_CALIBRATION.breakevenPct;
-  if (player.isLowConfidence || stat.lowConfidence) {
-    calibratedHitRate = Math.min(calibratedHitRate, CONFIDENCE_CALIBRATION.lowHistoryCap);
-  }
-  if (player.injuryStatus) {
-    calibratedHitRate = Math.min(calibratedHitRate, CONFIDENCE_CALIBRATION.injuryCap);
-  }
-  const confidence: 'High' | 'Medium' | 'Low' =
-    calibratedHitRate >= CONFIDENCE_CALIBRATION.highThreshold
-      ? 'High'
-      : calibratedHitRate >= CONFIDENCE_CALIBRATION.mediumThreshold
-        ? 'Medium'
-        : 'Low';
-  const confidenceScore = strengthScoreFromRate(calibratedHitRate);
-
-  return { confidence, confidenceScore };
 }
 
 function parseBulkLines(input: string, ignoreUnsupported = false) {
@@ -457,7 +383,6 @@ function AppShell() {
             const stat = player.stats[statDefinition.key];
             if (!line || !stat || stat.projection === null || stat.projection === undefined) return [];
             const lineLean = leanFromLine(stat, line);
-            const confidence = getConfidence(player, stat, line, statDefinition.key);
             return [{
               key,
               position: entryPosition,
@@ -467,7 +392,8 @@ function AppShell() {
               stat,
               line,
               lean: lineLean,
-              ...confidence,
+              confidence: 'Low' as const,
+              confidenceScore: 0,
             }];
           }),
         ),
@@ -485,6 +411,7 @@ function AppShell() {
     () => strongestPropPerPlayer(gameRankedProps).slice(0, 10),
     [gameRankedProps],
   );
+  const activeRankedProp = rankedProps.find((prop) => prop.key === lineKey);
   const playerCount = Object.values(PLAYER_DATA).reduce(
     (total, roster) => total + roster.length,
     0,
@@ -737,7 +664,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Relative strength calibrated by prop type and edge size, with direction used only as a capped tiebreaker. A 100 marks the strongest supported signal.</p></div>
+                <div><h2>Confidence board</h2><p>Continuous relative strength based on both percentage edge and prop-type-adjusted absolute edge. A 100 marks the strongest current signal.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
@@ -810,6 +737,8 @@ function AppShell() {
               line={activeLine}
               setLine={(value) => setLines((previous) => ({ ...previous, [lineKey]: value }))}
               lean={lean}
+              confidenceScore={activeRankedProp?.confidenceScore ?? null}
+              confidenceLabel={activeRankedProp?.confidence ?? null}
             />
           </section>
 
@@ -991,6 +920,8 @@ function DetailPanel({
   line,
   setLine,
   lean,
+  confidenceScore,
+  confidenceLabel,
 }: {
   player: Player | null;
   position: Position;
@@ -999,6 +930,8 @@ function DetailPanel({
   line: string;
   setLine: (value: string) => void;
   lean: ReturnType<typeof leanFromLine>;
+  confidenceScore: number | null;
+  confidenceLabel: 'High' | 'Medium' | 'Low' | null;
 }) {
   if (!player) {
     return (
@@ -1013,7 +946,7 @@ function DetailPanel({
 
   const stat = player.stats[statKey];
   const hasProjection = stat?.projection !== null && stat?.projection !== undefined;
-  const effectiveConfidence = player.isLowConfidence ? 'Low' : lean.confidence;
+  const effectiveConfidence = confidenceLabel ?? lean.confidence;
   const matchupLabel = stat?.matchupFactor === undefined || stat?.matchupFactor === null
     ? 'No factor'
     : stat.matchupFactor > 1.05 ? 'Favorable'
@@ -1085,9 +1018,9 @@ function DetailPanel({
               <small>{statLabel.toLowerCase()}</small>
             </div>
             <div className="edge-meter">
-              <div className="meter-label"><span>Confidence</span><strong>{effectiveConfidence ?? '—'}</strong></div>
-              <div className="meter-track"><span style={{ width: `${effectiveConfidence === 'High' ? 88 : effectiveConfidence === 'Medium' ? 61 : effectiveConfidence === 'Low' ? 34 : 8}%` }} /></div>
-              <div className="meter-note">Relative strength from historical calibration</div>
+              <div className="meter-label"><span>Confidence</span><strong>{confidenceScore === null ? (effectiveConfidence ?? '—') : `${confidenceScore}/100`}</strong></div>
+              <div className="meter-track"><span style={{ width: `${confidenceScore ?? (effectiveConfidence === 'High' ? 88 : effectiveConfidence === 'Medium' ? 61 : effectiveConfidence === 'Low' ? 34 : 8)}%` }} /></div>
+              <div className="meter-note">Continuous relative strength from the current board edge</div>
             </div>
           </div>
 

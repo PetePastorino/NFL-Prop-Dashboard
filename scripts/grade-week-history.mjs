@@ -16,29 +16,6 @@ if (!resultsDir) {
 
 const sourcePath = path.join(repoRoot, 'attached_assets', '0_prop_matchup_dashboard_(1)_1789679044969.jsx');
 const linesPath = path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'initial-prop-lines.ts');
-const confidenceCalibrationPath = path.join(
-  repoRoot,
-  'artifacts',
-  'nfl-prop-dashboard',
-  'src',
-  'data',
-  'confidence-calibration.json',
-);
-const confidenceCalibration = JSON.parse(fs.readFileSync(confidenceCalibrationPath, 'utf8'));
-const calibratedRateValues = Object.values(confidenceCalibration.baseRates).flatMap((byBand) =>
-  Object.values(byBand),
-);
-const minCalibratedRate = Math.min(...calibratedRateValues);
-const maxCalibratedRate = Math.max(...calibratedRateValues);
-
-function strengthScoreFromRate(calibratedRate) {
-  if (maxCalibratedRate <= minCalibratedRate) return 50;
-  return Math.max(
-    0,
-    Math.min(100, Math.round(((calibratedRate - minCalibratedRate) / (maxCalibratedRate - minCalibratedRate)) * 100)),
-  );
-}
-
 function normalized(value) {
   return value
     .toLowerCase()
@@ -268,27 +245,7 @@ function getConfidence(player, stat, line, statKey) {
       confidenceScore,
     };
   }
-  if (lean.lean === 'PASS') return { confidence: 'Low', confidenceScore: 0 };
-  const edgeBand = confidenceCalibration.edgeBands.find(
-    ({ min, max }) => Math.abs(lean.edgePct) >= min && Math.abs(lean.edgePct) < max,
-  )?.key;
-  const calibratedRate = edgeBand
-    ? confidenceCalibration.baseRates[statKey]?.[edgeBand]
-    : undefined;
-  let calibratedHitRate = calibratedRate ?? confidenceCalibration.breakevenPct;
-  if (player.isLowConfidence || stat.lowConfidence) {
-    calibratedHitRate = Math.min(calibratedHitRate, confidenceCalibration.lowHistoryCap);
-  }
-  if (player.injuryStatus) {
-    calibratedHitRate = Math.min(calibratedHitRate, confidenceCalibration.injuryCap);
-  }
-  const confidence = calibratedHitRate >= confidenceCalibration.highThreshold
-    ? 'High'
-    : calibratedHitRate >= confidenceCalibration.mediumThreshold
-      ? 'Medium'
-      : 'Low';
-  const confidenceScore = strengthScoreFromRate(calibratedHitRate);
-  return { confidence, confidenceScore };
+  return { confidence: 'Low', confidenceScore: 0 };
 }
 
 function recordFor(props) {
@@ -303,42 +260,35 @@ function recordFor(props) {
   );
 }
 
-function confidenceTieBreaker(prop) {
-  const relativeEdge = Math.abs(prop.edgePct ?? 0) * 200;
+function continuousEdgeStrength(prop) {
+  if (prop.lean === 'PASS') return 0;
+  const relativeEdge = Math.abs(prop.edgePct ?? 0) / 0.25;
   const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
-  const absoluteEdge = (Math.abs(prop.edge ?? 0) / edgeTarget) * 50;
+  const absoluteEdge = Math.abs(prop.edge ?? 0) / edgeTarget;
   return Math.min(relativeEdge, absoluteEdge);
 }
 
-function directionCalibrationTieBreaker(prop) {
-  const edgePct = Math.abs(prop.edgePct ?? 0);
-  const edgeBand = confidenceCalibration.edgeBands.find(
-    ({ min, max }) => edgePct >= min && edgePct < max,
-  )?.key;
-  if (!edgeBand || prop.lean === 'PASS') return 0;
-  const baseRate = confidenceCalibration.baseRates[prop.statKey]?.[edgeBand];
-  const directionRate = confidenceCalibration.rates[prop.statKey]?.[prop.lean]?.[edgeBand];
-  if (baseRate === undefined || directionRate === undefined) return 0;
-  return Math.max(
-    -confidenceCalibration.directionAdjustmentCap,
-    Math.min(confidenceCalibration.directionAdjustmentCap, directionRate - baseRate),
-  );
+function confidenceLabel(score) {
+  return score >= 72 ? 'High' : score >= 48 ? 'Medium' : 'Low';
 }
 
 function spreadBoardStrengthScores(props) {
   const sorted = [...props].sort((a, b) =>
-    b.confidenceScore - a.confidenceScore
-    || confidenceTieBreaker(b) - confidenceTieBreaker(a)
-    || directionCalibrationTieBreaker(b) - directionCalibrationTieBreaker(a)
+    continuousEdgeStrength(b) - continuousEdgeStrength(a)
     || a.key.localeCompare(b.key),
   );
-  if (sorted.length <= 1) {
-    return sorted.map((prop) => ({ ...prop, confidenceScore: 100 }));
-  }
-  return sorted.map((prop, index) => ({
-    ...prop,
-    confidenceScore: Math.max(1, Math.round(100 - (index / (sorted.length - 1)) * 99)),
-  }));
+  const strongestEdge = Math.max(...sorted.map(continuousEdgeStrength), 0);
+  return sorted.map((prop) => {
+    const strength = continuousEdgeStrength(prop);
+    const confidenceScore = strongestEdge > 0 && strength > 0
+      ? Math.max(1, Math.round((strength / strongestEdge) * 100))
+      : 0;
+    return {
+      ...prop,
+      confidence: confidenceLabel(confidenceScore),
+      confidenceScore,
+    };
+  });
 }
 
 function strongestPropPerPlayer(props) {
