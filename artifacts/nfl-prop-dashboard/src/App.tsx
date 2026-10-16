@@ -227,13 +227,12 @@ function spreadBoardStrengthScores(props: RankedProp[]) {
     continuousEdgeStrength(b) - continuousEdgeStrength(a)
     || a.key.localeCompare(b.key),
   );
-  return sorted.map((prop, index) => {
+  return sorted.map((prop) => {
     const strength = continuousEdgeStrength(prop);
     const baseScore = strength > 0
       ? Math.max(1, Math.round(50 * Math.sqrt(strength)))
       : 0;
-    const liftedScore = Math.min(99, Math.round(baseScore * 1.15));
-    const confidenceScore = index === 0 && strength > 0 ? 100 : liftedScore;
+    const confidenceScore = Math.min(100, Math.round(baseScore * 1.15));
     return {
       ...prop,
       confidence: confidenceLabel(confidenceScore),
@@ -673,7 +672,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Continuous signal strength based on both percentage edge and prop-type-adjusted absolute edge. Scores are anchored to the size of each edge rather than the day’s top pick; the strongest current signal receives 100.</p></div>
+                <div><h2>Confidence board</h2><p>Independent signal strength based on both percentage edge and prop-type-adjusted absolute edge. Every prop uses the same scale, so multiple plays can reach 100 when their own edges warrant it.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
