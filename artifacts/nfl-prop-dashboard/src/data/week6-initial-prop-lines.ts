@@ -393,4 +393,58 @@ Kavontae Turpin Receptions 0.5
 Davis Allen Receptions 0.5
 Brevyn Spann-Ford Receptions 0.5
 Josh Cuevas Receptions 0.5
-Bo Melton Receptions 0.5`;
+Bo Melton Receptions 0.5
+Bo Nix Passing Yards 198.5
+Bo Nix Rushing Yards 13.5
+Trevor Lawrence Passing Yards 227.5
+Trevor Lawrence Rushing Yards 13.5
+Sam Darnold Passing Yards 225.5
+Sam Darnold Rushing Yards 5.5
+CJ Stroud Passing Yards 257.5
+CJ Stroud Rushing Yards 9.5
+JK Dobbins Rushing Yards 47.5
+JK Dobbins Receiving Yards 3.5
+JK Dobbins Receptions 1.5
+Bhayshul Tuten Rushing Yards 63.5
+Bhayshul Tuten Receiving Yards 8.5
+Bhayshul Tuten Receptions 1.5
+RJ Harvey Rushing Yards 15.5
+RJ Harvey Receiving Yards 21.5
+RJ Harvey Receptions 3.5
+Woody Marks Rushing Yards 46.5
+Woody Marks Receiving Yards 15.5
+Woody Marks Receptions 2.5
+Emanuel Wilson Rushing Yards 66.5
+Emanuel Wilson Receiving Yards 9.5
+Emanuel Wilson Receptions 1.5
+Chris Rodriguez Rushing Yards 16.5
+Jaxon Smith-Njigba Rushing Yards 0.5
+Jaxon Smith-Njigba Receiving Yards 94.5
+Jaxon Smith-Njigba Receptions 6.5
+Parker Washington Receiving Yards 61.5
+Parker Washington Receptions 4.5
+Jaylen Waddle Receiving Yards 45.5
+Jaylen Waddle Receptions 4.5
+Nico Collins Receiving Yards 73.5
+Nico Collins Receptions 5.5
+Courtland Sutton Receiving Yards 31.5
+Courtland Sutton Receptions 3.5
+Brian Thomas Receiving Yards 18.5
+Brian Thomas Receptions 1.5
+Rashid Shaheed Rushing Yards 1.5
+Rashid Shaheed Receiving Yards 21.5
+Rashid Shaheed Receptions 1.5
+Cooper Kupp Receiving Yards 21.5
+Cooper Kupp Receptions 2.5
+Jakobi Meyers Receiving Yards 33.5
+Jakobi Meyers Receptions 3.5
+Kayshon Boutte Receiving Yards 27.5
+Kayshon Boutte Receptions 2.5
+AJ Barner Receiving Yards 27.5
+AJ Barner Receptions 2.5
+Dalton Schultz Receiving Yards 33.5
+Dalton Schultz Receptions 3.5
+Brenton Strange Receiving Yards 36.5
+Brenton Strange Receptions 3.5
+Evan Engram Receiving Yards 20.5
+Evan Engram Receptions 2.5`;
