@@ -16,6 +16,10 @@ if (!resultsDir) {
 
 const sourcePath = path.join(repoRoot, 'attached_assets', '0_prop_matchup_dashboard_(1)_1789679044969.jsx');
 const linesPath = path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'initial-prop-lines.ts');
+const hybridCalibration = JSON.parse(fs.readFileSync(
+  path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'hybrid-confidence-calibration.json'),
+  'utf8',
+));
 function normalized(value) {
   return value
     .toLowerCase()
@@ -260,36 +264,63 @@ function recordFor(props) {
   );
 }
 
-function continuousEdgeStrength(prop) {
-  if (prop.lean === 'PASS') return 0;
-  const relativeEdge = Math.abs(prop.edgePct ?? 0) / 0.25;
-  const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
-  const absoluteEdge = Math.abs(prop.edge ?? 0) / edgeTarget;
-  if (prop.statKey === 'pass_yards') return (absoluteEdge * 0.7) + (relativeEdge * 0.3);
-  return Math.min(relativeEdge, absoluteEdge);
-}
-
 function confidenceLabel(score) {
   return score >= 72 ? 'High' : score >= 48 ? 'Medium' : 'Low';
 }
 
+function hybridConfidenceScore(prop) {
+  if (prop.lean === 'PASS') return 0;
+  const edge = Math.abs(prop.edge ?? 0);
+  const edgePct = Math.abs(prop.edgePct ?? 0);
+  const propCalibration = hybridCalibration.propMae[prop.statKey] ?? { mean: hybridCalibration.globalMae, count: 0 };
+  const propMae = (
+    propCalibration.count * propCalibration.mean + 60 * hybridCalibration.globalMae
+  ) / (propCalibration.count + 60);
+  const segmentCalibration = hybridCalibration.segmentMae[`${prop.statKey}|${prop.lean}`] ?? { mean: propMae, count: 0 };
+  const expectedError = (
+    segmentCalibration.count * segmentCalibration.mean + 30 * propMae
+  ) / (segmentCalibration.count + 30);
+  const standardizedEdge = edge / Math.max(expectedError, 0.25);
+  const errorAdjustedScore = 100 * (1 - Math.exp(-1.273 * standardizedEdge));
+  const edgeBand = edgePct < 0.10 ? '4-10' : edgePct < 0.18 ? '10-18' : edgePct < 0.30 ? '18-30' : '30+';
+  const reliability = hybridCalibration.reliability[`${prop.statKey}|${prop.lean}|${edgeBand}`] ?? { wins: 0, count: 0 };
+  const reliableRate = (
+    reliability.wins + 40 * hybridCalibration.breakevenRate
+  ) / (reliability.count + 40);
+  const reliabilityScore = Math.max(20, Math.min(80, 50 + 200 * (reliableRate - hybridCalibration.breakevenRate)));
+  const historyScore = Math.min(prop.stat.nPriorGames / 50, 1) * 42;
+  const earlyScore = Math.max(0, Math.min(100, Math.round(
+    Math.min(edgePct * 100, 32) + historyScore + 26
+    - (prop.player.isLowConfidence || prop.stat.lowConfidence ? 18 : 0)
+    - (prop.player.injuryStatus ? 10 : 0),
+  )));
+  let score = 1.08 * (0.45 * earlyScore + 0.35 * errorAdjustedScore + 0.20 * reliabilityScore);
+  const baselines = [prop.stat.priorAvg, prop.stat.priorLast5].filter((value) => Number.isFinite(value));
+  if (baselines.length) {
+    const baseline = baselines.reduce((total, value) => total + value, 0) / baselines.length;
+    const outlierRatio = Math.abs(prop.stat.projection - baseline) / Math.max(expectedError, 0.25);
+    if (outlierRatio > 2.5) score = Math.min(score, 79);
+    else if (outlierRatio > 1.5) score = Math.min(score, 89);
+  }
+  if (reliableRate < 0.50) score = Math.min(score, 71);
+  if (prop.player.isLowConfidence || prop.stat.lowConfidence) score = Math.min(score, 74);
+  if (prop.player.injuryStatus) score = Math.min(score, 79);
+  return Math.round(Math.max(0, Math.min(100, score)));
+}
+
 function spreadBoardStrengthScores(props) {
-  const sorted = [...props].sort((a, b) =>
-    continuousEdgeStrength(b) - continuousEdgeStrength(a)
-    || a.key.localeCompare(b.key),
-  );
-  return sorted.map((prop) => {
-    const strength = continuousEdgeStrength(prop);
-    const baseScore = strength > 0
-      ? Math.max(1, Math.round(50 * Math.sqrt(strength)))
-      : 0;
-    const confidenceScore = Math.min(100, Math.round(baseScore * 1.15));
+  return props.map((prop) => {
+    const confidenceScore = hybridConfidenceScore(prop);
     return {
       ...prop,
       confidence: confidenceLabel(confidenceScore),
       confidenceScore,
     };
-  });
+  }).sort((a, b) =>
+    b.confidenceScore - a.confidenceScore
+    || Math.abs(b.edge ?? 0) - Math.abs(a.edge ?? 0)
+    || a.key.localeCompare(b.key),
+  );
 }
 
 function strongestPropPerPlayer(props) {

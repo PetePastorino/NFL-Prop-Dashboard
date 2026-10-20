@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
+import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
 import { WEEK6_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week6-initial-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
@@ -80,6 +81,17 @@ type Player = {
 type PlayerData = Record<string, Player[]>;
 type Position = 'QB' | 'RB' | 'WR' | 'TE';
 type Lean = 'OVER' | 'UNDER' | 'PASS' | '—';
+type PickLean = 'OVER' | 'UNDER';
+type CalibrationStat = { mean: number; count: number };
+type HybridConfidenceCalibration = {
+  breakevenRate: number;
+  globalMae: number;
+  propMae: Record<string, CalibrationStat>;
+  segmentMae: Record<string, CalibrationStat>;
+  reliability: Record<string, { wins: number; count: number }>;
+  sourceWeeks: number[];
+  sourceRows: number;
+};
 
 const isPlayerUnavailable = (player: Player) =>
   /(?:^|\b)(?:out|doubtful|injured reserve|reserve-ret|ir|pup|nfi|suspended)(?:\b|$)/i.test(
@@ -99,6 +111,7 @@ type RankedProp = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
+const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara']);
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
@@ -133,15 +146,6 @@ const STAT_ALIASES: Record<string, string[]> = {
   rush_yards: ['rushing yards', 'rush yards', 'rush yds', 'rushing yds', 'rush yard'],
   rec_yards: ['receiving yards', 'rec yards', 'receiving yds', 'rec yds', 'rec yard'],
   receptions: ['receptions', 'reception', 'catches', 'catch', 'rec pts', 'recpt'],
-};
-
-// Percentage-only edge scoring becomes unstable for tiny sportsbook lines.
-// Require an edge to be meaningful both proportionally and in market units.
-const CONFIDENCE_EDGE_TARGETS: Record<string, number> = {
-  pass_yards: 30,
-  rush_yards: 15,
-  rec_yards: 15,
-  receptions: 1.5,
 };
 
 function venueLabel(isHome: boolean | null | undefined) {
@@ -209,36 +213,89 @@ function matchupLabel(key: string) {
   return key.split('|').join(' vs ');
 }
 
-function continuousEdgeStrength(prop: RankedProp) {
-  if (prop.lean.lean === 'PASS' || prop.lean.lean === '—') return 0;
-  const relativeEdge = Math.abs(prop.lean.edgePct ?? 0) / 0.25;
-  const edgeTarget = CONFIDENCE_EDGE_TARGETS[prop.statKey] ?? 15;
-  const absoluteEdge = Math.abs(prop.lean.edge ?? 0) / edgeTarget;
-  if (prop.statKey === 'pass_yards') return (absoluteEdge * 0.7) + (relativeEdge * 0.3);
-  return Math.min(relativeEdge, absoluteEdge);
-}
-
 function confidenceLabel(score: number): 'High' | 'Medium' | 'Low' {
   return score >= 72 ? 'High' : score >= 48 ? 'Medium' : 'Low';
 }
 
-function spreadBoardStrengthScores(props: RankedProp[]) {
-  const sorted = [...props].sort((a, b) =>
-    continuousEdgeStrength(b) - continuousEdgeStrength(a)
-    || a.key.localeCompare(b.key),
+function hybridConfidenceScore(prop: RankedProp) {
+  if (prop.lean.lean === 'PASS' || prop.lean.lean === '—') return 0;
+  const edge = Math.abs(prop.lean.edge ?? 0);
+  const edgePct = Math.abs(prop.lean.edgePct ?? 0);
+  const pick = prop.lean.lean as PickLean;
+  const propCalibration = HYBRID_CONFIDENCE.propMae[prop.statKey] ?? {
+    mean: HYBRID_CONFIDENCE.globalMae,
+    count: 0,
+  };
+  const propMae = (
+    propCalibration.count * propCalibration.mean
+    + 60 * HYBRID_CONFIDENCE.globalMae
+  ) / (propCalibration.count + 60);
+  const segmentCalibration = HYBRID_CONFIDENCE.segmentMae[`${prop.statKey}|${pick}`] ?? {
+    mean: propMae,
+    count: 0,
+  };
+  const expectedError = (
+    segmentCalibration.count * segmentCalibration.mean
+    + 30 * propMae
+  ) / (segmentCalibration.count + 30);
+  const standardizedEdge = edge / Math.max(expectedError, 0.25);
+  const errorAdjustedScore = 100 * (1 - Math.exp(-1.273 * standardizedEdge));
+
+  const edgeBand = edgePct < 0.10 ? '4-10' : edgePct < 0.18 ? '10-18' : edgePct < 0.30 ? '18-30' : '30+';
+  const reliability = HYBRID_CONFIDENCE.reliability[`${prop.statKey}|${pick}|${edgeBand}`] ?? {
+    wins: 0,
+    count: 0,
+  };
+  const reliableRate = (
+    reliability.wins + 40 * HYBRID_CONFIDENCE.breakevenRate
+  ) / (reliability.count + 40);
+  const reliabilityScore = Math.max(
+    20,
+    Math.min(80, 50 + 200 * (reliableRate - HYBRID_CONFIDENCE.breakevenRate)),
   );
-  return sorted.map((prop) => {
-    const strength = continuousEdgeStrength(prop);
-    const baseScore = strength > 0
-      ? Math.max(1, Math.round(50 * Math.sqrt(strength)))
-      : 0;
-    const confidenceScore = Math.min(100, Math.round(baseScore * 1.15));
+
+  const historyScore = Math.min(prop.stat.nPriorGames / 50, 1) * 42;
+  const earlyScore = Math.max(0, Math.min(100, Math.round(
+    Math.min(edgePct * 100, 32)
+    + historyScore
+    + 26
+    - (prop.player.isLowConfidence || prop.stat.lowConfidence ? 18 : 0)
+    - (prop.player.injuryStatus ? 10 : 0),
+  )));
+  let score = 1.08 * (
+    0.45 * earlyScore
+    + 0.35 * errorAdjustedScore
+    + 0.20 * reliabilityScore
+  );
+
+  const baselines = [prop.stat.priorAvg, prop.stat.priorLast5].filter(
+    (value): value is number => value !== null && value !== undefined && Number.isFinite(value),
+  );
+  if (baselines.length) {
+    const baseline = baselines.reduce((total, value) => total + value, 0) / baselines.length;
+    const outlierRatio = Math.abs((prop.stat.projection ?? baseline) - baseline) / Math.max(expectedError, 0.25);
+    if (outlierRatio > 2.5) score = Math.min(score, 79);
+    else if (outlierRatio > 1.5) score = Math.min(score, 89);
+  }
+  if (reliableRate < 0.50) score = Math.min(score, 71);
+  if (prop.player.isLowConfidence || prop.stat.lowConfidence) score = Math.min(score, 74);
+  if (prop.player.injuryStatus) score = Math.min(score, 79);
+  return Math.round(Math.max(0, Math.min(100, score)));
+}
+
+function spreadBoardStrengthScores(props: RankedProp[]) {
+  return props.map((prop) => {
+    const confidenceScore = hybridConfidenceScore(prop);
     return {
       ...prop,
       confidence: confidenceLabel(confidenceScore),
       confidenceScore,
     };
-  });
+  }).sort((a, b) =>
+    b.confidenceScore - a.confidenceScore
+    || Math.abs(b.lean.edge ?? 0) - Math.abs(a.lean.edge ?? 0)
+    || a.key.localeCompare(b.key),
+  );
 }
 
 function strongestPropPerPlayer(props: RankedProp[]) {
@@ -672,7 +729,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Independent signal strength based on both percentage edge and prop-type-adjusted absolute edge. Every prop uses the same scale, so multiple plays can reach 100 when their own edges warrant it.</p></div>
+                <div><h2>Confidence board</h2><p>Backtested hybrid signal strength blends edge, normal projection error, player history, market reliability, injuries, and projection stability. Every prop is scored independently; each player appears once.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
@@ -1028,7 +1085,7 @@ function DetailPanel({
             <div className="edge-meter">
               <div className="meter-label"><span>Confidence</span><strong>{confidenceScore === null ? (effectiveConfidence ?? '—') : `${confidenceScore}/100`}</strong></div>
               <div className="meter-track"><span style={{ width: `${confidenceScore ?? (effectiveConfidence === 'High' ? 88 : effectiveConfidence === 'Medium' ? 61 : effectiveConfidence === 'Low' ? 34 : 8)}%` }} /></div>
-              <div className="meter-note">Continuous prop-adjusted strength from this player’s edge</div>
+              <div className="meter-note">Hybrid reliability-adjusted signal strength · 100 means maximum supported signal, not certainty</div>
             </div>
           </div>
 
