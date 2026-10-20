@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
-import { WEEK6_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week6-initial-prop-lines';
+import { WEEK7_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week7-initial-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
   Activity,
@@ -66,6 +66,7 @@ type StatSnapshot = {
   week3Actual?: number | null;
   week4Actual?: number | null;
   week5Actual?: number | null;
+  week6Actual?: number | null;
 };
 
 type Player = {
@@ -111,6 +112,7 @@ type RankedProp = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
+const CURRENT_WEEK_PROJECTIONS_READY = false;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara']);
 
@@ -483,7 +485,7 @@ function AppShell() {
   );
   const lowConfidenceCount = playersForGame.filter((player) => player.isLowConfidence).length;
   const currentWeekCount = playersForGame.filter(
-    (player) => player.stats[statKey]?.week5Actual !== null && player.stats[statKey]?.week5Actual !== undefined,
+    (player) => player.stats[statKey]?.week6Actual !== null && player.stats[statKey]?.week6Actual !== undefined,
   ).length;
 
   const changePosition = (nextPosition: Position) => {
@@ -603,7 +605,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : 'Prop board'}</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week 6 slate</span>
+            <span className="live-indicator"><span /> Week 7 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -630,7 +632,7 @@ function AppShell() {
             </div>
             <div className="overview-stat"><span>Current pool</span><strong>{playersForGame.length}</strong><small>{position} players</small></div>
             <div className="overview-stat"><span>Limited history</span><strong>{lowConfidenceCount}</strong><small>low-confidence flags</small></div>
-            <div className="overview-stat"><span>Week 5 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
+            <div className="overview-stat"><span>Week 6 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
           </section>
 
           <section className="control-deck">
@@ -1010,7 +1012,7 @@ function DetailPanel({
   }
 
   const stat = player.stats[statKey];
-  const hasProjection = stat?.projection !== null && stat?.projection !== undefined;
+  const hasProjection = CURRENT_WEEK_PROJECTIONS_READY && stat?.projection !== null && stat?.projection !== undefined;
   const effectiveConfidence = confidenceLabel ?? lean.confidence;
   const matchupLabel = stat?.matchupFactor === undefined || stat?.matchupFactor === null
     ? 'No factor'
@@ -1167,7 +1169,7 @@ function NoDataPanel({ statLabel }: { statLabel: string }) {
   return (
     <div className="no-data-panel">
       <div className="no-data-icon"><Database size={23} /></div>
-      <div><h3>No {statLabel.toLowerCase()} projection available</h3><p>The loaded dataset does not contain a model projection for this stat. Try another stat type or player while keeping the context above in view.</p></div>
+      <div><h3>Week 7 {statLabel.toLowerCase()} projection pending</h3><p>The Week 7 schedule and Week 6 results are loaded. This panel will activate after the current Week 7 market lines and projection run are added.</p></div>
       <span className="no-data-code">NULL / PROJECTION</span>
     </div>
   );
