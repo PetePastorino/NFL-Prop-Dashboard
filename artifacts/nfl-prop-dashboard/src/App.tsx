@@ -440,7 +440,9 @@ function AppShell() {
   const lineKey = `${position}:${statKey}:${selectedName ?? ''}`;
   const activeLine = lines[lineKey] ?? '';
   const activeStat = activePlayer?.stats[statKey];
-  const lean = leanFromLine(activeStat, activeLine);
+  const lean = CURRENT_WEEK_PROJECTIONS_READY
+    ? leanFromLine(activeStat, activeLine)
+    : { lean: '—' as Lean, confidence: null, edge: null, edgePct: null };
   const rankedProps = useMemo<RankedProp[]>(() => {
     if (!CURRENT_WEEK_PROJECTIONS_READY) return [];
     const props = (Object.entries(PLAYER_DATA) as [Position, Player[]][])
@@ -766,7 +768,7 @@ function AppShell() {
             ) : (
               <div className="confidence-empty">
                 <div className="confidence-empty-icon"><ListFilter size={18} /></div>
-                <div><strong>Your strongest signals will appear here</strong><span>Paste your sportsbook lines above to rank every loaded prop by model confidence.</span></div>
+                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : 'Week 7 projections are being refreshed'}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Paste your sportsbook lines above to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} early lines are loaded. Rankings will activate after the Week 7 projection run.`}</span></div>
               </div>
             )}
           </section>
@@ -950,7 +952,9 @@ function PlayerRow({
   onSelect: () => void;
 }) {
   const stat = player.stats[statKey];
-  const lean = leanFromLine(stat, line);
+  const lean = CURRENT_WEEK_PROJECTIONS_READY
+    ? leanFromLine(stat, line)
+    : { lean: '—' as Lean, confidence: null, edge: null, edgePct: null };
   return (
     <button
       className={`player-row ${active ? 'active' : ''}`}
