@@ -15,7 +15,7 @@ if (!resultsDir) {
 }
 
 const sourcePath = path.join(repoRoot, 'attached_assets', '0_prop_matchup_dashboard_(1)_1789679044969.jsx');
-const linesPath = path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'initial-prop-lines.ts');
+const linesPath = path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'week6-initial-prop-lines.ts');
 const hybridCalibration = JSON.parse(fs.readFileSync(
   path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'hybrid-confidence-calibration.json'),
   'utf8',
@@ -41,7 +41,7 @@ function parsePlayerData(source) {
 }
 
 function parseInitialLines(source) {
-  const match = source.match(/export const INITIAL_PROP_LINES = `([\s\S]*?)`;\s*$/);
+  const match = source.match(/export const \w+ = `([\s\S]*?)`;\s*$/);
   if (!match) throw new Error('Could not locate INITIAL_PROP_LINES.');
   return match[1];
 }
