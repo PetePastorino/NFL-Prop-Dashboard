@@ -72,7 +72,7 @@ type StatSnapshot = {
 type Player = {
   name: string;
   team: string;
-  week2Opp: string;
+  week2Opp: string | null;
   isLowConfidence?: boolean;
   injuryStatus?: string | null;
   injury?: string | null;
@@ -156,6 +156,7 @@ function venueLabel(isHome: boolean | null | undefined) {
 }
 
 function playerMatchupLabel(player: Pick<Player, 'team' | 'week2Opp'>, isHome: boolean | null | undefined) {
+  if (!player.week2Opp) return `${player.team} · BYE`;
   if (isHome === null) return `${player.team} vs ${player.week2Opp}`;
   return isHome ? `${player.week2Opp} @ ${player.team}` : `${player.team} @ ${player.week2Opp}`;
 }
@@ -408,6 +409,7 @@ function AppShell() {
     const keys = new Set(
       (Object.values(PLAYER_DATA) as Player[][])
         .flat()
+        .filter((player) => Boolean(player.week2Opp))
         .map((player) => matchupKey(player)),
     );
     return Array.from(keys)
@@ -1041,7 +1043,7 @@ function DetailPanel({
           <div>
             <div className="detail-kicker">{position} / {statLabel}</div>
             <h2 data-testid="text-selected-player">{player.name}</h2>
-            <div className="detail-context"><strong>{player.team}</strong><span>vs</span><strong>{player.week2Opp}</strong><span className="context-home">{stat?.isHome === true ? <><House size={13} /> Home</> : venueLabel(stat?.isHome)}</span></div>
+            <div className="detail-context">{player.week2Opp ? <><strong>{player.team}</strong><span>vs</span><strong>{player.week2Opp}</strong><span className="context-home">{stat?.isHome === true ? <><House size={13} /> Home</> : venueLabel(stat?.isHome)}</span></> : <><strong>{player.team}</strong><span className="context-home">BYE</span></>}</div>
           </div>
         </div>
         <div className="line-control">
