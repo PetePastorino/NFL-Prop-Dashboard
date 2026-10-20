@@ -1,7 +1,8 @@
 import { readFile } from 'node:fs/promises';
 
 const data = JSON.parse(await readFile('artifacts/nfl-prop-dashboard/src/data/player-data.json', 'utf8'));
-const source = await readFile('artifacts/nfl-prop-dashboard/src/data/week6-initial-prop-lines.ts', 'utf8');
+const sourcePath = process.argv[2] ?? 'artifacts/nfl-prop-dashboard/src/data/week7-initial-prop-lines.ts';
+const source = await readFile(sourcePath, 'utf8');
 const input = source.match(/`([\s\S]*)`/)?.[1] ?? '';
 const positions = ['QB', 'RB', 'WR', 'TE'];
 const players = positions.flatMap((position) => data[position].map((player) => ({ position, player })));
@@ -32,4 +33,4 @@ const duplicates = accepted.filter((key, index) => accepted.indexOf(key) !== ind
 const acceptedByMarket = Object.fromEntries(['pass_yards', 'rush_yards', 'rec_yards', 'receptions']
   .map((market) => [market, accepted.filter((key) => key.includes(`:${market}:`)).length]));
 console.log(JSON.stringify({ total: accepted.length + rejected.length, accepted: accepted.length, acceptedByMarket, rejected, duplicates }, null, 2));
-if (accepted.length !== 275 || rejected.length !== 51 || duplicates.length) process.exitCode = 1;
+if (duplicates.length) process.exitCode = 1;

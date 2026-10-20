@@ -442,6 +442,7 @@ function AppShell() {
   const activeStat = activePlayer?.stats[statKey];
   const lean = leanFromLine(activeStat, activeLine);
   const rankedProps = useMemo<RankedProp[]>(() => {
+    if (!CURRENT_WEEK_PROJECTIONS_READY) return [];
     const props = (Object.entries(PLAYER_DATA) as [Position, Player[]][])
       .flatMap(([entryPosition, roster]) =>
         roster.flatMap((player) =>
