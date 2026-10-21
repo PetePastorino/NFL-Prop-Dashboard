@@ -114,7 +114,7 @@ type RankedProp = {
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
-const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara']);
+const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas']);
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
   QB: [
@@ -761,7 +761,7 @@ function AppShell() {
                       <strong>{prop.player.name}</strong>
                       <span>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</span>
                       {PETES_NO_BET_PLAYERS.has(prop.player.name) && (
-                        <span className="petes-no-bet-badge"><AlertTriangle size={10} /> Pete's no bet</span>
+                        <span className="petes-no-bet-badge"><AlertTriangle size={10} /> Pete's banned list</span>
                       )}
                       {prop.player.injuryStatus && <InjuryBadge status={prop.player.injuryStatus} compact />}
                     </span>
