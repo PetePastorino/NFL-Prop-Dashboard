@@ -155,6 +155,12 @@ function venueLabel(isHome: boolean | null | undefined) {
   return isHome ? 'Home' : 'Away';
 }
 
+function injuryTone(status: string) {
+  if (/questionable/i.test(status)) return 'questionable';
+  if (/\b(out|doubtful|suspended)\b|injured reserve|reserve\/pup|reserve\/nfi|\bir\b|\bpup\b|\bnfi\b/i.test(status)) return 'out';
+  return 'other';
+}
+
 function playerMatchupLabel(player: Pick<Player, 'team' | 'week2Opp'>, isHome: boolean | null | undefined) {
   if (!player.week2Opp) return `${player.team} · BYE`;
   if (isHome === null) return `${player.team} vs ${player.week2Opp}`;
@@ -757,6 +763,7 @@ function AppShell() {
                       {PETES_NO_BET_PLAYERS.has(prop.player.name) && (
                         <span className="petes-no-bet-badge"><AlertTriangle size={10} /> Pete's no bet</span>
                       )}
+                      {prop.player.injuryStatus && <InjuryBadge status={prop.player.injuryStatus} compact />}
                     </span>
                     <span className="ranking-line">{prop.line}</span>
                     <LeanPill lean={prop.lean.lean} confidence={prop.confidence} compact />
@@ -970,6 +977,7 @@ function PlayerRow({
       </span>
       <span className="player-row-right">
         {lean.lean !== '—' && <LeanPill lean={lean.lean} compact />}
+        {player.injuryStatus && <InjuryBadge status={player.injuryStatus} compact />}
         {player.isLowConfidence && <span className="tiny-flag">Limited</span>}
         {active && <span className="active-arrow"><ArrowUpRight size={14} /></span>}
       </span>
@@ -982,6 +990,14 @@ function LeanPill({ lean, confidence, compact = false }: { lean: Lean; confidenc
   return (
     <span className={`lean-pill lean-${lean.toLowerCase()} ${compact ? 'compact' : ''}`} data-testid={`status-lean-${lean.toLowerCase()}`}>
       {icon}<b>{lean}</b>{confidence && <small>{confidence}</small>}
+    </span>
+  );
+}
+
+function InjuryBadge({ status, compact = false }: { status: string; compact?: boolean }) {
+  return (
+    <span className={`injury-badge injury-${injuryTone(status)} ${compact ? 'compact' : ''}`}>
+      <AlertTriangle size={compact ? 10 : 13} /> {status}
     </span>
   );
 }
@@ -1071,7 +1087,7 @@ function DetailPanel({
       </div>
 
       <div className="detail-alerts">
-        {player.injuryStatus && <span className="alert-chip injury"><AlertTriangle size={13} /> {player.injuryStatus}</span>}
+        {player.injuryStatus && <InjuryBadge status={player.injuryStatus} />}
         {player.isLowConfidence && <span className="alert-chip limited"><Gauge size={13} /> Limited history · {stat?.nPriorGames ?? 0} games</span>}
         {!player.injuryStatus && !player.isLowConfidence && <span className="alert-chip clear"><Sparkles size={13} /> Full-history signal</span>}
       </div>

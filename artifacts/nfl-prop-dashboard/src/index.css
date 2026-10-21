@@ -1233,3 +1233,44 @@ select option { color: #fff; background: #0e2a3f; }
 .main-canvas .result-pill.win { color: #04121c !important; background: #2ee59d; }
 .main-canvas .result-pill.loss { color: #fff !important; background: #d83f4c; }
 .main-canvas .result-pill.push { color: #04121c !important; background: #ffc14d; }
+
+/* Injury status must stay readable over the global white-text treatment. */
+.main-canvas .injury-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-family: var(--app-font-mono);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .035em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.main-canvas .injury-badge.compact {
+  gap: 3px;
+  padding: 3px 6px;
+  border-radius: 999px;
+  font-size: 7px;
+}
+.main-canvas .injury-badge.injury-out,
+.main-canvas .injury-badge.injury-out :where(svg, span) {
+  color: #04121c !important;
+  border-color: #ff6b6b;
+  background: #ff6b6b;
+}
+.main-canvas .injury-badge.injury-questionable,
+.main-canvas .injury-badge.injury-questionable :where(svg, span) {
+  color: #04121c !important;
+  border-color: #ffc14d;
+  background: #ffc14d;
+}
+.main-canvas .injury-badge.injury-other,
+.main-canvas .injury-badge.injury-other :where(svg, span) {
+  color: #04121c !important;
+  border-color: #b8c7d6;
+  background: #b8c7d6;
+}
