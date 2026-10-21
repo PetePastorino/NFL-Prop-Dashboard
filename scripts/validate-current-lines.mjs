@@ -3,7 +3,18 @@ import { readFile } from 'node:fs/promises';
 const data = JSON.parse(await readFile('artifacts/nfl-prop-dashboard/src/data/player-data.json', 'utf8'));
 const sourcePath = process.argv[2] ?? 'artifacts/nfl-prop-dashboard/src/data/week7-initial-prop-lines.ts';
 const source = await readFile(sourcePath, 'utf8');
-const input = source.match(/`([\s\S]*)`/)?.[1] ?? '';
+const literalInput = source.match(/export const \w+\s*=\s*`([\s\S]*?)`/)?.[1];
+const generatedSections = [
+  ['passing', 'Passing Yards'],
+  ['rushing', 'Rushing Yards'],
+  ['receiving', 'Receiving Yards'],
+  ['receptions', 'Receptions'],
+].flatMap(([name, market]) => {
+  const body = source.match(new RegExp(`const ${name}: Line\\[\\] = \\[([\\s\\S]*?)\\n\\];`))?.[1] ?? '';
+  return [...body.matchAll(/\[(['"])(.*?)\1\s*,\s*(\d+(?:\.\d+)?)\]/g)]
+    .map(([, , player, line]) => `${player} ${market} ${line}`);
+});
+const input = literalInput ?? generatedSections.join('\n');
 const positions = ['QB', 'RB', 'WR', 'TE'];
 const players = positions.flatMap((position) => data[position].map((player) => ({ position, player })));
 const normalize = (value) => value.toLowerCase().replace(/[.'’]/g, '').replace(/\b(jr|sr|ii|iii|iv)\b/g, '')

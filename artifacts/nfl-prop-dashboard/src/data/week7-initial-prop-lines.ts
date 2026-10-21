@@ -1,90 +1,20 @@
-export const WEEK7_INITIAL_PROP_LINES = `Jared Goff Passing Yards 279.5
-Jordan Love Passing Yards 277.5
-Drake Maye Passing Yards 249.5
-Caleb Williams Passing Yards 248.5
-Tyler Shough Passing Yards 236.5
-Aaron Rodgers Passing Yards 231.5
-Sam Darnold Passing Yards 225.5
-Patrick Mahomes Passing Yards 224.5
-Jahmyr Gibbs Rushing Yards 92.5
-Kenneth Walker Rushing Yards 91.5
-Jaylen Warren Rushing Yards 65.5
-D'Andre Swift Rushing Yards 61.5
-Kendre Miller Rushing Yards 45.5
-Rhamondre Stevenson Rushing Yards 44.5
-Rico Dowdle Rushing Yards 33.5
-Drake Maye Rushing Yards 29.5
-TreVeyon Henderson Rushing Yards 29.5
-Caleb Williams Rushing Yards 19.5
-Alvin Kamara Rushing Yards 16.5
-Tyler Shough Rushing Yards 12.5
-Aaron Rodgers Rushing Yards 0.5
-Amon-Ra St Brown Receptions 7.5
-Jaxon Smith-Njigba Receptions 6.5
-Sam LaPorta Receptions 5.5
-Chris Olave Receptions 5.5
-Jahmyr Gibbs Receptions 4.5
-Christian Watson Receptions 4.5
-AJ Brown Receptions 4.5
-DK Metcalf Receptions 4.5
-Tucker Kraft Receptions 4.5
-Devaughn Vele Receptions 4.5
-Matthew Golden Receptions 4.5
-Luther Burden Receptions 4.5
-Colston Loveland Receptions 4.5
-Germie Bernard Receptions 4.5
-Jaylen Warren Receptions 3.5
-DeMario Douglas Receptions 3.5
-Jameson Williams Receptions 3.5
-Hunter Henry Receptions 3.5
-Juwan Johnson Receptions 3.5
-Rome Odunze Receptions 3.5
-D'Andre Swift Receptions 2.5
-Alvin Kamara Receptions 2.5
-Rhamondre Stevenson Receptions 2.5
-Kalif Raymond Receptions 2.5
-Rashid Shaheed Receptions 2.5
-Cooper Kupp Receptions 2.5
-AJ Barner Receptions 2.5
-Savion Williams Receptions 2.5
-Cole Kmet Receptions 1.5
-Noah Fant Receptions 1.5
-Efton Chism Receptions 1.5
-Isaac Teslaa Receptions 1.5
-Kyle Williams Receptions 1.5
-Eli Raridon Receptions 1.5
-Jaxon Smith-Njigba Receiving Yards 91.5
-Amon-Ra St Brown Receiving Yards 77.5
-Chris Olave Receiving Yards 75.5
-Matthew Golden Receiving Yards 73.5
-Christian Watson Receiving Yards 72.5
-AJ Brown Receiving Yards 68.5
-Luther Burden Receiving Yards 55.5
-Germie Bernard Receiving Yards 54.5
-Jameson Williams Receiving Yards 52.5
-DK Metcalf Receiving Yards 52.5
-Sam LaPorta Receiving Yards 50.5
-Rome Odunze Receiving Yards 46.5
-Tucker Kraft Receiving Yards 43.5
-Colston Loveland Receiving Yards 43.5
-Devaughn Vele Receiving Yards 41.5
-Jahmyr Gibbs Receiving Yards 38.5
-Hunter Henry Receiving Yards 35.5
-DeMario Douglas Receiving Yards 34.5
-Juwan Johnson Receiving Yards 33.5
-Kalif Raymond Receiving Yards 26.5
-Jaylen Warren Receiving Yards 25.5
-Rashid Shaheed Receiving Yards 25.5
-Cooper Kupp Receiving Yards 24.5
-AJ Barner Receiving Yards 24.5
-Isaac Teslaa Receiving Yards 22.5
-Kyle Williams Receiving Yards 20.5
-D'Andre Swift Receiving Yards 19.5
-Efton Chism Receiving Yards 18.5
-Rhamondre Stevenson Receiving Yards 17.5
-Savion Williams Receiving Yards 17.5
-Eli Raridon Receiving Yards 13.5
-Alvin Kamara Receiving Yards 12.5
-Rico Dowdle Receiving Yards 10.5
-Noah Fant Receiving Yards 10.5
-Cole Kmet Receiving Yards 8.5`;
+type Line = [string, number];
+const lines = (market: string, entries: Line[]) => entries.map(([player, line]) => `${player} ${market} ${line}`).join('\n');
+
+const passing: Line[] = [
+  ['Jared Goff',279.5],['Jordan Love',279.5],['Matthew Stafford',275.5],['Dak Prescott',265.5],['Joe Burrow',259.5],['CJ Stroud',255.5],['Bryce Young',255.5],['Drake Maye',248.5],['Caleb Williams',244.5],['Brock Purdy',240.5],['Jacoby Brissett',238.5],['Kirk Cousins',238.5],['Aaron Rodgers',234.5],['Michael Penix',228.5],['Tyler Shough',227.5],['Sam Darnold',223.5],['Patrick Mahomes',221.5],['Geno Smith',221.5],['Bo Nix',217.5],['Tanner McKee',215.5],['Baker Mayfield',213.5],['JJ McCarthy',205.5],['Kyler Murray',204.5],['Deshaun Watson',204.5],['Daniel Jones',196.5],['Cam Ward',186.5],
+];
+const rushing: Line[] = [
+  ['Jahmyr Gibbs',93.5],['Derrick Henry',87.5],['Kenneth Walker',87.5],['Bijan Robinson',82.5],['Chuba Hubbard',70.5],['Jonathan Taylor',69.5],['Tony Pollard',67.5],['Javonte Williams',66.5],['Bucky Irving',66.5],['Kyren Williams',63.5],['Jaylen Warren',63.5],["D'Andre Swift",61.5],['Christian McCaffrey',59.5],['JK Dobbins',59.5],['Chase Brown',50.5],['Ashton Jeanty',49.5],['Rhamondre Stevenson',42.5],['Josh Jacobs',41.5],['Kendre Miller',40.5],['Blake Corum',37.5],['Rico Dowdle',31.5],['Drake Maye',29.5],['Kaelon Black',28.5],['Brian Robinson',27.5],['TreVeyon Henderson',25.5],['Mike Washington',21.5],['Caleb Williams',19.5],['Brock Purdy',18.5],['Alvin Kamara',16.5],['Tyler Shough',15.5],['Patrick Mahomes',14.5],['Bo Nix',11.5],['CJ Stroud',9.5],['Emmett Johnson',8.5],['Sam Darnold',5.5],['Aaron Rodgers',1.5],['Michael Penix',1.5],
+];
+const receiving: Line[] = [
+  ['Puka Nacua',97.5],['Jaxon Smith-Njigba',91.5],['Drake London',84.5],['Amon-Ra St Brown',81.5],['Ceedee Lamb',81.5],["Ja'Marr Chase",79.5],['Christian Watson',76.5],['Chris Olave',75.5],['Justin Jefferson',74.5],['Matthew Golden',73.5],['Brock Bowers',70.5],['Malik Nabers',70.5],['Tetairoa McMillan',70.5],['Nico Collins',69.5],['AJ Brown',69.5],['George Kittle',68.5],['Trey McBride',65.5],['Jalen Coker',65.5],['Tee Higgins',62.5],['George Pickens',61.5],['Garrett Wilson',59.5],['DK Metcalf',58.5],['Luther Burden',57.5],['Jaylen Waddle',55.5],['Germie Bernard',54.5],['Jameson Williams',53.5],['Carnell Tate',52.5],['Sam LaPorta',51.5],['Denzel Boston',50.5],['Isaiah Likely',49.5],['Tucker Kraft',49.5],['Michael Wilson',48.5],['Travis Kelce',46.5],['Colston Loveland',45.5],['Rome Odunze',44.5],['Jordan Addison',43.5],['Christian McCaffrey',42.5],['Dallas Goedert',42.5],['Devaughn Vele',41.5],['Tre Tucker',40.5],['DeMario Douglas',38.5],['KC Concepcion',38.5],['Jahmyr Gibbs',37.5],['Kendrick Bourne',36.5],['Tyler Higbee',36.5],["Wan'Dale Robinson",35.5],['Courtland Sutton',35.5],['Hunter Henry',35.5],['Kyle Pitts',34.5],['Juwan Johnson',33.5],['Dalton Schultz',32.5],['Ryan Flournoy',31.5],['Marvin Harrison',30.5],['Harold Fannin',30.5],['Michael Mayer',29.5],['Jahan Dotson',28.5],['Jaylen Warren',27.5],['Kalif Raymond',25.5],['Rashid Shaheed',25.5],['Bijan Robinson',24.5],['Cooper Kupp',24.5],['AJ Barner',24.5],['Ashton Jeanty',24.5],['Kyren Williams',23.5],['Isaac Teslaa',23.5],['Jaylin Noel',23.5],['Mason Taylor',23.5],['Evan Engram',22.5],['Darren Waller',22.5],['Savion Williams',22.5],['Malachi Fields',21.5],['Kenyon Sadiq',21.5],['Kenneth Walker',19.5],['Rhamondre Stevenson',19.5],['Jake Ferguson',19.5],['Colby Parkinson',19.5],['Efton Chism',19.5],['Kyle Williams',19.5],['Konata Mumpfield',18.5],["D'Andre Swift",17.5],['Jalen Brooks',17.5],['Jonathan Taylor',16.5],['Tommy Tremble',16.5],['Elijah Higgins',15.5],['Troy Franklin',15.5],['Eli Raridon',14.5],['Chuba Hubbard',12.5],['Javonte Williams',12.5],['Alvin Kamara',12.5],['Marvin Mims',12.5],['Kayshon Boutte',12.5],['Noah Fant',11.5],['Tory Horton',11.5],['Rico Dowdle',10.5],['Xavier Hutchinson',10.5],['Foster Moreau',9.5],['Tyrone Tracy',9.5],['Tank Dell',8.5],['Cole Kmet',8.5],['Devin Singletary',7.5],['Blake Corum',7.5],['TreVeyon Henderson',3.5],
+];
+const receptions: Line[] = [
+  ["Ja'Marr Chase",7.5],['Amon-Ra St Brown',7.5],['Puka Nacua',7.5],['Trey McBride',7.5],['Ceedee Lamb',6.5],['Jaxon Smith-Njigba',6.5],['Brock Bowers',6.5],['Drake London',5.5],['Justin Jefferson',5.5],['Garrett Wilson',5.5],['Christian McCaffrey',5.5],['Jaylen Waddle',5.5],['Sam LaPorta',5.5],['George Kittle',5.5],['Chris Olave',5.5],['Isaiah Likely',5.5],['Malik Nabers',5.5],['Jalen Coker',5.5],['Matthew Golden',5.5],['Tetairoa McMillan',5.5],['Germie Bernard',5.5],['Jahmyr Gibbs',4.5],["Wan'Dale Robinson",4.5],['George Pickens',4.5],['Christian Watson',4.5],['Nico Collins',4.5],['Dallas Goedert',4.5],['AJ Brown',4.5],['DK Metcalf',4.5],['Travis Kelce',4.5],['Tee Higgins',4.5],['Michael Wilson',4.5],['Tucker Kraft',4.5],['Luther Burden',4.5],['KC Concepcion',4.5],['Carnell Tate',4.5],['Kyren Williams',3.5],['Bijan Robinson',3.5],['Kenneth Walker',3.5],['Jaylen Warren',3.5],['Tre Tucker',3.5],['DeMario Douglas',3.5],['Jameson Williams',3.5],['Kendrick Bourne',3.5],['Jordan Addison',3.5],['Kyle Pitts',3.5],['Courtland Sutton',3.5],['Dalton Schultz',3.5],['Tyler Higbee',3.5],['Hunter Henry',3.5],['Juwan Johnson',3.5],['Michael Mayer',3.5],['Devaughn Vele',3.5],['Rome Odunze',3.5],['Ryan Flournoy',3.5],['Ashton Jeanty',3.5],['Colston Loveland',3.5],['Harold Fannin',3.5],['Denzel Boston',3.5],["D'Andre Swift",2.5],['Chuba Hubbard',2.5],['Javonte Williams',2.5],['Jonathan Taylor',2.5],['Alvin Kamara',2.5],['Rhamondre Stevenson',2.5],['Kalif Raymond',2.5],['Rashid Shaheed',2.5],['Cooper Kupp',2.5],['Evan Engram',2.5],['Jake Ferguson',2.5],['Darren Waller',2.5],['Jahan Dotson',2.5],['Colby Parkinson',2.5],['Tommy Tremble',2.5],['Marvin Harrison',2.5],['AJ Barner',2.5],['Savion Williams',2.5],['Jaylin Noel',2.5],['Mason Taylor',2.5],['Malachi Fields',2.5],['Kenyon Sadiq',2.5],['Devin Singletary',1.5],['Tank Dell',1.5],['Rico Dowdle',1.5],['Xavier Hutchinson',1.5],['Marvin Mims',1.5],['Cole Kmet',1.5],['Noah Fant',1.5],['Foster Moreau',1.5],['Elijah Higgins',1.5],['Jalen Brooks',1.5],['Kayshon Boutte',1.5],['Tyrone Tracy',1.5],['Blake Corum',1.5],['Troy Franklin',1.5],['Tory Horton',1.5],['Konata Mumpfield',1.5],['Efton Chism',1.5],['Isaac Teslaa',1.5],['Kyle Williams',1.5],['Eli Raridon',1.5],['TreVeyon Henderson',0.5],
+];
+
+export const WEEK7_INITIAL_PROP_LINES = [
+  lines('Passing Yards', passing), lines('Rushing Yards', rushing),
+  lines('Receiving Yards', receiving), lines('Receptions', receptions),
+].join('\n');
