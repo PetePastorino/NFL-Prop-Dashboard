@@ -1221,6 +1221,14 @@ select option { color: #fff; background: #0e2a3f; }
   background: #000;
   border: 1px solid #2a4a66;
 }
+.main-canvas .tiny-flag,
+.main-canvas .alert-chip.limited,
+.main-canvas .alert-chip.limited :where(svg, span) {
+  color: #04121c !important;
+  background: #ffc14d;
+  border-color: #ffc14d;
+  font-weight: 800;
+}
 .main-canvas .result-pill {
   min-width: 50px;
   padding: 5px 8px;
