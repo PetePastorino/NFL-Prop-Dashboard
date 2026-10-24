@@ -10,7 +10,9 @@ const generatedSections = [
   ['receiving', 'Receiving Yards'],
   ['receptions', 'Receptions'],
 ].flatMap(([name, market]) => {
-  const body = source.match(new RegExp(`const ${name}: Line\\[\\] = \\[([\\s\\S]*?)\\n\\];`))?.[1] ?? '';
+  const arrayBody = source.match(new RegExp(`const ${name}: Line\\[\\] = \\[([\\s\\S]*?)\\n\\];`))?.[1] ?? '';
+  const pushedBodies = [...source.matchAll(new RegExp(`${name}\\.push\\(([\\s\\S]*?)\\);`, 'g'))].map((match) => match[1]);
+  const body = [arrayBody, ...pushedBodies].join(',');
   return [...body.matchAll(/\[(['"])(.*?)\1\s*,\s*(\d+(?:\.\d+)?)\]/g)]
     .map(([, , player, line]) => `${player} ${market} ${line}`);
 });
