@@ -59,7 +59,7 @@
       "week2Opp": "CAR",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 21: Mayfield (right thumb) was a full practice participant Wednesday, Scott Smith of the Buccaneers' official site reports.",
+      "injury": "Oct 23: Head coach Todd Bowles said Friday that Mayfield (right thumb) is ready for Sunday's game at Carolina, Greg Auman of Fox Sports reports.",
       "stats": {
         "pass_yards": {
           "projection": 186.6,
@@ -105,8 +105,8 @@
       "team": "GNB",
       "week2Opp": "DET",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Love was listed as a limited participant on Wednesday's practice estimate due to a back injury, Matt Schneidman of The Athletic reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "pass_yards": {
           "projection": 289.3,
@@ -921,8 +921,8 @@
       "team": "BAL",
       "week2Opp": "CIN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Ravens head coach Jesse Minter said that Jackson got some \"limited\" work in with the team during Wednesday's practice, Ryan Mink of the Ravens' official site reports.",
+      "injuryStatus": "Out",
+      "injury": "Oct 24: Jackson (ankle) has been downgraded to out for Sunday's game against the Bengals.",
       "stats": {
         "pass_yards": {
           "projection": 290.9,
@@ -1751,8 +1751,8 @@
       "team": "SEA",
       "week2Opp": "KAN",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 23: Lock (elbow) is listed as questionable ahead of Sunday's game against the Chiefs, John Boyle of the Seahawks' official site reports.",
       "stats": {
         "pass_yards": {
           "projection": 199.6,
@@ -1850,7 +1850,7 @@
       "week2Opp": "MIA",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 21: Jets head coach Aaron Glenn said that Hall (quadriceps) won't practice Wednesday but hasn't been ruled out from playing Sunday versus the Dolphins, Al Iannazzone of Newsday reports.",
+      "injury": "Oct 23: Hall (quadriceps) is listed as questionable for Sunday's game against the Dolphins, Brian Costello of the New York Post reports.",
       "stats": {
         "rush_yards": {
           "projection": 59,
@@ -2138,7 +2138,7 @@
       "week2Opp": "DAL",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Oct 24: Barkley (hamstring) is listed as questionable for Monday's game against the Cowboys.",
       "stats": {
         "rush_yards": {
           "projection": 51.6,
@@ -2506,8 +2506,8 @@
       "team": "CLE",
       "week2Opp": "TEN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Judkins (ankle) was a limited participant in Wednesday's practice, Chris Easterling of the Akron Beacon Journal reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 43.5,
@@ -2578,8 +2578,8 @@
       "team": "TAM",
       "week2Opp": "CAR",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Irving (illness) did not practice Wednesday, Greg Auman of Fox Sports reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 68.5,
@@ -2722,8 +2722,8 @@
       "team": "HOU",
       "week2Opp": "NYG",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Montgomery (groin) isn't practicing Wednesday, Aaron Wilson of KPRC 2 Houston reports.",
+      "injuryStatus": "Out",
+      "injury": "Oct 23: Montgomery (groin) has been ruled out for Sunday's game against the Giants, Adam Caplan of SiriusXM NFL Radio reports.",
       "stats": {
         "rush_yards": {
           "projection": 38.9,
@@ -3794,8 +3794,8 @@
       "team": "PIT",
       "week2Opp": "NOR",
       "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 23: Dowdle (knee) was a limited participant in Friday's practice and is listed as questionable for Sunday's game against the Saints in Paris, NFL insider Adam Caplan reports.",
       "stats": {
         "rush_yards": {
           "projection": 41.7,
@@ -3860,8 +3860,8 @@
       "team": "MIN",
       "week2Opp": "IND",
       "isLowConfidence": false,
-      "injuryStatus": "Injured Reserve",
-      "injury": "Oct 21: Head coach Kevin O'Connell said that Mason (thumb) is expected to practice Wednesday, Alec Lewis of The Athletic reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 56.4,
@@ -4405,8 +4405,8 @@
       "team": "ARI",
       "week2Opp": "DEN",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Love (ankle) will not practice Wednesday, per Dani Sureck of the Cardinals' official site.",
+      "injuryStatus": "Out",
+      "injury": "Oct 23: Head coach Mike LaFleur said Friday that Love (ankle) won't play Sunday against the Broncos, Darren Urban of the Cardinals' official site reports.",
       "stats": {
         "rush_yards": {
           "projection": 44,
@@ -4552,8 +4552,8 @@
       "team": "TEN",
       "week2Opp": "CLE",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 23: Spears (knee) is listed as questionable for Sunday's game against the Browns, Jim Wyatt of the Titans' official site reports.",
       "stats": {
         "rush_yards": {
           "projection": 13.1,
@@ -4912,7 +4912,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 24.7,
+          "projection": 25.9,
           "rawProjection": 35,
           "lowConfidence": false,
           "nPriorGames": 6,
@@ -4929,8 +4929,8 @@
           "week6Actual": 38,
           "projectionBeforeRoleAdjustment": 30.2,
           "currentSeasonAvg": 26.2,
-          "currentDepthRole": "RB2",
-          "currentSeasonWeight": 0.85,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.7,
           "appliedGameEnvFactor": 0.9
         },
         "rec_yards": {
@@ -4983,8 +4983,8 @@
       "team": "ATL",
       "week2Opp": "SFO",
       "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Out",
+      "injury": "Oct 23: Robinson (hamstring) has been ruled out for Sunday's game against the 49ers, Will McFadden of the Falcons' official site reports.",
       "stats": {
         "rush_yards": {
           "projection": 38.5,
@@ -5134,7 +5134,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 41.6,
+          "projection": 45.6,
           "rawProjection": 58.5,
           "lowConfidence": false,
           "nPriorGames": 22,
@@ -5151,8 +5151,8 @@
           "week6Actual": 56,
           "projectionBeforeRoleAdjustment": 67.8,
           "currentSeasonAvg": 34.2,
-          "currentDepthRole": "RB2",
-          "currentSeasonWeight": 0.85,
+          "currentDepthRole": "RB1",
+          "currentSeasonWeight": 0.7,
           "appliedGameEnvFactor": 1.1
         },
         "rec_yards": {
@@ -5483,8 +5483,8 @@
       "team": "LAR",
       "week2Opp": "LVR",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Oct 23: Nacua (calf) won't practice Friday and will be listed as questionable for Sunday's game at Las Vegas, Sarah Barshop of ESPN.com reports.",
       "stats": {
         "rec_yards": {
           "projection": 109.4,
@@ -5775,8 +5775,8 @@
       "team": "GNB",
       "week2Opp": "DET",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Watson was listed as a limited participant on Wednesday's practice estimate due to an ankle injury, Matt Schneidman of The Athletic reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 83.3,
@@ -5983,8 +5983,8 @@
       "team": "SFO",
       "week2Opp": "ATL",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Head coach Kyle Shanahan said that Evans (Achilles) isn't expected to practice Wednesday, Nick Wagoner of ESPN.com reports.",
+      "injuryStatus": "Out",
+      "injury": "Oct 23: Evans (Achilles) is out for Sunday's game against the Falcons, Matt Barrows of The Athletic reports.",
       "stats": {
         "rec_yards": {
           "projection": 84.8,
@@ -6089,8 +6089,8 @@
       "team": "KAN",
       "week2Opp": "SEA",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Chiefs head coach Andy Reid said that Rice (hamstring/knee) won't practice Wednesday, Nate Taylor of ESPN.com reports.",
+      "injuryStatus": "Out",
+      "injury": "Oct 23: Rice (hamstring/knee) was not present during the portion of Friday's practice open to the media, Pete Sweeney of The Kansas City Star reports.",
       "stats": {
         "rec_yards": {
           "projection": 47.4,
@@ -6137,7 +6137,7 @@
       "week2Opp": "ATL",
       "isLowConfidence": false,
       "injuryStatus": "Out",
-      "injury": "Oct 21: Samuel (hamstring) is not expected to practice Wednesday, Cam Inman of Bay Area News Group reports.",
+      "injury": "Oct 23: Samuel (hamstring) has been ruled out for Sunday's game at Atlanta, Matt Barrows of The Athletic reports.",
       "stats": {
         "rec_yards": {
           "projection": 56,
@@ -6442,8 +6442,8 @@
       "team": "TAM",
       "week2Opp": "CAR",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Egbuka (concussion/foot) was a non-participant in Wednesday's practice, Scott Smith of the Buccaneers' official site reports.",
+      "injuryStatus": "Out",
+      "injury": "Oct 23: Egbuka (concussion) has been ruled out for Sunday's game against the Panthers, Greg Auman of Fox Sports reports.",
       "stats": {
         "rec_yards": {
           "projection": 35.7,
@@ -6993,8 +6993,8 @@
       "team": "MIN",
       "week2Opp": "IND",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Head coach Kevin O'Connell said Addison (hamstring) will participate in practice Wednesday, Alec Lewis of The Athletic reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 44.6,
@@ -7089,8 +7089,8 @@
       "team": "PHI",
       "week2Opp": "DAL",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Out",
+      "injury": "Oct 24: Smith (hamstring) has been ruled out for Monday's game against the Cowboys.",
       "stats": {
         "rec_yards": {
           "projection": 58.1,
@@ -7658,8 +7658,8 @@
       "team": "BAL",
       "week2Opp": "CIN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Bateman (shoulder) is taking part in Wednesday's practice, Brian Wacker of The Baltimore Sun reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 31.1,
@@ -8015,8 +8015,8 @@
       "team": "PHI",
       "week2Opp": "DAL",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Out",
+      "injury": "Oct 24: Wicks (ankle) has been ruled out for Monday's game versus the Cowboys.",
       "stats": {
         "rec_yards": {
           "projection": 51,
@@ -8150,8 +8150,8 @@
       "team": "GNB",
       "week2Opp": "DET",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Golden (shoulder) was listed as a limited participant on Wednesday's estimated injury report, Matt Schneidman of The Athletic reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 73.2,
@@ -8517,8 +8517,8 @@
       "team": "CLE",
       "week2Opp": "TEN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Concepcion (calf, quad) was a limited participant in Wednesday's practice, Chris Easterling of the Akron Beacon Journal reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 41,
@@ -8570,8 +8570,8 @@
       "team": "CLE",
       "week2Opp": "TEN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Boston (foot) was a limited participant at Wednesday's practice, Chris Easterling of the Akron Beacon Journal reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 56.3,
@@ -9412,8 +9412,8 @@
       "team": "MIN",
       "week2Opp": "IND",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Head coach Kevin O'Connell said that Hockenson (concussion) is expected to practice Wednesday, Alec Lewis of The Athletic reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 44.7,
@@ -10036,8 +10036,8 @@
       "team": "IND",
       "week2Opp": "MIN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 21: Warren (groin) did not practice Wednesday.",
+      "injuryStatus": "Out",
+      "injury": "Oct 23: Warren (groin) is ruled out for Sunday's game against the Vikings, FOX59's Mike Chappell reports.",
       "stats": {
         "rec_yards": {
           "projection": 30.9,
