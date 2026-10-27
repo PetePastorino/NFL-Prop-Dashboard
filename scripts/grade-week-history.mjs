@@ -4,13 +4,15 @@ import { execFileSync } from 'node:child_process';
 
 const repoRoot = path.resolve(import.meta.dirname, '..');
 const resultsDir = process.argv[2];
-const projectionsPath = process.argv[3];
+const projectionsPath = process.argv[3]?.startsWith('--') ? undefined : process.argv[3];
 const gitRefFlag = process.argv.indexOf('--git-ref');
 const gitRef = gitRefFlag >= 0 ? process.argv[gitRefFlag + 1] : undefined;
+const linesFileFlag = process.argv.indexOf('--lines-file');
+const linesFile = linesFileFlag >= 0 ? process.argv[linesFileFlag + 1] : undefined;
 let useLegacyConfidence = false;
 
 if (!resultsDir) {
-  console.error('Usage: node scripts/grade-week-history.mjs <results-directory> [projections-json] [--git-ref <ref>]');
+  console.error('Usage: node scripts/grade-week-history.mjs <results-directory> [projections-json] [--git-ref <ref>] [--lines-file <path>]');
   process.exit(1);
 }
 
@@ -42,8 +44,22 @@ function parsePlayerData(source) {
 
 function parseInitialLines(source) {
   const match = source.match(/export const \w+ = `([\s\S]*?)`;\s*$/);
-  if (!match) throw new Error('Could not locate INITIAL_PROP_LINES.');
-  return match[1];
+  if (match) return match[1];
+
+  const generatedSections = [
+    ['passing', 'Passing Yards'],
+    ['rushing', 'Rushing Yards'],
+    ['receiving', 'Receiving Yards'],
+    ['receptions', 'Receptions'],
+  ].flatMap(([name, market]) => {
+    const arrayBody = source.match(new RegExp(`const ${name}: Line\\[\\] = \\[([\\s\\S]*?)\\n\\];`))?.[1] ?? '';
+    const pushedBodies = [...source.matchAll(new RegExp(`${name}\\.push\\(([\\s\\S]*?)\\);`, 'g'))]
+      .map((entry) => entry[1]);
+    return [...[arrayBody, ...pushedBodies].join(',').matchAll(/\[(['"])(.*?)\1\s*,\s*(\d+(?:\.\d+)?)\]/g)]
+      .map(([, , player, line]) => `${player} ${market} ${line}`);
+  });
+  if (!generatedSections.length) throw new Error('Could not locate INITIAL_PROP_LINES.');
+  return generatedSections.join('\n');
 }
 
 function readGitFile(filePath) {
@@ -340,8 +356,8 @@ const playerData = gitRef
     : parsePlayerData(fs.readFileSync(sourcePath, 'utf8'));
 const initialLines = parseInitialLines(
   gitRef
-    ? readGitFile('artifacts/nfl-prop-dashboard/src/data/initial-prop-lines.ts')
-    : fs.readFileSync(linesPath, 'utf8'),
+    ? readGitFile(linesFile ?? 'artifacts/nfl-prop-dashboard/src/data/initial-prop-lines.ts')
+    : fs.readFileSync(linesFile ? path.resolve(linesFile) : linesPath, 'utf8'),
 );
 const parsedLines = parseBulkLines(initialLines, playerData);
 const lineMap = new Map(parsedLines.accepted.map(({ key, line }) => [key, line]));
