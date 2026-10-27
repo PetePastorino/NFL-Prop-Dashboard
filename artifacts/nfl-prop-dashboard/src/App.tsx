@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
-import { WEEK7_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week7-initial-prop-lines';
+import { WEEK8_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week8-initial-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
   Activity,
@@ -112,7 +112,7 @@ type RankedProp = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
-const CURRENT_WEEK_PROJECTIONS_READY = true;
+const CURRENT_WEEK_PROJECTIONS_READY = false;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas']);
 
@@ -616,7 +616,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : 'Prop board'}</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week 7 slate</span>
+            <span className="live-indicator"><span /> Week 8 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -775,7 +775,7 @@ function AppShell() {
             ) : (
               <div className="confidence-empty">
                 <div className="confidence-empty-icon"><ListFilter size={18} /></div>
-                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : 'Week 7 projections are being refreshed'}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Paste your sportsbook lines above to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} early lines are loaded. Rankings will activate after the Week 7 projection run.`}</span></div>
+                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : 'Week 8 projections are being refreshed'}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Paste your sportsbook lines above to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} early lines are loaded. Rankings will activate after the Week 8 projection run.`}</span></div>
               </div>
             )}
           </section>
@@ -1192,7 +1192,7 @@ function NoDataPanel({ statLabel }: { statLabel: string }) {
   return (
     <div className="no-data-panel">
       <div className="no-data-icon"><Database size={23} /></div>
-      <div><h3>Week 7 {statLabel.toLowerCase()} projection pending</h3><p>The Week 7 schedule and Week 6 results are loaded. This panel will activate after the current Week 7 market lines and projection run are added.</p></div>
+      <div><h3>Week 8 {statLabel.toLowerCase()} projection pending</h3><p>The Week 8 schedule and Week 7 results are loaded. This panel will activate after the current Week 8 market lines and projection run are added.</p></div>
       <span className="no-data-code">NULL / PROJECTION</span>
     </div>
   );

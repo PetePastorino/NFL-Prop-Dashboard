@@ -1,0 +1,20 @@
+{
+  "week": 8,
+  "season": 2026,
+  "games": [
+    { "away": "CAR", "home": "GNB", "date": "2026-10-29", "time": "8:15 PM", "network": "Prime Video", "site": "Lambeau Field, Green Bay, WI", "line": "GNB -3.5", "total": 48.5 },
+    { "away": "BAL", "home": "BUF", "date": "2026-11-01", "time": "1:00 PM", "network": "CBS", "site": "Highmark Stadium, Orchard Park, NY", "line": "BUF -3.5", "total": 53.5 },
+    { "away": "TEN", "home": "CIN", "date": "2026-11-01", "time": "1:00 PM", "network": "CBS", "site": "Paycor Stadium, Cincinnati, OH", "line": "CIN -10", "total": 46.5 },
+    { "away": "ARI", "home": "DAL", "date": "2026-11-01", "time": "1:00 PM", "network": "FOX", "site": "AT&T Stadium, Arlington, TX", "line": "DAL -6.5", "total": 54.5 },
+    { "away": "MIN", "home": "DET", "date": "2026-11-01", "time": "1:00 PM", "network": "FOX", "site": "Ford Field, Detroit, MI", "line": "DET -3", "total": 46.5 },
+    { "away": "LVR", "home": "NYJ", "date": "2026-11-01", "time": "1:00 PM", "network": "FOX", "site": "MetLife Stadium, East Rutherford, NJ", "line": "LVR -1.5", "total": 45.5 },
+    { "away": "CLE", "home": "PIT", "date": "2026-11-01", "time": "1:00 PM", "network": "CBS", "site": "Acrisure Stadium, Pittsburgh, PA", "line": "PIT -3.5", "total": 39.5 },
+    { "away": "ATL", "home": "TAM", "date": "2026-11-01", "time": "1:00 PM", "network": "FOX", "site": "Raymond James Stadium, Tampa, FL", "line": "TAM -2.5", "total": 46.5 },
+    { "away": "IND", "home": "JAX", "date": "2026-11-01", "time": "1:00 PM", "network": "CBS", "site": "EverBank Stadium, Jacksonville, FL", "line": "JAX -8.5", "total": 46.5 },
+    { "away": "LAC", "home": "LAR", "date": "2026-11-01", "time": "4:05 PM", "network": "FOX", "site": "SoFi Stadium, Inglewood, CA", "line": "LAR -6.5", "total": 44.5 },
+    { "away": "KAN", "home": "DEN", "date": "2026-11-01", "time": "4:25 PM", "network": "CBS", "site": "Empower Field at Mile High, Denver, CO", "line": "KAN -1.5", "total": 41.5 },
+    { "away": "NWE", "home": "MIA", "date": "2026-11-01", "time": "4:25 PM", "network": "CBS", "site": "Hard Rock Stadium, Miami Gardens, FL", "line": "NWE -7.5", "total": 44.5 },
+    { "away": "PHI", "home": "WAS", "date": "2026-11-01", "time": "8:20 PM", "network": "NBC", "site": "Northwest Stadium, Landover, MD", "line": "WAS -5.5", "total": 40.5 },
+    { "away": "CHI", "home": "SEA", "date": "2026-11-02", "time": "8:15 PM", "network": "ESPN", "site": "Lumen Field, Seattle, WA", "line": "SEA -3", "total": 46.5 }
+  ]
+}
