@@ -9,7 +9,7 @@ const outputPath = resolve('artifacts/nfl-prop-dashboard/src/data/player-data.js
 const data = JSON.parse(await readFile(inputPath, 'utf8'));
 const existing = JSON.parse(await readFile(outputPath, 'utf8'));
 const positions = ['QB', 'RB', 'WR', 'TE'];
-const actualKeys = ['week1Actual', 'week2Actual', 'week3Actual', 'week4Actual', 'week5Actual', 'week6Actual'];
+const actualKeys = ['week1Actual', 'week2Actual', 'week3Actual', 'week4Actual', 'week5Actual', 'week6Actual', 'week7Actual'];
 
 for (const position of positions) {
   if (!Array.isArray(data[position]) || data[position].length === 0) {
@@ -64,7 +64,7 @@ for (const position of positions) {
 const players = positions.flatMap((position) => data[position]);
 const teams = new Set(players.map((player) => player.team));
 const missingOpponents = players.filter((player) => !player.week2Opp);
-const byeTeams = new Set(['BUF', 'JAX', 'LAC', 'WAS']);
+const byeTeams = new Set(['HOU', 'NOR', 'NYG', 'SFO']);
 const invalidMissingOpponents = missingOpponents.filter((player) => !byeTeams.has(player.team));
 const actualCounts = Object.fromEntries(actualKeys.map((actualKey) => [actualKey,
   players.flatMap((player) => Object.values(player.stats ?? {}))
@@ -74,11 +74,11 @@ if (teams.size !== 32) throw new Error(`Expected 32 current teams, found ${teams
 if (invalidMissingOpponents.length) {
   throw new Error(`Missing Week 7 opponents for ${invalidMissingOpponents.length} non-bye players.`);
 }
-for (const [actualKey, minimum] of Object.entries({ week1Actual: 350, week2Actual: 330, week3Actual: 330, week4Actual: 310, week5Actual: 270, week6Actual: 250 })) {
+for (const [actualKey, minimum] of Object.entries({ week1Actual: 350, week2Actual: 330, week3Actual: 330, week4Actual: 310, week5Actual: 270, week6Actual: 250, week7Actual: 250 })) {
   if (actualCounts[actualKey] < minimum) {
     throw new Error(`${actualKey} coverage is too low: ${actualCounts[actualKey]} stat fields.`);
   }
 }
 
 await writeFile(outputPath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
-console.log(`Imported ${players.length} players across 32 teams with Week 1-6 history. ${missingOpponents.length} players are on the four expected bye teams.`);
+console.log(`Imported ${players.length} players across 32 teams with Week 1-7 history. ${missingOpponents.length} players are on the four expected bye teams.`);

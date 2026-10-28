@@ -67,6 +67,7 @@ type StatSnapshot = {
   week4Actual?: number | null;
   week5Actual?: number | null;
   week6Actual?: number | null;
+  week7Actual?: number | null;
 };
 
 type Player = {
@@ -112,7 +113,7 @@ type RankedProp = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
-const CURRENT_WEEK_PROJECTIONS_READY = false;
+const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
 
@@ -496,7 +497,7 @@ function AppShell() {
   );
   const lowConfidenceCount = playersForGame.filter((player) => player.isLowConfidence).length;
   const currentWeekCount = playersForGame.filter(
-    (player) => player.stats[statKey]?.week6Actual !== null && player.stats[statKey]?.week6Actual !== undefined,
+    (player) => player.stats[statKey]?.week7Actual !== null && player.stats[statKey]?.week7Actual !== undefined,
   ).length;
 
   const changePosition = (nextPosition: Position) => {
@@ -643,7 +644,7 @@ function AppShell() {
             </div>
             <div className="overview-stat"><span>Current pool</span><strong>{playersForGame.length}</strong><small>{position} players</small></div>
             <div className="overview-stat"><span>Limited history</span><strong>{lowConfidenceCount}</strong><small>low-confidence flags</small></div>
-            <div className="overview-stat"><span>Week 6 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
+            <div className="overview-stat"><span>Week 7 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
           </section>
 
           <section className="control-deck">
