@@ -546,6 +546,10 @@ function AppShell() {
     }
     return selected;
   }, [parlayCandidates]);
+  const parlayCandidateChoices = useMemo(
+    () => strongestPropPerPlayer(parlayCandidates),
+    [parlayCandidates],
+  );
   const saferFour = useMemo(() => {
     const targetProbability = 0.77;
     const eligible = parlayCandidates.flatMap<SaferParlayLeg>((prop) => {
@@ -722,6 +726,7 @@ function AppShell() {
           {workspaceView === 'history' ? <HistoryView /> : workspaceView === 'parlays' ? (
             <ParlayView
               bestFour={bestFour}
+              parlayCandidates={parlayCandidateChoices}
               saferFour={saferFour}
               audit={parlayAudit}
               onSelect={(prop) => {
@@ -938,18 +943,25 @@ function AppShell() {
   );
 }
 
-function ParlayLeg({ prop, index, onSelect }: { prop: RankedProp; index: number; onSelect: (prop: RankedProp) => void }) {
+function ParlayLeg({ prop, index, options, onReplace, onSelect }: { prop: RankedProp; index: number; options: RankedProp[]; onReplace: (key: string) => void; onSelect: (prop: RankedProp) => void }) {
   return (
-    <button className="parlay-leg" type="button" onClick={() => onSelect(prop)}>
+    <div className="parlay-leg">
       <span className="parlay-leg-number">{String(index + 1).padStart(2, '0')}</span>
-      <span className="parlay-leg-player">
-        <strong>{prop.player.name}</strong>
-        <span>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</span>
-      </span>
+      <label className="parlay-leg-player">
+        <span>Replace player</span>
+        <select value={prop.key} onChange={(event) => onReplace(event.target.value)} aria-label={`Replace ${prop.player.name} in Best Four`}>
+          {options.map((option) => (
+            <option key={option.key} value={option.key}>
+              {option.player.name} — {option.statLabel} {option.lean.lean} {option.line} ({option.confidenceScore})
+            </option>
+          ))}
+        </select>
+        <small>{prop.position} · {prop.player.team} vs {prop.player.week2Opp}</small>
+      </label>
       <span className="parlay-leg-line">{prop.lean.lean} {prop.line}</span>
       <span className={`parlay-leg-score ${prop.lean.lean === 'OVER' ? 'over' : 'under'}`}>{prop.confidenceScore}<small>/100</small></span>
-      <ArrowUpRight size={14} />
-    </button>
+      <button className="parlay-leg-detail" type="button" onClick={() => onSelect(prop)} aria-label={`View ${prop.player.name} details`}><ArrowUpRight size={14} /></button>
+    </div>
   );
 }
 
@@ -973,13 +985,16 @@ function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
     : `-${Math.round(100 / (decimal - 1))}`;
 }
 
-function ParlayView({ bestFour, saferFour, audit, onSelect }: { bestFour: RankedProp[]; saferFour: SaferParlayLeg[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
+function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: { bestFour: RankedProp[]; parlayCandidates: RankedProp[]; saferFour: SaferParlayLeg[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
   const [selectedAlternateLines, setSelectedAlternateLines] = useState<Record<string, number>>({});
-  const roundRobin = bestFour.length === 4
-    ? bestFour.map((_, omittedIndex) => bestFour.filter((__, index) => index !== omittedIndex))
+  const [selectedBestFourKeys, setSelectedBestFourKeys] = useState<Record<number, string>>({});
+  const candidateByKey = new Map(parlayCandidates.map((prop) => [prop.key, prop]));
+  const displayedBestFour = bestFour.map((defaultProp, index) => candidateByKey.get(selectedBestFourKeys[index]) ?? defaultProp);
+  const roundRobin = displayedBestFour.length === 4
+    ? displayedBestFour.map((_, omittedIndex) => displayedBestFour.filter((__, index) => index !== omittedIndex))
     : [];
-  const averageSignal = bestFour.length
-    ? Math.round(bestFour.reduce((sum, prop) => sum + prop.confidenceScore, 0) / bestFour.length)
+  const averageSignal = displayedBestFour.length
+    ? Math.round(displayedBestFour.reduce((sum, prop) => sum + prop.confidenceScore, 0) / displayedBestFour.length)
     : null;
   const displayedSaferFour = saferFour.map((leg) => {
     const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
@@ -1026,11 +1041,22 @@ function ParlayView({ bestFour, saferFour, audit, onSelect }: { bestFour: Ranked
         <section className="parlay-card best-four-card">
           <div className="parlay-card-heading">
             <div><Trophy size={18} /><span><strong>Best Four</strong><small>Strongest diversified standard-line signals</small></span></div>
-            <div className="parlay-signal"><span>Average signal</span><strong>{averageSignal ?? '—'}<small>/100</small></strong></div>
+            <div className="parlay-heading-actions">
+              <button type="button" onClick={() => setSelectedBestFourKeys({})}>Reset players</button>
+              <div className="parlay-signal"><span>Average signal</span><strong>{averageSignal ?? '—'}<small>/100</small></strong></div>
+            </div>
           </div>
           {bestFour.length === 4 ? (
             <div className="parlay-leg-list">
-              {bestFour.map((prop, index) => <ParlayLeg key={prop.key} prop={prop} index={index} onSelect={onSelect} />)}
+              {displayedBestFour.map((prop, index) => {
+                const otherLegs = displayedBestFour.filter((_, otherIndex) => otherIndex !== index);
+                const options = parlayCandidates.filter((candidate) => candidate.key === prop.key || !otherLegs.some((other) =>
+                  normalized(other.player.name) === normalized(candidate.player.name)
+                  || other.player.team === candidate.player.team
+                  || matchupKey(other.player) === matchupKey(candidate.player),
+                ));
+                return <ParlayLeg key={`${index}:${prop.key}`} prop={prop} index={index} options={options} onReplace={(key) => setSelectedBestFourKeys((current) => ({ ...current, [index]: key }))} onSelect={onSelect} />;
+              })}
             </div>
           ) : (
             <div className="parlay-empty"><AlertTriangle size={20} /><div><strong>Not enough qualified legs</strong><span>The builder found {bestFour.length} of 4 required diversified signals. It will not weaken the safety gates just to fill a ticket.</span></div></div>
@@ -1107,7 +1133,7 @@ function ParlayView({ bestFour, saferFour, audit, onSelect }: { bestFour: Ranked
           <div className="round-robin-grid">
             {roundRobin.map((ticket, index) => (
               <article key={`ticket-${index}`} className="round-robin-ticket">
-                <div><strong>Ticket {String.fromCharCode(65 + index)}</strong><span>Leaves out {bestFour[index].player.name}</span></div>
+                <div><strong>Ticket {String.fromCharCode(65 + index)}</strong><span>Leaves out {displayedBestFour[index].player.name}</span></div>
                 <ol>{ticket.map((prop) => <li key={prop.key}><span>{prop.player.name}</span><strong className={prop.lean.lean === 'OVER' ? 'over' : 'under'}>{prop.lean.lean} {prop.line}</strong></li>)}</ol>
               </article>
             ))}
