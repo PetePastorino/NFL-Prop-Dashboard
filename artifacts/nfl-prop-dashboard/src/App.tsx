@@ -112,6 +112,15 @@ type RankedProp = {
   confidenceScore: number;
 };
 
+type ParlayAudit = {
+  actionable: number;
+  eligible: number;
+  banned: number;
+  injury: number;
+  limited: number;
+  belowThreshold: number;
+};
+
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
@@ -391,7 +400,7 @@ function initials(name: string) {
 }
 
 function AppShell() {
-  const [workspaceView, setWorkspaceView] = useState<'dashboard' | 'history'>('dashboard');
+  const [workspaceView, setWorkspaceView] = useState<'dashboard' | 'parlays' | 'history'>('dashboard');
   const [position, setPosition] = useState<Position>('WR');
   const [statKey, setStatKey] = useState(STAT_TYPES.WR[0].key);
   const [selectedName, setSelectedName] = useState(
@@ -490,6 +499,45 @@ function AppShell() {
     () => strongestPropPerPlayer(gameRankedProps).slice(0, 10),
     [gameRankedProps],
   );
+  const parlayAudit = useMemo<ParlayAudit>(() => {
+    const actionable = rankedProps.filter((prop) => prop.lean.lean !== 'PASS');
+    return actionable.reduce<ParlayAudit>((audit, prop) => {
+      if (PETES_NO_BET_PLAYERS.has(prop.player.name)) audit.banned += 1;
+      else if (prop.player.injuryStatus) audit.injury += 1;
+      else if (prop.player.isLowConfidence || prop.stat.lowConfidence || prop.stat.nPriorGames < 8) audit.limited += 1;
+      else if (prop.confidenceScore < 65) audit.belowThreshold += 1;
+      else audit.eligible += 1;
+      return audit;
+    }, { actionable: actionable.length, eligible: 0, banned: 0, injury: 0, limited: 0, belowThreshold: 0 });
+  }, [rankedProps]);
+  const parlayCandidates = useMemo(
+    () => rankedProps.filter((prop) =>
+      prop.lean.lean !== 'PASS'
+      && prop.confidenceScore >= 65
+      && !PETES_NO_BET_PLAYERS.has(prop.player.name)
+      && !prop.player.injuryStatus
+      && !prop.player.isLowConfidence
+      && !prop.stat.lowConfidence
+      && prop.stat.nPriorGames >= 8,
+    ),
+    [rankedProps],
+  );
+  const bestFour = useMemo(() => {
+    const selected: RankedProp[] = [];
+    const players = new Set<string>();
+    const teams = new Set<string>();
+    const games = new Set<string>();
+    for (const prop of parlayCandidates) {
+      const game = matchupKey(prop.player);
+      if (players.has(prop.player.name) || teams.has(prop.player.team) || games.has(game)) continue;
+      selected.push(prop);
+      players.add(prop.player.name);
+      teams.add(prop.player.team);
+      games.add(game);
+      if (selected.length === 4) break;
+    }
+    return selected;
+  }, [parlayCandidates]);
   const activeRankedProp = rankedProps.find((prop) => prop.key === lineKey);
   const playerCount = Object.values(PLAYER_DATA).reduce(
     (total, roster) => total + roster.length,
@@ -570,6 +618,9 @@ function AppShell() {
           <button className={`side-nav-item ${workspaceView === 'history' ? 'active' : ''}`} type="button" data-testid="button-workspace-history" onClick={() => { setWorkspaceView('history'); setMobileNavOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
             <History size={17} /> History {workspaceView === 'history' && <span className="nav-pip" />}
           </button>
+          <button className={`side-nav-item ${workspaceView === 'parlays' ? 'active' : ''}`} type="button" data-testid="button-workspace-parlays" onClick={() => { setWorkspaceView('parlays'); setMobileNavOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <Trophy size={17} /> Suggested Parlays {workspaceView === 'parlays' && <span className="nav-pip" />}
+          </button>
           <button className="side-nav-item" type="button" data-testid="button-workspace-methodology" onClick={() => { setWorkspaceView('dashboard'); setMobileNavOpen(false); window.setTimeout(() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0); }}>
             <CircleHelp size={17} /> Methodology
           </button>
@@ -615,7 +666,7 @@ function AppShell() {
           >
             <Menu size={20} />
           </button>
-          <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : 'Prop board'}</strong></div>
+          <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : workspaceView === 'parlays' ? 'Suggested parlays' : 'Prop board'}</strong></div>
           <div className="topbar-right">
             <span className="live-indicator"><span /> Week 8 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
@@ -624,7 +675,16 @@ function AppShell() {
         </header>
 
         <div className="content-wrap">
-          {workspaceView === 'history' ? <HistoryView /> : <>
+          {workspaceView === 'history' ? <HistoryView /> : workspaceView === 'parlays' ? (
+            <ParlayView
+              bestFour={bestFour}
+              audit={parlayAudit}
+              onSelect={(prop) => {
+                setWorkspaceView('dashboard');
+                window.setTimeout(() => selectRankedProp(prop), 0);
+              }}
+            />
+          ) : <>
           <section className="intro-row">
             <div>
               <div className="eyebrow"><span className="eyebrow-line" /> MATCHUP LAB / 01</div>
@@ -829,6 +889,112 @@ function AppShell() {
           </>}
         </div>
       </main>
+    </div>
+  );
+}
+
+function ParlayLeg({ prop, index, onSelect }: { prop: RankedProp; index: number; onSelect: (prop: RankedProp) => void }) {
+  return (
+    <button className="parlay-leg" type="button" onClick={() => onSelect(prop)}>
+      <span className="parlay-leg-number">{String(index + 1).padStart(2, '0')}</span>
+      <span className="parlay-leg-player">
+        <strong>{prop.player.name}</strong>
+        <span>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</span>
+      </span>
+      <span className="parlay-leg-line">{prop.lean.lean} {prop.line}</span>
+      <span className={`parlay-leg-score ${prop.lean.lean === 'OVER' ? 'over' : 'under'}`}>{prop.confidenceScore}<small>/100</small></span>
+      <ArrowUpRight size={14} />
+    </button>
+  );
+}
+
+function ParlayView({ bestFour, audit, onSelect }: { bestFour: RankedProp[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
+  const roundRobin = bestFour.length === 4
+    ? bestFour.map((_, omittedIndex) => bestFour.filter((__, index) => index !== omittedIndex))
+    : [];
+  const averageSignal = bestFour.length
+    ? Math.round(bestFour.reduce((sum, prop) => sum + prop.confidenceScore, 0) / bestFour.length)
+    : null;
+
+  return (
+    <div className="parlay-view">
+      <section className="parlay-hero">
+        <div>
+          <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK 8</div>
+          <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
+          <p>Four independent signals can still lose together. This builder favors stable roles, reliable samples, and four different games instead of blindly stacking the highest scores.</p>
+        </div>
+        <div className="parlay-hero-seal">
+          <Shield size={23} />
+          <span>Builder status</span>
+          <strong>{bestFour.length === 4 ? 'READY' : 'LIMITED'}</strong>
+          <small>Standard lines only</small>
+        </div>
+      </section>
+
+      <section className="parlay-rules" aria-label="Parlay eligibility rules">
+        <div><Check size={15} /><span>One player, team, and game per leg</span></div>
+        <div><Check size={15} /><span>No injuries or limited signal</span></div>
+        <div><Check size={15} /><span>Pete's banned list excluded</span></div>
+        <div><Check size={15} /><span>Minimum 65 signal and 8 prior games</span></div>
+      </section>
+
+      <div className="parlay-layout">
+        <section className="parlay-card best-four-card">
+          <div className="parlay-card-heading">
+            <div><Trophy size={18} /><span><strong>Best Four</strong><small>Strongest diversified standard-line signals</small></span></div>
+            <div className="parlay-signal"><span>Average signal</span><strong>{averageSignal ?? '—'}<small>/100</small></strong></div>
+          </div>
+          {bestFour.length === 4 ? (
+            <div className="parlay-leg-list">
+              {bestFour.map((prop, index) => <ParlayLeg key={prop.key} prop={prop} index={index} onSelect={onSelect} />)}
+            </div>
+          ) : (
+            <div className="parlay-empty"><AlertTriangle size={20} /><div><strong>Not enough qualified legs</strong><span>The builder found {bestFour.length} of 4 required diversified signals. It will not weaken the safety gates just to fill a ticket.</span></div></div>
+          )}
+          <div className="parlay-card-note"><AlertTriangle size={14} /><span>Signal scores rank model support; they are not win probabilities. Prices are not loaded, so expected value cannot yet be calculated.</span></div>
+        </section>
+
+        <aside className="parlay-side-stack">
+          <section className="parlay-card safer-four-card">
+            <div className="parlay-card-heading compact"><div><Sparkles size={17} /><span><strong>Safer Four</strong><small>Alternate lines targeting 75–80% per leg</small></span></div></div>
+            <div className="parlay-locked">
+              <Shield size={25} />
+              <strong>Waiting for alternate lines + odds</strong>
+              <span>The dashboard will not invent safer thresholds or value. Add sportsbook prices and alternate lines to unlock this card.</span>
+            </div>
+          </section>
+
+          <section className="parlay-card audit-card">
+            <div className="parlay-card-heading compact"><div><Target size={17} /><span><strong>Eligibility audit</strong><small>{audit.actionable} actionable lines reviewed</small></span></div></div>
+            <dl className="parlay-audit-grid">
+              <div><dt>Qualified</dt><dd>{audit.eligible}</dd></div>
+              <div><dt>Banned</dt><dd>{audit.banned}</dd></div>
+              <div><dt>Injury flag</dt><dd>{audit.injury}</dd></div>
+              <div><dt>Limited sample</dt><dd>{audit.limited}</dd></div>
+              <div><dt>Below 65</dt><dd>{audit.belowThreshold}</dd></div>
+            </dl>
+          </section>
+        </aside>
+      </div>
+
+      <section className="parlay-card round-robin-card">
+        <div className="parlay-card-heading">
+          <div><Target size={18} /><span><strong>3-of-4 Round Robin</strong><small>Four separate three-leg tickets; one miss does not lose every combination</small></span></div>
+          <span className="round-robin-badge">4 tickets</span>
+        </div>
+        {roundRobin.length ? (
+          <div className="round-robin-grid">
+            {roundRobin.map((ticket, index) => (
+              <article key={`ticket-${index}`} className="round-robin-ticket">
+                <div><strong>Ticket {String.fromCharCode(65 + index)}</strong><span>Leaves out {bestFour[index].player.name}</span></div>
+                <ol>{ticket.map((prop) => <li key={prop.key}><span>{prop.player.name}</span><strong className={prop.lean.lean === 'OVER' ? 'over' : 'under'}>{prop.lean.lean} {prop.line}</strong></li>)}</ol>
+              </article>
+            ))}
+          </div>
+        ) : <div className="parlay-empty"><span>Round robin tickets appear after four legs clear every gate.</span></div>}
+        <div className="parlay-card-note"><Shield size={14} /><span>A round robin reduces all-or-nothing risk but costs four separate stakes. It does not make weak legs safer.</span></div>
+      </section>
     </div>
   );
 }
