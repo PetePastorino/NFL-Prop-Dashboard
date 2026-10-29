@@ -974,14 +974,29 @@ function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
 }
 
 function ParlayView({ bestFour, saferFour, audit, onSelect }: { bestFour: RankedProp[]; saferFour: SaferParlayLeg[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
+  const [selectedAlternateLines, setSelectedAlternateLines] = useState<Record<string, number>>({});
   const roundRobin = bestFour.length === 4
     ? bestFour.map((_, omittedIndex) => bestFour.filter((__, index) => index !== omittedIndex))
     : [];
   const averageSignal = bestFour.length
     ? Math.round(bestFour.reduce((sum, prop) => sum + prop.confidenceScore, 0) / bestFour.length)
     : null;
-  const saferJointImplied = saferFour.length === 4
-    ? saferFour.reduce((probability, leg) => probability * leg.impliedProbability, 1)
+  const displayedSaferFour = saferFour.map((leg) => {
+    const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
+    const selectedLine = selectedAlternateLines[selectionKey];
+    const alternate = WEEK8_ALTERNATE_PROP_LINES.find((line) =>
+      line.player === leg.prop.player.name
+      && line.statKey === leg.prop.statKey
+      && line.line === selectedLine,
+    ) ?? leg.alternate;
+    return {
+      ...leg,
+      alternate,
+      impliedProbability: impliedProbabilityFromAmericanOdds(alternate.odds),
+    };
+  });
+  const saferJointImplied = displayedSaferFour.length === 4
+    ? displayedSaferFour.reduce((probability, leg) => probability * leg.impliedProbability, 1)
     : null;
 
   return (
@@ -1031,14 +1046,34 @@ function ParlayView({ bestFour, saferFour, audit, onSelect }: { bestFour: Ranked
             </div>
             {saferFour.length === 4 ? (
               <div className="safer-leg-list">
-                {saferFour.map((leg, index) => (
-                  <button type="button" className="safer-leg" key={`${leg.prop.key}:${leg.alternate.line}`} onClick={() => onSelect(leg.prop)}>
+                {displayedSaferFour.map((leg, index) => {
+                  const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
+                  const alternateOptions = WEEK8_ALTERNATE_PROP_LINES
+                    .filter((line) => line.player === leg.prop.player.name && line.statKey === leg.prop.statKey)
+                    .sort((a, b) => b.line - a.line);
+                  return (
+                  <div className="safer-leg" key={leg.prop.key}>
                     <span>{String(index + 1).padStart(2, '0')}</span>
-                    <span><strong>{leg.prop.player.name}</strong><small>{leg.prop.statLabel} · {leg.prop.player.team} vs {leg.prop.player.week2Opp}</small></span>
-                    <span><strong>OVER {leg.alternate.line}</strong><small>{formatAmericanOdds(leg.alternate.odds)} · {(leg.impliedProbability * 100).toFixed(1)}% implied</small></span>
-                  </button>
-                ))}
-                <div className="safer-price"><span>Approximate four-leg price</span><strong>{formatCombinedAmericanOdds(saferFour)}</strong></div>
+                    <button type="button" className="safer-player-link" onClick={() => onSelect(leg.prop)}><strong>{leg.prop.player.name}</strong><small>{leg.prop.statLabel} · {leg.prop.player.team} vs {leg.prop.player.week2Opp}</small></button>
+                    <label className="safer-line-picker">
+                      <span>Alternate line</span>
+                      <select
+                        value={leg.alternate.line}
+                        onChange={(event) => setSelectedAlternateLines((current) => ({ ...current, [selectionKey]: Number(event.target.value) }))}
+                        aria-label={`${leg.prop.player.name} alternate line`}
+                      >
+                        {alternateOptions.map((option) => <option key={option.line} value={option.line}>Over {option.line} ({formatAmericanOdds(option.odds)})</option>)}
+                      </select>
+                      <small>{(leg.impliedProbability * 100).toFixed(1)}% book-implied</small>
+                    </label>
+                  </div>
+                  );
+                })}
+                <div className="safer-price">
+                  <span>Approximate four-leg price</span>
+                  <strong>{formatCombinedAmericanOdds(displayedSaferFour)}</strong>
+                  <button type="button" onClick={() => setSelectedAlternateLines({})}>Reset suggested lines</button>
+                </div>
               </div>
             ) : (
               <div className="parlay-locked">
