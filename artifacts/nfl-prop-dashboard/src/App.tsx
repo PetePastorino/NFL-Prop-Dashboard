@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
 import { WEEK8_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week8-initial-prop-lines';
+import { WEEK8_ALTERNATE_PROP_LINES, type AlternatePropLine } from '@/data/week8-alternate-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
 import {
   Activity,
@@ -119,6 +120,13 @@ type ParlayAudit = {
   injury: number;
   limited: number;
   belowThreshold: number;
+};
+
+type SaferParlayLeg = {
+  prop: RankedProp;
+  alternate: AlternatePropLine;
+  impliedProbability: number;
+  safetyScore: number;
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
@@ -538,6 +546,42 @@ function AppShell() {
     }
     return selected;
   }, [parlayCandidates]);
+  const saferFour = useMemo(() => {
+    const targetProbability = 0.77;
+    const eligible = parlayCandidates.flatMap<SaferParlayLeg>((prop) => {
+      const alternates = WEEK8_ALTERNATE_PROP_LINES
+        .filter((line) => line.player === prop.player.name && line.statKey === prop.statKey)
+        .map((alternate) => ({
+          alternate,
+          impliedProbability: impliedProbabilityFromAmericanOdds(alternate.odds),
+        }))
+        .filter(({ impliedProbability }) => impliedProbability >= 0.74 && impliedProbability <= 0.81)
+        .sort((a, b) => Math.abs(a.impliedProbability - targetProbability) - Math.abs(b.impliedProbability - targetProbability));
+      const selected = alternates[0];
+      if (!selected) return [];
+      return [{
+        prop,
+        alternate: selected.alternate,
+        impliedProbability: selected.impliedProbability,
+        safetyScore: (prop.confidenceScore * 0.5) + (selected.impliedProbability * 100 * 0.5),
+      }];
+    }).sort((a, b) => b.safetyScore - a.safetyScore);
+
+    const selected: SaferParlayLeg[] = [];
+    const players = new Set<string>();
+    const teams = new Set<string>();
+    const games = new Set<string>();
+    for (const leg of eligible) {
+      const game = matchupKey(leg.prop.player);
+      if (players.has(leg.prop.player.name) || teams.has(leg.prop.player.team) || games.has(game)) continue;
+      selected.push(leg);
+      players.add(leg.prop.player.name);
+      teams.add(leg.prop.player.team);
+      games.add(game);
+      if (selected.length === 4) break;
+    }
+    return selected;
+  }, [parlayCandidates]);
   const activeRankedProp = rankedProps.find((prop) => prop.key === lineKey);
   const playerCount = Object.values(PLAYER_DATA).reduce(
     (total, roster) => total + roster.length,
@@ -678,6 +722,7 @@ function AppShell() {
           {workspaceView === 'history' ? <HistoryView /> : workspaceView === 'parlays' ? (
             <ParlayView
               bestFour={bestFour}
+              saferFour={saferFour}
               audit={parlayAudit}
               onSelect={(prop) => {
                 setWorkspaceView('dashboard');
@@ -908,12 +953,35 @@ function ParlayLeg({ prop, index, onSelect }: { prop: RankedProp; index: number;
   );
 }
 
-function ParlayView({ bestFour, audit, onSelect }: { bestFour: RankedProp[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
+function impliedProbabilityFromAmericanOdds(odds: number) {
+  return odds < 0 ? Math.abs(odds) / (Math.abs(odds) + 100) : 100 / (odds + 100);
+}
+
+function decimalOddsFromAmerican(odds: number) {
+  return odds < 0 ? 1 + (100 / Math.abs(odds)) : 1 + (odds / 100);
+}
+
+function formatAmericanOdds(odds: number) {
+  return odds > 0 ? `+${odds}` : String(odds);
+}
+
+function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
+  if (!legs.length) return '—';
+  const decimal = legs.reduce((product, leg) => product * decimalOddsFromAmerican(leg.alternate.odds), 1);
+  return decimal >= 2
+    ? `+${Math.round((decimal - 1) * 100)}`
+    : `-${Math.round(100 / (decimal - 1))}`;
+}
+
+function ParlayView({ bestFour, saferFour, audit, onSelect }: { bestFour: RankedProp[]; saferFour: SaferParlayLeg[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
   const roundRobin = bestFour.length === 4
     ? bestFour.map((_, omittedIndex) => bestFour.filter((__, index) => index !== omittedIndex))
     : [];
   const averageSignal = bestFour.length
     ? Math.round(bestFour.reduce((sum, prop) => sum + prop.confidenceScore, 0) / bestFour.length)
+    : null;
+  const saferJointImplied = saferFour.length === 4
+    ? saferFour.reduce((probability, leg) => probability * leg.impliedProbability, 1)
     : null;
 
   return (
@@ -928,7 +996,7 @@ function ParlayView({ bestFour, audit, onSelect }: { bestFour: RankedProp[]; aud
           <Shield size={23} />
           <span>Builder status</span>
           <strong>{bestFour.length === 4 ? 'READY' : 'LIMITED'}</strong>
-          <small>Standard lines only</small>
+          <small>Standard + alternate lines</small>
         </div>
       </section>
 
@@ -952,17 +1020,34 @@ function ParlayView({ bestFour, audit, onSelect }: { bestFour: RankedProp[]; aud
           ) : (
             <div className="parlay-empty"><AlertTriangle size={20} /><div><strong>Not enough qualified legs</strong><span>The builder found {bestFour.length} of 4 required diversified signals. It will not weaken the safety gates just to fill a ticket.</span></div></div>
           )}
-          <div className="parlay-card-note"><AlertTriangle size={14} /><span>Signal scores rank model support; they are not win probabilities. Prices are not loaded, so expected value cannot yet be calculated.</span></div>
+          <div className="parlay-card-note"><AlertTriangle size={14} /><span>Signal scores rank model support; they are not win probabilities. Standard-line prices are not loaded, so expected value for the Best Four cannot yet be calculated.</span></div>
         </section>
 
         <aside className="parlay-side-stack">
           <section className="parlay-card safer-four-card">
-            <div className="parlay-card-heading compact"><div><Sparkles size={17} /><span><strong>Safer Four</strong><small>Alternate lines targeting 75–80% per leg</small></span></div></div>
-            <div className="parlay-locked">
-              <Shield size={25} />
-              <strong>Waiting for alternate lines + odds</strong>
-              <span>The dashboard will not invent safer thresholds or value. Add sportsbook prices and alternate lines to unlock this card.</span>
+            <div className="parlay-card-heading compact">
+              <div><Sparkles size={17} /><span><strong>Safer Four</strong><small>Alternate lines targeting 75–80% book-implied per leg</small></span></div>
+              {saferJointImplied !== null && <div className="safer-summary"><strong>{(saferJointImplied * 100).toFixed(1)}%</strong><span>joint implied</span></div>}
             </div>
+            {saferFour.length === 4 ? (
+              <div className="safer-leg-list">
+                {saferFour.map((leg, index) => (
+                  <button type="button" className="safer-leg" key={`${leg.prop.key}:${leg.alternate.line}`} onClick={() => onSelect(leg.prop)}>
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <span><strong>{leg.prop.player.name}</strong><small>{leg.prop.statLabel} · {leg.prop.player.team} vs {leg.prop.player.week2Opp}</small></span>
+                    <span><strong>OVER {leg.alternate.line}</strong><small>{formatAmericanOdds(leg.alternate.odds)} · {(leg.impliedProbability * 100).toFixed(1)}% implied</small></span>
+                  </button>
+                ))}
+                <div className="safer-price"><span>Approximate four-leg price</span><strong>{formatCombinedAmericanOdds(saferFour)}</strong></div>
+              </div>
+            ) : (
+              <div className="parlay-locked">
+                <Shield size={25} />
+                <strong>Not enough qualifying alternate lines</strong>
+                <span>{saferFour.length} of 4 diversified legs currently meet the 74–81% book-implied target.</span>
+              </div>
+            )}
+            <div className="parlay-card-note"><AlertTriangle size={14} /><span>Book-implied percentages include sportsbook margin and are not model win probabilities. The displayed price is a mathematical estimate; confirm the live parlay price before betting.</span></div>
           </section>
 
           <section className="parlay-card audit-card">
