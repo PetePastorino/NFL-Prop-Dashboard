@@ -64,13 +64,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 222.5,
-          "rawProjection": 232.9,
+          "projection": 221.8,
+          "rawProjection": 232.2,
           "lowConfidence": false,
           "nPriorGames": 55,
           "priorAvg": 234.8,
           "priorLast5": 176.4,
-          "matchupFactor": 1.07,
+          "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 0.96,
           "week1Actual": 216,
@@ -113,13 +113,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 203.5,
-          "rawProjection": 208.3,
+          "projection": 212.9,
+          "rawProjection": 218,
           "lowConfidence": false,
           "nPriorGames": 64,
           "priorAvg": 210.8,
           "priorLast5": 285.2,
-          "matchupFactor": 0.88,
+          "matchupFactor": 0.93,
           "isHome": true,
           "gameEnvFactor": 0.98,
           "week1Actual": 387,
@@ -168,8 +168,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 223.4,
-          "rawProjection": 201.8,
+          "projection": 222.8,
+          "rawProjection": 201.2,
           "lowConfidence": false,
           "nPriorGames": 81,
           "priorAvg": 264.1,
@@ -223,13 +223,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 229.6,
-          "rawProjection": 243.2,
+          "projection": 228.9,
+          "rawProjection": 242.4,
           "lowConfidence": true,
           "nPriorGames": 4,
           "priorAvg": 141.2,
           "priorLast5": 141.2,
-          "matchupFactor": 1.16,
+          "matchupFactor": 1.15,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 18,
@@ -240,7 +240,7 @@
         },
         "rush_yards": {
           "projection": 21.1,
-          "rawProjection": 22.4,
+          "rawProjection": 22.3,
           "lowConfidence": true,
           "nPriorGames": 4,
           "priorAvg": 29,
@@ -274,8 +274,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 219.5,
-          "rawProjection": 204.3,
+          "projection": 218.9,
+          "rawProjection": 203.8,
           "lowConfidence": false,
           "nPriorGames": 88,
           "priorAvg": 264.1,
@@ -323,12 +323,12 @@
       "team": "KAN",
       "week2Opp": "DEN",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Injured Reserve",
+      "injury": "Depth chart designation",
       "stats": {
         "pass_yards": {
-          "projection": 209.2,
-          "rawProjection": 224.2,
+          "projection": 208.6,
+          "rawProjection": 223.5,
           "lowConfidence": false,
           "nPriorGames": 132,
           "priorAvg": 283.4,
@@ -380,8 +380,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 183.7,
-          "rawProjection": 222.7,
+          "projection": 183.2,
+          "rawProjection": 222.1,
           "lowConfidence": false,
           "nPriorGames": 101,
           "priorAvg": 257,
@@ -433,8 +433,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 183.9,
-          "rawProjection": 211.8,
+          "projection": 183.4,
+          "rawProjection": 211.2,
           "lowConfidence": false,
           "nPriorGames": 41,
           "priorAvg": 219,
@@ -485,7 +485,7 @@
       "week2Opp": null,
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Sep 30: Dart recently underwent surgery to repair the meniscus and MCL in his left knee, Dan Duggan of The Athletic reports.",
+      "injury": "Knee",
       "stats": {
         "pass_yards": {
           "projection": 197.6,
@@ -533,8 +533,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 190.2,
-          "rawProjection": 201.4,
+          "projection": 189.7,
+          "rawProjection": 200.9,
           "lowConfidence": false,
           "nPriorGames": 38,
           "priorAvg": 223.8,
@@ -637,8 +637,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 308.3,
-          "rawProjection": 258.2,
+          "projection": 307.4,
+          "rawProjection": 257.5,
           "lowConfidence": false,
           "nPriorGames": 83,
           "priorAvg": 232.6,
@@ -690,8 +690,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 334.4,
-          "rawProjection": 252.5,
+          "projection": 333.5,
+          "rawProjection": 251.9,
           "lowConfidence": false,
           "nPriorGames": 146,
           "priorAvg": 259.2,
@@ -745,8 +745,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 330.7,
-          "rawProjection": 269.7,
+          "projection": 329.9,
+          "rawProjection": 269,
           "lowConfidence": false,
           "nPriorGames": 83,
           "priorAvg": 270.6,
@@ -768,7 +768,7 @@
           "nPriorGames": 83,
           "priorAvg": 10.9,
           "priorLast5": 8,
-          "matchupFactor": 1.11,
+          "matchupFactor": 1.1,
           "isHome": true,
           "gameEnvFactor": 1.23,
           "week1Actual": 20,
@@ -785,7 +785,7 @@
           "lowConfidence": false,
           "nPriorGames": 83,
           "priorTdRate": 0.157,
-          "matchupFactor": 1.11
+          "matchupFactor": 1.1
         }
       }
     },
@@ -798,8 +798,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 172.3,
-          "rawProjection": 226.8,
+          "projection": 171.8,
+          "rawProjection": 226.2,
           "lowConfidence": false,
           "nPriorGames": 27,
           "priorAvg": 199.6,
@@ -842,11 +842,11 @@
       "week2Opp": "WAS",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Oct 19: Hurts (calf) is expected to be held out of football activities for multiple months and miss the rest of the season after new imaging over the weekend revealed several blood clots in his lungs, Tom Pelissero of Netflix reports.",
+      "injury": "Calf/blood clots",
       "stats": {
         "pass_yards": {
-          "projection": 231.3,
-          "rawProjection": 231.7,
+          "projection": 230.6,
+          "rawProjection": 231,
           "lowConfidence": false,
           "nPriorGames": 98,
           "priorAvg": 192.1,
@@ -896,8 +896,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 280.2,
-          "rawProjection": 248.2,
+          "projection": 279.4,
+          "rawProjection": 247.6,
           "lowConfidence": false,
           "nPriorGames": 36,
           "priorAvg": 228.3,
@@ -948,11 +948,11 @@
       "week2Opp": "BUF",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 27: Jackson (ankle) is \"believed to be close to 100 percent\" and is expected to play Sunday versus the Bills, Ian Rapoport of NFL Network reports.",
+      "injury": "Ankle",
       "stats": {
         "pass_yards": {
-          "projection": 232.6,
-          "rawProjection": 214.3,
+          "projection": 231.9,
+          "rawProjection": 213.7,
           "lowConfidence": false,
           "nPriorGames": 119,
           "priorAvg": 196.1,
@@ -1000,8 +1000,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 319.9,
-          "rawProjection": 258.6,
+          "projection": 319.1,
+          "rawProjection": 257.9,
           "lowConfidence": false,
           "nPriorGames": 134,
           "priorAvg": 235.9,
@@ -1053,13 +1053,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 156.2,
-          "rawProjection": 194.5,
+          "projection": 155.7,
+          "rawProjection": 193.9,
           "lowConfidence": true,
           "nPriorGames": 5,
           "priorAvg": 194.4,
           "priorLast5": 194.4,
-          "matchupFactor": 0.96,
+          "matchupFactor": 0.95,
           "isHome": true,
           "gameEnvFactor": 0.8,
           "week1Actual": 220,
@@ -1106,8 +1106,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 263.1,
-          "rawProjection": 244.9,
+          "projection": 262.4,
+          "rawProjection": 244.2,
           "lowConfidence": false,
           "nPriorGames": 23,
           "priorAvg": 232.1,
@@ -1159,8 +1159,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 182.8,
-          "rawProjection": 233.9,
+          "projection": 182.2,
+          "rawProjection": 233.2,
           "lowConfidence": false,
           "nPriorGames": 26,
           "priorAvg": 186.4,
@@ -1214,13 +1214,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 257.8,
-          "rawProjection": 247.4,
+          "projection": 267.6,
+          "rawProjection": 256.8,
           "lowConfidence": false,
           "nPriorGames": 21,
           "priorAvg": 236.5,
           "priorLast5": 245.6,
-          "matchupFactor": 1.06,
+          "matchupFactor": 1.11,
           "isHome": false,
           "gameEnvFactor": 1.04,
           "week1Actual": 277,
@@ -1233,12 +1233,12 @@
         },
         "rush_yards": {
           "projection": 15.9,
-          "rawProjection": 15.2,
+          "rawProjection": 15.3,
           "lowConfidence": false,
           "nPriorGames": 21,
           "priorAvg": 11.8,
           "priorLast5": 11.8,
-          "matchupFactor": 1.57,
+          "matchupFactor": 1.58,
           "isHome": false,
           "gameEnvFactor": 1.04,
           "week1Actual": 14,
@@ -1250,13 +1250,13 @@
           "week7Actual": 16
         },
         "anytime_td": {
-          "probability": 0.219,
-          "rawProbability": 0.212,
+          "probability": 0.22,
+          "rawProbability": 0.213,
           "gameEnvFactor": 1.04,
           "lowConfidence": false,
           "nPriorGames": 21,
           "priorTdRate": 0.095,
-          "matchupFactor": 1.57
+          "matchupFactor": 1.58
         }
       }
     },
@@ -1269,13 +1269,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 180,
-          "rawProjection": 192.8,
+          "projection": 179.4,
+          "rawProjection": 192.3,
           "lowConfidence": false,
           "nPriorGames": 23,
           "priorAvg": 218.3,
           "priorLast5": 258.2,
-          "matchupFactor": 0.89,
+          "matchupFactor": 0.88,
           "isHome": true,
           "gameEnvFactor": 0.93,
           "week1Actual": 221,
@@ -1324,8 +1324,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 206.5,
-          "rawProjection": 216.2,
+          "projection": 205.9,
+          "rawProjection": 215.6,
           "lowConfidence": false,
           "nPriorGames": 39,
           "priorAvg": 188,
@@ -1375,17 +1375,17 @@
       "team": "IND",
       "week2Opp": "JAX",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Injured Reserve",
+      "injury": "Depth chart designation",
       "stats": {
         "pass_yards": {
-          "projection": 196.7,
-          "rawProjection": 238.5,
+          "projection": 196.1,
+          "rawProjection": 237.8,
           "lowConfidence": false,
           "nPriorGames": 20,
           "priorAvg": 225,
           "priorLast5": 204.4,
-          "matchupFactor": 1.1,
+          "matchupFactor": 1.09,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 166,
@@ -1434,8 +1434,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 169.3,
-          "rawProjection": 213.7,
+          "projection": 168.8,
+          "rawProjection": 213,
           "lowConfidence": false,
           "nPriorGames": 24,
           "priorAvg": 181.2,
@@ -1489,8 +1489,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 215.1,
-          "rawProjection": 190.6,
+          "projection": 214.5,
+          "rawProjection": 190,
           "lowConfidence": false,
           "nPriorGames": 52,
           "priorAvg": 192.4,
@@ -1597,13 +1597,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 238.2,
-          "rawProjection": 233.5,
+          "projection": 237.6,
+          "rawProjection": 232.9,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorAvg": 268.1,
           "priorLast5": 292.8,
-          "matchupFactor": 0.95,
+          "matchupFactor": 0.94,
           "isHome": false,
           "gameEnvFactor": 1.02,
           "week1Actual": 160,
@@ -1652,13 +1652,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 243.3,
-          "rawProjection": 228.7,
+          "projection": 242.5,
+          "rawProjection": 228,
           "lowConfidence": false,
           "nPriorGames": 19,
           "priorAvg": 206,
           "priorLast5": 231.4,
-          "matchupFactor": 1.09,
+          "matchupFactor": 1.08,
           "isHome": false,
           "gameEnvFactor": 1.06,
           "week3Actual": 256,
@@ -1754,12 +1754,12 @@
       "team": "WAS",
       "week2Opp": "PHI",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 26: Commanders head coach Dan Quinn said Monday that Mariota (knee) is on track to return to practice this week, Nicki Jhabvala of The Athletic reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 140.1,
-          "rawProjection": 184.4,
+          "projection": 139.6,
+          "rawProjection": 183.7,
           "lowConfidence": false,
           "nPriorGames": 17,
           "priorAvg": 141.1,
@@ -1807,8 +1807,8 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 242,
-          "rawProjection": 225.2,
+          "projection": 241.3,
+          "rawProjection": 224.6,
           "lowConfidence": false,
           "nPriorGames": 11,
           "priorAvg": 89.1,
@@ -1852,13 +1852,13 @@
       "injury": null,
       "stats": {
         "pass_yards": {
-          "projection": 187.8,
-          "rawProjection": 196.7,
+          "projection": 187.2,
+          "rawProjection": 196,
           "lowConfidence": true,
           "nPriorGames": 5,
           "priorAvg": 100.2,
           "priorLast5": 100.2,
-          "matchupFactor": 1.07,
+          "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 0.96,
           "week3Actual": 0,
@@ -1904,7 +1904,7 @@
       "week2Opp": "LVR",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Quadriceps",
       "stats": {
         "rush_yards": {
           "projection": 65.3,
@@ -1922,7 +1922,7 @@
         },
         "rec_yards": {
           "projection": 29,
-          "rawProjection": 30.4,
+          "rawProjection": 30.3,
           "lowConfidence": false,
           "nPriorGames": 59,
           "priorAvg": 29.6,
@@ -1949,7 +1949,7 @@
           "week3Actual": 3
         },
         "anytime_td": {
-          "probability": 0.422,
+          "probability": 0.421,
           "rawProbability": 0.433,
           "gameEnvFactor": 0.96,
           "lowConfidence": false,
@@ -1968,7 +1968,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 104.5,
+          "projection": 104.4,
           "rawProjection": 78.9,
           "lowConfidence": false,
           "nPriorGames": 23,
@@ -1986,13 +1986,13 @@
           "week7Actual": 155
         },
         "rec_yards": {
-          "projection": 19.8,
+          "projection": 19.7,
           "rawProjection": 14.9,
           "lowConfidence": false,
           "nPriorGames": 23,
           "priorAvg": 10.4,
           "priorLast5": 10.4,
-          "matchupFactor": 1.07,
+          "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 1.32,
           "week1Actual": 31,
@@ -2010,7 +2010,7 @@
           "nPriorGames": 23,
           "priorAvg": 2.3,
           "priorLast5": 2.2,
-          "matchupFactor": 0.91,
+          "matchupFactor": 0.9,
           "isHome": true,
           "gameEnvFactor": 1.32,
           "week1Actual": 5,
@@ -2022,8 +2022,8 @@
           "week7Actual": 0
         },
         "anytime_td": {
-          "probability": 0.688,
-          "rawProbability": 0.625,
+          "probability": 0.687,
+          "rawProbability": 0.624,
           "gameEnvFactor": 1.32,
           "lowConfidence": false,
           "nPriorGames": 23,
@@ -2058,13 +2058,13 @@
           "week6Actual": 18
         },
         "rec_yards": {
-          "projection": 19.7,
-          "rawProjection": 23.9,
+          "projection": 19.6,
+          "rawProjection": 23.8,
           "lowConfidence": false,
           "nPriorGames": 15,
           "priorAvg": 16.5,
           "priorLast5": 11.2,
-          "matchupFactor": 1.29,
+          "matchupFactor": 1.28,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 0,
@@ -2081,7 +2081,7 @@
           "nPriorGames": 15,
           "priorAvg": 2.7,
           "priorLast5": 1.8,
-          "matchupFactor": 1.17,
+          "matchupFactor": 1.16,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 0,
@@ -2093,7 +2093,7 @@
         },
         "anytime_td": {
           "probability": 0.297,
-          "rawProbability": 0.339,
+          "rawProbability": 0.338,
           "gameEnvFactor": 0.82,
           "lowConfidence": false,
           "nPriorGames": 15,
@@ -2151,7 +2151,7 @@
           "nPriorGames": 6,
           "priorAvg": 3,
           "priorLast5": 3,
-          "matchupFactor": 0.83,
+          "matchupFactor": 0.82,
           "isHome": false,
           "gameEnvFactor": 0.93,
           "week1Actual": 3,
@@ -2162,8 +2162,8 @@
           "week7Actual": 4
         },
         "anytime_td": {
-          "probability": 0.47,
-          "rawProbability": 0.487,
+          "probability": 0.469,
+          "rawProbability": 0.486,
           "gameEnvFactor": 0.93,
           "lowConfidence": false,
           "nPriorGames": 6,
@@ -2178,10 +2178,10 @@
       "week2Opp": "WAS",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 27: Barkley said after Monday's 38-21 loss to the Cowboys that his \"hamstring came out great,\" and noted that the back issue that kept him out for the entire fourth quarter isn't anything that he expects to prevent him from playing Sunday against the Commanders, Tim McManus of ESPN.com reports.",
+      "injury": "Hamstring/back",
       "stats": {
         "rush_yards": {
-          "projection": 72.6,
+          "projection": 72.5,
           "rawProjection": 72.7,
           "lowConfidence": false,
           "nPriorGames": 37,
@@ -2198,7 +2198,7 @@
         },
         "rec_yards": {
           "projection": 15.5,
-          "rawProjection": 15.6,
+          "rawProjection": 15.5,
           "lowConfidence": false,
           "nPriorGames": 37,
           "priorAvg": 15.4,
@@ -2219,7 +2219,7 @@
           "nPriorGames": 37,
           "priorAvg": 2.1,
           "priorLast5": 1.2,
-          "matchupFactor": 0.9,
+          "matchupFactor": 0.89,
           "isHome": false,
           "gameEnvFactor": 1,
           "week1Actual": 1,
@@ -2229,8 +2229,8 @@
           "week7Actual": 2
         },
         "anytime_td": {
-          "probability": 0.478,
-          "rawProbability": 0.479,
+          "probability": 0.477,
+          "rawProbability": 0.478,
           "gameEnvFactor": 1,
           "lowConfidence": false,
           "nPriorGames": 37,
@@ -2249,7 +2249,7 @@
       "stats": {
         "rush_yards": {
           "projection": 59.3,
-          "rawProjection": 74.9,
+          "rawProjection": 74.8,
           "lowConfidence": false,
           "nPriorGames": 40,
           "priorAvg": 66,
@@ -2266,8 +2266,8 @@
           "week7Actual": 129
         },
         "rec_yards": {
-          "projection": 14.1,
-          "rawProjection": 17.8,
+          "projection": 14,
+          "rawProjection": 17.7,
           "lowConfidence": false,
           "nPriorGames": 40,
           "priorAvg": 12.4,
@@ -2302,7 +2302,7 @@
           "week7Actual": 3
         },
         "anytime_td": {
-          "probability": 0.317,
+          "probability": 0.316,
           "rawProbability": 0.369,
           "gameEnvFactor": 0.79,
           "lowConfidence": false,
@@ -2322,7 +2322,7 @@
       "stats": {
         "rush_yards": {
           "projection": 41.1,
-          "rawProjection": 47.4,
+          "rawProjection": 47.3,
           "lowConfidence": false,
           "nPriorGames": 17,
           "priorAvg": 62.6,
@@ -2339,13 +2339,13 @@
           "week7Actual": 23
         },
         "rec_yards": {
-          "projection": 5,
-          "rawProjection": 5.8,
+          "projection": 4.9,
+          "rawProjection": 5.7,
           "lowConfidence": false,
           "nPriorGames": 17,
           "priorAvg": 3.8,
           "priorLast5": 5.4,
-          "matchupFactor": 1,
+          "matchupFactor": 0.99,
           "isHome": true,
           "gameEnvFactor": 0.87,
           "week1Actual": 0,
@@ -2363,7 +2363,7 @@
           "nPriorGames": 17,
           "priorAvg": 1.1,
           "priorLast5": 1.6,
-          "matchupFactor": 0.99,
+          "matchupFactor": 0.98,
           "isHome": true,
           "gameEnvFactor": 0.87,
           "week1Actual": 0,
@@ -2376,7 +2376,7 @@
         },
         "anytime_td": {
           "probability": 0.303,
-          "rawProbability": 0.334,
+          "rawProbability": 0.333,
           "gameEnvFactor": 0.87,
           "lowConfidence": false,
           "nPriorGames": 17,
@@ -2412,13 +2412,13 @@
           "week6Actual": 36
         },
         "rec_yards": {
-          "projection": 35.4,
-          "rawProjection": 31.4,
+          "projection": 35.3,
+          "rawProjection": 31.3,
           "lowConfidence": false,
           "nPriorGames": 76,
           "priorAvg": 19.7,
           "priorLast5": 32,
-          "matchupFactor": 1.24,
+          "matchupFactor": 1.23,
           "isHome": false,
           "gameEnvFactor": 1.13,
           "week1Actual": 44,
@@ -2448,7 +2448,7 @@
           "week6Actual": 0
         },
         "anytime_td": {
-          "probability": 0.543,
+          "probability": 0.542,
           "rawProbability": 0.512,
           "gameEnvFactor": 1.13,
           "lowConfidence": false,
@@ -2467,7 +2467,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 61.9,
+          "projection": 61.8,
           "rawProjection": 51.8,
           "lowConfidence": false,
           "nPriorGames": 21,
@@ -2484,7 +2484,7 @@
           "week6Actual": 39
         },
         "rec_yards": {
-          "projection": 18.3,
+          "projection": 18.2,
           "rawProjection": 15.3,
           "lowConfidence": false,
           "nPriorGames": 21,
@@ -2518,7 +2518,7 @@
           "week6Actual": 4
         },
         "anytime_td": {
-          "probability": 0.495,
+          "probability": 0.494,
           "rawProbability": 0.45,
           "gameEnvFactor": 1.19,
           "lowConfidence": false,
@@ -2555,7 +2555,7 @@
         },
         "rec_yards": {
           "projection": 13.8,
-          "rawProjection": 17.7,
+          "rawProjection": 17.6,
           "lowConfidence": false,
           "nPriorGames": 20,
           "priorAvg": 14,
@@ -2589,7 +2589,7 @@
         },
         "anytime_td": {
           "probability": 0.201,
-          "rawProbability": 0.244,
+          "rawProbability": 0.243,
           "gameEnvFactor": 0.78,
           "lowConfidence": false,
           "nPriorGames": 20,
@@ -2608,7 +2608,7 @@
       "stats": {
         "rush_yards": {
           "projection": 69,
-          "rawProjection": 72.3,
+          "rawProjection": 72.2,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorAvg": 66.7,
@@ -2625,13 +2625,13 @@
           "week7Actual": 106
         },
         "rec_yards": {
-          "projection": 18.3,
+          "projection": 18.2,
           "rawProjection": 19.1,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorAvg": 22,
           "priorLast5": 5.8,
-          "matchupFactor": 1.07,
+          "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 0.96,
           "week1Actual": 48,
@@ -2643,13 +2643,13 @@
           "week7Actual": 4
         },
         "receptions": {
-          "projection": 2.4,
+          "projection": 2.3,
           "rawProjection": 2.5,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorAvg": 2.8,
           "priorLast5": 1.4,
-          "matchupFactor": 1.14,
+          "matchupFactor": 1.13,
           "isHome": true,
           "gameEnvFactor": 0.96,
           "week1Actual": 7,
@@ -2661,8 +2661,8 @@
           "week7Actual": 1
         },
         "anytime_td": {
-          "probability": 0.438,
-          "rawProbability": 0.449,
+          "probability": 0.437,
+          "rawProbability": 0.448,
           "gameEnvFactor": 0.96,
           "lowConfidence": false,
           "nPriorGames": 34,
@@ -2677,7 +2677,7 @@
       "week2Opp": null,
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 26: Skattebo is expected to \"OK\" after tweaking his hamstring on a 42-yard run in overtime during Sunday's 27-21 win over the Texans, Mike Garafolo of NFL Network reports.",
+      "injury": "Hamstring",
       "stats": {
         "rush_yards": {
           "projection": 66.1,
@@ -2810,8 +2810,8 @@
       "team": "NOR",
       "week2Opp": null,
       "isLowConfidence": true,
-      "injuryStatus": "Injured Reserve",
-      "injury": "Oct 1: The Saints are placing Etienne (hamstring) on injured reserve, Katherine Terrell of ESPN.com reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 51.5,
@@ -2877,13 +2877,13 @@
           "week7Actual": 78
         },
         "rec_yards": {
-          "projection": 20.8,
-          "rawProjection": 22,
+          "projection": 20.7,
+          "rawProjection": 21.9,
           "lowConfidence": false,
           "nPriorGames": 40,
           "priorAvg": 20.9,
           "priorLast5": 17.6,
-          "matchupFactor": 1.11,
+          "matchupFactor": 1.1,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 10,
@@ -2896,7 +2896,7 @@
         },
         "receptions": {
           "projection": 3.5,
-          "rawProjection": 3.8,
+          "rawProjection": 3.7,
           "lowConfidence": false,
           "nPriorGames": 40,
           "priorAvg": 2.4,
@@ -2913,7 +2913,7 @@
           "week7Actual": 4
         },
         "anytime_td": {
-          "probability": 0.329,
+          "probability": 0.328,
           "rawProbability": 0.341,
           "gameEnvFactor": 0.94,
           "lowConfidence": false,
@@ -2933,7 +2933,7 @@
       "stats": {
         "rush_yards": {
           "projection": 73.9,
-          "rawProjection": 66.8,
+          "rawProjection": 66.7,
           "lowConfidence": false,
           "nPriorGames": 62,
           "priorAvg": 69.8,
@@ -2950,7 +2950,7 @@
           "week7Actual": 99
         },
         "rec_yards": {
-          "projection": 18.1,
+          "projection": 18,
           "rawProjection": 16.3,
           "lowConfidence": false,
           "nPriorGames": 62,
@@ -2987,7 +2987,7 @@
         },
         "anytime_td": {
           "probability": 0.478,
-          "rawProbability": 0.453,
+          "rawProbability": 0.452,
           "gameEnvFactor": 1.11,
           "lowConfidence": false,
           "nPriorGames": 62,
@@ -3023,13 +3023,13 @@
           "week7Actual": 101
         },
         "rec_yards": {
-          "projection": 16.6,
+          "projection": 16.5,
           "rawProjection": 17.7,
           "lowConfidence": false,
           "nPriorGames": 71,
           "priorAvg": 21.4,
           "priorLast5": 46.6,
-          "matchupFactor": 0.76,
+          "matchupFactor": 0.75,
           "isHome": true,
           "gameEnvFactor": 0.93,
           "week1Actual": 27,
@@ -3059,7 +3059,7 @@
           "week7Actual": 3
         },
         "anytime_td": {
-          "probability": 0.285,
+          "probability": 0.284,
           "rawProbability": 0.299,
           "gameEnvFactor": 0.93,
           "lowConfidence": false,
@@ -3078,8 +3078,8 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 61.4,
-          "rawProjection": 54.4,
+          "projection": 61.3,
+          "rawProjection": 54.3,
           "lowConfidence": false,
           "nPriorGames": 22,
           "priorAvg": 49.2,
@@ -3096,13 +3096,13 @@
           "week6Actual": 31
         },
         "rec_yards": {
-          "projection": 20,
-          "rawProjection": 17.7,
+          "projection": 19.9,
+          "rawProjection": 17.6,
           "lowConfidence": false,
           "nPriorGames": 22,
           "priorAvg": 11.7,
           "priorLast5": 7.2,
-          "matchupFactor": 1.24,
+          "matchupFactor": 1.23,
           "isHome": false,
           "gameEnvFactor": 1.13,
           "week2Actual": 0,
@@ -3132,8 +3132,8 @@
           "week6Actual": 1
         },
         "anytime_td": {
-          "probability": 0.479,
-          "rawProbability": 0.449,
+          "probability": 0.478,
+          "rawProbability": 0.448,
           "gameEnvFactor": 1.13,
           "lowConfidence": false,
           "nPriorGames": 22,
@@ -3187,7 +3187,7 @@
           "week2Actual": 19
         },
         "receptions": {
-          "projection": 1.5,
+          "projection": 1.4,
           "rawProjection": 1.3,
           "lowConfidence": false,
           "nPriorGames": 40,
@@ -3205,13 +3205,13 @@
           "week2Actual": 3
         },
         "anytime_td": {
-          "probability": 0.653,
-          "rawProbability": 0.634,
+          "probability": 0.652,
+          "rawProbability": 0.633,
           "gameEnvFactor": 1.09,
           "lowConfidence": false,
           "nPriorGames": 40,
           "priorTdRate": 0.65,
-          "matchupFactor": 1.48
+          "matchupFactor": 1.47
         }
       }
     },
@@ -3242,8 +3242,8 @@
           "week7Actual": 15
         },
         "rec_yards": {
-          "projection": 34.2,
-          "rawProjection": 33.5,
+          "projection": 34.1,
+          "rawProjection": 33.4,
           "lowConfidence": false,
           "nPriorGames": 24,
           "priorAvg": 27.4,
@@ -3278,8 +3278,8 @@
           "week7Actual": 8
         },
         "anytime_td": {
-          "probability": 0.611,
-          "rawProbability": 0.607,
+          "probability": 0.61,
+          "rawProbability": 0.606,
           "gameEnvFactor": 1.02,
           "lowConfidence": false,
           "nPriorGames": 24,
@@ -3297,8 +3297,8 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 65.1,
-          "rawProjection": 53.1,
+          "projection": 65,
+          "rawProjection": 53,
           "lowConfidence": false,
           "nPriorGames": 51,
           "priorAvg": 48.5,
@@ -3314,7 +3314,7 @@
           "week7Actual": 39
         },
         "rec_yards": {
-          "projection": 28.9,
+          "projection": 28.8,
           "rawProjection": 23.5,
           "lowConfidence": false,
           "nPriorGames": 51,
@@ -3348,8 +3348,8 @@
           "week7Actual": 4
         },
         "anytime_td": {
-          "probability": 0.487,
-          "rawProbability": 0.436,
+          "probability": 0.486,
+          "rawProbability": 0.435,
           "gameEnvFactor": 1.23,
           "lowConfidence": false,
           "nPriorGames": 51,
@@ -3364,11 +3364,11 @@
       "week2Opp": "NWE",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Sep 28: The Dolphins placed Achane (knee) on injured reserve Monday.",
+      "injury": "Knee",
       "stats": {
         "rush_yards": {
           "projection": 44.2,
-          "rawProjection": 55.1,
+          "rawProjection": 55,
           "lowConfidence": false,
           "nPriorGames": 47,
           "priorAvg": 67.7,
@@ -3381,13 +3381,13 @@
           "week3Actual": 17
         },
         "rec_yards": {
-          "projection": 19.5,
-          "rawProjection": 24.3,
+          "projection": 19.4,
+          "rawProjection": 24.2,
           "lowConfidence": false,
           "nPriorGames": 47,
           "priorAvg": 28.2,
           "priorLast5": 17.4,
-          "matchupFactor": 1.02,
+          "matchupFactor": 1.01,
           "isHome": true,
           "gameEnvFactor": 0.8,
           "week1Actual": 30,
@@ -3410,7 +3410,7 @@
         },
         "anytime_td": {
           "probability": 0.319,
-          "rawProbability": 0.369,
+          "rawProbability": 0.368,
           "gameEnvFactor": 0.8,
           "lowConfidence": false,
           "nPriorGames": 47,
@@ -3428,8 +3428,8 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 90.7,
-          "rawProjection": 73.3,
+          "projection": 90.6,
+          "rawProjection": 73.2,
           "lowConfidence": false,
           "nPriorGames": 72,
           "priorAvg": 67.9,
@@ -3445,8 +3445,8 @@
           "week6Actual": 95
         },
         "rec_yards": {
-          "projection": 26.2,
-          "rawProjection": 21.2,
+          "projection": 26.1,
+          "rawProjection": 21.1,
           "lowConfidence": false,
           "nPriorGames": 72,
           "priorAvg": 17.5,
@@ -3480,7 +3480,7 @@
         },
         "anytime_td": {
           "probability": 0.517,
-          "rawProbability": 0.464,
+          "rawProbability": 0.463,
           "gameEnvFactor": 1.24,
           "lowConfidence": false,
           "nPriorGames": 72,
@@ -3516,8 +3516,8 @@
           "week7Actual": 95
         },
         "rec_yards": {
-          "projection": 17.4,
-          "rawProjection": 21.1,
+          "projection": 17.3,
+          "rawProjection": 21,
           "lowConfidence": false,
           "nPriorGames": 91,
           "priorAvg": 18.1,
@@ -3535,12 +3535,12 @@
         },
         "receptions": {
           "projection": 2.1,
-          "rawProjection": 2.6,
+          "rawProjection": 2.5,
           "lowConfidence": false,
           "nPriorGames": 91,
           "priorAvg": 2.2,
           "priorLast5": 2,
-          "matchupFactor": 1.16,
+          "matchupFactor": 1.15,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 3,
@@ -3553,12 +3553,12 @@
         },
         "anytime_td": {
           "probability": 0.337,
-          "rawProbability": 0.382,
+          "rawProbability": 0.381,
           "gameEnvFactor": 0.82,
           "lowConfidence": false,
           "nPriorGames": 91,
           "priorTdRate": 0.604,
-          "matchupFactor": 0.6
+          "matchupFactor": 0.59
         }
       }
     },
@@ -3568,7 +3568,7 @@
       "week2Opp": null,
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 26: McCaffrey is dealing with a mild hamstring strain rather than a quadriceps injury, and the 49ers believe he'll be ready following the team's Week 8 bye, David Lombardi of SF Standard reports.",
+      "injury": "Hamstring",
       "stats": {
         "rush_yards": {
           "projection": 62.6,
@@ -3644,7 +3644,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 69.7,
+          "projection": 69.6,
           "rawProjection": 65.5,
           "lowConfidence": false,
           "nPriorGames": 58,
@@ -3662,8 +3662,8 @@
           "week7Actual": 63
         },
         "rec_yards": {
-          "projection": 40.5,
-          "rawProjection": 38,
+          "projection": 40.3,
+          "rawProjection": 37.9,
           "lowConfidence": false,
           "nPriorGames": 58,
           "priorAvg": 33.5,
@@ -3681,7 +3681,7 @@
         },
         "receptions": {
           "projection": 4.4,
-          "rawProjection": 4.2,
+          "rawProjection": 4.1,
           "lowConfidence": false,
           "nPriorGames": 58,
           "priorAvg": 3.8,
@@ -3713,11 +3713,11 @@
       "team": "DET",
       "week2Opp": "MIN",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Shoulder",
       "stats": {
         "rush_yards": {
-          "projection": 87.8,
+          "projection": 87.7,
           "rawProjection": 81.7,
           "lowConfidence": false,
           "nPriorGames": 55,
@@ -3769,7 +3769,7 @@
         },
         "anytime_td": {
           "probability": 0.434,
-          "rawProbability": 0.417,
+          "rawProbability": 0.416,
           "gameEnvFactor": 1.07,
           "lowConfidence": false,
           "nPriorGames": 55,
@@ -3788,7 +3788,7 @@
       "stats": {
         "rush_yards": {
           "projection": 41.5,
-          "rawProjection": 44.5,
+          "rawProjection": 44.4,
           "lowConfidence": true,
           "nPriorGames": 4,
           "priorAvg": 29.5,
@@ -3803,12 +3803,12 @@
         },
         "rec_yards": {
           "projection": 21.1,
-          "rawProjection": 22.7,
+          "rawProjection": 22.6,
           "lowConfidence": true,
           "nPriorGames": 4,
           "priorAvg": 20.5,
           "priorLast5": 20.5,
-          "matchupFactor": 0.76,
+          "matchupFactor": 0.75,
           "isHome": true,
           "gameEnvFactor": 0.93,
           "week1Actual": 6,
@@ -3851,52 +3851,52 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 49.5,
-          "rawProjection": 52.5,
+          "projection": 50.4,
+          "rawProjection": 53.4,
           "lowConfidence": false,
           "nPriorGames": 18,
           "priorAvg": 49.2,
           "priorLast5": 51,
-          "matchupFactor": 0.9,
+          "matchupFactor": 0.92,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 59,
           "week7Actual": 68
         },
         "rec_yards": {
-          "projection": -4.3,
-          "rawProjection": -4.6,
+          "projection": -2.2,
+          "rawProjection": -2.4,
           "lowConfidence": false,
           "nPriorGames": 18,
           "priorAvg": 2.8,
           "priorLast5": 1.2,
-          "matchupFactor": 0.68,
+          "matchupFactor": 0.78,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 0,
           "week7Actual": 0
         },
         "receptions": {
-          "projection": 0.2,
-          "rawProjection": 0.2,
+          "projection": 0.4,
+          "rawProjection": 0.4,
           "lowConfidence": false,
           "nPriorGames": 18,
           "priorAvg": 0.8,
           "priorLast5": 0.2,
-          "matchupFactor": 0.81,
+          "matchupFactor": 0.88,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 0,
           "week7Actual": 0
         },
         "anytime_td": {
-          "probability": 0.319,
-          "rawProbability": 0.332,
+          "probability": 0.336,
+          "rawProbability": 0.349,
           "gameEnvFactor": 0.94,
           "lowConfidence": false,
           "nPriorGames": 18,
           "priorTdRate": 0.333,
-          "matchupFactor": 0.81
+          "matchupFactor": 0.87
         }
       }
     },
@@ -3910,7 +3910,7 @@
       "stats": {
         "rush_yards": {
           "projection": 26.5,
-          "rawProjection": 30.6,
+          "rawProjection": 30.5,
           "lowConfidence": false,
           "nPriorGames": 23,
           "priorAvg": 27.3,
@@ -3926,13 +3926,13 @@
           "week7Actual": 6
         },
         "rec_yards": {
-          "projection": 24,
-          "rawProjection": 27.6,
+          "projection": 23.9,
+          "rawProjection": 27.5,
           "lowConfidence": false,
           "nPriorGames": 23,
           "priorAvg": 24.9,
           "priorLast5": 38.8,
-          "matchupFactor": 1,
+          "matchupFactor": 0.99,
           "isHome": true,
           "gameEnvFactor": 0.87,
           "week1Actual": 23,
@@ -3949,7 +3949,7 @@
           "nPriorGames": 23,
           "priorAvg": 3.1,
           "priorLast5": 4.2,
-          "matchupFactor": 0.99,
+          "matchupFactor": 0.98,
           "isHome": true,
           "gameEnvFactor": 0.87,
           "week1Actual": 4,
@@ -3960,7 +3960,7 @@
           "week7Actual": 2
         },
         "anytime_td": {
-          "probability": 0.344,
+          "probability": 0.343,
           "rawProbability": 0.376,
           "gameEnvFactor": 0.87,
           "lowConfidence": false,
@@ -3994,13 +3994,13 @@
           "week6Actual": 27
         },
         "rec_yards": {
-          "projection": 13.6,
+          "projection": 13.5,
           "rawProjection": 17.8,
           "lowConfidence": true,
           "nPriorGames": 4,
           "priorAvg": 20.2,
           "priorLast5": 20.2,
-          "matchupFactor": 0.95,
+          "matchupFactor": 0.94,
           "isHome": true,
           "gameEnvFactor": 0.76,
           "week1Actual": 5,
@@ -4015,7 +4015,7 @@
           "nPriorGames": 4,
           "priorAvg": 3.2,
           "priorLast5": 3.2,
-          "matchupFactor": 0.82,
+          "matchupFactor": 0.81,
           "isHome": true,
           "gameEnvFactor": 0.76,
           "week1Actual": 2,
@@ -4024,8 +4024,8 @@
           "week6Actual": 4
         },
         "anytime_td": {
-          "probability": 0.376,
-          "rawProbability": 0.442,
+          "probability": 0.375,
+          "rawProbability": 0.441,
           "gameEnvFactor": 0.76,
           "lowConfidence": true,
           "nPriorGames": 4,
@@ -4039,17 +4039,17 @@
       "team": "MIN",
       "week2Opp": "DET",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 26: The left knee injury that forced Jones out of Sunday's 16-10 win over the Colts isn't considered significant, and the running back is viewed as day-to-day, Adam Schefter of ESPN reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 54.5,
-          "rawProjection": 57.7,
+          "projection": 55.4,
+          "rawProjection": 58.7,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorAvg": 59.6,
           "priorLast5": 68.4,
-          "matchupFactor": 0.9,
+          "matchupFactor": 0.92,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 40,
@@ -4060,13 +4060,13 @@
           "week4Actual": 94
         },
         "rec_yards": {
-          "projection": 7.6,
-          "rawProjection": 8,
+          "projection": 9.6,
+          "rawProjection": 10.2,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorAvg": 19,
           "priorLast5": 7.6,
-          "matchupFactor": 0.68,
+          "matchupFactor": 0.78,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 0,
@@ -4077,13 +4077,13 @@
           "week4Actual": 34
         },
         "receptions": {
-          "projection": 1.9,
-          "rawProjection": 2,
+          "projection": 2,
+          "rawProjection": 2.2,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorAvg": 2.6,
           "priorLast5": 1.8,
-          "matchupFactor": 0.81,
+          "matchupFactor": 0.88,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 0,
@@ -4094,13 +4094,13 @@
           "week4Actual": 4
         },
         "anytime_td": {
-          "probability": 0.322,
-          "rawProbability": 0.335,
+          "probability": 0.339,
+          "rawProbability": 0.352,
           "gameEnvFactor": 0.94,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorTdRate": 0.353,
-          "matchupFactor": 0.81
+          "matchupFactor": 0.87
         }
       }
     },
@@ -4203,8 +4203,8 @@
           "week7Actual": 33
         },
         "rec_yards": {
-          "projection": 13.8,
-          "rawProjection": 12.2,
+          "projection": 13.7,
+          "rawProjection": 12.1,
           "lowConfidence": false,
           "nPriorGames": 85,
           "priorAvg": 12.8,
@@ -4237,8 +4237,8 @@
           "week7Actual": 4
         },
         "anytime_td": {
-          "probability": 0.477,
-          "rawProbability": 0.447,
+          "probability": 0.476,
+          "rawProbability": 0.446,
           "gameEnvFactor": 1.13,
           "lowConfidence": false,
           "nPriorGames": 85,
@@ -4253,7 +4253,7 @@
       "week2Opp": "CHI",
       "isLowConfidence": true,
       "injuryStatus": "Injured Reserve",
-      "injury": "Oct 26: Seahawks head coach Mike Macdonald said Monday that Price (chest) will be designated for return from injured reserve during Week 8, Gregg Bell of Sports Radio 93.3 KJR Seattle reports.",
+      "injury": "Chest",
       "stats": {
         "rush_yards": {
           "projection": 45.3,
@@ -4270,13 +4270,13 @@
           "week3Actual": 15
         },
         "rec_yards": {
-          "projection": 9.6,
-          "rawProjection": 9,
+          "projection": 9.5,
+          "rawProjection": 8.9,
           "lowConfidence": true,
           "nPriorGames": 3,
           "priorAvg": 7,
           "priorLast5": 7,
-          "matchupFactor": 0.97,
+          "matchupFactor": 0.96,
           "isHome": true,
           "gameEnvFactor": 1.07,
           "week1Actual": 6,
@@ -4299,7 +4299,7 @@
         },
         "anytime_td": {
           "probability": 0.264,
-          "rawProbability": 0.251,
+          "rawProbability": 0.25,
           "gameEnvFactor": 1.07,
           "lowConfidence": true,
           "nPriorGames": 3,
@@ -4314,11 +4314,11 @@
       "week2Opp": "PHI",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Oct 19: The Commanders placed Croskey-Merritt (groin) on injured reserve Monday.",
+      "injury": "Groin",
       "stats": {
         "rush_yards": {
-          "projection": 40.8,
-          "rawProjection": 53.7,
+          "projection": 40.7,
+          "rawProjection": 53.6,
           "lowConfidence": false,
           "nPriorGames": 21,
           "priorAvg": 45.8,
@@ -4333,12 +4333,12 @@
         },
         "rec_yards": {
           "projection": 5,
-          "rawProjection": 6.6,
+          "rawProjection": 6.5,
           "lowConfidence": false,
           "nPriorGames": 21,
           "priorAvg": 5.1,
           "priorLast5": 8,
-          "matchupFactor": 0.95,
+          "matchupFactor": 0.94,
           "isHome": true,
           "gameEnvFactor": 0.76,
           "week1Actual": -7,
@@ -4353,7 +4353,7 @@
           "nPriorGames": 21,
           "priorAvg": 0.7,
           "priorLast5": 1,
-          "matchupFactor": 0.82,
+          "matchupFactor": 0.81,
           "isHome": true,
           "gameEnvFactor": 0.76,
           "week1Actual": 1,
@@ -4362,7 +4362,7 @@
           "week4Actual": 2
         },
         "anytime_td": {
-          "probability": 0.331,
+          "probability": 0.33,
           "rawProbability": 0.394,
           "gameEnvFactor": 0.76,
           "lowConfidence": false,
@@ -4378,10 +4378,10 @@
       "week2Opp": "DAL",
       "isLowConfidence": true,
       "injuryStatus": "Questionable",
-      "injury": "Oct 26: Head coach Mike LaFleur said Monday that Love (ankle) will take part in Wednesday's practice, Theo Mackie of The Arizona Republic reports.",
+      "injury": "Ankle",
       "stats": {
         "rush_yards": {
-          "projection": 58.1,
+          "projection": 58,
           "rawProjection": 55.7,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4397,8 +4397,8 @@
           "week5Actual": 22
         },
         "rec_yards": {
-          "projection": 14.3,
-          "rawProjection": 13.7,
+          "projection": 14.2,
+          "rawProjection": 13.6,
           "lowConfidence": true,
           "nPriorGames": 5,
           "priorAvg": 7.2,
@@ -4413,7 +4413,7 @@
           "week5Actual": 0
         },
         "receptions": {
-          "projection": 2.2,
+          "projection": 2.1,
           "rawProjection": 2.1,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4430,12 +4430,12 @@
         },
         "anytime_td": {
           "probability": 0.529,
-          "rawProbability": 0.519,
+          "rawProbability": 0.518,
           "gameEnvFactor": 1.04,
           "lowConfidence": true,
           "nPriorGames": 5,
           "priorTdRate": 0.4,
-          "matchupFactor": 1.36
+          "matchupFactor": 1.35
         }
       }
     },
@@ -4448,13 +4448,13 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 41.9,
-          "rawProjection": 42.9,
+          "projection": 41.8,
+          "rawProjection": 42.8,
           "lowConfidence": false,
           "nPriorGames": 8,
           "priorAvg": 19.6,
           "priorLast5": 17,
-          "matchupFactor": 1.22,
+          "matchupFactor": 1.21,
           "isHome": true,
           "gameEnvFactor": 0.98,
           "week1Actual": 37,
@@ -4466,8 +4466,8 @@
           "week7Actual": 20
         },
         "rec_yards": {
-          "projection": 10.4,
-          "rawProjection": 10.6,
+          "projection": 10.3,
+          "rawProjection": 10.5,
           "lowConfidence": false,
           "nPriorGames": 8,
           "priorAvg": 9.1,
@@ -4502,8 +4502,8 @@
           "week7Actual": 2
         },
         "anytime_td": {
-          "probability": 0.457,
-          "rawProbability": 0.463,
+          "probability": 0.456,
+          "rawProbability": 0.462,
           "gameEnvFactor": 0.98,
           "lowConfidence": false,
           "nPriorGames": 8,
@@ -4518,11 +4518,11 @@
       "week2Opp": "CIN",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Knee",
       "stats": {
         "rush_yards": {
           "projection": 30,
-          "rawProjection": 37.9,
+          "rawProjection": 37.8,
           "lowConfidence": false,
           "nPriorGames": 48,
           "priorAvg": 23.2,
@@ -4538,8 +4538,8 @@
           "week6Actual": 1
         },
         "rec_yards": {
-          "projection": 18.7,
-          "rawProjection": 23.6,
+          "projection": 18.6,
+          "rawProjection": 23.5,
           "lowConfidence": false,
           "nPriorGames": 48,
           "priorAvg": 19.8,
@@ -4556,7 +4556,7 @@
         },
         "receptions": {
           "projection": 2.4,
-          "rawProjection": 3.1,
+          "rawProjection": 3,
           "lowConfidence": false,
           "nPriorGames": 48,
           "priorAvg": 3,
@@ -4572,7 +4572,7 @@
           "week6Actual": 1
         },
         "anytime_td": {
-          "probability": 0.282,
+          "probability": 0.281,
           "rawProbability": 0.331,
           "gameEnvFactor": 0.79,
           "lowConfidence": false,
@@ -4592,7 +4592,7 @@
       "stats": {
         "rush_yards": {
           "projection": 54.2,
-          "rawProjection": 49,
+          "rawProjection": 48.9,
           "lowConfidence": false,
           "nPriorGames": 41,
           "priorAvg": 31,
@@ -4609,8 +4609,8 @@
           "week7Actual": 93
         },
         "rec_yards": {
-          "projection": 6.5,
-          "rawProjection": 5.9,
+          "projection": 6.4,
+          "rawProjection": 5.8,
           "lowConfidence": false,
           "nPriorGames": 41,
           "priorAvg": 4.7,
@@ -4646,7 +4646,7 @@
         },
         "anytime_td": {
           "probability": 0.388,
-          "rawProbability": 0.365,
+          "rawProbability": 0.364,
           "gameEnvFactor": 1.11,
           "lowConfidence": false,
           "nPriorGames": 41,
@@ -4664,8 +4664,8 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 55.9,
-          "rawProjection": 42.2,
+          "projection": 55.8,
+          "rawProjection": 42.1,
           "lowConfidence": true,
           "nPriorGames": 4,
           "priorAvg": 18,
@@ -4680,13 +4680,13 @@
           "week1Actual": 22
         },
         "rec_yards": {
-          "projection": 8.8,
-          "rawProjection": 6.7,
+          "projection": 8.7,
+          "rawProjection": 6.6,
           "lowConfidence": true,
           "nPriorGames": 4,
           "priorAvg": 1,
           "priorLast5": 1,
-          "matchupFactor": 1.07,
+          "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 1.32,
           "week3Actual": -5,
@@ -4702,7 +4702,7 @@
           "nPriorGames": 4,
           "priorAvg": 0.5,
           "priorLast5": 0.5,
-          "matchupFactor": 0.91,
+          "matchupFactor": 0.9,
           "isHome": true,
           "gameEnvFactor": 1.32,
           "week3Actual": 1,
@@ -4712,8 +4712,8 @@
           "week1Actual": 1
         },
         "anytime_td": {
-          "probability": 0.429,
-          "rawProbability": 0.362,
+          "probability": 0.428,
+          "rawProbability": 0.361,
           "gameEnvFactor": 1.32,
           "lowConfidence": true,
           "nPriorGames": 4,
@@ -4800,11 +4800,11 @@
       "team": "TAM",
       "week2Opp": "ATL",
       "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Hip",
       "stats": {
         "rush_yards": {
-          "projection": 26.9,
+          "projection": 26.8,
           "rawProjection": 28.1,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -4821,12 +4821,12 @@
         },
         "rec_yards": {
           "projection": 14.2,
-          "rawProjection": 14.9,
+          "rawProjection": 14.8,
           "lowConfidence": true,
           "nPriorGames": 5,
           "priorAvg": 10.8,
           "priorLast5": 10.8,
-          "matchupFactor": 1.07,
+          "matchupFactor": 1.06,
           "isHome": true,
           "gameEnvFactor": 0.96,
           "week1Actual": 3,
@@ -4842,7 +4842,7 @@
           "nPriorGames": 5,
           "priorAvg": 2.2,
           "priorLast5": 2.2,
-          "matchupFactor": 1.14,
+          "matchupFactor": 1.13,
           "isHome": true,
           "gameEnvFactor": 0.96,
           "week1Actual": 1,
@@ -4852,7 +4852,7 @@
           "week5Actual": 3
         },
         "anytime_td": {
-          "probability": 0.377,
+          "probability": 0.376,
           "rawProbability": 0.387,
           "gameEnvFactor": 0.96,
           "lowConfidence": true,
@@ -4867,12 +4867,12 @@
       "team": "ARI",
       "week2Opp": "DAL",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Toe",
       "stats": {
         "rush_yards": {
           "projection": 43.3,
-          "rawProjection": 41.6,
+          "rawProjection": 41.5,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorAvg": 25.1,
@@ -4889,8 +4889,8 @@
           "week7Actual": 19
         },
         "rec_yards": {
-          "projection": 14.7,
-          "rawProjection": 14.1,
+          "projection": 14.6,
+          "rawProjection": 14,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorAvg": 12,
@@ -4925,13 +4925,13 @@
           "week7Actual": 3
         },
         "anytime_td": {
-          "probability": 0.437,
-          "rawProbability": 0.427,
+          "probability": 0.436,
+          "rawProbability": 0.426,
           "gameEnvFactor": 1.04,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorTdRate": 0.143,
-          "matchupFactor": 1.36
+          "matchupFactor": 1.35
         }
       }
     },
@@ -4940,12 +4940,12 @@
       "team": "ATL",
       "week2Opp": "TAM",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
+      "injuryStatus": null,
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 39.8,
-          "rawProjection": 37.4,
+          "projection": 39.7,
+          "rawProjection": 37.3,
           "lowConfidence": true,
           "nPriorGames": 5,
           "priorAvg": 42,
@@ -4961,8 +4961,8 @@
           "week6Actual": 1
         },
         "rec_yards": {
-          "projection": 12.7,
-          "rawProjection": 11.9,
+          "projection": 12.6,
+          "rawProjection": 11.8,
           "lowConfidence": true,
           "nPriorGames": 5,
           "priorAvg": 4.2,
@@ -4995,7 +4995,7 @@
           "week6Actual": 2
         },
         "anytime_td": {
-          "probability": 0.334,
+          "probability": 0.333,
           "rawProbability": 0.32,
           "gameEnvFactor": 1.06,
           "lowConfidence": true,
@@ -5157,7 +5157,7 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 67.7,
+          "projection": 67.6,
           "rawProjection": 63,
           "lowConfidence": false,
           "nPriorGames": 7,
@@ -5175,13 +5175,13 @@
           "week7Actual": 100
         },
         "rec_yards": {
-          "projection": 11.1,
+          "projection": 11,
           "rawProjection": 10.3,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorAvg": 9.3,
           "priorLast5": 13,
-          "matchupFactor": 0.97,
+          "matchupFactor": 0.96,
           "isHome": true,
           "gameEnvFactor": 1.07,
           "week1Actual": 0,
@@ -5226,11 +5226,11 @@
       "team": "NYJ",
       "week2Opp": "LVR",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Ankle",
       "stats": {
         "rush_yards": {
-          "projection": 62.4,
+          "projection": 62.3,
           "rawProjection": 65.3,
           "lowConfidence": false,
           "nPriorGames": 27,
@@ -5249,7 +5249,7 @@
         },
         "rec_yards": {
           "projection": 10,
-          "rawProjection": 10.5,
+          "rawProjection": 10.4,
           "lowConfidence": false,
           "nPriorGames": 27,
           "priorAvg": 7.9,
@@ -5284,7 +5284,7 @@
           "week6Actual": 2
         },
         "anytime_td": {
-          "probability": 0.378,
+          "probability": 0.377,
           "rawProbability": 0.388,
           "gameEnvFactor": 0.96,
           "lowConfidence": false,
@@ -5303,8 +5303,8 @@
       "injury": null,
       "stats": {
         "rush_yards": {
-          "projection": 48,
-          "rawProjection": 40.2,
+          "projection": 47.9,
+          "rawProjection": 40.1,
           "lowConfidence": false,
           "nPriorGames": 6,
           "priorAvg": 28,
@@ -5354,7 +5354,7 @@
           "week6Actual": 0
         },
         "anytime_td": {
-          "probability": 0.423,
+          "probability": 0.422,
           "rawProbability": 0.38,
           "gameEnvFactor": 1.19,
           "lowConfidence": false,
@@ -5372,11 +5372,11 @@
       "week2Opp": "MIN",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 26: Lions head coach Dan Campbell said that St. Brown tweaked his ankle during Sunday's 20-17 win over the Packers but should be ready to practice Thursday, Richard Silva of The Detroit News reports.",
+      "injury": "Ankle",
       "stats": {
         "rec_yards": {
           "projection": 80.1,
-          "rawProjection": 74.6,
+          "rawProjection": 74.5,
           "lowConfidence": false,
           "nPriorGames": 89,
           "priorAvg": 76.1,
@@ -5535,7 +5535,7 @@
       "stats": {
         "rec_yards": {
           "projection": 62.9,
-          "rawProjection": 55.8,
+          "rawProjection": 55.7,
           "lowConfidence": false,
           "nPriorGames": 27,
           "priorAvg": 44.4,
@@ -5586,12 +5586,12 @@
       "stats": {
         "rec_yards": {
           "projection": 43,
-          "rawProjection": 52.2,
+          "rawProjection": 52.1,
           "lowConfidence": false,
           "nPriorGames": 54,
           "priorAvg": 45.3,
           "priorLast5": 39.6,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.14,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 37,
@@ -5604,12 +5604,12 @@
         },
         "receptions": {
           "projection": 3.3,
-          "rawProjection": 4.1,
+          "rawProjection": 4,
           "lowConfidence": false,
           "nPriorGames": 54,
           "priorAvg": 4.1,
           "priorLast5": 3.4,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.14,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 2,
@@ -5637,10 +5637,10 @@
       "week2Opp": "BAL",
       "isLowConfidence": true,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Shoulder",
       "stats": {
         "rec_yards": {
-          "projection": 72.1,
+          "projection": 72,
           "rawProjection": 58.2,
           "lowConfidence": true,
           "nPriorGames": 4,
@@ -5730,8 +5730,8 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 62.6,
-          "rawProjection": 64.1,
+          "projection": 62.5,
+          "rawProjection": 64,
           "lowConfidence": false,
           "nPriorGames": 55,
           "priorAvg": 52,
@@ -5785,8 +5785,8 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 39,
-          "rawProjection": 41.3,
+          "projection": 38.9,
+          "rawProjection": 41.2,
           "lowConfidence": false,
           "nPriorGames": 36,
           "priorAvg": 49.3,
@@ -5891,12 +5891,12 @@
       "team": "WAS",
       "week2Opp": "PHI",
       "isLowConfidence": false,
-      "injuryStatus": "Out",
-      "injury": "Oct 20: Commanders head coach Dan Quinn announced Monday that McLaurin has been diagnosed with a torn patellar tendon in his left knee following an MRI and will miss the rest of the season.",
+      "injuryStatus": "Injured Reserve",
+      "injury": "Knee",
       "stats": {
         "rec_yards": {
           "projection": 41.3,
-          "rawProjection": 54.4,
+          "rawProjection": 54.3,
           "lowConfidence": false,
           "nPriorGames": 111,
           "priorAvg": 64.2,
@@ -5916,7 +5916,7 @@
           "nPriorGames": 111,
           "priorAvg": 4.6,
           "priorLast5": 3,
-          "matchupFactor": 1.04,
+          "matchupFactor": 1.03,
           "isHome": true,
           "gameEnvFactor": 0.76,
           "week1Actual": 2,
@@ -5941,7 +5941,7 @@
       "week2Opp": null,
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 26: Evans (Achilles) is expected to return after San Francisco's Week 8 bye, David Lombardi of SF Standard reports.",
+      "injury": "Achilles",
       "stats": {
         "rec_yards": {
           "projection": 68.4,
@@ -5997,7 +5997,7 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 54.6,
+          "projection": 54.5,
           "rawProjection": 57.1,
           "lowConfidence": false,
           "nPriorGames": 64,
@@ -6049,11 +6049,11 @@
       "week2Opp": "DEN",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Hamstring",
       "stats": {
         "rec_yards": {
-          "projection": 56.1,
-          "rawProjection": 60.1,
+          "projection": 56,
+          "rawProjection": 60,
           "lowConfidence": false,
           "nPriorGames": 31,
           "priorAvg": 64.1,
@@ -6095,8 +6095,8 @@
       "team": "SFO",
       "week2Opp": null,
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Oct 26: Samuel (hamstring) has a chance to return following the 49ers' Week 8 bye, Matt Maiocco of NBC Sports Bay Area reports.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 44.1,
@@ -6147,11 +6147,11 @@
       "week2Opp": "LAR",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 26: McConkey (concussion) was spotted on the field in a no-contact jersey during the Chargers' bonus practice session Monday, Noah Furtado of The Athletic reports.",
+      "injury": "Concussion",
       "stats": {
         "rec_yards": {
-          "projection": 33.5,
-          "rawProjection": 40.6,
+          "projection": 33.4,
+          "rawProjection": 40.5,
           "lowConfidence": false,
           "nPriorGames": 37,
           "priorAvg": 57.8,
@@ -6198,16 +6198,16 @@
       "week2Opp": "JAX",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Oct 26: Colts head coach Shane Steichen said Monday that Pierce (heel) will \"most likely not\" have his 21-day practice window opened in Week 8, Jake Arthur of Roundtable.io reports.",
+      "injury": "Heel",
       "stats": {
         "rec_yards": {
-          "projection": 49,
-          "rawProjection": 59.4,
+          "projection": 48.9,
+          "rawProjection": 59.3,
           "lowConfidence": false,
           "nPriorGames": 66,
           "priorAvg": 45.5,
           "priorLast5": 58,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.14,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 61,
@@ -6220,7 +6220,7 @@
           "nPriorGames": 66,
           "priorAvg": 2.5,
           "priorLast5": 2.6,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.14,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 4,
@@ -6351,7 +6351,7 @@
       "week2Opp": "KAN",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 25: Waddle didn't return to Sunday's 30-16 win over the Cardinals due to a chest injury, Parker Gabriel of the Denver Post reports.",
+      "injury": "Chest",
       "stats": {
         "rec_yards": {
           "projection": 31.6,
@@ -6406,11 +6406,11 @@
       "week2Opp": "ATL",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Concussion/foot",
       "stats": {
         "rec_yards": {
-          "projection": 42.7,
-          "rawProjection": 44.7,
+          "projection": 42.6,
+          "rawProjection": 44.6,
           "lowConfidence": false,
           "nPriorGames": 23,
           "priorAvg": 51.2,
@@ -6462,13 +6462,13 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 94.2,
+          "projection": 94.1,
           "rawProjection": 71.1,
           "lowConfidence": false,
           "nPriorGames": 102,
           "priorAvg": 79.1,
           "priorLast5": 90.8,
-          "matchupFactor": 1.01,
+          "matchupFactor": 1,
           "isHome": true,
           "gameEnvFactor": 1.32,
           "week1Actual": 44,
@@ -6568,11 +6568,11 @@
       "team": "WAS",
       "week2Opp": "PHI",
       "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Hand/hamstring",
       "stats": {
         "rec_yards": {
-          "projection": 34.5,
+          "projection": 34.4,
           "rawProjection": 45.3,
           "lowConfidence": true,
           "nPriorGames": 5,
@@ -6594,7 +6594,7 @@
           "nPriorGames": 5,
           "priorAvg": 4.8,
           "priorLast5": 4.8,
-          "matchupFactor": 1.04,
+          "matchupFactor": 1.03,
           "isHome": true,
           "gameEnvFactor": 0.76,
           "week1Actual": 4,
@@ -6624,7 +6624,7 @@
       "stats": {
         "rec_yards": {
           "projection": 61.3,
-          "rawProjection": 57.1,
+          "rawProjection": 57,
           "lowConfidence": false,
           "nPriorGames": 56,
           "priorAvg": 51.4,
@@ -6723,8 +6723,8 @@
       "team": "NWE",
       "week2Opp": "MIA",
       "isLowConfidence": true,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Injured Reserve",
+      "injury": "Depth chart designation",
       "stats": {
         "rec_yards": {
           "projection": 41.8,
@@ -6762,13 +6762,13 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 84.4,
+          "projection": 84.3,
           "rawProjection": 77.7,
           "lowConfidence": false,
           "nPriorGames": 56,
           "priorAvg": 66.7,
           "priorLast5": 91.6,
-          "matchupFactor": 0.96,
+          "matchupFactor": 0.95,
           "isHome": false,
           "gameEnvFactor": 1.09,
           "week1Actual": 150,
@@ -6866,17 +6866,17 @@
       "team": "DAL",
       "week2Opp": "ARI",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Shoulder/hamstring",
       "stats": {
         "rec_yards": {
           "projection": 86.9,
-          "rawProjection": 65.7,
+          "rawProjection": 65.6,
           "lowConfidence": false,
           "nPriorGames": 24,
           "priorAvg": 79.8,
           "priorLast5": 83.4,
-          "matchupFactor": 1.01,
+          "matchupFactor": 1,
           "isHome": true,
           "gameEnvFactor": 1.32,
           "week1Actual": 28,
@@ -6921,12 +6921,12 @@
       "team": "CIN",
       "week2Opp": "TEN",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Ankle",
       "stats": {
         "rec_yards": {
-          "projection": 89.8,
-          "rawProjection": 73.2,
+          "projection": 89.7,
+          "rawProjection": 73.1,
           "lowConfidence": false,
           "nPriorGames": 84,
           "priorAvg": 85.6,
@@ -6978,13 +6978,13 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 42.1,
-          "rawProjection": 44.6,
+          "projection": 42.7,
+          "rawProjection": 45.2,
           "lowConfidence": false,
           "nPriorGames": 50,
           "priorAvg": 50.5,
           "priorLast5": 27.8,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.17,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 0,
@@ -6995,12 +6995,12 @@
         },
         "receptions": {
           "projection": 3,
-          "rawProjection": 3.1,
+          "rawProjection": 3.2,
           "lowConfidence": false,
           "nPriorGames": 50,
           "priorAvg": 3.7,
           "priorLast5": 2,
-          "matchupFactor": 1.11,
+          "matchupFactor": 1.13,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 0,
@@ -7025,8 +7025,8 @@
       "team": "PIT",
       "week2Opp": "CLE",
       "isLowConfidence": true,
-      "injuryStatus": "Injured Reserve",
-      "injury": "Oct 10: The Steelers placed Pittman (foot) on injured reserve Saturday.",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 34.2,
@@ -7073,11 +7073,11 @@
       "week2Opp": "WAS",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Hamstring",
       "stats": {
         "rec_yards": {
-          "projection": 64.5,
-          "rawProjection": 64.6,
+          "projection": 64.4,
+          "rawProjection": 64.5,
           "lowConfidence": false,
           "nPriorGames": 84,
           "priorAvg": 63.4,
@@ -7125,13 +7125,13 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 58.3,
-          "rawProjection": 61.8,
+          "projection": 58.9,
+          "rawProjection": 62.4,
           "lowConfidence": false,
           "nPriorGames": 99,
           "priorAvg": 88.7,
           "priorLast5": 60.4,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.17,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 92,
@@ -7142,12 +7142,12 @@
         },
         "receptions": {
           "projection": 4.6,
-          "rawProjection": 4.8,
+          "rawProjection": 4.9,
           "lowConfidence": false,
           "nPriorGames": 99,
           "priorAvg": 6.1,
           "priorLast5": 4.6,
-          "matchupFactor": 1.11,
+          "matchupFactor": 1.13,
           "isHome": false,
           "gameEnvFactor": 0.94,
           "week1Actual": 8,
@@ -7176,7 +7176,7 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 101.8,
+          "projection": 101.7,
           "rawProjection": 83,
           "lowConfidence": false,
           "nPriorGames": 91,
@@ -7229,7 +7229,7 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 75.7,
+          "projection": 75.6,
           "rawProjection": 67,
           "lowConfidence": false,
           "nPriorGames": 23,
@@ -7282,8 +7282,8 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 76.4,
-          "rawProjection": 71.8,
+          "projection": 76.3,
+          "rawProjection": 71.7,
           "lowConfidence": false,
           "nPriorGames": 69,
           "priorAvg": 66.3,
@@ -7389,7 +7389,7 @@
       "week2Opp": "LAC",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Oct 20: Adams (hamstring) was placed on injured reserve Tuesday, Ian Rapoport of NFL Network reports.",
+      "injury": "Hamstring",
       "stats": {
         "rec_yards": {
           "projection": 73.2,
@@ -7501,7 +7501,7 @@
       "stats": {
         "rec_yards": {
           "projection": 32.9,
-          "rawProjection": 39.9,
+          "rawProjection": 39.8,
           "lowConfidence": false,
           "nPriorGames": 51,
           "priorAvg": 40,
@@ -7548,7 +7548,7 @@
       "week2Opp": "MIA",
       "isLowConfidence": true,
       "injuryStatus": "Injured Reserve",
-      "injury": "Oct 19: Doubs (shoulder) is hopeful to return after the Patriots' Week 11 bye and isn't expected to face a long-term absence, Jeremy Fowler of ESPN.com reports.",
+      "injury": "Shoulder",
       "stats": {
         "rec_yards": {
           "projection": 42.6,
@@ -7604,8 +7604,8 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 42.8,
-          "rawProjection": 44.8,
+          "projection": 42.7,
+          "rawProjection": 44.7,
           "lowConfidence": false,
           "nPriorGames": 127,
           "priorAvg": 62,
@@ -7665,7 +7665,7 @@
           "nPriorGames": 70,
           "priorAvg": 33.2,
           "priorLast5": 35.6,
-          "matchupFactor": 0.96,
+          "matchupFactor": 0.95,
           "isHome": false,
           "gameEnvFactor": 1.09,
           "week1Actual": 0,
@@ -7714,8 +7714,8 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 69.9,
-          "rawProjection": 56.5,
+          "projection": 69.8,
+          "rawProjection": 56.4,
           "lowConfidence": false,
           "nPriorGames": 68,
           "priorAvg": 38.3,
@@ -7764,11 +7764,11 @@
       "week2Opp": "CAR",
       "isLowConfidence": false,
       "injuryStatus": "Injured Reserve",
-      "injury": "Sep 30: The Packers are expected to place Reed (neck) on injured reserve Wednesday, Adam Schefter of ESPN reports.",
+      "injury": "Neck",
       "stats": {
         "rec_yards": {
-          "projection": 30.2,
-          "rawProjection": 30.9,
+          "projection": 30.1,
+          "rawProjection": 30.8,
           "lowConfidence": false,
           "nPriorGames": 42,
           "priorAvg": 44.8,
@@ -7829,13 +7829,13 @@
           "week7Actual": 21
         },
         "receptions": {
-          "projection": 2.8,
+          "projection": 2.7,
           "rawProjection": 3.5,
           "lowConfidence": false,
           "nPriorGames": 40,
           "priorAvg": 3.9,
           "priorLast5": 2.8,
-          "matchupFactor": 1.12,
+          "matchupFactor": 1.11,
           "isHome": false,
           "gameEnvFactor": 0.78,
           "week1Actual": 2,
@@ -7865,8 +7865,8 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 37.8,
-          "rawProjection": 40.5,
+          "projection": 37.7,
+          "rawProjection": 40.4,
           "lowConfidence": false,
           "nPriorGames": 37,
           "priorAvg": 37.5,
@@ -7967,8 +7967,8 @@
       "team": "NYG",
       "week2Opp": null,
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Injured Reserve",
+      "injury": "Depth chart designation",
       "stats": {
         "rec_yards": {
           "projection": 67.2,
@@ -8021,7 +8021,7 @@
       "week2Opp": "WAS",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Ankle",
       "stats": {
         "rec_yards": {
           "projection": 56.4,
@@ -8074,11 +8074,11 @@
       "week2Opp": "CHI",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 26: Seahawks coach Mike Macdonald said Monday that the early returns on Shaheed's knee injury are positive, Brady Henderson reports.",
+      "injury": "Knee",
       "stats": {
         "rec_yards": {
-          "projection": 38.8,
-          "rawProjection": 36.1,
+          "projection": 38.7,
+          "rawProjection": 36,
           "lowConfidence": false,
           "nPriorGames": 16,
           "priorAvg": 21.9,
@@ -8096,7 +8096,7 @@
         },
         "receptions": {
           "projection": 2.3,
-          "rawProjection": 2.2,
+          "rawProjection": 2.1,
           "lowConfidence": false,
           "nPriorGames": 16,
           "priorAvg": 1.9,
@@ -8125,30 +8125,42 @@
     },
     {
       "name": "Darius Slayton",
-      "team": "IND",
-      "week2Opp": "JAX",
-      "isLowConfidence": true,
+      "team": "NYG",
+      "week2Opp": null,
+      "isLowConfidence": false,
       "injuryStatus": null,
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": null,
-          "rawProjection": null,
-          "lowConfidence": true,
-          "nPriorGames": 0,
-          "gameEnvFactor": 0.82
+          "projection": 41.2,
+          "rawProjection": 41.2,
+          "lowConfidence": false,
+          "nPriorGames": 106,
+          "priorAvg": 41.8,
+          "priorLast5": 34.4,
+          "matchupFactor": 1,
+          "isHome": false,
+          "gameEnvFactor": 1
         },
         "receptions": {
-          "projection": null,
-          "rawProjection": null,
-          "lowConfidence": true,
-          "nPriorGames": 0,
-          "gameEnvFactor": 0.82
+          "projection": 2.9,
+          "rawProjection": 2.9,
+          "lowConfidence": false,
+          "nPriorGames": 106,
+          "priorAvg": 2.8,
+          "priorLast5": 2.6,
+          "matchupFactor": 1,
+          "isHome": false,
+          "gameEnvFactor": 1
         },
         "anytime_td": {
-          "probability": null,
-          "lowConfidence": true,
-          "nPriorGames": 0
+          "probability": 0.225,
+          "rawProbability": 0.225,
+          "gameEnvFactor": 1,
+          "lowConfidence": false,
+          "nPriorGames": 106,
+          "priorTdRate": 0.17,
+          "matchupFactor": 1
         }
       }
     },
@@ -8158,11 +8170,11 @@
       "week2Opp": "CAR",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": "Oct 27: Golden (shoulder/foot) didn't participate in Tuesday's walkthrough practice.",
+      "injury": "Shoulder/foot",
       "stats": {
         "rec_yards": {
-          "projection": 53.2,
-          "rawProjection": 54.5,
+          "projection": 53.1,
+          "rawProjection": 54.4,
           "lowConfidence": false,
           "nPriorGames": 21,
           "priorAvg": 42.9,
@@ -8216,13 +8228,13 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 39.6,
-          "rawProjection": 48,
+          "projection": 39.5,
+          "rawProjection": 47.9,
           "lowConfidence": false,
           "nPriorGames": 6,
           "priorAvg": 43,
           "priorLast5": 45.2,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.14,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 32,
@@ -8239,7 +8251,7 @@
           "nPriorGames": 6,
           "priorAvg": 4.8,
           "priorLast5": 4.6,
-          "matchupFactor": 1.15,
+          "matchupFactor": 1.14,
           "isHome": false,
           "gameEnvFactor": 0.82,
           "week1Actual": 6,
@@ -8269,7 +8281,7 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 54.4,
+          "projection": 54.3,
           "rawProjection": 53.3,
           "lowConfidence": false,
           "nPriorGames": 57,
@@ -8324,7 +8336,7 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 44.1,
+          "projection": 44,
           "rawProjection": 41,
           "lowConfidence": false,
           "nPriorGames": 23,
@@ -8375,8 +8387,8 @@
       "team": "TEN",
       "week2Opp": "CIN",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Shoulder",
       "stats": {
         "rec_yards": {
           "projection": 39.5,
@@ -8430,11 +8442,11 @@
       "team": "MIA",
       "week2Opp": "NWE",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Knee",
       "stats": {
         "rec_yards": {
-          "projection": 27.5,
+          "projection": 27.4,
           "rawProjection": 34.2,
           "lowConfidence": false,
           "nPriorGames": 36,
@@ -8483,12 +8495,12 @@
       "team": "JAX",
       "week2Opp": "IND",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Hamstring",
       "stats": {
         "rec_yards": {
-          "projection": 66.6,
-          "rawProjection": 55.8,
+          "projection": 66.5,
+          "rawProjection": 55.7,
           "lowConfidence": false,
           "nPriorGames": 15,
           "priorAvg": 51.2,
@@ -8564,7 +8576,7 @@
           "nPriorGames": 7,
           "priorAvg": 4.3,
           "priorLast5": 4,
-          "matchupFactor": 1.12,
+          "matchupFactor": 1.11,
           "isHome": false,
           "gameEnvFactor": 0.78,
           "week1Actual": 4,
@@ -8619,7 +8631,7 @@
           "nPriorGames": 7,
           "priorAvg": 2.9,
           "priorLast5": 2.6,
-          "matchupFactor": 1.12,
+          "matchupFactor": 1.11,
           "isHome": false,
           "gameEnvFactor": 0.78,
           "week1Actual": 2,
@@ -8650,8 +8662,8 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 43.1,
-          "rawProjection": 40.5,
+          "projection": 43,
+          "rawProjection": 40.4,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorAvg": 34.6,
@@ -8760,7 +8772,7 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 27.4,
+          "projection": 27.3,
           "rawProjection": 29,
           "lowConfidence": false,
           "nPriorGames": 7,
@@ -8870,13 +8882,13 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 60.1,
-          "rawProjection": 45.4,
+          "projection": 60,
+          "rawProjection": 45.3,
           "lowConfidence": false,
           "nPriorGames": 34,
           "priorAvg": 25.9,
           "priorLast5": 51.8,
-          "matchupFactor": 1.01,
+          "matchupFactor": 1,
           "isHome": true,
           "gameEnvFactor": 1.32,
           "week1Actual": 22,
@@ -8925,13 +8937,13 @@
       "injury": null,
       "stats": {
         "rec_yards": {
-          "projection": 44.1,
-          "rawProjection": 42.3,
+          "projection": 44.2,
+          "rawProjection": 42.5,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorAvg": 33.4,
           "priorLast5": 29.6,
-          "matchupFactor": 1.16,
+          "matchupFactor": 1.17,
           "isHome": false,
           "gameEnvFactor": 1.04,
           "week1Actual": 75,
@@ -8949,7 +8961,7 @@
           "nPriorGames": 7,
           "priorAvg": 3.6,
           "priorLast5": 3,
-          "matchupFactor": 1.06,
+          "matchupFactor": 1.07,
           "isHome": false,
           "gameEnvFactor": 1.04,
           "week1Actual": 8,
@@ -8981,7 +8993,7 @@
       "stats": {
         "rec_yards": {
           "projection": 36.8,
-          "rawProjection": 39.5,
+          "rawProjection": 39.4,
           "lowConfidence": false,
           "nPriorGames": 7,
           "priorAvg": 36.3,
@@ -9086,17 +9098,17 @@
       "team": "ARI",
       "week2Opp": "DAL",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Ribs",
       "stats": {
         "rec_yards": {
-          "projection": 64.2,
-          "rawProjection": 61.6,
+          "projection": 64.4,
+          "rawProjection": 61.8,
           "lowConfidence": false,
           "nPriorGames": 53,
           "priorAvg": 47.1,
           "priorLast5": 60.2,
-          "matchupFactor": 1.16,
+          "matchupFactor": 1.17,
           "isHome": false,
           "gameEnvFactor": 1.04,
           "week1Actual": 56,
@@ -9114,7 +9126,7 @@
           "nPriorGames": 53,
           "priorAvg": 3.8,
           "priorLast5": 6,
-          "matchupFactor": 1.06,
+          "matchupFactor": 1.07,
           "isHome": false,
           "gameEnvFactor": 1.04,
           "week1Actual": 5,
@@ -9622,8 +9634,8 @@
       "team": "BUF",
       "week2Opp": "BAL",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Chest",
       "stats": {
         "rec_yards": {
           "projection": 40.2,
@@ -9893,8 +9905,8 @@
       "team": "DET",
       "week2Opp": "MIN",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Injured Reserve",
+      "injury": "Depth chart designation",
       "stats": {
         "rec_yards": {
           "projection": 45.3,
@@ -10108,7 +10120,7 @@
       "week2Opp": "JAX",
       "isLowConfidence": false,
       "injuryStatus": "Questionable",
-      "injury": null,
+      "injury": "Groin",
       "stats": {
         "rec_yards": {
           "projection": 35.5,
@@ -10476,8 +10488,8 @@
       "team": "LVR",
       "week2Opp": "NYJ",
       "isLowConfidence": false,
-      "injuryStatus": null,
-      "injury": null,
+      "injuryStatus": "Questionable",
+      "injury": "Calf",
       "stats": {
         "rec_yards": {
           "projection": 51.6,
