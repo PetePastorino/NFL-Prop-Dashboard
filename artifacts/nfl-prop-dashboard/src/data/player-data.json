@@ -975,8 +975,8 @@
       "team": "BAL",
       "week2Opp": "JAX",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "pass_yards": {
           "projection": 231.9,
@@ -1857,7 +1857,7 @@
       "team": "SEA",
       "week2Opp": "ARI",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
+      "injuryStatus": null,
       "injury": null,
       "stats": {
         "pass_yards": {
@@ -1957,8 +1957,8 @@
       "team": "NYJ",
       "week2Opp": "KAN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Quadriceps",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 65.3,
@@ -2240,8 +2240,8 @@
       "team": "PHI",
       "week2Opp": "NYG",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring/back",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 72.5,
@@ -2760,8 +2760,8 @@
       "team": "NYG",
       "week2Opp": "PHI",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 66.1,
@@ -2827,7 +2827,7 @@
       "team": "HOU",
       "week2Opp": "LAC",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
+      "injuryStatus": null,
       "injury": null,
       "stats": {
         "rush_yards": {
@@ -3675,8 +3675,8 @@
       "team": "SFO",
       "week2Opp": "LVR",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 62.6,
@@ -3824,8 +3824,8 @@
       "team": "DET",
       "week2Opp": "MIA",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Shoulder",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 87.7,
@@ -4509,8 +4509,8 @@
       "team": "ARI",
       "week2Opp": "SEA",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 58,
@@ -4655,8 +4655,8 @@
       "team": "TEN",
       "week2Opp": null,
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Knee",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 30,
@@ -4944,8 +4944,8 @@
       "team": "TAM",
       "week2Opp": "CHI",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Hip",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 26.8,
@@ -5011,8 +5011,8 @@
       "team": "ARI",
       "week2Opp": "SEA",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Toe",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 43.3,
@@ -5373,8 +5373,8 @@
       "team": "NYJ",
       "week2Opp": "KAN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rush_yards": {
           "projection": 62.3,
@@ -5524,8 +5524,8 @@
       "team": "DET",
       "week2Opp": "MIA",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 80.1,
@@ -5799,8 +5799,8 @@
       "team": "BUF",
       "week2Opp": "MIN",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Shoulder",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 72,
@@ -6111,8 +6111,8 @@
       "team": "SFO",
       "week2Opp": "LVR",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Achilles",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 68.4,
@@ -6221,8 +6221,8 @@
       "team": "KAN",
       "week2Opp": "NYJ",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 56,
@@ -6321,8 +6321,8 @@
       "team": "LAC",
       "week2Opp": "HOU",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Concussion",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 33.4,
@@ -6531,8 +6531,8 @@
       "team": "DEN",
       "week2Opp": "CAR",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Chest",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 31.6,
@@ -6588,8 +6588,8 @@
       "team": "TAM",
       "week2Opp": "CHI",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Concussion/foot",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 42.6,
@@ -6755,8 +6755,8 @@
       "team": "WAS",
       "week2Opp": "LAR",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
-      "injury": "Hand/hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 34.4,
@@ -7059,8 +7059,8 @@
       "team": "DAL",
       "week2Opp": "IND",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Shoulder/hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 86.9,
@@ -7116,8 +7116,8 @@
       "team": "CIN",
       "week2Opp": "ATL",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 89.7,
@@ -7271,8 +7271,8 @@
       "team": "PHI",
       "week2Opp": "NYG",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 64.4,
@@ -8245,8 +8245,8 @@
       "team": "PHI",
       "week2Opp": "NYG",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Ankle",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 56.4,
@@ -8298,8 +8298,8 @@
       "team": "SEA",
       "week2Opp": "ARI",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Knee",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 38.7,
@@ -8394,8 +8394,8 @@
       "team": "GNB",
       "week2Opp": "NWE",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Shoulder/foot",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 53.1,
@@ -8620,8 +8620,8 @@
       "team": "TEN",
       "week2Opp": null,
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Shoulder",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 39.5,
@@ -8675,8 +8675,8 @@
       "team": "MIA",
       "week2Opp": "DET",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Knee",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 27.4,
@@ -8730,8 +8730,8 @@
       "team": "JAX",
       "week2Opp": "BAL",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Hamstring",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 66.5,
@@ -9349,8 +9349,8 @@
       "team": "ARI",
       "week2Opp": "SEA",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Ribs",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 64.4,
@@ -9901,8 +9901,8 @@
       "team": "BUF",
       "week2Opp": "MIN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Chest",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 40.2,
@@ -10400,8 +10400,8 @@
       "team": "IND",
       "week2Opp": "DAL",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Groin",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 35.5,
@@ -10781,8 +10781,8 @@
       "team": "LVR",
       "week2Opp": "SFO",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
-      "injury": "Calf",
+      "injuryStatus": null,
+      "injury": null,
       "stats": {
         "rec_yards": {
           "projection": 51.6,

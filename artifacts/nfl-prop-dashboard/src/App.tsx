@@ -1553,7 +1553,7 @@ function NoDataPanel({ statLabel }: { statLabel: string }) {
   return (
     <div className="no-data-panel">
       <div className="no-data-icon"><Database size={23} /></div>
-      <div><h3>Week 9 {statLabel.toLowerCase()} projection pending</h3><p>The Week 9 schedule and Week 8 results are loaded. This panel will activate after the Week 9 market lines and projection run are added.</p></div>
+      <div><h3>Week 9 {statLabel.toLowerCase()} projection pending</h3><p>The Week 9 schedule and Week 8 results are loaded. A fresh injury review, Week 9 market lines, and the projection run are still pending.</p></div>
       <span className="no-data-code">NULL / PROJECTION</span>
     </div>
   );
