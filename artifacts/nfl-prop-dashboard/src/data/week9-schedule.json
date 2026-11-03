@@ -1,0 +1,21 @@
+{
+  "week": 9,
+  "season": 2026,
+  "games": [
+    { "away": "JAX", "home": "BAL", "date": "2026-11-05", "time": "8:15 PM", "network": "Prime Video", "site": "M&T Bank Stadium, Baltimore, MD", "line": "JAX -9.5", "total": 42.5 },
+    { "away": "CIN", "home": "ATL", "date": "2026-11-08", "time": "9:30 AM", "network": "NFL Network", "site": "Santiago Bernabéu, Madrid, Spain", "neutralSite": true, "line": "CIN -3", "total": 52.5 },
+    { "away": "DAL", "home": "IND", "date": "2026-11-08", "time": "1:00 PM", "network": "FOX", "site": "Lucas Oil Stadium, Indianapolis, IN", "line": "DAL -6", "total": 51.5 },
+    { "away": "NYJ", "home": "KAN", "date": "2026-11-08", "time": "1:00 PM", "network": "CBS", "site": "Arrowhead Stadium, Kansas City, MO", "line": "KAN -9.5", "total": 46.5 },
+    { "away": "DET", "home": "MIA", "date": "2026-11-08", "time": "1:00 PM", "network": "FOX", "site": "Hard Rock Stadium, Miami Gardens, FL", "line": "DET -7", "total": 50.5 },
+    { "away": "CLE", "home": "NOR", "date": "2026-11-08", "time": "1:00 PM", "network": "CBS", "site": "Caesars Superdome, New Orleans, LA", "line": "NOR -2.5", "total": 43.5 },
+    { "away": "NYG", "home": "PHI", "date": "2026-11-08", "time": "1:00 PM", "network": "FOX", "site": "Lincoln Financial Field, Philadelphia, PA", "line": "NYG -3.5", "total": 39.5 },
+    { "away": "LAR", "home": "WAS", "date": "2026-11-08", "time": "1:00 PM", "network": "FOX", "site": "Northwest Stadium, Landover, MD", "line": "LAR -5.5", "total": 47.5 },
+    { "away": "DEN", "home": "CAR", "date": "2026-11-08", "time": "1:00 PM", "network": "CBS", "site": "Bank of America Stadium, Charlotte, NC", "line": "DEN -2.5", "total": 44.5 },
+    { "away": "HOU", "home": "LAC", "date": "2026-11-08", "time": "4:05 PM", "network": "CBS", "site": "SoFi Stadium, Inglewood, CA", "line": "HOU -4.5", "total": 40.5 },
+    { "away": "GNB", "home": "NWE", "date": "2026-11-08", "time": "4:25 PM", "network": "FOX", "site": "Gillette Stadium, Foxborough, MA", "line": "NWE -2.5", "total": 46.5 },
+    { "away": "LVR", "home": "SFO", "date": "2026-11-08", "time": "4:25 PM", "network": "FOX", "site": "Levi's Stadium, Santa Clara, CA", "line": "SFO -10", "total": 51.5 },
+    { "away": "ARI", "home": "SEA", "date": "2026-11-08", "time": "4:25 PM", "network": "FOX", "site": "Lumen Field, Seattle, WA", "line": "SEA -10.5", "total": 43.5 },
+    { "away": "TAM", "home": "CHI", "date": "2026-11-08", "time": "8:20 PM", "network": "NBC", "site": "Soldier Field, Chicago, IL", "line": "CHI -6", "total": 46.5 },
+    { "away": "BUF", "home": "MIN", "date": "2026-11-09", "time": "8:15 PM", "network": "ESPN / ABC", "site": "U.S. Bank Stadium, Minneapolis, MN", "line": "BUF -3.5", "total": 45.5 }
+  ]
+}

@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
-import { WEEK8_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week8-initial-prop-lines';
-import { WEEK8_ALTERNATE_PROP_LINES, type AlternatePropLine } from '@/data/week8-alternate-prop-lines';
+import { WEEK9_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week9-initial-prop-lines';
+import { WEEK9_ALTERNATE_PROP_LINES } from '@/data/week9-alternate-prop-lines';
+import type { AlternatePropLine } from '@/data/week8-alternate-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary, type WeeklyParlay } from '@/data/weekly-history';
 import {
   Activity,
@@ -69,6 +70,7 @@ type StatSnapshot = {
   week5Actual?: number | null;
   week6Actual?: number | null;
   week7Actual?: number | null;
+  week8Actual?: number | null;
 };
 
 type Player = {
@@ -130,7 +132,7 @@ type SaferParlayLeg = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
-const CURRENT_WEEK_PROJECTIONS_READY = true;
+const CURRENT_WEEK_PROJECTIONS_READY = false;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
 
@@ -553,7 +555,7 @@ function AppShell() {
   const saferFour = useMemo(() => {
     const targetProbability = 0.77;
     const eligible = parlayCandidates.flatMap<SaferParlayLeg>((prop) => {
-      const alternates = WEEK8_ALTERNATE_PROP_LINES
+      const alternates = WEEK9_ALTERNATE_PROP_LINES
         .filter((line) => line.player === prop.player.name && line.statKey === prop.statKey)
         .map((alternate) => ({
           alternate,
@@ -593,7 +595,7 @@ function AppShell() {
   );
   const lowConfidenceCount = playersForGame.filter((player) => player.isLowConfidence).length;
   const currentWeekCount = playersForGame.filter(
-    (player) => player.stats[statKey]?.week7Actual !== null && player.stats[statKey]?.week7Actual !== undefined,
+    (player) => player.stats[statKey]?.week8Actual !== null && player.stats[statKey]?.week8Actual !== undefined,
   ).length;
 
   const changePosition = (nextPosition: Position) => {
@@ -716,7 +718,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : workspaceView === 'parlays' ? 'Suggested parlays' : 'Prop board'}</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week 8 slate</span>
+            <span className="live-indicator"><span /> Week 9 slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -754,7 +756,7 @@ function AppShell() {
             </div>
             <div className="overview-stat"><span>Current pool</span><strong>{playersForGame.length}</strong><small>{position} players</small></div>
             <div className="overview-stat"><span>Limited history</span><strong>{lowConfidenceCount}</strong><small>low-confidence flags</small></div>
-            <div className="overview-stat"><span>Week 7 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
+            <div className="overview-stat"><span>Week 8 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
           </section>
 
           <section className="control-deck">
@@ -886,7 +888,7 @@ function AppShell() {
             ) : (
               <div className="confidence-empty">
                 <div className="confidence-empty-icon"><ListFilter size={18} /></div>
-                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : 'Week 8 projections are being refreshed'}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Paste your sportsbook lines above to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} early lines are loaded. Rankings will activate after the Week 8 projection run.`}</span></div>
+                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : 'Week 9 projections are pending'}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Paste your sportsbook lines above to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} Week 9 lines are loaded. Rankings will activate after the Week 9 projection run.`}</span></div>
               </div>
             )}
           </section>
@@ -999,7 +1001,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
   const displayedSaferFour = saferFour.map((leg) => {
     const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
     const selectedLine = selectedAlternateLines[selectionKey];
-    const alternate = WEEK8_ALTERNATE_PROP_LINES.find((line) =>
+    const alternate = WEEK9_ALTERNATE_PROP_LINES.find((line) =>
       line.player === leg.prop.player.name
       && line.statKey === leg.prop.statKey
       && line.line === selectedLine,
@@ -1018,7 +1020,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
     <div className="parlay-view">
       <section className="parlay-hero">
         <div>
-          <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK 8</div>
+          <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK 9</div>
           <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
           <p>Four independent signals can still lose together. This builder favors stable roles, reliable samples, and four different games instead of blindly stacking the highest scores.</p>
         </div>
@@ -1074,7 +1076,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
               <div className="safer-leg-list">
                 {displayedSaferFour.map((leg, index) => {
                   const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
-                  const alternateOptions = WEEK8_ALTERNATE_PROP_LINES
+                  const alternateOptions = WEEK9_ALTERNATE_PROP_LINES
                     .filter((line) => line.player === leg.prop.player.name && line.statKey === leg.prop.statKey)
                     .sort((a, b) => b.line - a.line);
                   return (
@@ -1551,7 +1553,7 @@ function NoDataPanel({ statLabel }: { statLabel: string }) {
   return (
     <div className="no-data-panel">
       <div className="no-data-icon"><Database size={23} /></div>
-      <div><h3>Week 8 {statLabel.toLowerCase()} projection pending</h3><p>The Week 8 schedule and Week 7 results are loaded. This panel will activate after the current Week 8 market lines and projection run are added.</p></div>
+      <div><h3>Week 9 {statLabel.toLowerCase()} projection pending</h3><p>The Week 9 schedule and Week 8 results are loaded. This panel will activate after the Week 9 market lines and projection run are added.</p></div>
       <span className="no-data-code">NULL / PROJECTION</span>
     </div>
   );
