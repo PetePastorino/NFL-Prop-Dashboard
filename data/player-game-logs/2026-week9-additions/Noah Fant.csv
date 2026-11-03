@@ -1,0 +1,122 @@
+,,,,,,,,,,Receiving,Receiving,Receiving,Receiving,Receiving,Receiving,Receiving,Rushing,Rushing,Rushing,Rushing,,Tackles,Tackles,Tackles,Tackles,Tackles,,Fumbles,Fumbles,Fumbles,Fumbles,Fumbles,Fumbles,Snap Counts,Snap Counts,Snap Counts,Snap Counts,Snap Counts,Snap Counts
+Rk,Gcar,Gtm,Week,Date,Team,,Opp,Result,GS,Tgt,Rec,Yds,Y/R,TD,Ctch%,Y/Tgt,Att,Yds,TD,Y/A,Sk,Comb,Solo,Ast,TFL,QBHits,Sfty,Fmb,FL,FF,FR,Yds,FRTD,OffSnp,Off%,DefSnp,Def%,STSnp,ST%
+1,1,1,1,2019-09-09,DEN,@,OAK,L 16-24,*,4,2,29,14.5,0,50.0,7.3,1,-5,0,-5.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,50,80.6,0,0.0,0,0.0
+2,2,2,2,2019-09-15,DEN,,CHI,L 14-16,*,4,4,33,8.3,0,100.0,8.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,54,66.7,0,0.0,0,0.0
+3,3,3,3,2019-09-22,DEN,@,GNB,L 16-27,,3,3,37,12.3,0,100.0,12.3,0,0,0,,0.0,0,0,0,0,0,0,1,1,0,0,0,0,46,63.0,0,0.0,0,0.0
+4,4,4,4,2019-09-29,DEN,,JAX,L 24-26,,4,2,31,15.5,1,50.0,7.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,40,72.7,0,0.0,0,0.0
+5,5,5,5,2019-10-06,DEN,@,LAC,W 20-13,*,1,1,6,6.0,0,100.0,6.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,40,66.7,0,0.0,0,0.0
+6,6,6,6,2019-10-13,DEN,,TEN,W 16-0,*,3,2,16,8.0,0,66.7,5.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,39,65.0,0,0.0,0,0.0
+7,7,7,7,2019-10-17,DEN,,KAN,L 6-30,,5,1,7,7.0,0,20.0,1.4,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,48,71.6,0,0.0,0,0.0
+8,8,8,8,2019-10-27,DEN,@,IND,L 13-15,,9,5,26,5.2,0,55.6,2.9,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,60,82.2,0,0.0,0,0.0
+9,9,9,9,2019-11-03,DEN,,CLE,W 24-19,*,4,3,115,38.3,1,75.0,28.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,41,82.0,0,0.0,0,0.0
+10,10,10,11,2019-11-17,DEN,@,MIN,L 23-27,*,10,4,60,15.0,0,40.0,6.0,2,-7,0,-3.5,0.0,0,0,0,0,0,0,0,0,0,0,0,0,68,86.1,0,0.0,0,0.0
+11,11,11,12,2019-11-24,DEN,@,BUF,L 3-20,*,5,3,14,4.7,0,60.0,2.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,36,73.5,0,0.0,0,0.0
+12,12,12,13,2019-12-01,DEN,,LAC,W 23-20,*,3,1,5,5.0,0,33.3,1.7,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,40,71.4,0,0.0,0,0.0
+13,13,13,14,2019-12-08,DEN,@,HOU,W 38-24,*,4,4,113,28.3,1,100.0,28.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,29,49.2,0,0.0,0,0.0
+14,14,14,15,2019-12-15,DEN,@,KAN,L 3-23,*,3,2,56,28.0,0,66.7,18.7,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,27,45.8,0,0.0,0,0.0
+15,15,15,16,2019-12-22,DEN,,DET,W 27-17,*,2,2,10,5.0,0,100.0,5.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,41,57.7,0,0.0,0,0.0
+16,16,16,17,2019-12-29,DEN,,OAK,W 16-15,,2,1,4,4.0,0,50.0,2.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,36,59.0,0,0.0,0,0.0
+17,17,1,1,2020-09-14,DEN,,TEN,L 14-16,*,6,5,81,16.2,1,83.3,13.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,43,72.9,0,0.0,0,0.0
+18,18,2,2,2020-09-20,DEN,@,PIT,L 21-26,*,5,4,57,14.3,1,80.0,11.4,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,61,79.2,0,0.0,0,0.0
+19,19,3,3,2020-09-27,DEN,,TAM,L 10-28,*,10,5,46,9.2,0,50.0,4.6,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,53,84.1,0,0.0,0,0.0
+20,20,4,4,2020-10-01,DEN,@,NYJ,W 37-28,*,6,5,35,7.0,0,83.3,5.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,35,50.0,0,0.0,0,0.0
+21,21,6,7,2020-10-25,DEN,,KAN,L 16-43,*,7,3,38,12.7,0,42.9,5.4,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,54,70.1,0,0.0,0,0.0
+22,22,7,8,2020-11-01,DEN,,LAC,W 31-30,*,9,7,47,6.7,0,77.8,5.2,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,51,78.5,0,0.0,0,0.0
+23,23,8,9,2020-11-08,DEN,@,ATL,L 27-34,*,3,3,45,15.0,0,100.0,15.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,57,78.1,0,0.0,0,0.0
+24,24,9,10,2020-11-15,DEN,@,LVR,L 12-37,,7,3,18,6.0,0,42.9,2.6,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,60,84.5,0,0.0,0,0.0
+25,25,10,11,2020-11-22,DEN,,MIA,W 20-13,*,5,4,55,13.8,0,80.0,11.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,49,75.4,0,0.0,0,0.0
+26,26,11,12,2020-11-29,DEN,,NOR,L 3-31,*,2,1,13,13.0,0,50.0,6.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,30,69.8,0,0.0,0,0.0
+27,27,12,13,2020-12-06,DEN,@,KAN,L 16-22,*,7,4,57,14.3,0,57.1,8.1,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,54,81.8,0,0.0,0,0.0
+28,28,13,14,2020-12-13,DEN,@,CAR,W 32-27,*,0,0,0,,0,,,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,5,8.2,0,0.0,0,0.0
+29,29,14,15,2020-12-19,DEN,,BUF,L 19-48,*,11,8,68,8.5,1,72.7,6.2,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,44,68.8,0,0.0,0,0.0
+30,30,15,16,2020-12-27,DEN,@,LAC,L 16-19,*,9,6,65,10.8,0,66.7,7.2,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,64,83.1,0,0.0,0,0.0
+31,31,16,17,2021-01-03,DEN,,LVR,L 31-32,*,6,4,48,12.0,0,66.7,8.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,73,90.1,0,0.0,0,0.0
+32,32,1,1,2021-09-12,DEN,@,NYG,W 27-13,*,8,6,62,10.3,0,75.0,7.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,51,77.3,0,0.0,0,0.0
+33,33,2,2,2021-09-19,DEN,@,JAX,W 23-13,*,6,4,33,8.3,1,66.7,5.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,53,76.8,0,0.0,0,0.0
+34,34,3,3,2021-09-26,DEN,,NYJ,W 26-0,*,3,2,15,7.5,0,66.7,5.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,58,86.6,0,0.0,0,0.0
+35,35,4,4,2021-10-03,DEN,,BAL,L 7-23,*,10,6,46,7.7,1,60.0,4.6,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,57,93.4,0,0.0,0,0.0
+36,36,5,5,2021-10-10,DEN,@,PIT,L 19-27,*,4,3,20,6.7,0,75.0,5.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,58,96.7,0,0.0,0,0.0
+37,37,6,6,2021-10-17,DEN,,LVR,L 24-34,*,11,9,97,10.8,1,81.8,8.8,0,0,0,,0.0,2,2,0,0,0,0,0,0,0,0,0,0,72,88.9,0,0.0,0,0.0
+38,38,7,7,2021-10-21,DEN,@,CLE,L 14-17,*,7,5,39,7.8,0,71.4,5.6,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,45,90.0,0,0.0,0,0.0
+39,39,8,8,2021-10-31,DEN,,WAS,W 17-10,*,4,2,8,4.0,0,50.0,2.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,41,77.4,0,0.0,0,0.0
+40,40,10,10,2021-11-14,DEN,,PHI,L 13-30,*,6,5,59,11.8,0,83.3,9.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,44,75.9,0,0.0,0,0.0
+41,41,11,12,2021-11-28,DEN,,LAC,W 28-13,*,4,3,12,4.0,0,75.0,3.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,53,85.5,0,0.0,0,0.0
+42,42,12,13,2021-12-05,DEN,@,KAN,L 9-22,*,4,4,33,8.3,0,100.0,8.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,58,75.3,0,0.0,0,0.0
+43,43,13,14,2021-12-12,DEN,,DET,W 38-10,*,4,4,51,12.8,0,100.0,12.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,50,73.5,0,0.0,0,0.0
+44,44,14,15,2021-12-19,DEN,,CIN,L 10-15,*,6,5,57,11.4,0,83.3,9.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,60,80.0,0,0.0,0,0.0
+45,45,15,16,2021-12-26,DEN,@,LVR,L 13-17,*,4,3,30,10.0,0,75.0,7.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,38,90.5,0,0.0,0,0.0
+46,46,16,17,2022-01-02,DEN,@,LAC,L 13-34,*,7,6,92,15.3,1,85.7,13.1,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,53,88.3,0,0.0,0,0.0
+47,47,17,18,2022-01-08,DEN,,KAN,L 24-28,*,2,1,16,16.0,0,50.0,8.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,52,96.3,0,0.0,0,0.0
+,,,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks,Player went from Denver Broncos to Seattle Seahawks
+48,48,1,1,2022-09-12,SEA,,DEN,W 17-16,*,4,3,16,5.3,0,75.0,4.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,31,56.4,0,0.0,0,0.0
+49,49,2,2,2022-09-18,SEA,@,SFO,L 7-27,*,2,2,11,5.5,0,100.0,5.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,26,53.1,0,0.0,0,0.0
+50,50,3,3,2022-09-25,SEA,,ATL,L 23-27,*,4,4,27,6.8,0,100.0,6.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,39,54.9,0,0.0,0,0.0
+51,51,4,4,2022-10-02,SEA,@,DET,W 48-45,*,1,1,2,2.0,1,100.0,2.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,41,58.6,0,0.0,3,9.1
+52,52,5,5,2022-10-09,SEA,@,NOR,L 32-39,*,5,3,49,16.3,0,60.0,9.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,31,59.6,0,0.0,0,0.0
+53,53,6,6,2022-10-16,SEA,,ARI,W 19-9,*,7,6,45,7.5,0,85.7,6.4,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,43,63.2,0,0.0,0,0.0
+54,54,7,7,2022-10-23,SEA,@,LAC,W 37-23,*,3,1,7,7.0,0,33.3,2.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,52,73.2,0,0.0,1,3.4
+55,55,8,8,2022-10-30,SEA,,NYG,W 27-13,*,2,2,19,9.5,0,100.0,9.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,46,71.9,0,0.0,0,0.0
+56,56,9,9,2022-11-06,SEA,@,ARI,W 31-21,*,6,5,96,19.2,0,83.3,16.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,44,60.3,0,0.0,0,0.0
+57,57,10,10,2022-11-13,SEA,@,TAM,L 16-21,*,4,3,34,11.3,0,75.0,8.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,27,51.9,0,0.0,0,0.0
+58,58,11,12,2022-11-27,SEA,,LVR,L 34-40 (OT),,3,3,34,11.3,0,100.0,11.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,40,61.5,0,0.0,0,0.0
+59,59,12,13,2022-12-04,SEA,@,LAR,W 27-23,*,5,4,42,10.5,1,80.0,8.4,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,45,67.2,0,0.0,0,0.0
+60,60,13,14,2022-12-11,SEA,,CAR,L 24-30,*,1,0,0,,0,0.0,0.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,30,55.6,0,0.0,0,0.0
+61,61,14,15,2022-12-15,SEA,,SFO,L 13-21,*,6,5,32,6.4,1,83.3,5.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,33,51.6,0,0.0,0,0.0
+62,62,15,16,2022-12-24,SEA,@,KAN,L 10-24,*,3,2,12,6.0,1,66.7,4.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,42,55.3,0,0.0,2,8.3
+63,63,16,17,2023-01-01,SEA,,NYJ,W 23-6,*,3,2,40,20.0,0,66.7,13.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,45,62.5,0,0.0,0,0.0
+64,64,17,18,2023-01-08,SEA,,LAR,W 19-16 (OT),*,4,4,20,5.0,0,100.0,5.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,45,64.3,0,0.0,0,0.0
+65,65,1,1,2023-09-10,SEA,,LAR,L 13-30,*,0,0,0,,0,,,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,25,49.0,0,0.0,0,0.0
+66,66,2,2,2023-09-17,SEA,@,DET,W 37-31 (OT),*,4,4,56,14.0,0,100.0,14.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,34,47.2,0,0.0,0,0.0
+67,67,3,3,2023-09-24,SEA,,CAR,W 37-27,*,5,4,41,10.3,0,80.0,8.2,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,47,62.7,0,0.0,1,2.9
+68,68,4,4,2023-10-02,SEA,@,NYG,W 24-3,*,2,2,63,31.5,0,100.0,31.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,25,45.5,0,0.0,0,0.0
+69,69,5,6,2023-10-15,SEA,@,CIN,L 13-17,*,1,1,9,9.0,0,100.0,9.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,31,41.9,0,0.0,0,0.0
+70,70,6,7,2023-10-22,SEA,,ARI,W 20-10,*,1,1,25,25.0,0,100.0,25.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,36,60.0,0,0.0,0,0.0
+71,71,7,8,2023-10-29,SEA,,CLE,W 24-20,*,3,2,32,16.0,0,66.7,10.7,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,34,58.6,0,0.0,0,0.0
+72,72,8,9,2023-11-05,SEA,@,BAL,L 3-37,*,1,0,0,,0,0.0,0.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,26,53.1,0,0.0,0,0.0
+73,73,9,10,2023-11-12,SEA,,WAS,W 29-26,*,3,2,6,3.0,0,66.7,2.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,48,59.3,0,0.0,0,0.0
+74,74,10,11,2023-11-19,SEA,@,LAR,L 16-17,*,2,1,4,4.0,0,50.0,2.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,40,61.5,0,0.0,0,0.0
+75,75,11,12,2023-11-23,SEA,,SFO,L 13-31,*,2,2,25,12.5,0,100.0,12.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,33,58.9,0,0.0,0,0.0
+76,76,12,13,2023-11-30,SEA,@,DAL,L 35-41,*,4,3,43,14.3,0,75.0,10.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,44,63.8,0,0.0,0,0.0
+77,77,13,14,2023-12-10,SEA,@,SFO,L 16-28,*,4,2,35,17.5,0,50.0,8.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,36,61.0,0,0.0,0,0.0
+78,78,14,15,2023-12-18,SEA,,PHI,W 20-17,*,5,3,16,5.3,0,60.0,3.2,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,38,62.3,0,0.0,0,0.0
+79,79,15,16,2023-12-24,SEA,@,TEN,W 20-17,*,0,0,0,,0,,,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,47,75.8,0,0.0,0,0.0
+80,80,16,17,2023-12-31,SEA,,PIT,L 23-30,*,6,5,59,11.8,0,83.3,9.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,22,44.9,0,0.0,0,0.0
+81,81,17,18,2024-01-07,SEA,@,ARI,W 21-20,*,0,0,0,,0,,,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,8,14.5,0,0.0,0,0.0
+82,82,1,1,2024-09-08,SEA,,DEN,W 26-20,*,4,2,11,5.5,0,50.0,2.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,50,74.6,0,0.0,0,0.0
+83,83,2,2,2024-09-15,SEA,@,NWE,W 23-20 (OT),*,3,1,14,14.0,0,33.3,4.7,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,57,81.4,0,0.0,0,0.0
+84,84,3,3,2024-09-22,SEA,,MIA,W 24-3,,6,6,60,10.0,0,100.0,10.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,28,43.8,0,0.0,0,0.0
+85,85,4,4,2024-09-30,SEA,@,DET,L 29-42,*,2,2,26,13.0,0,100.0,13.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,51,56.7,0,0.0,0,0.0
+86,86,5,5,2024-10-06,SEA,,NYG,L 20-29,*,3,3,24,8.0,0,100.0,8.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,40,69.0,0,0.0,0,0.0
+87,87,6,6,2024-10-10,SEA,,SFO,L 24-36,,6,6,63,10.5,0,100.0,10.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,54,69.2,0,0.0,0,0.0
+88,88,7,7,2024-10-20,SEA,@,ATL,W 34-14,,4,4,65,16.3,0,100.0,16.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,32,53.3,0,0.0,0,0.0
+89,89,8,8,2024-10-27,SEA,,BUF,L 10-31,*,4,3,22,7.3,0,75.0,5.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,31,60.8,0,0.0,0,0.0
+90,90,12,13,2024-12-01,SEA,@,NYJ,W 26-21,*,4,3,26,8.7,0,75.0,6.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,43,67.2,0,0.0,0,0.0
+91,91,13,14,2024-12-08,SEA,@,ARI,W 30-18,*,4,3,18,6.0,0,75.0,4.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,38,59.4,0,0.0,0,0.0
+92,92,14,15,2024-12-15,SEA,,GNB,L 13-30,*,7,3,15,5.0,0,42.9,2.1,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,35,59.3,0,0.0,0,0.0
+93,93,15,16,2024-12-22,SEA,,MIN,L 24-27,,6,3,50,16.7,0,50.0,8.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,46,71.9,0,0.0,0,0.0
+94,94,16,17,2024-12-26,SEA,@,CHI,W 6-3,,5,4,43,10.8,0,80.0,8.6,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,29,55.8,0,0.0,0,0.0
+95,95,17,18,2025-01-05,SEA,@,LAR,W 30-25,*,6,5,63,12.6,1,83.3,10.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,35,63.6,0,0.0,0,0.0
+,,,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals,Player went from Seattle Seahawks to Cincinnati Bengals
+96,96,1,1,2025-09-07,CIN,@,CLE,W 17-16,*,5,4,26,6.5,1,80.0,5.2,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,26,50.0,0,0.0,4,17.4
+97,97,2,2,2025-09-14,CIN,,JAX,W 31-27,,4,3,28,9.3,0,75.0,7.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,17,24.6,0,0.0,6,22.2
+98,98,3,3,2025-09-21,CIN,@,MIN,L 10-48,*,5,5,26,5.2,0,100.0,5.2,0,0,0,,0.0,0,0,0,0,0,0,1,1,0,0,0,0,18,32.1,0,0.0,7,21.2
+99,99,5,5,2025-10-05,CIN,,DET,L 24-37,,0,0,0,,0,,,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,15,24.2,0,0.0,0,0.0
+100,100,6,6,2025-10-12,CIN,@,GNB,L 18-27,,4,4,27,6.8,0,100.0,6.8,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,32,49.2,0,0.0,0,0.0
+101,101,7,7,2025-10-16,CIN,,PIT,W 33-31,,4,4,44,11.0,1,100.0,11.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,52,68.4,0,0.0,0,0.0
+102,102,8,8,2025-10-26,CIN,,NYJ,L 38-39,*,3,3,41,13.7,0,100.0,13.7,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,28,47.5,0,0.0,0,0.0
+103,103,9,9,2025-11-02,CIN,,CHI,L 42-47,*,3,2,28,14.0,1,66.7,9.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,31,45.6,0,0.0,0,0.0
+104,104,10,11,2025-11-16,CIN,@,PIT,L 12-34,*,6,5,36,7.2,0,83.3,6.0,0,0,0,,0.0,0,0,0,0,0,0,1,1,0,0,0,0,32,48.5,0,0.0,0,0.0
+105,105,11,12,2025-11-23,CIN,,NWE,L 20-26,,1,1,9,9.0,0,100.0,9.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,18,27.7,0,0.0,0,0.0
+106,106,12,13,2025-11-27,CIN,@,BAL,W 32-14,,2,1,3,3.0,0,50.0,1.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,35,42.2,0,0.0,0,0.0
+107,107,13,14,2025-12-07,CIN,@,BUF,L 34-39,*,2,1,15,15.0,0,50.0,7.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,25,41.7,0,0.0,0,0.0
+108,108,14,15,2025-12-14,CIN,,BAL,L 0-24,,0,0,0,,0,,,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,18,23.7,0,0.0,0,0.0
+109,109,16,17,2025-12-28,CIN,,ARI,W 37-14,,1,0,0,,0,0.0,0.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,17,22.1,0,0.0,0,0.0
+110,110,17,18,2026-01-04,CIN,,CLE,L 18-20,*,1,1,5,5.0,0,100.0,5.0,0,0,0,,0.0,0,0,0,0,0,0,1,1,0,0,0,0,15,22.1,0,0.0,0,0.0
+,,,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints,Player went from Cincinnati Bengals to New Orleans Saints
+111,111,1,1,2026-09-13,NOR,@,DET,L 30-31 (OT),,8,4,33,8.3,1,50.0,4.1,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,37,41.1,0,0.0,7,20.6
+112,112,2,2,2026-09-20,NOR,@,BAL,W 24-17,*,0,0,0,,0,,,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,30,44.1,0,0.0,0,0.0
+113,113,3,3,2026-09-27,NOR,,LVR,L 27-35,*,4,4,33,8.3,2,100.0,8.3,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,42,56.8,0,0.0,2,7.4
+114,114,5,5,2026-10-11,NOR,,MIN,L 13-23,*,1,1,7,7.0,0,100.0,7.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,30,66.7,0,0.0,5,22.7
+115,115,6,6,2026-10-18,NOR,@,NYG,W 34-27,,1,0,0,,0,0.0,0.0,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,42,58.3,0,0.0,3,8.6
+116,116,7,7,2026-10-25,NOR,,PIT,L 10-16,*,2,2,11,5.5,0,100.0,5.5,0,0,0,,0.0,0,0,0,0,0,0,0,0,0,0,0,0,26,45.6,0,0.0,0,0.0
+,,,,,,,,50-66,,476,345,3677,10.7,21,72.5,7.7,3,-12,0,-4.0,0.0,2,2,0,0,0,0,4,4,0,0,0,0,4660,62.3,0,0.0,41,1.3

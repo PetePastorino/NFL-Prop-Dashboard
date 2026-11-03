@@ -1,0 +1,41 @@
+,,,,,,,,,,Receiving,Receiving,Receiving,Receiving,Receiving,Receiving,Receiving,Rushing,Rushing,Rushing,Rushing,Passing,Passing,Passing,Passing,Passing,Passing,Passing,Passing,Passing,Passing,Passing,Fumbles,Fumbles,Fumbles,Fumbles,Fumbles,Fumbles,Snap Counts,Snap Counts,Snap Counts,Snap Counts,Snap Counts,Snap Counts
+Rk,Gcar,Gtm,Week,Date,Team,,Opp,Result,GS,Tgt,Rec,Yds,Y/R,TD,Ctch%,Y/Tgt,Att,Yds,TD,Y/A,Cmp,Att,Cmp%,Yds,TD,Int,Y/A,AY/A,Rate,Sk,Yds,Fmb,FL,FF,FR,Yds,FRTD,OffSnp,Off%,DefSnp,Def%,STSnp,ST%
+1,1,1,1,2024-09-08,IND,,HOU,L 27-29,*,5,1,2,2.0,0,20.0,0.4,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,29,64.4,0,0.0,0,0.0
+2,2,2,2,2024-09-15,IND,@,GNB,L 10-16,*,4,1,30,30.0,0,25.0,7.5,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,33,58.9,0,0.0,0,0.0
+3,3,3,3,2024-09-22,IND,,CHI,W 21-16,,1,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,7,12.5,0,0.0,0,0.0
+4,4,4,4,2024-09-29,IND,,PIT,W 27-24,,3,0,0,,0,0.0,0.0,1,10,0,10.0,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,13,19.7,0,0.0,0,0.0
+5,5,5,5,2024-10-06,IND,@,JAX,L 34-37,,7,4,38,9.5,0,57.1,5.4,1,4,0,4.0,1,1,100.0,24,0,0,24.0,24.0,118.7,0,0,0,0,0,0,0,0,19,27.1,0,0.0,0,0.0
+6,6,6,6,2024-10-13,IND,@,TEN,W 20-17,*,4,2,9,4.5,0,50.0,2.3,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,15,21.4,0,0.0,0,0.0
+7,7,7,7,2024-10-20,IND,,MIA,W 16-10,*,3,2,30,15.0,0,66.7,10.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,14,22.6,0,0.0,0,0.0
+8,8,8,8,2024-10-27,IND,@,HOU,L 20-23,,4,1,9,9.0,0,25.0,2.3,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,13,20.3,0,0.0,0,0.0
+9,9,9,9,2024-11-03,IND,@,MIN,L 13-21,,1,1,22,22.0,0,100.0,22.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,5,9.3,0,0.0,0,0.0
+10,10,10,10,2024-11-10,IND,,BUF,L 20-30,*,6,6,71,11.8,0,100.0,11.8,0,0,0,,0,0,,0,0,0,,,,0,0,1,0,0,0,0,0,60,93.8,0,0.0,0,0.0
+11,11,11,11,2024-11-17,IND,@,NYJ,W 28-27,*,2,1,33,33.0,0,50.0,16.5,1,2,0,2.0,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,12,17.1,0,0.0,0,0.0
+12,12,12,12,2024-11-24,IND,,DET,L 6-24,,3,1,10,10.0,0,33.3,3.3,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,12,21.8,0,0.0,0,0.0
+13,13,13,13,2024-12-01,IND,@,NWE,W 25-24,*,2,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,36,58.1,0,0.0,0,0.0
+14,14,14,15,2024-12-15,IND,@,DEN,L 13-31,,4,0,0,,0,0.0,0.0,1,-10,0,-10.0,0,0,,0,0,0,,,,0,0,1,1,0,0,0,0,37,48.7,0,0.0,0,0.0
+15,15,15,16,2024-12-22,IND,,TEN,W 38-30,,1,1,36,36.0,0,100.0,36.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,55,88.7,0,0.0,0,0.0
+16,16,16,17,2024-12-29,IND,@,NYG,L 33-45,,4,2,22,11.0,0,50.0,5.5,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,7,9.1,0,0.0,0,0.0
+17,17,17,18,2025-01-05,IND,,JAX,W 26-23 (OT),,1,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,16,20.5,0,0.0,0,0.0
+18,18,1,1,2025-09-07,IND,,MIA,W 33-8,,2,2,21,10.5,0,100.0,10.5,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,15,20.5,0,0.0,0,0.0
+19,19,2,2,2025-09-14,IND,,DEN,W 29-28,,4,2,20,10.0,0,50.0,5.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,7,9.9,0,0.0,0,0.0
+20,20,3,3,2025-09-21,IND,@,TEN,W 41-20,,2,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,24,42.1,0,0.0,0,0.0
+21,21,4,4,2025-09-28,IND,@,LAR,L 20-27,*,4,3,96,32.0,0,75.0,24.0,0,0,0,,0,0,,0,0,0,,,,0,0,1,1,0,0,0,0,54,88.5,0,0.0,0,0.0
+22,22,5,5,2025-10-05,IND,,LVR,W 40-6,,1,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,6,9.1,0,0.0,0,0.0
+23,23,7,7,2025-10-19,IND,@,LAC,W 38-24,,1,1,8,8.0,0,100.0,8.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,5,8.3,0,0.0,2,8.7
+24,24,8,8,2025-10-26,IND,,TEN,W 38-14,,1,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,9,17.0,0,0.0,2,7.1
+25,25,9,9,2025-11-02,IND,@,PIT,L 20-27,,1,1,7,7.0,0,100.0,7.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,4,5.1,0,0.0,0,0.0
+,,,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets,Player went from Indianapolis Colts to New York Jets
+26,26,10,11,2025-11-13,NYJ,@,NWE,L 14-27,,6,1,10,10.0,0,16.7,1.7,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,28,49.1,0,0.0,0,0.0
+27,27,11,12,2025-11-23,NYJ,@,BAL,L 10-23,,7,2,42,21.0,0,28.6,6.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,50,84.7,0,0.0,0,0.0
+28,28,12,13,2025-11-30,NYJ,,ATL,W 27-24,*,12,8,102,12.8,1,66.7,8.5,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,57,86.4,0,0.0,0,0.0
+29,29,13,14,2025-12-07,NYJ,,MIA,L 10-34,*,6,1,24,24.0,0,16.7,4.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,53,91.4,0,0.0,0,0.0
+30,30,14,15,2025-12-14,NYJ,@,JAX,L 20-48,,9,6,58,9.7,1,66.7,6.4,1,-4,0,-4.0,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,54,79.4,0,0.0,0,0.0
+31,31,15,16,2025-12-21,NYJ,@,NOR,L 6-29,,6,3,43,14.3,0,50.0,7.2,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,57,86.4,0,0.0,0,0.0
+32,32,16,17,2025-12-28,NYJ,,NWE,L 10-42,*,9,3,22,7.3,0,33.3,2.4,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,50,80.6,0,0.0,0,0.0
+33,33,17,18,2026-01-04,NYJ,@,BUF,L 8-35,*,3,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,25,52.1,0,0.0,0,0.0
+34,34,1,1,2026-09-13,NYJ,@,TEN,W 23-10,*,3,3,60,20.0,0,100.0,20.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,46,68.7,0,0.0,1,3.7
+35,35,2,2,2026-09-20,NYJ,,GNB,L 17-20 (OT),*,12,6,63,10.5,0,50.0,5.3,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,61,82.4,0,0.0,0,0.0
+36,36,7,7,2026-10-25,NYJ,,MIA,L 25-28,*,3,0,0,,0,0.0,0.0,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,26,44.1,0,0.0,0,0.0
+37,37,8,8,2026-11-01,NYJ,,LVR,L 33-38,,9,7,142,20.3,1,77.8,15.8,0,0,0,,0,0,,0,0,0,,,,0,0,0,0,0,0,0,0,39,60.9,0,0.0,0,0.0
+,,,,,,,,16-21,,156,72,1030,14.3,3,46.2,6.6,5,2,0,0.4,1,1,100.0,24,0,0,24.0,24.0,118.7,0,0,3,2,0,0,0,0,1053,44.7,0,0.0,5,0.5
