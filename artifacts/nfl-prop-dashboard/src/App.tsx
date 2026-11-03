@@ -3,7 +3,7 @@ import playerDataJson from '@/data/player-data.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
 import { WEEK8_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week8-initial-prop-lines';
 import { WEEK8_ALTERNATE_PROP_LINES, type AlternatePropLine } from '@/data/week8-alternate-prop-lines';
-import { WEEKLY_HISTORY, type RecordSummary } from '@/data/weekly-history';
+import { WEEKLY_HISTORY, type RecordSummary, type WeeklyParlay } from '@/data/weekly-history';
 import {
   Activity,
   AlertTriangle,
@@ -1159,6 +1159,10 @@ function recordLabel(record: RecordSummary) {
 }
 
 function HistoryView() {
+  const parlayWeeks = WEEKLY_HISTORY.filter((week) => week.parlays?.length);
+  const parlayTickets = parlayWeeks.flatMap((week) => week.parlays ?? []);
+  const bestFourHits = parlayTickets.filter((ticket) => ticket.name === 'Best Four' && ticket.outcome === 'HIT').length;
+  const saferFourHits = parlayTickets.filter((ticket) => ticket.name === 'Safer Four' && ticket.outcome === 'HIT').length;
   const confidenceCareer = WEEKLY_HISTORY.reduce<RecordSummary>(
     (total, week) => ({
       wins: total.wins + week.highConfidence.wins,
@@ -1194,9 +1198,29 @@ function HistoryView() {
         <div className="history-stat-card"><span>Last updated</span><strong>W{WEEKLY_HISTORY[0]?.week ?? '—'}</strong><small>All games final</small></div>
       </section>
 
+      <section className="history-parlays" aria-label="Parlay history">
+        <div className="history-section-heading">
+          <div><span className="section-index">01</span><h2>Parlay history</h2></div>
+          <span>{parlayWeeks.length} tracked week{parlayWeeks.length === 1 ? '' : 's'}</span>
+        </div>
+        <p className="history-parlay-intro">These results grade the saved default builder tickets. Changes made in a browser were not saved and may differ from a ticket you placed.</p>
+        <div className="history-parlay-summary">
+          <div><span>Best Four</span><strong>{bestFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Best Four').length}</strong><small>default tickets hit</small></div>
+          <div><span>Safer Four</span><strong>{saferFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Safer Four').length}</strong><small>default tickets hit</small></div>
+        </div>
+        {parlayWeeks.map((week) => (
+          <div className="history-parlay-week" key={`parlay-${week.season}-${week.week}`}>
+            <h3>Week {week.week} · {week.season}</h3>
+            <div className="history-parlay-grid">
+              {week.parlays?.map((ticket) => <HistoryParlayCard ticket={ticket} key={ticket.name} />)}
+            </div>
+          </div>
+        ))}
+      </section>
+
       <section className="history-ledger">
         <div className="history-section-heading">
-          <div><span className="section-index">01</span><h2>Weekly ledger</h2></div>
+          <div><span className="section-index">02</span><h2>Weekly ledger</h2></div>
           <span>{WEEKLY_HISTORY.length} completed week{WEEKLY_HISTORY.length === 1 ? '' : 's'}</span>
         </div>
         {WEEKLY_HISTORY.map((week) => {
@@ -1243,6 +1267,28 @@ function HistoryView() {
       </section>
       <footer className="page-footer"><div><span className="footer-mark">FN</span><span>Field Note Results Ledger</span></div><span>Records use imported lines and exclude PASS calls. Full high-confidence detail begins with Week 4.</span></footer>
     </div>
+  );
+}
+
+function HistoryParlayCard({ ticket }: { ticket: WeeklyParlay }) {
+  const wins = ticket.legs.filter((leg) => leg.result === 'WIN').length;
+  const losses = ticket.legs.filter((leg) => leg.result === 'LOSS').length;
+  const voids = ticket.legs.filter((leg) => leg.result === 'VOID').length;
+  return (
+    <article className="history-parlay-card">
+      <header>
+        <div><strong>{ticket.name}</strong><span>{wins} won · {losses} lost{voids ? ` · ${voids} void` : ''}</span></div>
+        <span className={`history-parlay-outcome ${ticket.outcome.toLowerCase()}`}>{ticket.outcome}</span>
+      </header>
+      <ol>{ticket.legs.map((leg) => (
+        <li key={`${leg.player}-${leg.stat}`}>
+          <div><strong>{leg.player}</strong><span>{leg.stat} · {leg.lean} {formatValue(leg.line)}{leg.odds !== undefined ? ` · ${formatAmericanOdds(leg.odds)}` : ''}</span></div>
+          <span className="history-parlay-actual">{leg.actual === null ? 'Void' : formatValue(leg.actual)}</span>
+          <span className={`result-pill ${leg.result.toLowerCase()}`}>{leg.result}</span>
+        </li>
+      ))}</ol>
+      <p>Saved default selections; browser substitutions are not included.</p>
+    </article>
   );
 }
 

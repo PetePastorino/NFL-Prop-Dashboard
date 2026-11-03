@@ -43,7 +43,7 @@ function parsePlayerData(source) {
 }
 
 function parseInitialLines(source) {
-  const match = source.match(/export const \w+ = `([\s\S]*?)`;\s*$/);
+  const match = source.match(/export const \w+ = `([\s\S]*?)`(?:\.trim\(\))?;\s*$/);
   if (match) return match[1];
 
   const generatedSections = [
@@ -433,6 +433,21 @@ const topTenKeys = new Set(
     .map((prop) => prop.key),
 );
 const rankedTopTen = gradedNonPass.filter((prop) => topTenKeys.has(prop.key));
+const rankedBoard = rankedProps.map((prop) => ({
+  key: prop.key,
+  player: prop.player.name,
+  team: prop.player.team,
+  opponent: prop.player.week2Opp,
+  position: prop.position,
+  statKey: prop.statKey,
+  stat: prop.statLabel,
+  line: prop.line,
+  lean: prop.lean,
+  confidenceScore: prop.confidenceScore,
+  nPriorGames: prop.stat.nPriorGames,
+  lowConfidence: Boolean(prop.player.isLowConfidence || prop.stat.lowConfidence),
+  injuryStatus: prop.player.injuryStatus ?? null,
+}));
 
 console.log(JSON.stringify({
   files: csvFiles,
@@ -447,6 +462,8 @@ console.log(JSON.stringify({
   highConfidencePicks: gradedNonPass.filter((prop) => prop.confidence === 'High'),
   topPicks: recordFor(rankedTopTen),
   topTen: rankedTopTen,
+  rankedBoard,
+  gradedPicks: gradedNonPass,
   missingActuals,
   duplicateActuals: duplicates,
 }, null, 2));

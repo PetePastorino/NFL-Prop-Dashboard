@@ -1,3 +1,5 @@
+import week8History from './week8-history-snapshot.json';
+
 export type PickResult = 'WIN' | 'LOSS' | 'PUSH';
 
 export type WeeklyPick = {
@@ -13,6 +15,22 @@ export type WeeklyPick = {
 
 export type RecordSummary = { wins: number; losses: number; pushes: number };
 
+export type ParlayLegResult = 'WIN' | 'LOSS' | 'PUSH' | 'VOID';
+export type WeeklyParlay = {
+  name: 'Best Four' | 'Safer Four';
+  outcome: 'HIT' | 'MISSED' | 'VOID';
+  source: string;
+  legs: {
+    player: string;
+    stat: string;
+    lean: 'OVER' | 'UNDER';
+    line: number;
+    actual: number | null;
+    result: ParlayLegResult;
+    odds?: number;
+  }[];
+};
+
 export type WeeklyHistory = {
   week: number;
   season: number;
@@ -24,11 +42,13 @@ export type WeeklyHistory = {
   topPicks: RecordSummary;
   topPickLimit: number;
   highConfidencePicks?: WeeklyPick[];
+  parlays?: WeeklyParlay[];
   picks: WeeklyPick[];
   note?: string;
 };
 
 export const WEEKLY_HISTORY: WeeklyHistory[] = [
+  week8History as WeeklyHistory,
   {
     week: 7,
     season: 2026,
