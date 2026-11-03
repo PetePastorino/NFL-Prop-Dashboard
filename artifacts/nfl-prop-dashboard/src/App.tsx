@@ -132,7 +132,7 @@ type SaferParlayLeg = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
-const CURRENT_WEEK_PROJECTIONS_READY = false;
+const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
 
@@ -1553,7 +1553,7 @@ function NoDataPanel({ statLabel }: { statLabel: string }) {
   return (
     <div className="no-data-panel">
       <div className="no-data-icon"><Database size={23} /></div>
-      <div><h3>Week 9 {statLabel.toLowerCase()} projection pending</h3><p>The Week 9 schedule and Week 8 results are loaded. A fresh injury review, Week 9 market lines, and the projection run are still pending.</p></div>
+      <div><h3>Week 9 {statLabel.toLowerCase()} projection unavailable</h3><p>There is not enough verified player history for this stat. A projection will appear when enough game data is available.</p></div>
       <span className="no-data-code">NULL / PROJECTION</span>
     </div>
   );

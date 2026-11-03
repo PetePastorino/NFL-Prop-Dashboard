@@ -4,7 +4,7 @@ import path from 'node:path';
 const repoRoot = path.resolve(import.meta.dirname, '..');
 const injuryPath = process.argv[2];
 if (!injuryPath) {
-  console.error('Usage: node scripts/apply-current-context.mjs <injury-report.txt>');
+  console.error('Usage: node scripts/apply-current-context.mjs <injury-report.txt> [rb-depth-json]');
   process.exit(1);
 }
 
@@ -16,14 +16,9 @@ const playerDataPath = path.join(
   'data',
   'player-data.json',
 );
-const depthPath = path.join(
-  repoRoot,
-  'artifacts',
-  'nfl-prop-dashboard',
-  'src',
-  'data',
-  'week6-rb-depth.json',
-);
+const depthPath = process.argv[3]
+  ? path.resolve(process.argv[3])
+  : path.join(repoRoot, 'artifacts', 'nfl-prop-dashboard', 'src', 'data', 'week6-rb-depth.json');
 
 function normalized(value) {
   return String(value ?? '')
