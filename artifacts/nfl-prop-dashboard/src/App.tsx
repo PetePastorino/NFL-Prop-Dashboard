@@ -1051,7 +1051,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
         <div>
           <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK 9</div>
           <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
-          <p>Four independent signals can still lose together. This builder favors stable roles, reliable samples, and four different games instead of blindly stacking the highest scores.</p>
+          <p>These builders favor stable roles and reliable samples. The four-leg options span different games; the game picker groups qualified players in one matchup.</p>
         </div>
         <div className="parlay-hero-seal">
           <Shield size={23} />
@@ -1062,7 +1062,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
       </section>
 
       <section className="parlay-rules" aria-label="Parlay eligibility rules">
-        <div><Check size={15} /><span>One player, team, and game per leg</span></div>
+        <div><Check size={15} /><span>One player per leg; four-leg options span different teams and games</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
         <div><Check size={15} /><span>Minimum 65 signal and 8 prior games</span></div>
