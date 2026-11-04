@@ -1068,6 +1068,11 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
         <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
       </section>
+      <div className="parlay-color-legend" aria-label="Confidence score color legend">
+        <span className="parlay-color-legend-over">▲ Green score = Over</span>
+        <span className="parlay-color-legend-under">▼ Red score = Under</span>
+        <span>Color shows pick direction, not pick quality.</span>
+      </div>
 
       <section className="parlay-card game-parlay-card" aria-label="Parlay by game">
         <div className="parlay-card-heading">
