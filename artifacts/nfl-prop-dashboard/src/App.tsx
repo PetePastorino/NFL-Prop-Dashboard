@@ -136,6 +136,7 @@ const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
+const PARLAY_MIN_CONFIDENCE = 72;
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
   QB: [
@@ -516,7 +517,7 @@ function AppShell() {
       if (PETES_NO_BET_PLAYERS.has(prop.player.name)) audit.banned += 1;
       else if (prop.player.injuryStatus) audit.injury += 1;
       else if (prop.player.isLowConfidence || prop.stat.lowConfidence || prop.stat.nPriorGames < 8) audit.limited += 1;
-      else if (prop.confidenceScore < 65) audit.belowThreshold += 1;
+      else if (prop.confidenceScore < PARLAY_MIN_CONFIDENCE) audit.belowThreshold += 1;
       else audit.eligible += 1;
       return audit;
     }, { actionable: actionable.length, eligible: 0, banned: 0, injury: 0, limited: 0, belowThreshold: 0 });
@@ -524,7 +525,7 @@ function AppShell() {
   const parlayCandidates = useMemo(
     () => rankedProps.filter((prop) =>
       prop.lean.lean !== 'PASS'
-      && prop.confidenceScore >= 65
+      && prop.confidenceScore >= PARLAY_MIN_CONFIDENCE
       && !PETES_NO_BET_PLAYERS.has(prop.player.name)
       && !prop.player.injuryStatus
       && !prop.player.isLowConfidence
@@ -1065,7 +1066,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
         <div><Check size={15} /><span>One player per leg; four-leg options span different teams and games</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
-        <div><Check size={15} /><span>Minimum 65 signal and 8 prior games</span></div>
+        <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
       </section>
 
       <section className="parlay-card game-parlay-card" aria-label="Parlay by game">
@@ -1178,7 +1179,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
               <div><dt>Banned</dt><dd>{audit.banned}</dd></div>
               <div><dt>Injury flag</dt><dd>{audit.injury}</dd></div>
               <div><dt>Limited sample</dt><dd>{audit.limited}</dd></div>
-              <div><dt>Below 65</dt><dd>{audit.belowThreshold}</dd></div>
+              <div><dt>Below {PARLAY_MIN_CONFIDENCE}</dt><dd>{audit.belowThreshold}</dd></div>
             </dl>
           </section>
         </aside>
