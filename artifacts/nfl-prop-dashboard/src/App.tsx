@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import playerDataJson from '@/data/player-data.json';
+import week9Schedule from '@/data/week9-schedule.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
 import { WEEK9_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week9-initial-prop-lines';
 import { WEEK9_ALTERNATE_PROP_LINES } from '@/data/week9-alternate-prop-lines';
@@ -967,6 +968,21 @@ function ParlayLeg({ prop, index, options, onReplace, onSelect }: { prop: Ranked
   );
 }
 
+function GameParlayLeg({ prop, index, onSelect }: { prop: RankedProp; index: number; onSelect: (prop: RankedProp) => void }) {
+  return (
+    <div className="parlay-leg game-parlay-leg">
+      <span className="parlay-leg-number">{String(index + 1).padStart(2, '0')}</span>
+      <div className="parlay-leg-player">
+        <strong>{prop.player.name}</strong>
+        <small>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</small>
+      </div>
+      <span className="parlay-leg-line">{prop.lean.lean} {prop.line}</span>
+      <span className={`parlay-leg-score ${prop.lean.lean === 'OVER' ? 'over' : 'under'}`}>{prop.confidenceScore}<small>/100</small></span>
+      <button className="parlay-leg-detail" type="button" onClick={() => onSelect(prop)} aria-label={`View ${prop.player.name} details`}><ArrowUpRight size={14} /></button>
+    </div>
+  );
+}
+
 function impliedProbabilityFromAmericanOdds(odds: number) {
   return odds < 0 ? Math.abs(odds) / (Math.abs(odds) + 100) : 100 / (odds + 100);
 }
@@ -990,6 +1006,19 @@ function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
 function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: { bestFour: RankedProp[]; parlayCandidates: RankedProp[]; saferFour: SaferParlayLeg[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
   const [selectedAlternateLines, setSelectedAlternateLines] = useState<Record<string, number>>({});
   const [selectedBestFourKeys, setSelectedBestFourKeys] = useState<Record<number, string>>({});
+  const [selectedGameKey, setSelectedGameKey] = useState(() =>
+    [week9Schedule.games[0].away, week9Schedule.games[0].home].sort().join('|'),
+  );
+  const selectedGame = week9Schedule.games.find((game) =>
+    [game.away, game.home].sort().join('|') === selectedGameKey,
+  );
+  const gameParlayLegs = parlayCandidates
+    .filter((prop) => matchupKey(prop.player) === selectedGameKey)
+    .slice(0, 3);
+  const gameParlayReady = gameParlayLegs.length >= 2;
+  const gameParlaySignal = gameParlayReady
+    ? Math.round(gameParlayLegs.reduce((sum, prop) => sum + prop.confidenceScore, 0) / gameParlayLegs.length)
+    : null;
   const candidateByKey = new Map(parlayCandidates.map((prop) => [prop.key, prop]));
   const displayedBestFour = bestFour.map((defaultProp, index) => candidateByKey.get(selectedBestFourKeys[index]) ?? defaultProp);
   const roundRobin = displayedBestFour.length === 4
@@ -1037,6 +1066,35 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
         <div><Check size={15} /><span>Minimum 65 signal and 8 prior games</span></div>
+      </section>
+
+      <section className="parlay-card game-parlay-card" aria-label="Parlay by game">
+        <div className="parlay-card-heading">
+          <div><Trophy size={18} /><span><strong>Parlay by game</strong><small>Two or three strongest qualified players in one matchup</small></span></div>
+          <label className="game-parlay-picker">
+            <span>Choose a game</span>
+            <select value={selectedGameKey} onChange={(event) => setSelectedGameKey(event.target.value)} aria-label="Choose a game for a parlay">
+              {week9Schedule.games.map((game) => {
+                const key = [game.away, game.home].sort().join('|');
+                return <option key={key} value={key}>{game.away} {('neutralSite' in game && game.neutralSite) ? 'vs' : '@'} {game.home}</option>;
+              })}
+            </select>
+          </label>
+        </div>
+        {gameParlayReady ? (
+          <>
+            <div className="game-parlay-summary">
+              <strong>{gameParlayLegs.length}-leg parlay · {selectedGame?.away} {selectedGame && 'neutralSite' in selectedGame && selectedGame.neutralSite ? 'vs' : '@'} {selectedGame?.home}</strong>
+              <span>Average signal {gameParlaySignal}/100</span>
+            </div>
+            <div className="parlay-leg-list">
+              {gameParlayLegs.map((prop, index) => <GameParlayLeg key={prop.key} prop={prop} index={index} onSelect={onSelect} />)}
+            </div>
+          </>
+        ) : (
+          <div className="parlay-empty" role="status"><AlertTriangle size={20} /><div><strong>Low confidence game</strong><span>{gameParlayLegs.length} of 2 required players pass the existing parlay rules{audit.actionable === 0 ? '. Add sportsbook lines to evaluate this game.' : '.'}</span></div></div>
+        )}
+        <div className="parlay-card-note"><AlertTriangle size={14} /><span>Same-game legs can move together. Signal scores are not win probabilities, and a combined payout cannot be shown without prices for each standard line.</span></div>
       </section>
 
       <div className="parlay-layout">

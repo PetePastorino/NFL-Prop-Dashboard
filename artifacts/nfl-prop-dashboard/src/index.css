@@ -1298,6 +1298,15 @@ select option { color: #fff; background: #0e2a3f; }
 .parlay-rules > div { min-height: 48px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid #2a4a66; border-radius: 8px; background: rgba(14,42,63,.94); }
 .parlay-rules svg { flex: 0 0 auto; color: #2ee59d; }
 .parlay-rules span { color: #fff; font-size: 8px; line-height: 1.35; }
+.game-parlay-card { margin-bottom: 12px; }
+.game-parlay-picker { display: grid; gap: 5px; min-width: 170px; }
+.game-parlay-picker span { color: #b8c7d6; font-family: var(--app-font-mono); font-size: 7px; text-transform: uppercase; }
+.game-parlay-picker select { height: 34px; padding: 0 10px; border: 1px solid #2a4a66; border-radius: 5px; color: #fff; background: #0e2a3f; font-family: var(--app-font-mono); font-size: 10px; cursor: pointer; }
+.game-parlay-picker select:focus { outline: 2px solid #4da3ff; outline-offset: 2px; }
+.game-parlay-picker option { color: #fff; background: #0e2a3f; }
+.game-parlay-summary { display: flex; justify-content: space-between; gap: 10px; padding: 11px 18px; border-bottom: 1px solid #2a4a66; color: #fff; font-size: 10px; }
+.game-parlay-summary span { color: #22d3ee; font-family: var(--app-font-mono); }
+.game-parlay-leg .parlay-leg-player strong { color: #fff; font-size: 10px; }
 .parlay-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .8fr); gap: 12px; }
 .parlay-side-stack { display: grid; gap: 12px; }
 .parlay-card { overflow: hidden; border: 1px solid #2a4a66; border-radius: 11px; background: rgba(7,27,43,.97); box-shadow: 0 13px 30px rgba(0,0,0,.14); }
@@ -1424,6 +1433,8 @@ select option { color: #fff; background: #0e2a3f; }
   .history-parlay-grid, .history-parlay-summary { grid-template-columns: 1fr; }
   .history-parlays { padding: 14px 11px; }
   .parlay-hero { align-items: stretch; flex-direction: column; }
+  .game-parlay-card .parlay-card-heading, .game-parlay-summary { align-items: stretch; flex-direction: column; }
+  .game-parlay-picker { width: 100%; }
   .parlay-hero-seal { width: 100%; }
   .parlay-rules, .parlay-side-stack, .round-robin-grid { grid-template-columns: 1fr; }
   .parlay-card-heading { align-items: flex-start; }
