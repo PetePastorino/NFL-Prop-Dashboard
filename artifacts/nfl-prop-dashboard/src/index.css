@@ -1299,8 +1299,8 @@ select option { color: #fff; background: #0e2a3f; }
 .parlay-rules svg { flex: 0 0 auto; color: #2ee59d; }
 .parlay-rules span { color: #fff; font-size: 8px; line-height: 1.35; }
 .parlay-color-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 16px; margin: -3px 0 14px; color: #b8c7d6; font-size: 10px; }
-.parlay-color-legend-over { color: #2ee59d; font-weight: 700; }
-.parlay-color-legend-under { color: #ff6b6b; font-weight: 700; }
+.main-canvas .parlay-color-legend-over { color: #2ee59d !important; font-weight: 700; }
+.main-canvas .parlay-color-legend-under { color: #ff6b6b !important; font-weight: 700; }
 .game-parlay-card { margin-bottom: 12px; }
 .game-parlay-picker { display: grid; gap: 5px; min-width: 170px; }
 .game-parlay-picker span { color: #b8c7d6; font-family: var(--app-font-mono); font-size: 7px; text-transform: uppercase; }
