@@ -382,6 +382,24 @@ function strongestPropPerPlayer(props: RankedProp[]) {
   });
 }
 
+function selectDiversifiedProps(props: RankedProp[], count = 4) {
+  const selected: RankedProp[] = [];
+  const players = new Set<string>();
+  const teams = new Set<string>();
+  const games = new Set<string>();
+  for (const prop of props) {
+    const player = normalized(prop.player.name);
+    const game = matchupKey(prop.player);
+    if (players.has(player) || teams.has(prop.player.team) || games.has(game)) continue;
+    selected.push(prop);
+    players.add(player);
+    teams.add(prop.player.team);
+    games.add(game);
+    if (selected.length === count) break;
+  }
+  return selected;
+}
+
 function parseBulkLines(input: string, ignoreUnsupported = false) {
   const allPlayers = (Object.entries(PLAYER_DATA) as [Position, Player[]][]).flatMap(
     ([position, roster]) => roster.map((player) => ({ position, player })),
@@ -594,20 +612,7 @@ function AppShell() {
     [rankedProps],
   );
   const bestFour = useMemo(() => {
-    const selected: RankedProp[] = [];
-    const players = new Set<string>();
-    const teams = new Set<string>();
-    const games = new Set<string>();
-    for (const prop of parlayCandidates) {
-      const game = matchupKey(prop.player);
-      if (players.has(prop.player.name) || teams.has(prop.player.team) || games.has(game)) continue;
-      selected.push(prop);
-      players.add(prop.player.name);
-      teams.add(prop.player.team);
-      games.add(game);
-      if (selected.length === 4) break;
-    }
-    return selected;
+    return selectDiversifiedProps(parlayCandidates);
   }, [parlayCandidates]);
   const parlayCandidateChoices = useMemo(
     () => strongestPropPerPlayer(parlayCandidates),
@@ -1053,6 +1058,13 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
     : null;
   const candidateByKey = new Map(parlayCandidates.map((prop) => [prop.key, prop]));
   const displayedBestFour = bestFour.map((defaultProp, index) => candidateByKey.get(selectedBestFourKeys[index]) ?? defaultProp);
+  const bestFourPlayers = new Set(displayedBestFour.map((prop) => normalized(prop.player.name)));
+  const stinkyUnders = selectDiversifiedProps(parlayCandidates.filter((prop) =>
+    prop.lean.lean === 'UNDER' && !bestFourPlayers.has(normalized(prop.player.name)),
+  ));
+  const stinkyAverageSignal = stinkyUnders.length === 4
+    ? Math.round(stinkyUnders.reduce((sum, prop) => sum + prop.confidenceScore, 0) / stinkyUnders.length)
+    : null;
   const roundRobin = displayedBestFour.length === 4
     ? displayedBestFour.map((_, omittedIndex) => displayedBestFour.filter((__, index) => index !== omittedIndex))
     : [];
@@ -1207,6 +1219,35 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
               </div>
             )}
             <div className="parlay-card-note"><AlertTriangle size={14} /><span>Book-implied percentages include sportsbook margin and are not model win probabilities. The displayed price is a mathematical estimate; confirm the live parlay price before betting.</span></div>
+          </section>
+
+          <section className="parlay-card stinky-unders-card" aria-label="Stinky Unders parlay">
+            <div className="parlay-card-heading compact">
+              <div><Trophy size={17} /><span><strong>Stinky Unders</strong><small>Four strongest qualified unders outside Best Four</small></span></div>
+              {stinkyAverageSignal !== null && <div className="stinky-summary"><strong>{stinkyAverageSignal}<small>/100</small></strong><span>average signal</span></div>}
+            </div>
+            {stinkyUnders.length === 4 ? (
+              <div className="stinky-leg-list">
+                {stinkyUnders.map((prop, index) => (
+                  <div className="stinky-leg" key={prop.key}>
+                    <span className="stinky-leg-number">{String(index + 1).padStart(2, '0')}</span>
+                    <RankingTeamLogo name={prop.player.name} team={prop.player.team} />
+                    <button type="button" className="safer-player-link" onClick={() => onSelect(prop)} aria-label={`View ${prop.player.name} details`}>
+                      <strong>{prop.player.name}</strong>
+                      <small>{prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</small>
+                    </button>
+                    <div className="stinky-leg-pick"><strong>UNDER {prop.line}</strong><span>{prop.confidenceScore}/100</span></div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="parlay-locked" role="status">
+                <Shield size={25} />
+                <strong>Not enough qualified unders</strong>
+                <span>{stinkyUnders.length} of 4 eligible unders remain after excluding Best Four players and applying the same team and game rules.</span>
+              </div>
+            )}
+            <div className="parlay-card-note"><AlertTriangle size={14} /><span>Scores show signal strength, not win probability. Standard-line odds are not loaded, so a combined payout cannot be calculated.</span></div>
           </section>
 
           <section className="parlay-card audit-card">
