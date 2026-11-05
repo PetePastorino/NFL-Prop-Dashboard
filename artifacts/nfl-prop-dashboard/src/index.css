@@ -611,9 +611,11 @@ h1 em { font-style: normal; color: #a3884a; }
 .confidence-title p { color: #8c969b; font-size: 9px; margin-top: 4px; }
 .confidence-summary { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 5px; background: #edf2ef; color: #66827a; font-family: var(--app-font-mono); font-size: 8px; white-space: nowrap; }
 .ranking-list { border-top: 1px solid #e5e7e4; }
-.ranking-row { width: 100%; display: grid; grid-template-columns: 27px minmax(180px, 1fr) 58px 74px 59px 16px; align-items: center; gap: 10px; padding: 10px 2px; border: 0; border-bottom: 1px solid #edf0ed; background: transparent; color: var(--ink); text-align: left; cursor: pointer; transition: background .18s ease, padding .18s ease; }
+.ranking-row { width: 100%; display: grid; grid-template-columns: 27px 40px minmax(180px, 1fr) 58px 74px 59px 16px; align-items: center; gap: 10px; padding: 10px 2px; border: 0; border-bottom: 1px solid #edf0ed; background: transparent; color: var(--ink); text-align: left; cursor: pointer; transition: background .18s ease, padding .18s ease; }
 .ranking-row:hover { padding-left: 6px; padding-right: 6px; background: #f3f4ef; }
 .ranking-number { color: #a28b53; font-family: var(--app-font-mono); font-size: 9px; text-align: center; }
+.ranking-team-logo { width: 40px; height: 40px; display: grid; place-items: center; overflow: hidden; border: 1px solid #d7e2eb; border-radius: 9px; background: #fff; }
+.ranking-team-logo img { width: 36px; height: 36px; object-fit: contain; }
 .ranking-player { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .ranking-player strong { overflow: hidden; color: #394751; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; font-weight: 800; }
 .ranking-player span { overflow: hidden; color: #929da1; font-family: var(--app-font-mono); font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
@@ -853,8 +855,11 @@ h1 em { font-style: normal; color: #a3884a; }
   .week-record-grid { grid-template-columns: 1fr; }
   .history-ledger { padding: 14px 11px; }
   .week-card-head { padding: 13px; }
-  .ranking-row { grid-template-columns: 24px minmax(0, 1fr) 55px 16px; gap: 7px; }
+  .ranking-row { grid-template-columns: 22px 32px minmax(0, 1fr) 44px 55px; gap: 7px; }
+  .ranking-team-logo { width: 32px; height: 32px; border-radius: 7px; }
+  .ranking-team-logo img { width: 29px; height: 29px; }
   .ranking-row .lean-pill { display: none; }
+  .ranking-row .ranking-arrow { display: none; }
   .ranking-line { font-size: 10px; }
   .detail-panel { padding: 16px 13px; }
   .detail-topline { flex-direction: column; gap: 15px; }

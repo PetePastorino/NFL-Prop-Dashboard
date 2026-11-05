@@ -456,6 +456,17 @@ function PlayerAvatar({ name, team, large = false }: { name: string; team: strin
   );
 }
 
+function RankingTeamLogo({ name, team }: { name: string; team: string }) {
+  const [failed, setFailed] = useState(false);
+  return failed ? (
+    <PlayerAvatar name={name} team={team} />
+  ) : (
+    <span className="ranking-team-logo" aria-hidden="true">
+      <img src={`/team-logos/${team}.png`} alt="" width="36" height="36" loading="lazy" onError={() => setFailed(true)} />
+    </span>
+  );
+}
+
 function AppShell() {
   const [workspaceView, setWorkspaceView] = useState<'dashboard' | 'parlays' | 'history'>('dashboard');
   const [position, setPosition] = useState<Position>('WR');
@@ -917,6 +928,7 @@ function AppShell() {
                     data-testid={`button-ranked-prop-${index + 1}`}
                   >
                     <span className="ranking-number">{String(index + 1).padStart(2, '0')}</span>
+                    <RankingTeamLogo name={prop.player.name} team={prop.player.team} />
                     <span className="ranking-player">
                       <strong>{prop.player.name}</strong>
                       <span>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</span>
