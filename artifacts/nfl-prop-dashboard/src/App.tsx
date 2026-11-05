@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type CSSProperties } from 'react';
 import playerDataJson from '@/data/player-data.json';
-import commonsHeadshotsJson from '@/data/commons-headshots.json';
 import week9Schedule from '@/data/week9-schedule.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
 import { WEEK9_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week9-initial-prop-lines';
@@ -134,13 +133,40 @@ type SaferParlayLeg = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
-const COMMONS_HEADSHOTS = commonsHeadshotsJson as Record<string, {
-  url: string;
-  page: string;
-  author: string;
-  license: string;
-  licenseUrl: string;
-}>;
+const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }> = {
+  BUF: { primary: '#00338D', secondary: '#FFFFFF' },
+  MIA: { primary: '#008E97', secondary: '#FFFFFF' },
+  NWE: { primary: '#002244', secondary: '#FFFFFF' },
+  NYJ: { primary: '#125740', secondary: '#FFFFFF' },
+  BAL: { primary: '#241773', secondary: '#FFFFFF' },
+  CIN: { primary: '#FB4F14', secondary: '#000000' },
+  CLE: { primary: '#311D00', secondary: '#FF3C00' },
+  PIT: { primary: '#101820', secondary: '#FFB612' },
+  HOU: { primary: '#03202F', secondary: '#FFFFFF' },
+  IND: { primary: '#002C5F', secondary: '#FFFFFF' },
+  JAX: { primary: '#006778', secondary: '#FFFFFF' },
+  TEN: { primary: '#0C2340', secondary: '#FFFFFF' },
+  DEN: { primary: '#FB4F14', secondary: '#002244' },
+  KAN: { primary: '#E31837', secondary: '#FFFFFF' },
+  LVR: { primary: '#000000', secondary: '#FFFFFF' },
+  LAC: { primary: '#0080C6', secondary: '#000000' },
+  DAL: { primary: '#003594', secondary: '#FFFFFF' },
+  NYG: { primary: '#0B2265', secondary: '#FFFFFF' },
+  PHI: { primary: '#004C54', secondary: '#FFFFFF' },
+  WAS: { primary: '#5A1414', secondary: '#FFB612' },
+  CHI: { primary: '#0B162A', secondary: '#FFFFFF' },
+  DET: { primary: '#0076B6', secondary: '#FFFFFF' },
+  GNB: { primary: '#203731', secondary: '#FFB612' },
+  MIN: { primary: '#4F2683', secondary: '#FFC62F' },
+  ATL: { primary: '#A71930', secondary: '#FFFFFF' },
+  CAR: { primary: '#0085CA', secondary: '#000000' },
+  NOR: { primary: '#D3BC8D', secondary: '#101820' },
+  TAM: { primary: '#D50A0A', secondary: '#FFFFFF' },
+  ARI: { primary: '#97233F', secondary: '#FFFFFF' },
+  LAR: { primary: '#003594', secondary: '#FFA300' },
+  SFO: { primary: '#AA0000', secondary: '#FFFFFF' },
+  SEA: { primary: '#002244', secondary: '#69BE28' },
+};
 const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
@@ -419,15 +445,14 @@ function initials(name: string) {
     .join('');
 }
 
-function PlayerAvatar({ name, large = false }: { name: string; large?: boolean }) {
-  const [imageFailed, setImageFailed] = useState(false);
-  const photo = COMMONS_HEADSHOTS[name];
+function PlayerAvatar({ name, team, large = false }: { name: string; team: string; large?: boolean }) {
+  const colors = TEAM_AVATAR_COLORS[team] ?? { primary: '#0878FF', secondary: '#FFFFFF' };
+  const style = {
+    '--avatar-primary': colors.primary,
+    '--avatar-secondary': colors.secondary,
+  } as CSSProperties;
   return (
-    <span className={large ? 'large-avatar' : 'player-avatar'}>
-      {photo && !imageFailed
-        ? <img src={photo.url} alt={`Photo of ${name}`} loading="lazy" onError={() => setImageFailed(true)} />
-        : initials(name)}
-    </span>
+    <span className={large ? 'large-avatar' : 'player-avatar'} style={style} aria-hidden="true">{initials(name)}</span>
   );
 }
 
@@ -1415,7 +1440,7 @@ function PlayerRow({
       data-testid={`button-player-${player.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
     >
       <span className="player-rank">{String(rank).padStart(2, '0')}</span>
-      <PlayerAvatar key={player.name} name={player.name} />
+      <PlayerAvatar name={player.name} team={player.team} />
       <span className="player-info">
         <strong>{player.name}</strong>
         <span>{playerMatchupLabel(player, stat?.isHome)} <i>·</i> {venueLabel(stat?.isHome)}</span>
@@ -1505,16 +1530,11 @@ function DetailPanel({
     <section className="detail-panel">
       <div className="detail-topline">
         <div className="detail-identity">
-          <PlayerAvatar key={player.name} name={player.name} large />
+          <PlayerAvatar name={player.name} team={player.team} large />
           <div>
             <div className="detail-kicker">{position} / {statLabel}</div>
             <h2 data-testid="text-selected-player">{player.name}</h2>
             <div className="detail-context">{player.week2Opp ? <><strong>{player.team}</strong><span>vs</span><strong>{player.week2Opp}</strong><span className="context-home">{stat?.isHome === true ? <><House size={13} /> Home</> : venueLabel(stat?.isHome)}</span></> : <><strong>{player.team}</strong><span className="context-home">BYE</span></>}</div>
-            {COMMONS_HEADSHOTS[player.name] && <div className="photo-credit">
-              Photo: <a href={COMMONS_HEADSHOTS[player.name].page} target="_blank" rel="noopener noreferrer">{COMMONS_HEADSHOTS[player.name].author}</a>
-              {' · '}<a href={COMMONS_HEADSHOTS[player.name].licenseUrl} target="_blank" rel="noopener noreferrer">{COMMONS_HEADSHOTS[player.name].license}</a>
-              {' · cropped for display'}
-            </div>}
           </div>
         </div>
         <div className="line-control">

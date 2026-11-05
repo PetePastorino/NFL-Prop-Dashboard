@@ -1184,15 +1184,11 @@ select option { color: #fff; background: #0e2a3f; }
 .main-canvas .player-avatar,
 .main-canvas .large-avatar,
 .main-canvas .player-row.active .player-avatar {
-  color: #fff !important;
-  background: #0878ff;
+  color: var(--avatar-secondary) !important;
+  background: var(--avatar-primary);
 }
 .main-canvas .player-avatar,
 .main-canvas .large-avatar { overflow: hidden; flex: none; }
-.main-canvas .player-avatar img,
-.main-canvas .large-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-.main-canvas .photo-credit { margin-top: 5px; color: #b8c7d6; font-size: 9px; }
-.main-canvas .photo-credit a { color: #4da3ff; text-decoration: underline; }
 .main-canvas .lean-over,
 .main-canvas .lean-over :where(b, small),
 .main-canvas .player-row.active .lean-over,
