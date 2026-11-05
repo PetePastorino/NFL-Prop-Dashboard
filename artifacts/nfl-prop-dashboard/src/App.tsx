@@ -1,4 +1,4 @@
-import { useMemo, useState, type CSSProperties } from 'react';
+import { useMemo, useRef, useState, type CSSProperties } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import teamLogoFramingJson from '@/data/team-logo-framing.json';
 import week9Schedule from '@/data/week9-schedule.json';
@@ -14,8 +14,9 @@ import {
   ArrowUpRight,
   BarChart3,
   Check,
-  ClipboardPaste,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   CircleHelp,
   Database,
   Gauge,
@@ -286,10 +287,6 @@ function matchupKey(player: Pick<Player, 'team' | 'week2Opp'>) {
   return [player.team, player.week2Opp].sort().join('|');
 }
 
-function matchupLabel(key: string) {
-  return key.split('|').join(' vs ');
-}
-
 function confidenceLabel(score: number): 'High' | 'Medium' | 'Low' {
   return score >= 72 ? 'High' : score >= 48 ? 'Medium' : 'Low';
 }
@@ -499,25 +496,13 @@ function AppShell() {
     Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
   );
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [bulkLines, setBulkLines] = useState(INITIAL_PROP_LINES);
-  const [bulkOpen, setBulkOpen] = useState(true);
-  const [importFeedback, setImportFeedback] = useState<{ accepted: number; errors: string[] } | null>(() => ({
-    accepted: initialImport.accepted.length,
-    errors: initialImport.errors,
-  }));
+  const gameRailRef = useRef<HTMLDivElement>(null);
 
   const players = PLAYER_DATA[position] ?? [];
-  const gameOptions = useMemo(() => {
-    const keys = new Set(
-      (Object.values(PLAYER_DATA) as Player[][])
-        .flat()
-        .filter((player) => Boolean(player.week2Opp))
-        .map((player) => matchupKey(player)),
-    );
-    return Array.from(keys)
-      .sort()
-      .map((key) => ({ key, label: matchupLabel(key) }));
-  }, []);
+  const gameOptions = week9Schedule.games.map((game) => ({
+    ...game,
+    key: [game.away, game.home].sort().join('|'),
+  }));
   const playersForGame = useMemo(
     () =>
       gameFilter === 'all'
@@ -694,17 +679,6 @@ function AppShell() {
     setSelectedName(nextPlayers[0]?.name ?? null);
   };
 
-  const importLines = () => {
-    const result = parseBulkLines(bulkLines);
-    if (result.accepted.length) {
-      setLines((previous) => ({
-        ...previous,
-        ...Object.fromEntries(result.accepted.map((item) => [item.key, item.line])),
-      }));
-    }
-    setImportFeedback({ accepted: result.accepted.length, errors: result.errors });
-  };
-
   const selectRankedProp = (prop: RankedProp) => {
     setPosition(prop.position);
     setStatKey(prop.statKey);
@@ -854,13 +828,6 @@ function AppShell() {
                   />
                   {search && <button type="button" aria-label="Clear search" data-testid="button-clear-search" onClick={() => setSearch('')}><X size={15} /></button>}
                 </div>
-                <label className="game-filter">
-                  <span>Game</span>
-                  <select value={gameFilter} onChange={(event) => changeGame(event.target.value)} aria-label="Filter by game" data-testid="select-game-filter">
-                    <option value="all">All games</option>
-                    {gameOptions.map((game) => <option key={game.key} value={game.key}>{game.label}</option>)}
-                  </select>
-                </label>
               </div>
             </div>
             <div className="segmented-row">
@@ -888,42 +855,29 @@ function AppShell() {
                 ))}
               </div>
             </div>
-            <div className="bulk-import">
-              <div className="bulk-import-heading">
-                <div className="bulk-import-title">
-                  <span className="bulk-import-icon"><ClipboardPaste size={15} /></span>
-                  <div><strong>Paste multiple prop lines</strong><span>One player per line · player + stat + number</span></div>
+            <div className="game-rail-section">
+              <div className="game-rail-heading">
+                <div><strong>Choose a game</strong><span>Week {week9Schedule.week} matchups</span></div>
+                <div className="game-rail-controls">
+                  <button type="button" aria-label="Scroll games left" onClick={() => gameRailRef.current?.scrollBy({ left: -420, behavior: 'smooth' })}><ChevronLeft size={17} /></button>
+                  <button type="button" aria-label="Scroll games right" onClick={() => gameRailRef.current?.scrollBy({ left: 420, behavior: 'smooth' })}><ChevronRight size={17} /></button>
                 </div>
-                <button type="button" className="text-button" onClick={() => setBulkOpen((open) => !open)} data-testid="button-toggle-bulk-import">
-                  {bulkOpen ? 'Hide importer' : 'Show importer'} <ChevronDown size={13} className={bulkOpen ? 'rotate-chevron' : ''} />
-                </button>
               </div>
-              {bulkOpen && (
-                <div className="bulk-import-body">
-                  <textarea
-                    value={bulkLines}
-                    onChange={(event) => {
-                      setBulkLines(event.target.value);
-                      setImportFeedback(null);
-                    }}
-                    placeholder={'Puka Nacua rec yards 75.5\nJosh Allen pass yards 245.5\nBijan Robinson rush yards 78.5'}
-                    aria-label="Paste prop lines"
-                    data-testid="textarea-bulk-lines"
-                  />
-                  <div className="bulk-import-actions">
-                    <span>Over/under words are optional — the number is used as the line.</span>
-                    <button type="button" className="apply-lines-button" onClick={importLines} disabled={!bulkLines.trim()} data-testid="button-apply-lines">
-                      <Check size={14} /> Apply lines
-                    </button>
-                  </div>
-                  {importFeedback && (
-                    <div className={`import-feedback ${importFeedback.errors.length ? 'has-errors' : 'success'}`}>
-                      <strong>{importFeedback.accepted ? `${importFeedback.accepted} line${importFeedback.accepted === 1 ? '' : 's'} loaded` : 'No lines loaded'}</strong>
-                      {importFeedback.errors.length > 0 && <span>{importFeedback.errors.slice(0, 2).join(' ') }{importFeedback.errors.length > 2 ? ` + ${importFeedback.errors.length - 2} more` : ''}</span>}
-                    </div>
-                  )}
-                </div>
-              )}
+              <div className="game-rail" ref={gameRailRef} role="group" aria-label="Filter by game">
+                <button type="button" className={`game-choice all-games-choice ${gameFilter === 'all' ? 'selected' : ''}`} aria-pressed={gameFilter === 'all'} onClick={() => changeGame('all')} data-testid="button-game-all">
+                  <span className="nfl-shield-crop" aria-hidden="true" />
+                  <span className="game-choice-footer"><strong>All games</strong></span>
+                </button>
+                {gameOptions.map((game) => (
+                  <button key={game.key} type="button" className={`game-choice ${gameFilter === game.key ? 'selected' : ''}`} aria-pressed={gameFilter === game.key} aria-label={`Filter ${game.away} at ${game.home}`} onClick={() => changeGame(game.key)} data-testid={`button-game-${game.key.replace('|', '-').toLowerCase()}`}>
+                    <span className="game-choice-teams">
+                      <span><RankingTeamLogo name={game.away} team={game.away} /><strong>{game.away}</strong></span>
+                      <span><RankingTeamLogo name={game.home} team={game.home} /><strong>{game.home}</strong></span>
+                    </span>
+                    <span className="game-choice-footer"><strong>{new Date(`${game.date}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' }).toUpperCase()} {game.time}</strong></span>
+                  </button>
+                ))}
+              </div>
             </div>
           </section>
 

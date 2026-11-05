@@ -1462,3 +1462,30 @@ select option { color: #fff; background: #0e2a3f; }
   .safer-line-picker { grid-column: 3; justify-items: stretch; }
   .safer-line-picker select { width: 100%; }
 }
+
+/* Week matchup selector replaces the bulk line entry panel. */
+.game-rail-section { margin-top: 18px; padding-top: 16px; border-top: 1px solid #2a4a66; }
+.game-rail-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 11px; }
+.game-rail-heading > div:first-child { display: flex; align-items: baseline; gap: 9px; }
+.game-rail-heading strong { color: #fff; font-size: 11px; }
+.game-rail-heading span { color: #b8c7d6; font-family: var(--app-font-mono); font-size: 8px; }
+.game-rail-controls { display: flex; gap: 6px; }
+.game-rail-controls button { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid #2a4a66; border-radius: 6px; color: #b8c7d6; background: #071b2b; cursor: pointer; }
+.game-rail-controls button:hover { border-color: #4da3ff; color: #fff; background: #143650; }
+.game-rail { display: flex; overflow-x: auto; border: 1px solid #2a4a66; border-radius: 8px; scroll-behavior: smooth; scroll-snap-type: x proximity; scrollbar-color: #2a4a66 transparent; scrollbar-width: thin; }
+.game-choice { flex: 0 0 112px; height: 108px; display: flex; flex-direction: column; justify-content: space-between; padding: 0; border: 0; border-right: 1px solid #2a4a66; color: #fff; background: #071b2b; cursor: pointer; scroll-snap-align: start; transition: background .16s ease; }
+.game-choice:hover { background: #143650; }
+.game-choice.selected { background: #143650; box-shadow: inset 3px 0 0 #22d3ee; }
+.game-choice:focus-visible, .game-rail-controls button:focus-visible { outline: 2px solid #4da3ff; outline-offset: 2px; }
+.game-choice-teams { width: 100%; display: grid; gap: 3px; padding: 8px 10px 6px; }
+.game-choice-teams > span { display: flex; align-items: center; gap: 8px; }
+.game-choice-teams strong { color: #fff; font-family: var(--app-font-mono); font-size: 11px; font-weight: 800; }
+.game-choice-teams .ranking-team-logo { width: 26px; height: 26px; border-radius: 4px; }
+.game-choice-footer { width: 100%; min-height: 23px; display: grid; place-items: center; padding: 3px; border-top: 1px solid #2a4a66; color: #b8c7d6; background: rgba(20,54,80,.45); }
+.game-choice-footer strong { color: inherit; font-family: var(--app-font-mono); font-size: 8px; white-space: nowrap; }
+.all-games-choice { flex-basis: 104px; align-items: center; }
+.nfl-shield-crop { width: 37px; height: 47px; display: block; margin: auto; background-image: url('/prop-exe-background-1920x1080.png'); background-size: 640px 360px; background-position: -578px -12px; background-repeat: no-repeat; }
+@media (max-width: 650px) {
+  .game-choice { flex-basis: 108px; }
+  .all-games-choice { flex-basis: 100px; }
+}
