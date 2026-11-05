@@ -1026,6 +1026,7 @@ function ParlayLeg({ prop, index, options, onReplace, onSelect }: { prop: Ranked
   return (
     <div className="parlay-leg">
       <span className="parlay-leg-number">{String(index + 1).padStart(2, '0')}</span>
+      <RankingTeamLogo name={prop.player.name} team={prop.player.team} />
       <label className="parlay-leg-player">
         <span>Replace player</span>
         <select value={prop.key} onChange={(event) => onReplace(event.target.value)} aria-label={`Replace ${prop.player.name} in Best Four`}>
@@ -1048,6 +1049,7 @@ function GameParlayLeg({ prop, index, onSelect }: { prop: RankedProp; index: num
   return (
     <div className="parlay-leg game-parlay-leg">
       <span className="parlay-leg-number">{String(index + 1).padStart(2, '0')}</span>
+      <RankingTeamLogo name={prop.player.name} team={prop.player.team} />
       <div className="parlay-leg-player">
         <strong>{prop.player.name}</strong>
         <small>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</small>
@@ -1221,6 +1223,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
                   return (
                   <div className="safer-leg" key={leg.prop.key}>
                     <span>{String(index + 1).padStart(2, '0')}</span>
+                    <RankingTeamLogo name={leg.prop.player.name} team={leg.prop.player.team} />
                     <button type="button" className="safer-player-link" onClick={() => onSelect(leg.prop)}><strong>{leg.prop.player.name}</strong><small>{leg.prop.statLabel} · {leg.prop.player.team} vs {leg.prop.player.week2Opp}</small></button>
                     <label className="safer-line-picker">
                       <span>Alternate line</span>
@@ -1275,7 +1278,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
             {roundRobin.map((ticket, index) => (
               <article key={`ticket-${index}`} className="round-robin-ticket">
                 <div><strong>Ticket {String.fromCharCode(65 + index)}</strong><span>Leaves out {displayedBestFour[index].player.name}</span></div>
-                <ol>{ticket.map((prop) => <li key={prop.key}><span>{prop.player.name}</span><strong className={prop.lean.lean === 'OVER' ? 'over' : 'under'}>{prop.lean.lean} {prop.line}</strong></li>)}</ol>
+                <ol>{ticket.map((prop) => <li key={prop.key}><RankingTeamLogo name={prop.player.name} team={prop.player.team} /><span>{prop.player.name}</span><strong className={prop.lean.lean === 'OVER' ? 'over' : 'under'}>{prop.lean.lean} {prop.line}</strong></li>)}</ol>
               </article>
             ))}
           </div>
