@@ -1397,11 +1397,6 @@ select option { color: #fff; background: #0e2a3f; }
 .stinky-leg-number { color: #8fa3b5; font-family: var(--app-font-mono); font-size: 7px; }
 .stinky-leg-pick { display: grid; justify-items: end; gap: 3px; color: #ff6b6b; font-family: var(--app-font-mono); white-space: nowrap; }
 .stinky-leg-pick strong, .stinky-leg-pick span { color: #ff6b6b !important; font-size: 8px; }
-.parlay-audit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #2a4a66; }
-.parlay-audit-grid > div { min-height: 59px; display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 10px 13px; background: #071b2b; }
-.parlay-audit-grid > div:last-child { grid-column: 1 / -1; }
-.parlay-audit-grid dt { color: #b8c7d6; font-family: var(--app-font-mono); font-size: 7px; text-transform: uppercase; }
-.parlay-audit-grid dd { color: #fff; font-family: var(--app-font-mono); font-size: 18px; }
 .round-robin-card { margin-top: 12px; }
 .round-robin-badge { display: inline-flex !important; padding: 5px 8px; border: 1px solid #4da3ff; border-radius: 999px; color: #fff; background: rgba(8,120,255,.18); font-family: var(--app-font-mono); font-size: 8px; }
 .round-robin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 12px; }

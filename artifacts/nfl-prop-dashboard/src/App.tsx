@@ -118,15 +118,6 @@ type RankedProp = {
   confidenceScore: number;
 };
 
-type ParlayAudit = {
-  actionable: number;
-  eligible: number;
-  banned: number;
-  injury: number;
-  limited: number;
-  belowThreshold: number;
-};
-
 type SaferParlayLeg = {
   prop: RankedProp;
   alternate: AlternatePropLine;
@@ -588,17 +579,6 @@ function AppShell() {
     () => strongestPropPerPlayer(gameRankedProps).slice(0, 10),
     [gameRankedProps],
   );
-  const parlayAudit = useMemo<ParlayAudit>(() => {
-    const actionable = rankedProps.filter((prop) => prop.lean.lean !== 'PASS');
-    return actionable.reduce<ParlayAudit>((audit, prop) => {
-      if (PETES_NO_BET_PLAYERS.has(prop.player.name)) audit.banned += 1;
-      else if (prop.player.injuryStatus) audit.injury += 1;
-      else if (prop.player.isLowConfidence || prop.stat.lowConfidence || prop.stat.nPriorGames < 8) audit.limited += 1;
-      else if (prop.confidenceScore < PARLAY_MIN_CONFIDENCE) audit.belowThreshold += 1;
-      else audit.eligible += 1;
-      return audit;
-    }, { actionable: actionable.length, eligible: 0, banned: 0, injury: 0, limited: 0, belowThreshold: 0 });
-  }, [rankedProps]);
   const parlayCandidates = useMemo(
     () => rankedProps.filter((prop) =>
       prop.lean.lean !== 'PASS'
@@ -785,7 +765,6 @@ function AppShell() {
               bestFour={bestFour}
               parlayCandidates={parlayCandidateChoices}
               saferFour={saferFour}
-              audit={parlayAudit}
               onSelect={(prop) => {
                 setWorkspaceView('dashboard');
                 window.setTimeout(() => selectRankedProp(prop), 0);
@@ -1040,7 +1019,7 @@ function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
     : `-${Math.round(100 / (decimal - 1))}`;
 }
 
-function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: { bestFour: RankedProp[]; parlayCandidates: RankedProp[]; saferFour: SaferParlayLeg[]; audit: ParlayAudit; onSelect: (prop: RankedProp) => void }) {
+function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestFour: RankedProp[]; parlayCandidates: RankedProp[]; saferFour: SaferParlayLeg[]; onSelect: (prop: RankedProp) => void }) {
   const [selectedAlternateLines, setSelectedAlternateLines] = useState<Record<string, number>>({});
   const [selectedBestFourKeys, setSelectedBestFourKeys] = useState<Record<number, string>>({});
   const [selectedGameKey, setSelectedGameKey] = useState(() =>
@@ -1141,7 +1120,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
             </div>
           </>
         ) : (
-          <div className="parlay-empty" role="status"><AlertTriangle size={20} /><div><strong>Low confidence game</strong><span>{gameParlayLegs.length} of 2 required players pass the existing parlay rules{audit.actionable === 0 ? '. Add sportsbook lines to evaluate this game.' : '.'}</span></div></div>
+          <div className="parlay-empty" role="status"><AlertTriangle size={20} /><div><strong>Low confidence game</strong><span>{gameParlayLegs.length} of 2 required players pass the existing parlay rules.</span></div></div>
         )}
         <div className="parlay-card-note"><AlertTriangle size={14} /><span>Same-game legs can move together. Signal scores are not win probabilities, and a combined payout cannot be shown without prices for each standard line.</span></div>
       </section>
@@ -1250,16 +1229,6 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, audit, onSelect }: 
             <div className="parlay-card-note"><AlertTriangle size={14} /><span>Scores show signal strength, not win probability. Standard-line odds are not loaded, so a combined payout cannot be calculated.</span></div>
           </section>
 
-          <section className="parlay-card audit-card">
-            <div className="parlay-card-heading compact"><div><Target size={17} /><span><strong>Eligibility audit</strong><small>{audit.actionable} actionable lines reviewed</small></span></div></div>
-            <dl className="parlay-audit-grid">
-              <div><dt>Qualified</dt><dd>{audit.eligible}</dd></div>
-              <div><dt>Banned</dt><dd>{audit.banned}</dd></div>
-              <div><dt>Injury flag</dt><dd>{audit.injury}</dd></div>
-              <div><dt>Limited sample</dt><dd>{audit.limited}</dd></div>
-              <div><dt>Below {PARLAY_MIN_CONFIDENCE}</dt><dd>{audit.belowThreshold}</dd></div>
-            </dl>
-          </section>
         </aside>
       </div>
 
