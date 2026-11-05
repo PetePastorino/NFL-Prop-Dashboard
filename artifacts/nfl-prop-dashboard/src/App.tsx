@@ -1,5 +1,6 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 import playerDataJson from '@/data/player-data.json';
+import teamLogoFramingJson from '@/data/team-logo-framing.json';
 import week9Schedule from '@/data/week9-schedule.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
 import { WEEK9_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week9-initial-prop-lines';
@@ -133,6 +134,7 @@ type SaferParlayLeg = {
 };
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
+const TEAM_LOGO_FRAMING = teamLogoFramingJson as Record<string, { scale: number; x: number; y: number }>;
 const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }> = {
   BUF: { primary: '#00338D', secondary: '#FFFFFF' },
   MIA: { primary: '#008E97', secondary: '#FFFFFF' },
@@ -458,11 +460,17 @@ function PlayerAvatar({ name, team, large = false }: { name: string; team: strin
 
 function RankingTeamLogo({ name, team }: { name: string; team: string }) {
   const [failed, setFailed] = useState(false);
+  const framing = TEAM_LOGO_FRAMING[team];
+  const style = framing ? {
+    '--logo-scale': framing.scale,
+    '--logo-x': `${framing.x}%`,
+    '--logo-y': `${framing.y}%`,
+  } as CSSProperties : undefined;
   return failed ? (
     <PlayerAvatar name={name} team={team} />
   ) : (
     <span className="ranking-team-logo" aria-hidden="true">
-      <img src={`/team-logos/${team}.png`} alt="" width="36" height="36" loading="lazy" onError={() => setFailed(true)} />
+      <img src={`/team-logos/${team}.png`} alt="" width="40" height="40" style={style} loading="lazy" onError={() => setFailed(true)} />
     </span>
   );
 }
