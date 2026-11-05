@@ -135,6 +135,16 @@ type SaferParlayLeg = {
 
 const PLAYER_DATA = playerDataJson as unknown as PlayerData;
 const TEAM_LOGO_FRAMING = teamLogoFramingJson as Record<string, { scale: number; x: number; y: number }>;
+const TEAM_LOGO_BACKGROUNDS: Record<string, string> = {
+  BUF: '#00338D', MIA: '#FC4C02', NWE: '#FFFFFF', NYJ: '#FFFFFF',
+  BAL: '#241773', CIN: '#FB4F14', CLE: '#311D00', PIT: '#101820',
+  HOU: '#03202F', IND: '#FFFFFF', JAX: '#006778', TEN: '#0C2340',
+  DEN: '#002244', KAN: '#E31837', LVR: '#000000', LAC: '#002A5E',
+  DAL: '#C4CED4', NYG: '#D8E2F0', PHI: '#C4D4D5', WAS: '#5A1414',
+  CHI: '#0B162A', DET: '#B0B7BC', GNB: '#203731', MIN: '#4F2683',
+  ATL: '#A71930', CAR: '#0085CA', NOR: '#101820', TAM: '#D3BC8D',
+  ARI: '#D6D6D6', LAR: '#003594', SFO: '#AA0000', SEA: '#69BE28',
+};
 const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }> = {
   BUF: { primary: '#00338D', secondary: '#FFFFFF' },
   MIA: { primary: '#008E97', secondary: '#FFFFFF' },
@@ -469,7 +479,7 @@ function RankingTeamLogo({ name, team }: { name: string; team: string }) {
   return failed ? (
     <PlayerAvatar name={name} team={team} />
   ) : (
-    <span className="ranking-team-logo" aria-hidden="true">
+    <span className="ranking-team-logo" style={{ backgroundColor: TEAM_LOGO_BACKGROUNDS[team] ?? '#FFFFFF' }} aria-hidden="true">
       <img src={`/team-logos/${team}.png`} alt="" width="40" height="40" style={style} loading="lazy" onError={() => setFailed(true)} />
     </span>
   );
