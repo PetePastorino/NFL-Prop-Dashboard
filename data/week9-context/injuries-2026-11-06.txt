@@ -1,0 +1,605 @@
+NFL Injuries
+
+Team Injuries
+Arizona Cardinals
+Arizona Cardinals
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Bam Knight	RB	Nov 15	Out	Nov 6: Knight (concussion) is out for Sunday's game against the Seahawks, Josh Weinfuss of ESPN.com reports.
+Jayden Williams	OT	Nov 15	Out	Nov 5: Williams (knee) did not participate at Arizona's practice Thursday, Darren Urban of the Cardinals' official site reports.
+Jon Gaines II	G	Nov 15	Out	Nov 5: Gaines (ankle) did not participate at the Cardinals' practice Thursday, Darren Urban of the team's official site reports.
+Isaiah Adams	G	Nov 8	Injured Reserve	Nov 5: Adams (ankle) was a limited participant at the Cardinals' practice Thursday, Darren Urban of the team's official site reports.
+Max Melton	CB	Nov 8	Questionable	
+Michael Wilson	WR	Nov 8	Questionable	Nov 5: Wilson (rest/ribs) was a limited practice participant Thursday, Darren Urban of the Cardinals' official site reports.
+James Conner	RB	Nov 15	Injured Reserve	Nov 3: Cardinals head coach Mike LaFleur said Tuesday that Conner (foot) won't return from IR this week, Darren Urban of the team's official site reports.
+Jeremiyah Love	RB	Dec 6	Injured Reserve	Nov 3: Arizona placed Love (ankle) on injured reserve Tuesday, Darren Urban of the Cardinals' official site reports.
+Kendrick Bourne	WR	Feb 15	Injured Reserve	Nov 3: Arizona placed Bourne (tibia) on injured reserve Tuesday, Darren Urban of the Cardinals' official site reports.
+Walter Nolen III	DT	Nov 8	Questionable	
+Jalen Brooks	WR	Feb 15	Injured Reserve	Oct 27: The Cardinals placed Brooks (wrist) on injured reserve Tuesday.
+Tip Reiman	TE	Nov 8	Out	Oct 26: Head coach Mike LaFleur stated he's "not too sure" if Reiman (ankle) will play this season, Dani Sureck of the Cardinals' official site reports.
+Paris Johnson Jr.	OT	Feb 15	Injured Reserve	Oct 6: The Cardinals placed Johnson (biceps) on injured reserve Tuesday.
+Hunter Long	TE	Nov 8	Injured Reserve	Oct 6: The Cardinals placed Long (knee) on injured reserve Tuesday.
+Will Johnson	CB	Feb 15	Injured Reserve	Sep 23: The Cardinals placed Johnson (neck) on injured reserve Wednesday, Darren Urban of the team's official site reports.
+Kaleb Proctor	DT	Feb 15	Injured Reserve	
+Zachary Carter	DT	Nov 8	Injured Reserve	Aug 31: The Cardinals placed Carter (knee) on injured reserve Sunday with a designation to return, Darren Urban of the team's official site reports.
+Trey Benson	RB	Feb 15	Injured Reserve	Aug 25: Benson (knee) reverted to the Cardinals' injured reserve list Tuesday, David Furones of the South Florida Sun Sentinel reports.
+Chase Bisontis	G	Feb 15	Injured Reserve	
+Joey Blount	S	Feb 15	Injured Reserve	
+Atlanta Falcons
+Atlanta Falcons
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+James Pearce Jr.	LB	Nov 8	Questionable	Nov 6: The Falcons listed Pearce (back) as questionable for Sunday's game against the Bengals, Tori McElhaney of the Falcons' official site reports.
+Divine Deablo	LB	Nov 8	Questionable	Nov 6: The Falcons listed Deablo (forearm) as questionable for Sunday's game against the Bengals, Tori McElhaney of the Falcons' official site reports.
+Brian Robinson Jr.	RB	Nov 15	Out	Nov 6: Robinson (hamstring) has been ruled out for Sunday's game against the Bengals, Tori McElhaney of the Falcons' official site reports.
+Beaux Collins	WR	Nov 8	Injured Reserve	Nov 5: Collins (hip) was a full participant in Thursday's practice, D. Orlando Ledbetter of BowTieSports.com reports.
+Yasir Abdullah	LB	Nov 8	Injured Reserve	Nov 4: Abdullah (hamstring) was a limited participant at practice Wednesday.
+Samson Ebukam	DE	Dec 13	Injured Reserve	Nov 3: Ebukam (hamstring) was placed on injured reserve by the Falcons on Tuesday, Tori McElhaney of the team's official website reports.
+Zachariah Branch	WR	Nov 15	Out	Nov 2: Coach Kevin Stefanski noted Monday that Branch (hamstring) won't play Sunday against the Bengals, William McFadden of the Falcons' official site reports.
+Cameron Williams	OL	Nov 8	Injured Reserve	Oct 31: Williams (ankle) will remain on injured reserve and has been ruled out for Sunday's game against the Buccaneers, Tori McElhany of the Falcons' official site reports.
+Anterio Thompson	DT	Feb 15	Out	Oct 30: Thompson posted on social media this week that he was diagnosed with a genetic mutation on his spinal cord in early May and indicated that he was told he will "never play football again," Josh Kendall of The Athletic reports.
+Michael Jerrell	OT	Nov 29	Injured Reserve	Oct 24: The Falcons placed Jerrell (biceps) on injured reserve Saturday, Tori McElhaney of the team's official site reports.
+Da'Shawn Hand	DT	Feb 15	Injured Reserve	Sep 16: The Falcons placed Hand (quadriceps) on injured reserve Wednesday, William McFadden of the team's official site reports.
+Trey Sermon	RB	Feb 15	Injured Reserve	
+Storm Norton	OT	Feb 15	Out	
+JD Bertrand	LB	Nov 15	Injured Reserve	Aug 31: The Falcons placed Bertrand (undisclosed) on injured reserve Monday, Will McFadden of the team's official site reports.
+Jalon Walker	LB	Feb 15	Injured Reserve	
+DeAngelo Malone	LB	Feb 15	Out	Aug 4: The Falcons placed Malone (undisclosed) on the reserve/PUP list Tuesday, Will McFadden of the team's official site reports.
+Baltimore Ravens
+Baltimore Ravens
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Kyle Hamilton	S	Nov 16	Questionable	Nov 5: Hamilton (hip) has been ruled out for the remainder of Thursday night's contest against the Jaguars.
+Adisa Isaac	LB	Nov 16	Questionable	Nov 5: Isaac (hamstring) is questionable to return to Thursday night's contest against the Jaguars.
+Nate Wiggins	CB	Nov 16	Out	Nov 5: Wiggins (illness) is inactive for Thursday's game versus the Jaguars.
+Kedon Slovis	QB	Nov 16	Out	Nov 5: Slovis (coach's decision) is inactive for Thursday's game against Jacksonville but will serve as the team's emergency quarterback.
+Elijah Sarratt	WR	Nov 16	Out	
+Emery Jones Jr.	OT	Nov 16	Out	
+Aeneas Peebles	DT	Nov 16	Out	
+Tyler Huntley	QB	Feb 15	Injured Reserve	Nov 5: Huntley (toe) was placed on injured reserve Thursday.
+Lamar Jackson	QB	Dec 13	Injured Reserve	Nov 5: The Ravens have officially placed Jackson (thumb) on injured reserve.
+Jaylinn Hawkins	S	Nov 16	Out	Nov 4: Hawkins (knee) is officially listed as out for Thursday's game versus the Jaguars, Ryan Mink of the Ravens' official site reports.
+Adam Randall	RB	Nov 16	Injured Reserve	Nov 4: Randall (neck) is officially listed as questionable for Thursday's game versus the Jaguars, Ryan Mink of the Ravens' official site reports.
+Tyler Loop	PK	Dec 13	Injured Reserve	Nov 3: The Ravens placed Loop (groin) on injured reserve Tuesday.
+Tavius Robinson	LB	Feb 15	Injured Reserve	Oct 24: The Ravens placed Robinson (pectoral) on injured reserve Saturday.
+Durham Smythe	TE	Feb 15	Injured Reserve	Oct 7: The Ravens placed Smythe (Achilles) on their injured reserve list Wednesday, Ryan Mink of the Ravens' official site reports.
+Ethan Pocic	C	Nov 16	Injured Reserve	Oct 3: Baltimore placed Pocic (knee) on injured reserve Saturday.
+Jovaughn Gwyn	G	Dec 13	Injured Reserve	Oct 3: The Ravens moved Gwyn (ankle) to injured reserve Saturday.
+Bilhal Kone	CB	Nov 16	Injured Reserve	
+Danny Pinter	C	Feb 15	Injured Reserve	Aug 26: Pinter (knee) was placed on injured reserve by the Ravens on Wednesday, Clifton Brown of the team's official website reports.
+Jahquez Robinson	S	Feb 15	Injured Reserve	Aug 19: Robinson (undisclosed) reverted to the Ravens' injured reserve list Wednesday, Aaron Wilson of KPRC 2 Houston reports.
+Skylar Thompson	QB	Feb 15	Injured Reserve	
+Buffalo Bills
+Buffalo Bills
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+DJ Moore	WR	Nov 9	Questionable	Nov 6: Moore (shoulder) was still wearing a non-contact jersey at Friday's practice, Sal Capaccio of WGR Sports Radio 550 Buffalo reports.
+Dalton Kincaid	TE	Nov 9	Questionable	Nov 6: Kincaid (chest) is no longer in a red non-contact jersey at Friday's practice, Sal Capaccio of WGR Sports Radio 550 Buffalo reports.
+Ty Johnson	RB	Nov 9	Questionable	Nov 5: Johnson (illness) did not practice Thursday.
+Keon Coleman	WR	Nov 9	Questionable	Nov 5: Coleman (shoulder) was limited in practice Thursday.
+Dion Dawkins	OT	Nov 9	Questionable	
+Alec Anderson	OT	Nov 9	Questionable	
+Joshua Palmer	WR	Nov 9	Questionable	Nov 5: Palmer (hamstring) did not practice Thursday.
+Jordan Hancock	CB	Nov 9	Injured Reserve	Nov 4: Hancock (hamstring) was designated to return from injured reserve by the Bills on Wednesday, Sal Capaccio of WGR Sports Radio 550 Buffalo reports.
+Greg Gaines	DT	Nov 9	Questionable	
+Spencer Brown	OT	Nov 9	Questionable	
+Tyrell Shavers	WR	Nov 9	Out	Oct 28: The Bills designated Shavers (knee) to return from the reserve/PUP list Wednesday, but he will not play against the Ravens on Sunday, Cameron Wolfe of NFL Network reports.
+Dorian Strong	CB	Feb 15	Out	Sep 8: nfi-r
+Zane Durant	DT	Nov 9	Injured Reserve	
+Carolina Panthers
+Carolina Panthers
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Brady Christensen	G	Nov 8	Injured Reserve	Nov 5: Christensen (hamstring) was a full participant at the Panthers' practice Thursday, Steve Reed of the Associated Press reports.
+Damien Lewis	G	Nov 8	Questionable	Nov 5: Lewis (knee) did not participate at the Panthers' practice Thursday, Steve Reed of the Associated Press reports.
+Will Lee III	CB	Nov 8	Questionable	Nov 5: Lee (hamstring) did not practice Thursday, Steve Reed of the Associated Press reports.
+Bobby Okereke	LB	Nov 8	Questionable	Nov 5: Okereke (foot) did not practice Thursday, Steve Reed of the Associated Press reports.
+Jonathon Brooks	RB	Nov 8	Injured Reserve	Nov 3: Brooks (core) was seen working off to the side during the Panthers' unofficial practice Tuesday, Joe Person of The Athletic reports.
+Jaelan Phillips	LB	Nov 8	Questionable	Nov 2: Panthers head coach Dave Canales said Monday that Phillips (hamstring) is trending in the right direction and considered day-to-day heading into Sunday's game against the Broncos, Joe Person of The Athletic reports.
+Xavier Legette	WR	Nov 8	Injured Reserve	Nov 2: Panthers head coach Dave Canales said Monday that Legette (knee) will "potentially" be designated for return from injured reserve this week, Joe Person of The Athletic reports.
+Akayleb Evans	CB	Nov 30	Injured Reserve	Oct 29: Evans (triceps) was placed on injured reserve by the Panthers on Thursday, Darin Gantt of the team's official website reports.
+Taylor Moton	OT	Feb 15	Injured Reserve	Oct 26: The Panthers placed Moton (lower leg) on injured reserve Monday.
+Thomas Incoom	LB	Nov 22	Injured Reserve	Oct 24: The Panthers placed Incoom (calf) on injured reserve Saturday, Darin Gantt of the team's official site reports.
+Cam Jackson	DT	Feb 15	Injured Reserve	Oct 13: The Panthers placed Jackson (shoulder) on injured reserve Tuesday, Darin Gantt of the team's official site reports.
+Ikem Ekwonu	OT	Nov 8	Out	Oct 5: Coach Dave Canales said Monday that Ekwonu (knee) is still a considerable time away from returning to action, Mike Kaye of ESPN reports.
+Mike Jackson	CB	Nov 22	Injured Reserve	Sep 30: Head coach Dave Canales said Wednesday that Jackson (groin) underwent core-muscle surgery and will be sidelined about eight weeks, Joe Person of The Athletic reports.
+Jaycee Horn	CB	Nov 15	Injured Reserve	Sep 30: The Panthers placed Horn (quadriceps) on injured reserve Wednesday.
+Chris Brazzell II	WR	Feb 15	Injured Reserve	Jul 31: The Panthers placed Brazzell (knee) on injured reserve Friday.
+Nic Scourton	LB	Feb 15	Injured Reserve	Jul 24: The Panthers placed Scourton (knee) on injured reserve Friday.
+Chicago Bears
+Chicago Bears
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Tyrique Stevenson Sr.	CB	Nov 8	Questionable	
+Kyle Monangai	RB	Nov 8	Questionable	Nov 6: Monangai (thumb/toe) is listed as questionable for Sunday's game against the Buccaneers.
+Zavier Scott	RB	Dec 13	Injured Reserve	Nov 5: The Bears placed Scott (wrist) on injured reserve Thursday.
+Kentavius Street	DT	Feb 15	Injured Reserve	Nov 4: The Bears placed Street (knee) on injured reserve Wednesday, Adam Jahns of AllCHGO.com reports.
+Braxton Jones	OT	Feb 15	Injured Reserve	Nov 4: Jones (knee) is out for the rest of the season, Brad Biggs of the Chicago Tribune reports.
+Malik Muhammad II	CB	Nov 8	Questionable	Nov 4: Muhammad (toe) was a limited participant at the Bears' walkthrough practice Wednesday.
+Coby Bryant	S	Dec 19	Injured Reserve	Oct 28: Coach Ben Johnson said Wednesday that Bryant (knee) will start running again in the "near future," Courtney Cronin of ESPN.com reports.
+Cole Kmet	TE	Feb 15	Injured Reserve	Oct 23: The Bears placed Kmet (knee) on injured reserve Friday.
+Dayo Odeyingbo	DE	Nov 22	Injured Reserve	Oct 17: The Bears placed Odeyingbo (quadriceps) on injured reserve Saturday.
+Dallis Flowers	CB	Feb 15	Injured Reserve	
+Hayden Large	TE	Nov 8	Injured Reserve	Sep 1: The Bears placed Large (undisclosed) on injured reserve Tuesday.
+Ruben Hyppolite II	LB	Feb 15	Injured Reserve	Aug 31: Hyppolite (shoulder) reverted to Chicago's injured reserve Monday, per the NFL's transaction log.
+Tony Fields II	LB	Nov 8	Injured Reserve	Aug 31: The Bears placed Fields (undisclosed) on injured reserve Sunday with a designation to return.
+Brittain Brown	RB	Feb 15	Injured Reserve	Aug 31: Brown (undisclosed) was placed on injured reserve by the Bears on Sunday.
+Nephi Sewell	LB	Feb 15	Injured Reserve	Aug 25: The Bears placed Sewell (concussion) on injured reserve Tuesday.
+Nikola Kalinic	TE	Feb 15	Injured Reserve	
+Cincinnati Bengals
+Cincinnati Bengals
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Kyle Dugger	S	Nov 15	Out	
+Cashius Howell	DE	Dec 6	Injured Reserve	Nov 3: Howell (wrist) was placed on injured reserve by the Bengals on Tuesday.
+Cedric Johnson	DE	Nov 8	Questionable	Nov 1: Johnson (ankle) has been ruled out for the rest of Sunday's game against the Falcons.
+Andrei Iosivas	WR	Nov 15	Injured Reserve	Oct 29: Iosivas (thumb) is making good progress in his rehab, Mike Petraglia of CLNSCincy.com reports.
+Erick All Jr.	TE	Feb 15	Injured Reserve	Oct 28: Bengals head coach Zac Taylor confirmed Wednesday that All has been diagnosed with a torn ACL in his right knee and will require season-ending surgery, Jay Morrison of SI.com reports.
+Tanner Hudson	TE	Feb 15	Injured Reserve	Oct 19: Hudson (pectoral) was placed on injured reserve by the Bengals on Monday.
+Swayze Bozeman	LB	Nov 23	Injured Reserve	Oct 12: The Bengals placed Bozeman on injured reserve Monday due to a fractured forearm, Ben Baby of ESPN.com reports.
+Jalen Davis	CB	Nov 15	Injured Reserve	Sep 29: The Bengals placed Davis (hamstring) on injured reserve Tuesday.
+Brian Parker II	OT	Nov 15	Injured Reserve	
+Ja'Sir Taylor	CB	Nov 15	Injured Reserve	Aug 31: The Bengals placed Taylor (undisclosed) on injured reserve Sunday with a designation to return, Geoff Hobson of the team's official site reports.
+Cleveland Browns
+Cleveland Browns
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Maliek Collins	DT	Nov 15	Out	
+Deshaun Watson	QB	Nov 8	Questionable	Nov 6: Watson (concussion) is listed as questionable for Sunday's game against the Saints, but Shedeur Sanders will start even if Watson is active Kelsey Russo of the Browns' official site reports.
+Kalia Davis	DT	Feb 15	Injured Reserve	Oct 27: Davis (quadriceps) will spend the rest of the 2026 season on injured reserve after his 21-day practice window expired Tuesday, Aaron Wilson of KPRC 2 Houston reports.
+Teven Jenkins	G	Nov 29	Injured Reserve	Oct 24: The Browns placed Jenkins (back) on injured reserve Saturday.
+Raheim Sanders	RB	Nov 15	Injured Reserve	Oct 13: The Browns placed Sanders (hip) on injured reserve Tuesday.
+Jeremiah Owusu-Koramoah	LB	Feb 15	Out	
+Edefuan Ulofoshio	LB	Feb 15	Injured Reserve	Aug 31: Ulofoshio (biceps) reverted to the Browns' IR on Monday, per the NFL's transaction log.
+Elijah Chatman	DT	Feb 15	Injured Reserve	Aug 31: The Browns reverted Chatman (quadriceps) to IR on Monday, per the NFL's transaction log.
+Joe Royer	TE	Nov 15	Out	Aug 30: The Browns placed Royer (personal) on the reserve/non-football illness list Sunday, Scott Petrak of the Elyria Chronicle-Telegram reports.
+Alex Wright	DE	Feb 15	Injured Reserve	Aug 23: The Browns placed Wright on injured reserve Sunday due to a ruptured Achilles, Adam Schefter of ESPN reports.
+Damarri Mathis	CB	Feb 15	Injured Reserve	
+Dallas Cowboys
+Dallas Cowboys
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+KaVontae Turpin	WR	Nov 15	Out	
+Malachi Lawrence	LB	Nov 8	Out	
+Jake Ferguson	TE	Nov 8	Questionable	Nov 6: Ferguson (ankle) is listed as questionable for Sunday's game against the Colts, Tommy Yarrish of the Cowboys' official site reports.
+George Pickens	WR	Nov 8	Questionable	Nov 6: Pickens (hamstring) is listed as questionable for Sunday's game at Indianapolis, Tommy Yarrish of the Cowboys' official site reports.
+DeMarvion Overshown	LB	Nov 8	Questionable	Nov 5: Overshown (hamstring/back) was limited in Thursday's practice, Todd Archer of ESPN.com reports.
+Joey Porter Jr.	CB	Nov 8	Questionable	
+Jalen Thompson	S	Nov 8	Injured Reserve	Nov 4: Thompson (hamstring) has not had his 21-day practice window opened yet, Joe Hoyt of The Dallas Morning News reports.
+Luke Schoonmaker	TE	Nov 8	Questionable	
+Jonathan Bullard	DT	Nov 8	Injured Reserve	Oct 29: Bullard (calf) was designated to return from injured reserve by the Cowboys on Thursday.
+Marist Liufau	LB	Nov 8	Injured Reserve	Oct 25: Liufau (forearm) has been downgraded from questionable to out ahead of Monday night's game against the Eagles.
+Malik Davis	RB	Feb 15	Injured Reserve	Sep 12: The Cowboys placed Davis (hip) on injured reserve Saturday, Adam Schefter of ESPN reports.
+Devin Moore	CB	Nov 8	Injured Reserve	
+Matt Hennessy	C	Feb 15	Injured Reserve	
+Kelvin Gilliam Jr.	DT	Feb 15	Injured Reserve	Aug 25: Gilliam (triceps) reverted to Dallas' injured reserve Tuesday, Tommy Yarrish of the team's official site reports.
+Princeton Fant	TE	Feb 15	Injured Reserve	
+Denver Broncos
+Denver Broncos
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Talanoa Hufanga	S	Nov 8	Questionable	Nov 5: Hufanga (ankle) was limited in Thursday's practice, Zac Stevens of TheDNVR.com reports.
+Kris Abrams-Draine	CB	Nov 8	Questionable	Nov 4: Abrams-Draine (ankle) did not practice Wednesday.
+Pat Bryant	WR	Nov 8	Injured Reserve	Nov 4: Bryant (ankle) was a full participant at the Broncos' practice Wednesday, Aric DiLalla of the team's official site reports.
+Eyioma Uwazurike	DE	Nov 8	Questionable	
+Brandon Jones	S	Nov 8	Questionable	Nov 1: Jones (hamstring) has been ruled out for the rest of Sunday's contest against the Chiefs, Parker Gabriel of The Denver Post reports.
+RJ Harvey	RB	Dec 6	Injured Reserve	Oct 31: The Broncos placed Harvey (knee) on injured reserve Saturday, Ian Rapoport of NFL Network reports.
+Tyler Badie	RB	Nov 27	Injured Reserve	Oct 24: The Broncos placed Badie (thumb) on injured reserve Saturday, Aric DiLalla of the team's official site reports.
+Jonah Elliss	LB	Nov 27	Injured Reserve	Oct 24: The Broncos placed Elliss (ankle) on injured reserve Saturday, Aric DiLalla of the team's official site reports.
+Nick Gargiulo	G	Nov 8	Out	Aug 31: Gargiulo (knee) was moved to the reserve/PUP list by the Broncos on Sunday, Aric DiLalla of the team's official site reports.
+Frank Crum	OT	Nov 22	Injured Reserve	Aug 31: Crum (undisclosed) was placed on injured reserve with a designation to return by the Broncos on Sunday, Aric DiLalla of the team's official site reports.
+Caleb Lohner	TE	Nov 22	Injured Reserve	Aug 31: Lohner (lower body) was placed on injured reserve by the Broncos on Sunday with a designation to return, Aric DiLalla of the team's official website reports.
+Levelle Bailey	LB	Feb 15	Injured Reserve	Aug 21: Bailey (leg) reverted to the Broncos' injured-reserve list Friday, Parker Gabriel of The Denver Post reports.
+Matt Henningsen	DE	Feb 15	Injured Reserve	
+Michael Deiter	C	Feb 15	Injured Reserve	
+Detroit Lions
+Detroit Lions
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Kerby Joseph	S	Nov 15	Out	Nov 5: Joseph (knee) remained limited in Thursday's practice, Tim Twentyman of the Lions' official site reports.
+Brian Branch	S	Nov 8	Questionable	Nov 5: Branch (concussion) was a full participant in Thursday's practice, Tim Twentyman of the Lions' official site reports.
+Amon-Ra St. Brown	WR	Nov 8	Questionable	Nov 5: St. Brown (ribs) practiced in a limited capacity Thursday, Tim Twentyman of the Lions' official site reports.
+Jack Campbell	LB	Nov 8	Doubtful	Nov 4: Campbell (neck) said Wednesday that he has full movement in his lower body and is making progress with movement in his upper body, Colton Pouncy of The Athletic reports.
+Jimmy Rolder	LB	Feb 15	Injured Reserve	Nov 3: Rolder (hamstring) was placed on injured reserve Tuesday.
+D.J. Reed	CB	Nov 8	Questionable	Nov 2: Reed (hip) is not expected to practice Wednesday, Nolan Bianchi of The Detroit News reports.
+Jacob Saylors	RB	Nov 8	Questionable	Nov 2: Saylors (neck) is not expected to practice Wednesday, Nolan Bianchi of The Detroit News reports.
+Cade Mays	C	Nov 8	Questionable	Nov 2: Mays sustained a low-ankle sprain during Detroit's win over the Vikings on Sunday, Jeremy Fowler of ESPN reports.
+DJ Wonnum	LB	Nov 8	Questionable	Nov 1: Wonnum (concussion) has been ruled out for the rest of Sunday's game against the Vikings.
+Isiah Pacheco	RB	Dec 28	Injured Reserve	Oct 30: Lions coach Dan Campbell said Friday that Pacheco (back) has a chance to return in late December, Justin Rogers of DetroitFootball.net reports.
+Ben Bartch	G	Nov 22	Injured Reserve	Oct 17: The Lions placed Bartch (foot) on injured reserve Friday.
+Devin White	LB	Nov 22	Injured Reserve	Oct 16: The Lions placed White (forearm) on injured reserve Friday.
+Tom Kennedy	WR	Feb 15	Injured Reserve	Oct 16: The Lions placed Kennedy (knee) on injured reserve Friday.
+Thomas Harper	S	Nov 8	Injured Reserve	Sep 26: The Lions placed Harper (ankle) on injured reserve Saturday.
+Avonte Maddox	CB	Feb 15	Injured Reserve	Sep 22: The Lions placed Maddox (foot) on injured reserve Tuesday.
+Payton Turner	DE	Feb 15	Injured Reserve	
+Giovanni Manu	OT	Nov 8	Out	Aug 31: The Lions moved Manu (knee) to the reserve/non-football injury list Sunday.
+Damone Clark	LB	Feb 15	Injured Reserve	Aug 25: Detroit placed Clark (undisclosed) on its injured reserve list Tuesday.
+Kendrick Law	WR	Feb 15	Injured Reserve	Jun 17: The Lions placed Law (knee) on the reserve/injured list Wednesday.
+Green Bay Packers
+Green Bay Packers
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Travis Glover	OT	Nov 8	Questionable	Nov 5: Glover (knee) did not practice Thursday.
+Sean Rhyan	G	Nov 8	Questionable	Nov 5: Rhyan (ankle) was absent from practice Thursday.
+Aaron Banks	G	Nov 8	Questionable	Nov 5: Banks (knee) was limited in practice Thursday.
+MarShawn Lloyd	RB	Nov 8	Questionable	Nov 5: Lloyd was limited at practice Thursday due to a knee injury.
+Keisean Nixon	CB	Nov 8	Questionable	Nov 5: Nixon (groin) did not practice Thursday, Weston Hodkiewicz of the Packers' official site reports.
+Chris Brooks	RB	Nov 8	Injured Reserve	Nov 4: Brooks (ankle) was designated to return from injured reserve by the Packers on Wednesday, per the NFL's official transaction log.
+Micah Parsons	DE	Nov 25	Out	Nov 4: Parsons (knee) practiced in a limited fashion Wednesday.
+Josh Whyle	TE	Nov 8	Questionable	
+Zaire Franklin	LB	Nov 8	Questionable	Nov 4: Franklin (shin) did not participate in practice Wednesday, Matt Schneidman of The Athletic reports.
+Jacob Monk	C	Dec 6	Injured Reserve	Oct 26: The Packers placed Monk (quadriceps) on injured reserve Monday.
+Luke Musgrave	TE	Nov 25	Out	Oct 22: Packers head coach Matt Lafleur said Thursday it's "tough to say" whether Musgrave (neck) plays this season, Weston Hodkiewicz of the Packers' official site reports.
+Jonathan Ford	DT	Nov 15	Injured Reserve	Oct 17: The Packers placed Ford (calf) on injured reserve Saturday.
+Javon Hargrave	DT	Feb 15	Injured Reserve	Oct 17: The Packers placed Hargrave (Achilles) on injured reserve Saturday.
+Skyy Moore	WR	Nov 15	Injured Reserve	Oct 17: The Packers placed Moore (ankle) on injured reserve Saturday.
+Edgerrin Cooper	LB	Feb 15	Injured Reserve	Oct 6: Cooper (Achilles) was placed on injured reserve by the Packers on Tuesday.
+Warren Brinson	DT	Nov 8	Injured Reserve	Oct 3: Green Bay placed Brinson (calf/groin) on injured reserve Saturday.
+Jayden Reed	WR	Feb 15	Injured Reserve	Sep 30: The Packers are expected to place Reed (neck) on injured reserve Wednesday, Adam Schefter of ESPN reports.
+Zach Bako-Bewele	OT	Feb 15	Injured Reserve	Sep 28: The Packers placed Bako-Bewele (knee) on injured reserve Monday, Adam Schefter of ESPN reports.
+Collin Oliver	DE	Nov 8	Injured Reserve	Sep 1: Oliver is dealing with Achilles and calf injuries. and is considered week-to-week, Weston Hodkiewicz of the Packers' official site reports.
+Thomas Yassmin	TE	Feb 15	Injured Reserve	Aug 31: Green Bay reverted Yassmin (undisclosed) to injured reserve Monday, per the NFL's transaction log.
+Johnathan Baldwin II	S	Feb 15	Injured Reserve	
+Houston Texans
+Houston Texans
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Reed Blankenship	S	Nov 8	Questionable	Nov 4: Blankenship (concussion/hand) did not participate at the Texans' practice Wednesday.
+David Montgomery	RB	Nov 15	Out	Nov 4: Texans head coach DeMeco Ryans said Wednesday that Montgomery (groin) has made some progress but is still viewed as week-to-week and will remain out for Sunday's game against the Chargers, Jonathan M. Alexander of the Houston Chronicle reports.
+Jaylin Noel	WR	Feb 15	Injured Reserve	Oct 28: Noel, who was placed on injured reserve earlier Wednesday, is expected to require surgery to address his toe injury and will miss the remainder of the season, Jonathan M. Alexander of the Houston Chronicle reports.
+Jake Hummel	LB	Nov 8	Injured Reserve	Oct 20: Hummel isn't expected to resume practicing this week while he continues to recover from groin surgery, Aaron Wilson of KPRC 2 Houston reports.
+Jaylin Smith	CB	Nov 15	Injured Reserve	Oct 6: Smith (hamstring) was placed on injured reserve by the Texans on Tuesday.
+British Brooks	RB	Nov 8	Injured Reserve	Oct 2: Brooks (hamstring) was placed on injured reserve Friday.
+Mario Edwards Jr.	DT	Feb 15	Injured Reserve	Sep 30: The Texans placed Edwards on injured reserve Wednesday.
+Jayden Higgins	WR	Feb 15	Injured Reserve	
+Sam Hagen	G	Nov 8	Injured Reserve	Sep 1: The Texans placed Hagen (undisclosed) on injured reserve Tuesday, Greg Auman of Fox Sports reports.
+Solomon Byrd	DE	Feb 15	Injured Reserve	Aug 31: Byrd (ankle) reverted to the Texans' injured-reserve list Monday, per the NFL's transaction log.
+Ali Gaye	DE	Feb 15	Injured Reserve	Aug 31: The Texans placed Gaye (knee) on injured reserve Sunday.
+E.J. Speed	LB	Feb 15	Out	Aug 31: Speed (quadriceps) was moved to the reserve/PUP list by the Texans on Sunday.
+Dylan Horton	DE	Feb 15	Injured Reserve	Aug 25: The Texans placed Horton (Achilles) on injured reserve Tuesday, Aaron Wilson of KPRC 2 Houston reports.
+K.C. Ossai	LB	Feb 15	Injured Reserve	Aug 22: The Texans placed Ossai (undisclosed) on injured reserve Saturday.
+Graham Mertz	QB	Feb 15	Injured Reserve	
+Indianapolis Colts
+Indianapolis Colts
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Jalen Travis	OT	Nov 8	Questionable	
+A.J. Haulcy	S	Nov 8	Questionable	
+Akeem Davis-Gaither	LB	Nov 15	Out	Nov 6: Colts' head coach ruled out Davis-Gauthier for Sunday's matchup against the Cowboys.
+Justin Walley	CB	Nov 15	Out	
+Alec Pierce	WR	Nov 29	Injured Reserve	Nov 4: When asked Wednesday when Pierce (heel) might be able to return to practice, Colts head coach Shane Steichen noted that he "can't put a timetable on it right now," Kevin Bowen of 107.5 The Fan Indianapolis reports.
+Cam Taylor-Britt	CB	Nov 29	Injured Reserve	Oct 27: The Colts placed Taylor-Britt on injured reserve Tuesday due to a groin injury, Nathan Brown of The Indianapolis Star reports.
+Arden Key	DE	Nov 15	Injured Reserve	Oct 10: The Colts placed Key (hamstring) on injured reserve Saturday.
+Micheal Clemons	DE	Nov 15	Injured Reserve	Sep 22: Clemons (toe) was placed on injured reserve by the Colts on Tuesday.
+Carson Towt	TE	Feb 15	Injured Reserve	
+Sean McKeon	TE	Feb 15	Questionable	
+D.J. Montgomery	WR	Feb 15	Injured Reserve	Aug 31: Montgomery (abdomen) was placed on injured reserve by the Colts on Sunday, JJ Stankevitz of the team's official website reports.
+Cameron Mitchell	CB	Feb 15	Injured Reserve	
+Jacksonville Jaguars
+Jacksonville Jaguars
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Wesley Williams	DE	Nov 15	Out	
+CJ Williams	WR	Nov 15	Out	
+Cam'Ron Silmon-Craig	S	Nov 15	Out	
+Alijah Huzzie	CB	Nov 15	Out	
+Eric Murray	S	Feb 15	Injured Reserve	Nov 3: The Jaguars placed Murray (elbow) on their injured reserve list Tuesday.
+DaVon Hamilton	DT	Feb 15	Injured Reserve	Nov 3: The Jaguars placed Hamilton (knee) on their injured reserve list Tuesday.
+Anton Harrison	OT	Feb 15	Injured Reserve	Oct 23: Harrison was diagnosed with a torn ACL while undergoing a procedure on his right knee Thursday, Ian Rapoport of NFL Network reports.
+Caleb Ransaw	S	Nov 15	Injured Reserve	Oct 6: The Jaguars placed Ransaw (knee) on their injured reserve list Tuesday.
+B.J. Green II	DE	Nov 15	Injured Reserve	Sep 16: The Jaguars placed Green (elbow) on injured reserve Wednesday.
+Sam Mustipher	C	Feb 15	Injured Reserve	Aug 31: The Jaguars placed Mustipher (undisclosed) on injured reserve Sunday.
+Patrick Mekari	G	Nov 15	Injured Reserve	Aug 31: The Jaguars placed Mekari (back) on injured reserve with a designation to return Sunday.
+Zach Durfee	DE	Nov 15	Injured Reserve	Aug 30: The Jaguars placed Durfee (upper body) on injured reserve Sunday with a designation to return, Matt Zenitz of CBSSports.com reports.
+Parker Hughes	LB	Feb 15	Injured Reserve	
+Jared Bartlett	LB	Feb 15	Injured Reserve	
+Garrett DiGiorgio	OT	Feb 15	Injured Reserve	
+Kansas City Chiefs
+Kansas City Chiefs
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Mansoor Delane	CB	Nov 15	Out	Nov 6: Chiefs head coach Andy Reid said Friday that Delane (shoulder) will not play Sunday against the Jets, Nate Taylor of ESPN.com reports.
+Peter Woods	DT	Nov 15	Out	
+L'Jarius Sneed	CB	Nov 26	Injured Reserve	Oct 31: The Chiefs placed Sneed (knee) on injured reserve Saturday.
+Omarr Norman-Lott	DT	Nov 15	Out	Oct 28: The Chiefs designated Norman-Lott (knee) to return from injured reserve Wednesday.
+Brashard Smith	RB	Nov 22	Injured Reserve	Oct 24: The Chiefs placed Smith (hamstring) on injured reserve Saturday.
+Josh Simmons	OT	Nov 22	Injured Reserve	Oct 22: The Chiefs placed Simmons (lower back) on injured reserve Thursday.
+Tyquan Thornton	WR	Jan 17	Injured Reserve	Oct 13: The Chiefs placed Thornton (ankle) on injured reserve Tuesday.
+Jimmy Holiday	WR	Feb 15	Injured Reserve	Aug 31: Holiday (undisclosed) was placed on injured reserve by the Chiefs on Sunday.
+Jeff Caldwell	WR	Feb 15	Injured Reserve	Aug 25: Caldwell (knee) reverted to the Chiefs' injured reserve list Tuesday, Charles Goldman of AtoZSports.com reports.
+Matt Waletzko	OT	Feb 15	Injured Reserve	Aug 21: Waletzko (undisclosed) reverted from waivers to Kansas City's injured reserve list Friday, Aaron Wilson of KPRC 2 Houston reports.
+Ethan Downs	LB	Feb 15	Injured Reserve	Jul 28: The Chiefs placed (Downs) knee on injured reserve Tuesday, Matt Derrick of ChiefsDigest.com reports.
+John Michael Gyllenborg	TE	Feb 15	Injured Reserve	Jul 28: The Chiefs placed Gyllenborg (knee) on injured reserve Tuesday, Matt Derrick of ChiefsDigest.com reports.
+Las Vegas Raiders
+Las Vegas Raiders
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Dont'e Thornton Jr.	WR	Nov 8	Questionable	Nov 5: Thornton (back) was a limited participant at the Raiders' practice Thursday, Paul Gutierrez of the team's official site reports.
+Thomas Booker IV	DT	Nov 8	Questionable	
+Darien Porter	CB	Nov 8	Questionable	Nov 1: Porter (groin) has been ruled out for the rest of Sunday's game against the Jets.
+Patrick Johnson	DE	Nov 29	Injured Reserve	Oct 31: The Raiders placed Johnson (neck) on injured reserve Saturday.
+Keyron Crawford	DE	Feb 15	Injured Reserve	Aug 30: The Raiders placed Crawford (ankle) on injured reserve Sunday, Sam Warren of The Athletic reports.
+Chigozie Anusiem	CB	Feb 15	Injured Reserve	Aug 22: The Raiders placed Anusiem (knee) on injured reserve Saturday, Adam Schefter of ESPN reports.
+Justin Pickett	G	Feb 15	Injured Reserve	
+Brennan Jackson	LB	Feb 15	Injured Reserve	
+Chris Collier	RB	Feb 15	Injured Reserve	Aug 2: Collier (undisclosed) reverted to injured reserve with the Raiders on Sunday, Sam Warren of The Athletic reports.
+Los Angeles Chargers
+Los Angeles Chargers
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+David Njoku	TE	Nov 8	Injured Reserve	Nov 5: Njoku (fibula) was limited in Thursday's practice.
+Denzel Perryman	LB	Nov 8	Injured Reserve	Nov 4: The Chargers designated Perryman (undisclosed) for return to practice from their injured reserve list Wednesday, Noah Furtado of The Athletic reports.
+Kendall Williamson	S	Nov 8	Questionable	
+Brenen Thompson	WR	Nov 8	Doubtful	
+Rodney Shelley	CB	Nov 8	Questionable	
+Donte Jackson	CB	Nov 8	Questionable	
+Deane Leonard	CB	Nov 8	Questionable	
+Kayode Awosika	G	Nov 8	Questionable	
+Derwin James Jr.	S	Nov 29	Injured Reserve	Oct 31: The Chargers placed James (hamstring) on injured reserve Saturday.
+Alec Ingold	FB	Nov 22	Injured Reserve	Oct 15: The Chargers placed Ingold on injured reserve Thursday due to a shoulder injury.
+Trevor Penning	G	Nov 16	Injured Reserve	Oct 10: The Chargers placed Penning (concussion) on injured reserve Saturday.
+Trey Lance	QB	Nov 16	Injured Reserve	Oct 10: The Chargers placed Lance (groin) on injured reserve Saturday.
+Rashawn Slater	OT	Nov 16	Injured Reserve	Oct 9: The Chargers placed Slater (ankle) on injured reserve Friday.
+Trey Pipkins III	OT	Nov 8	Injured Reserve	Sep 26: The Chargers placed Pipkins (knee) on injured reserve Saturday.
+Isaiah World	OT	Nov 8	Out	Sep 8: nfi-r
+Tyler Biadasz	C	Feb 15	Injured Reserve	Aug 23: The Chargers placed Biadasz (knee) on injured reserve Sunday.
+Los Angeles Rams
+Los Angeles Rams
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Kam Curl	S	Nov 8	Questionable	Nov 6: Curl (foot) is listed as questionable for Sunday's game against the Commanders, Nate Atkins of The Athletic reports.
+Trent McDuffie	CB	Nov 8	Questionable	Nov 6: McDuffie (back) is listed as questionable for Sunday's game against the Commanders, Nate Atkins of The Athletic reports.
+Terrance Ferguson	TE	Nov 8	Injured Reserve	Nov 6: Head coach Sean McVay said Friday that Ferguson (ankle) is expected to play in Sunday's game at Washington, Sarah Barshop of ESPN.com reports.
+Myles Garrett	DE	Nov 8	Injured Reserve	Nov 6: Garrett (knee) is on track to be activated ahead of Sunday's game against the Commanders, Mike Garafolo of NFL Network reports.
+Colby Parkinson	TE	Nov 8	Questionable	Nov 5: Parkinson (ribs) remained sidelined for Thursday's practice, Greg Beacham of the Associated Press reports.
+Jordan Whittington	WR	Nov 8	Questionable	Nov 4: Whittington (back) was a limited participant at the Rams' practice Wednesday, Sarah Barshop of ESPN.com reports.
+Ronnie Rivers	RB	Nov 8	Injured Reserve	Nov 4: Rivers (calf) was designated to return from injured reserve Wednesday, Greg Beacham of the Associated Press reports.
+Jaylen Watson	CB	Feb 15	Out	Nov 4: Watson is expected to undergo shoulder surgery and to miss the remainder of the 2026 season, Gary Klein of the Los Angeles Times reports.
+Dean Connors	RB	Dec 13	Injured Reserve	Nov 3: Connors (hand) was placed on IR on Tuesday, Blaine Grisak of SI.com reports.
+Joe Cardona	LS	Nov 8	Questionable	
+Grant Stuard	LB	Nov 8	Questionable	Nov 2: Stuard is battling a hamstring injury, Nate Atkins of The Athletic reports.
+Davante Adams	WR	Nov 25	Injured Reserve	Oct 28: Head coach Sean McVay said Wednesday that Adams had successful surgery on his left hamstring, and the Rams are hopeful that the wide receiver will be able to return on the early side of his 6-to-10-week recovery timetable, Adam Grosbard of The Orange County Register reports.
+Kobie Turner	DE	Nov 25	Injured Reserve	Oct 21: The Rams placed Turner (groin) on injured reserve Wednesday.
+Poona Ford	DT	Feb 15	Injured Reserve	Oct 20: The Rams placed Ford (triceps) on injured reserve Tuesday.
+Blake Grupe	PK	Feb 15	Injured Reserve	Oct 19: Rams head coach Sean McVay announced Monday that Grupe will miss the remainder of the season after sustaining a torn ACL in Sunday's 18-16 loss to the Cardinals, Greg Beacham of the Associated Press reports.
+Justin Dedich	G	Nov 8	Injured Reserve	Aug 31: Dedich (undisclosed) was put on injured reserve with a designation to return by the Rams on Sunday, Cameron DaSilva of USA Today reports.
+Matthew Caldwell	QB	Feb 15	Injured Reserve	Aug 29: The Rams placed Caldwell (undisclosed) on injured reserve Saturday, Aaron Wilson of KPRC 2 Houston reports.
+Daniel Rickert	DE	Feb 15	Injured Reserve	Aug 25: Rickert (knee) reverted to the Rams' injured reserve Tuesday, per the NFL's transaction log.
+Eddie Walls III	LB	Feb 15	Injured Reserve	Jun 4: The Rams placed Walls (undisclosed) on their injured reserve list Thursday, Cameron DaSilva of USA Today reports.
+Miami Dolphins
+Miami Dolphins
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Jaylen Wright	RB	Nov 8	Questionable	Nov 6: Wright (quadriceps) will practice Friday, Barry Jackson of the Miami Herald reports.
+Kadyn Proctor	OT	Nov 8	Questionable	Nov 4: Proctor (concussion) practiced fully Wednesday.
+Malik Herring	DE	Nov 8	Questionable	Nov 4: Herring (neck) was limited in Wednesday's practice.
+Kaytron Allen	RB	Nov 8	Questionable	Nov 4: Allen (quadriceps) was a limited participant at the Dolphins' practice Wednesday.
+Will Kacmarek	TE	Nov 8	Questionable	Nov 4: Kacmarek (hamstring) was a limited participant at the Dolphins' practice Wednesday.
+Darrell Baker Jr.	CB	Nov 15	Out	Nov 4: Baker (undisclosed) is not ready to return to practice, David Furones of the South Florida Sun Sentinel reports.
+Michael Taaffe	S	Nov 8	Questionable	
+Dante Trader Jr.	S	Nov 8	Questionable	
+Zach Sieler	DT	Nov 8	Questionable	
+Chop Robinson	LB	Nov 8	Questionable	
+Tucker Addington	LS	Nov 8	Questionable	
+De'Von Achane	RB	Feb 15	Injured Reserve	Sep 28: The Dolphins placed Achane (knee) on injured reserve Monday.
+Ronnie Harrison Jr.	LB	Nov 15	Injured Reserve	Sep 19: The Dolphins placed Harrison (hamstring) on injured reserve Saturday.
+Trey Moore	LB	Nov 15	Injured Reserve	
+Cole Turner	TE	Feb 15	Injured Reserve	Aug 27: Turner (undisclosed) reverted to the Dolphins' injured-reserve list Thursday, Aaron Wilson of KPRC 2 Houston reports.
+Rene Konga	DT	Feb 15	Injured Reserve	
+Minnesota Vikings
+Minnesota Vikings
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Andrew Van Ginkel	LB	Nov 9	Questionable	Nov 5: Van Ginkel (chest) was limited in Thursday's practice.
+Jauan Jennings	WR	Nov 9	Questionable	Nov 5: Jennings (calf) was limited in Thursday's practice.
+Jay Ward	S	Nov 9	Questionable	
+Isaiah Rodgers	CB	Nov 9	Questionable	
+Jake Golday	LB	Nov 9	Questionable	
+Demond Claiborne	RB	Nov 9	Questionable	
+Kyler Murray	QB	Nov 9	Questionable	Nov 5: Murray likely won't play Monday against the Bills due to a hamstring strain, Alec Lewis of The Athletic reports.
+Christian Darrisaw	OT	Nov 9	Questionable	Nov 3: Coach Kevin O'Connell said Tuesday that Darrisaw is nursing a shoulder issue, Alec Lewis of The Athletic reports.
+Theo Jackson	S	Nov 9	Questionable	Nov 1: Jackson (quadriceps) has been ruled out for the rest of Sunday's game against the Lions.
+Donovan Jackson	G	Jan 17	Injured Reserve	Oct 6: Jackson (knee) was placed on injured reserve by the Vikings on Tuesday.
+Josh Oliver	TE	Jan 17	Injured Reserve	Sep 29: The Vikings placed Oliver (biceps) on injured reserve Tuesday, Craig Peters of the team's official site reports.
+Nick Samac	C	Nov 9	Injured Reserve	Sep 26: The Vikings placed Samac (knee) on injured reserve Saturday, Craig Peters of the team's official site reports.
+Tyler Batty	LB	Feb 15	Injured Reserve	Aug 30: The Vikings placed Batty (knee) on injured reserve Sunday, Tom Pelissero of Netflix reports.
+Jamal Adams	LB	Feb 15	Injured Reserve	
+New England Patriots
+New England Patriots
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Hunter Henry	TE	Nov 8	Questionable	Nov 6: Henry (foot) is listed as questionable for Sunday's game against the Packers, Doug Kyed of the Boston Herald reports.
+A.J. Brown	WR	Nov 15	Out	Nov 6: Brown (knee/ankle) remained sidelined at practice Friday, Doug Kyed of the Boston Herald reports.
+TreVeyon Henderson	RB	Nov 15	Out	Nov 6: In a statement posted to social media Friday, Henderson -- who hasn't practiced since last Wednesday -- noted that he recently experienced "an unexpected and unusual medical emergency involving a series of unexplained neurological symptoms," Mike Reiss of ESPN.com reports.
+Brenden Schooler	S	Nov 8	Questionable	
+Marcus Jones	CB	Nov 8	Questionable	
+Greg Van Roten	G	Nov 8	Injured Reserve	Nov 4: Van Roten (thigh) was designated to return from injured reserve by New England on Wednesday, Matt Legros of Patriots Wire reports.
+Dre'Mont Jones	DE	Nov 8	Questionable	
+Morgan Moses	OT	Nov 8	Questionable	
+Carlton Davis III	CB	Nov 8	Questionable	
+Kevin Byard	S	Nov 8	Questionable	
+Mack Hollins	WR	Nov 8	Injured Reserve	Nov 4: The Patriots are expected to designate Hollins (calf) for return from injured reserve Wednesday, Ian Rapoport of NFL Network reports.
+Gabe Jacas	LB	Nov 8	Questionable	Nov 1: Jacas (knee) is questionable to return to Sunday's contest against Miami, Doug Kyed of the Boston Herald reports.
+Alijah Vera-Tucker	G	Nov 29	Injured Reserve	Oct 22: Vera-Tucker (hamstring) was placed on injured reserve by the Patriots on Thursday.
+Romeo Doubs	WR	Nov 29	Injured Reserve	Oct 19: Doubs (shoulder) is hopeful to return after the Patriots' Week 11 bye and isn't expected to face a long-term absence, Jeremy Fowler of ESPN.com reports.
+Reggie Gilliam	FB	Nov 15	Injured Reserve	Oct 10: The Patriots placed Gilliam (ankle/knee) on injured reserve Saturday, Doug Kyed of the Boston Herald reports.
+Quintayvious Hutchins	LB	Nov 15	Injured Reserve	Sep 25: Hutchins (knee) was placed on injured reserve Friday.
+Dell Pettus	S	Nov 15	Injured Reserve	Sep 23: The Patriots placed Pettus (ankle) on injured reserve Wednesday.
+Mike Onwenu	G	Nov 15	Injured Reserve	Sep 22: The Patriots placed Onwenu (ankle) on injured reserve Tuesday.
+Khalil Jacobs	LB	Nov 15	Injured Reserve	Sep 1: The Patriots placed Jacobs (undisclosed) on injured reserve Monday.
+Harold Landry III	LB	Nov 15	Out	Aug 31: Landry (undisclosed) was moved to the reserve/PUP list by the Patriots on Sunday.
+Myles Montgomery	RB	Feb 15	Injured Reserve	
+Julian Hill	TE	Feb 15	Injured Reserve	Jun 1: The Patriots placed Hill (knee) on IR on Monday, Evan Lazar of the team's official site reports.
+New Orleans Saints
+New Orleans Saints
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+CJ Donaldson	RB	Nov 15	Out	Nov 6: Donaldson (shoulder/concussion) has been ruled out for Sunday's game against the Browns, Nick Underhill of NewOrleans.Football reports.
+Jordyn Tyson	WR	Nov 8	Injured Reserve	Nov 6: Tyson (hamstring) is listed as questionable for Sunday's game against the Browns, Katherine Terrell of ESPN.com reports.
+Kelvin Banks Jr.	OT	Nov 8	Injured Reserve	Nov 5: Banks (ankle) remained limited in Thursday's practice, Katherine Terrell of ESPN.com reports.
+Justin Reid	S	Nov 8	Questionable	Nov 4: Reid (concussion) was a full participant in New Orleans' practice Wednesday.
+Asim Richards	OT	Nov 8	Questionable	
+Martin Emerson Jr.	CB	Nov 8	Questionable	
+Travis Etienne Jr.	RB	Nov 8	Injured Reserve	Nov 4: Head coach Kellen Moore said Wednesday that the Saints haven't opened Etienne's (hamstring) practice window just yet, Jeff Nowak of WWL Louisiana reports.
+Dillon Radunz	G	Feb 15	Injured Reserve	
+Mason Tipton	WR	Nov 8	Out	Aug 31: Tipton (leg) was moved to the reserve/PUP list by the Saints on Sunday.
+Moliki Matavao	TE	Feb 15	Injured Reserve	Aug 25: The Saints placed Matavao (knee) on injured reserve Tuesday, Mike Triplett of NewOrleans.Football reports.
+Ty Chandler	RB	Feb 15	Injured Reserve	Aug 25: The Saints placed Chandler (knee) on injured reserve Tuesday, Mike Triplett of NewOrleans.Football reports.
+Rejzohn Wright	CB	Feb 15	Injured Reserve	Aug 24: Wright (hip) was put on injured reserve by the Saints on Monday.
+Bryan Bresee	DT	Feb 15	Injured Reserve	
+Nick Saldiveri	OT	Feb 15	Out	May 13: New Orleans placed Saldiveri (knee) on its reserve/physically unable to perform list Tuesday.
+New York Giants
+New York Giants
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Jermaine Eluemunor	OT	Nov 8	Questionable	
+Malik Nabers	WR	Nov 8	Questionable	Nov 6: Head coach John Harbaugh said Nabers (knee) "practiced fully" Friday and will be "full go" for Sunday's game at Philadelphia, Matt Citak of the Giants' official site reports.
+Cam Skattebo	RB	Nov 8	Questionable	Nov 6: Head coach John Harbaugh said Skattebo (hamstring) didn't practice Friday, but the Giants are "keeping the door open" for the running back to play Sunday at Philadelphia, Ryan Dunleavy of the New York Post reports.
+Andrew Thomas	OT	Nov 8	Questionable	Nov 5: Thomas (groin) was a limited participant at the Giants' practice Thursday.
+Darius Alexander	DT	Nov 8	Questionable	
+Charlie Jones	WR	Nov 8	Questionable	
+Tyrone Tracy Jr.	RB	Dec 6	Injured Reserve	Oct 27: The Giants placed Tracy (hamstring) on injured reserve Tuesday, Dan Salomone of the team's official site reports.
+Tremaine Edmunds	LB	Feb 15	Injured Reserve	Oct 24: Edmunds (chest) was placed on injured reserve Saturday, Dan Duggan of The Athletic reports.
+Braxton Berrios	WR	Feb 15	Injured Reserve	Oct 14: Berrios (foot) underwent successful surgery Friday to repair a Lisfranc injury, Jordan Raanan of ESPN.com reports.
+Chauncey Golston	DE	Nov 12	Injured Reserve	Oct 10: The Giants placed Golston (neck) on injured reserve Saturday, Dan Salomone of the Giants' official site reports.
+Jaxson Dart	QB	Jan 17	Injured Reserve	Sep 30: Dart recently underwent surgery to repair the meniscus and MCL in his left knee, Dan Duggan of The Athletic reports.
+Brian Burns	LB	Feb 15	Injured Reserve	Sep 29: The Giants placed Burns (knee) on injured reserve Tuesday, Dan Salomone of the team's official site reports.
+Roy Robertson-Harris	DT	Feb 15	Injured Reserve	
+Korie Black	CB	Nov 8	Injured Reserve	Aug 31: Black (undisclosed) was placed on injured reserve with a designation to return by the Giants on Monday, Dan Salomone and Matt Citak of the team's official site report.
+Calvin Austin III	WR	Feb 15	Injured Reserve	Aug 27: The Giants placed Austin (knee) on injured reserve Thursday, Patricia Traina of SI.com reports.
+Jarrick Bernard-Converse	CB	Feb 15	Injured Reserve	
+Rico Payton	CB	Feb 15	Injured Reserve	Jul 8: Payton (undisclosed) reverted to injured reserve Wednesday, Aaron Wilson of KPRC 2 Houston reports.
+Gunner Olszewski	WR	Feb 15	Injured Reserve	Jun 1: Olszewski (Achilles) was placed on injured reserve by the Giants on Monday, Dan Salomone of the team's official site reports.
+Thaddeus Dixon	CB	Feb 15	Injured Reserve	May 14: Dixon tore his Achilles on Wednesday and was placed on injured reserve Thursday, Dan Salomone of the Giants' official site reports.
+New York Jets
+New York Jets
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Nahshon Wright	CB	Nov 8	Questionable	
+Garrett Wilson	WR	Nov 15	Out	Nov 6: Wilson (concussion) is out for Sunday's game against the Chiefs, Brian Costello of the New York Post reports.
+Trevin Wallace	LB	Nov 15	Out	
+VJ Payne	S	Nov 8	Injured Reserve	Nov 4: Payne (knee) was designated to return from injured reserve by the Jets on Wednesday, Amanda Vogt of the team's official website reports.
+Joseph Ossai	DE	Nov 8	Questionable	Nov 4: Ossai (ankle) was limited in Wednesday's practice.
+Harrison Phillips	DT	Nov 8	Questionable	
+Max Mitchell	OT	Dec 13	Injured Reserve	Nov 3: The Jets placed Mitchell (concussion) on their injured reserve list Tuesday, Amanda Vogt of the team's official site reports.
+T'Vondre Sweat	DT	Nov 29	Injured Reserve	Oct 31: The Jets placed Sweat (knee) on injured reserve Saturday, Jeremy Fowler of ESPN.com reports.
+Kiko Mauigoa	LB	Nov 22	Injured Reserve	Oct 24: The Jets placed Mauigoa (quadriceps) on injured reserve Saturday, Zack Rosenblatt of The Athletic reports.
+Braiden McGregor	DE	Feb 15	Injured Reserve	Oct 7: McGregor (pectoral) was placed on the Jets' injured reserve list Wednesday, Eric Allen of the team's official site reports.
+Arian Smith	WR	Feb 15	Injured Reserve	Sep 23: Smith (knee) underwent surgery Wednesday to repair a torn ACL and will miss the rest of the season, Antwan V. Staley of the New York Daily News reports.
+David Onyemata	DT	Nov 15	Injured Reserve	Sep 23: Onyemata (groin) underwent core-muscle surgery Wednesday, Antwan V. Staley of the New York Daily News reports.
+Marcelino McCrary-Ball	LB	Nov 15	Injured Reserve	
+Kingsley Jonathan	DE	Feb 15	Injured Reserve	
+Tyler Baron	DE	Nov 15	Out	Aug 31: The Jets moved Baron (knee) to the reserve/PUP list Sunday, Eric Allen and Amanda Vogt of the team's official site report.
+Chip Trayanum	RB	Feb 15	Injured Reserve	Aug 31: Trayanum (neck) was placed on injured reserve by the Jets on Sunday, Eric Allen &amp; Amanda Vogt of the team's official website report.
+Anez Cooper	G	Nov 15	Injured Reserve	Aug 30: The Jets placed Cooper (shoulder) on injured reserve Sunday with a designation to return, Al Iannazzone of Newsday reports.
+Philadelphia Eagles
+Philadelphia Eagles
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+DeVonta Smith	WR	Nov 8	Questionable	Nov 6: Smith (hamstring) was not seen at Friday's practice, Jeff McLane of the Philadelphia Inquirer reports.
+Dontayvion Wicks	WR	Nov 8	Questionable	Nov 6: Wicks (ankle) is not practicing Friday, Andrew DiCecco of InsideTheBirds.com reports.
+Saquon Barkley	RB	Nov 8	Questionable	Nov 6: Barkley (hamstring/back) is practicing again Friday, Dave Zangaro of NBC Sports Philadelphia reports.
+Jake Elliott	PK	Nov 8	Questionable	Nov 5: Elliott (ankle) was a limited participant in Thursday's practice.
+Tanner McKee	QB	Nov 8	Questionable	Nov 5: McKee (rib) was limited in Thursday's practice.
+Jihaad Campbell	LB	Nov 8	Questionable	Nov 4: Campbell (hamstring/quadriceps) did not participate at the Eagles' practice Wednesday.
+Jonathan Greenard	LB	Nov 8	Questionable	
+Jalyx Hunt	LB	Nov 8	Questionable	
+Jonathan Jones	CB	Nov 8	Questionable	
+Britain Covey	WR	Nov 8	Questionable	
+Michael Carter II	CB	Nov 8	Questionable	Nov 1: Carter (abdomen) is questionable to return to Sunday night's contest against the Commanders.
+Dameon Pierce	RB	Dec 6	Injured Reserve	Oct 28: The Eagles placed Pierce (undisclosed) on injured reserve Wednesday
+Lane Johnson	OT	Feb 15	Out	
+Jalen Hurts	QB	Feb 15	Injured Reserve	Oct 19: Hurts (calf) is expected to be held out of football activities for multiple months and miss the rest of the season after new imaging over the weekend revealed several blood clots in his lungs, Tom Pelissero of Netflix reports.
+Will Shipley	RB	Nov 22	Injured Reserve	Oct 16: The Eagles placed Shipley (foot) on injured reserve Friday.
+Chance Campbell	LB	Nov 8	Questionable	
+Tank Bigsby	RB	Nov 8	Injured Reserve	Oct 6: The Eagles placed Bigsby (abdomen) on injured reserve Tuesday, Zach Berman of The Athletic reports.
+Andre' Sam	S	Feb 15	Injured Reserve	Aug 31: Sam (foot) reverted to the Eagles' injured-reserve list Monday, Andrew DiCecco of InsideTheBirds.com reports.
+Johnny Wilson	WR	Feb 15	Injured Reserve	Aug 22: Wilson (knee) reverted to Philadelphia's injured reserve Saturday, per the NFL's transaction log.
+Tucker Large	S	Feb 15	Out	May 6: Large reverted to Philadelphia's reserve/non-football injury list Tuesday, Aaron Wilson of KPRC 2 Houston reports.
+Pittsburgh Steelers
+Pittsburgh Steelers
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Doneiko Slaughter	CB	Nov 8	Out	
+Ben Skowronek	WR	Nov 8	Out	
+Brandin Echols	CB	Nov 8	Out	
+Michael Pittman Jr.	WR	Nov 15	Injured Reserve	Nov 2: Pittman (foot) said Monday that he resumed running last week as part of a program to return, but the wideout acknowledged that he's without a clear timeline to be activated from injured reserve, Ray Fittipaldo of the Pittsburgh Post-Gazette reports.
+Sebastian Joseph-Day	DT	Nov 27	Injured Reserve	Oct 22: Joseph-Day (triceps) was placed on injured reserve by the Steelers on Thursday, Teresa Varley of the team's official website reports.
+Roman Wilson	WR	Nov 22	Injured Reserve	Oct 17: Wilson (finger) was placed on injured reserve Saturday, Ray Fittipaldo of the Pittsburgh Post-Gazette reports.
+Derrick Harmon	DT	Nov 15	Injured Reserve	Oct 5: The Steelers placed Harmon (foot) on injured reserve Monday, Teresa Varley of the team's official site reports.
+Gennings Dunker	G	Nov 15	Injured Reserve	Sep 26: The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports.
+Jack Driscoll	OT	Nov 15	Injured Reserve	Aug 31: The Steelers placed Driscoll (undisclosed) on injured reserve Monday with a designation to return, Teresa Varley of the team's official site reports.
+Donte Kent	CB	Nov 15	Out	Aug 31: The Steelers placed Kent (undisclosed) on the reserve/PUP list Monday, Teresa Varley of the team's official site reports.
+Logan Lee	DT	Feb 15	Injured Reserve	
+Cole Burgess	WR	Feb 15	Injured Reserve	
+Daequan Hardy	CB	Feb 15	Injured Reserve	May 5: Hardy (undisclosed) reverted to Pittsburgh's injured reserve Tuesday, Aaron Wilson of KPRC 2 Houston reports.
+San Francisco 49ers
+San Francisco 49ers
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Brandon Aiyuk	WR	Nov 15	Out	Nov 5: Aiyuk's effort to secure his release by reporting to the 49ers' facility Friday could be complicated by roughly $13 million in bonus forfeiture he owes the team, Tom Pelissero of NFL Network reports.
+Demarcus Robinson	WR	Nov 8	Injured Reserve	Nov 5: Robinson (ankle) practiced on a limited basis Thursday.
+Christian Kirk	WR	Nov 8	Questionable	Nov 5: Kirk (knee) didn't practice Thursday, Sam Warren of The Athletic reports.
+Deebo Samuel Sr.	WR	Nov 8	Questionable	Nov 5: Samuel (hamstring) was a non-participant at Thursday's practice, Sam Warren of The Athletic reports.
+Mike Evans	WR	Nov 8	Questionable	Nov 5: Evans (Achilles) didn't participate in Thursday's practice, Sam Warren of The Athletic reports.
+Christian McCaffrey	RB	Nov 8	Questionable	Nov 5: McCaffrey (hamstring) was a limited participant at Thursday's practice, Sam Warren of The Athletic reports.
+Marques Sigle	S	Nov 8	Questionable	Nov 4: Sigle (ankle) was limited in Wednesday's practice.
+Nate Hobbs	CB	Nov 8	Injured Reserve	Nov 4: The 49ers designated Hobbs (groin) for return to practice from their injured reserve list Wednesday.
+Nick Bosa	DE	Nov 8	Questionable	Nov 4: Bosa (knee) was limited in Wednesday's practice, Sam Warren of The Athletic reports.
+Siran Neal	S	Nov 8	Questionable	
+De'Zhaun Stribling	WR	Dec 6	Injured Reserve	Nov 2: Stribling (ankle) was spotted Monday walking without crutches or a brace on his lower leg, Matt Barrows of The Athletic reports.
+Garret Wallow	LB	Nov 8	Questionable	
+Luke Gifford	LB	Nov 8	Questionable	
+Upton Stout	CB	Nov 8	Questionable	Oct 26: Stout (shoulder) was only active as an emergency depth option during Sunday's loss to the Falcons, David Lombardi of SFStandard.com reported Monday.
+Nick Martin	LB	Nov 8	Injured Reserve	Oct 12: Head coach Kyle Shanahan said Monday that Martin's (hamstring) status will be evaluated "in these next couple of days," Nick Wagoner of ESPN.com reports.
+C.J. West	DT	Nov 8	Injured Reserve	Sep 23: The 49ers placed West (undisclosed) on injured reserve Wednesday.
+Jake Tonges	TE	Feb 15	Injured Reserve	Sep 16: Tonges (knee) requires surgery for an MCL tear and is done for the season, Cam Inman reports.
+Alfred Collins	DT	Feb 15	Injured Reserve	Sep 10: San Francisco placed Collins (knee) on injured reserve Thursday.
+Sam Okuayinonu	DT	Dec 17	Injured Reserve	Sep 7: Okuayinonu broke his foot in practice last week and is set to have surgery to repair the issue, Matt Barrows of The Athletic reports.
+Nick Zakelj	OT	Feb 15	Injured Reserve	Aug 31: Zakelj (undisclosed) was placed on the 49ers' injured reserve Sunday.
+Austen Pleasants	OT	Nov 8	Injured Reserve	Aug 31: The 49ers placed Pleasants (knee) on injured reserve with a designation to return Sunday.
+Isaac Guerendo	RB	Nov 8	Out	Aug 30: Guerendo (pectoral) was placed on the reserve/PUP list Sunday, Jeremy Fowler of ESPN reports.
+Ricky Pearsall	WR	Feb 15	Injured Reserve	Aug 13: Pearsall announced Thursday in a post on his personal Instagram account that he underwent season-ending surgery to repair the PCL in his right knee, David Lombardi of SFStandard.com reports.
+Mikail Kamara	DE	Feb 15	Injured Reserve	Aug 3: Kamara (knee) reverted to the 49ers' injured reserve Monday, per the NFL's transaction log.
+Andrew Farmer II	DE	Feb 15	Injured Reserve	Jul 30: San Francisco placed Farmer (back) on its injured-reserve list Thursday, Aaron Wilson of KPRC 2 Houston reports.
+Seattle Seahawks
+Seattle Seahawks
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Quenton Nelson	G	Nov 8	Questionable	Nov 5: Nelson (knee) did not participate at the Seahawks' practice Thursday, John Boyle of the team's official site reports.
+Charles Cross	OT	Nov 8	Questionable	Nov 5: Cross (ankle) did not participate at the Seahawks' practice Thursday, John Boyle of the team's official site reports.
+Leonard Williams	DT	Nov 8	Questionable	Nov 5: Williams (shoulder) did not participate at the Seahawks' practice Thursday, John Boyle of the team's official site reports.
+Ernest Jones IV	LB	Nov 8	Questionable	Nov 5: Jones (ankle) was a limited participant at the Seahawks' practice Thursday, John Boyle of the team's official site reports.
+Derick Hall	LB	Nov 8	Questionable	
+Rashid Shaheed	WR	Nov 8	Questionable	Nov 5: Shaheed (knee) didn't participate at the Seahawks' practice Thursday, John Boyle of the team's official site reports.
+Drew Lock	QB	Nov 8	Questionable	Nov 5: Lock (right elbow) practiced in a limited capacity Thursday, John Boyle of the Seahawks' official site reports.
+Sam Darnold	QB	Nov 15	Out	Nov 5: Darnold (quadriceps), who has been ruled out for Sunday's game against the Cardinals, is considered week-to-week, Brady Henderson of ESPN.com reports.
+Connor O'Toole	LB	Nov 8	Questionable	
+Velus Jones Jr.	RB	Nov 8	Questionable	
+Brandon Pili	DT	Nov 8	Questionable	Nov 2: Pili (back) is inactive for Monday night's game against the Bears, John Boyle of the Seahawks' official site reports.
+Uchenna Nwosu	LB	Nov 8	Questionable	Nov 2: Nwosu (ankle) is inactive for Monday's clash with the Bears, John Boyle of the Seahawks' official site reports.
+Elijah Arroyo	TE	Feb 15	Injured Reserve	Oct 23: Head coach Mike Macdonald told reporters Friday that Arroyo (shoulder) underwent surgery and will likely be out for the rest of the season, Curtis Crabtree of Fox 13 Seattle reports.
+Julian Neal	CB	Nov 8	Injured Reserve	Oct 10: The Seahawks placed Neal (hamstring) on injured reserve Saturday, John Boyle of the team's official site reports.
+Terrion Arnold	CB	Nov 8	Out	Aug 29: Arnold signed a contract with the Seahawks on Saturday.
+Mason Richman	G	Feb 15	Injured Reserve	Aug 25: The Seahawks placed Richman (leg) on injured reserve Tuesday, Brady Henderson of ESPN.com reports.
+Bud Clark	S	Feb 15	Injured Reserve	Aug 25: The Seahawks placed Clark (ankle) on injured reserve Tuesday, Brady Henderson of ESPN.com reports.
+Jake Bobo	WR	Feb 15	Injured Reserve	Aug 22: The Seahawks placed Bobo (knee) on injured reserve Saturday, John Boyle of the team's official site reports.
+Robbie Ouzts	FB	Feb 15	Injured Reserve	
+Tampa Bay Buccaneers
+Tampa Bay Buccaneers
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Emeka Egbuka	WR	Nov 8	Questionable	Nov 6: Egbuka (foot) is listed as questionable for Sunday's game in Chicago.
+Jalen McMillan	WR	Nov 22	Injured Reserve	Nov 5: McMillan (knee) isn't expected back until after Tampa Bay's Week 10 bye, Greg Auman of Fox Sports reports.
+Yaya Diaby	LB	Nov 22	Out	Nov 2: Head coach Todd Bowles said that Diaby (knee) has been diagnosed with an MCL sprain and won't be available for Sunday's game against the Bears, Scott Smith of the Buccaneers' official site reports.
+Josh Hayes	CB	Nov 22	Injured Reserve	Oct 28: Hayes suffered a small setback in his recovery from a knee injury, Greg Auman of Fox Sports reports.
+Christian Rozeboom	LB	Nov 30	Injured Reserve	Oct 22: Rozeboom (finger) was placed on injured reserve by the Buccaneers on Thursday, Scott Smith of the team's official website reports.
+Mohamed Kamara	LB	Feb 15	Injured Reserve	Aug 31: Kamara (knee) reverted to the Buccaneers' injured reserve list Monday, per the NFL's transaction log.
+Tennessee Titans
+Tennessee Titans
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Tommy Townsend	P	Nov 15	Out	
+Tyjae Spears	RB	Nov 15	Out	
+Carnell Tate	WR	Nov 15	Out	
+Jaylon Jones	CB	Nov 15	Out	
+Peter Skoronski	G	Nov 15	Questionable	Nov 1: Skoronski (hamstring) is questionable to return to Sunday's game against the Bengals.
+JC Latham	OT	Nov 15	Questionable	Nov 1: Latham (finger) is questionable to return to Sunday's game against the Bengals, Jim Wyatt of the Titans' official site reports.
+James Williams Sr.	LB	Nov 15	Questionable	Nov 1: Williams (groin) has been ruled out for the rest of Sunday's game against the Bengals.
+Marcus Harris	CB	Nov 15	Questionable	Nov 1: Harris (ankle) has been ruled out for the rest of Sunday's game against the Bengals.
+Dorian Mausi	LB	Nov 15	Injured Reserve	Oct 31: Mausi (foot) has been ruled out for Sunday's game against the Bengals, Jim Wyatt of the Titans' official site reports.
+Jackson Slater	G	Nov 15	Injured Reserve	Sep 29: The Titans placed Slater (foot) on injured reserve Tuesday, Jim Wyatt of the team's official site reports.
+Fernando Carmona	G	Nov 15	Injured Reserve	Sep 29: The Titans placed Carmona (ankle) on injured reserve Tuesday, Jim Wyatt of the team's official site reports.
+Milo Eifler	LB	Feb 15	Injured Reserve	
+Kendell Brooks	S	Feb 15	Injured Reserve	Aug 31: Brooks (undisclosed) reverted to Tennessee's injured reserve Monday, per the NFL's transaction log.
+Tanoh Kpassagnon	DE	Feb 15	Injured Reserve	Aug 31: The Titans placed Kpassagnon (undisclosed) on injured reserve Monday, Jim Wyatt of the team's official site reports.
+Jaylen Harrell	LB	Feb 15	Injured Reserve	
+Jaren Kanak	TE	Feb 15	Injured Reserve	
+Washington Commanders
+Washington Commanders
+NAME	POS	EST. RETURN DATE	STATUS	COMMENT
+Dyami Brown	WR	Nov 8	Questionable	Nov 6: Brown (calf) was injured in practice Friday, Martenzie Johnson of The Washington Sun reports.
+Treylon Burks	WR	Nov 8	Questionable	Nov 5: Burks (foot) was a non-participant at Thursday's practice.
+Jer'Zhan Newton	DT	Nov 8	Injured Reserve	Nov 4: Newton (pectoral) practiced in full Wednesday, Ben Standig of The Team 980 Washington D.C. reports.
+Shy Tuttle	DT	Nov 8	Questionable	
+John Bates	TE	Nov 8	Questionable	
+Sam Cosmi	G	Nov 8	Questionable	
+Daron Payne	DT	Feb 15	Injured Reserve	Nov 4: Payne (foot) underwent season-ending surgery Wednesday, Ben Standig of The Team 980 Washington D.C. reports.
+Jeremy McNichols	RB	Feb 15	Injured Reserve	Nov 4: McNichols, who suffered a foot injury Sunday against the Eagles that may require surgery, is out for the season, Ian Rapoport of NFL Network reports.
+Javon Kinlaw	DT	Feb 15	Injured Reserve	Nov 4: Kinlaw underwent season-ending surgery Tuesday to repair his MCL, Nicki Jhabvala of The Athletic reports.
+Terry McLaurin	WR	Feb 15	Injured Reserve	Oct 30: McLaurin (knee) underwent surgery Friday to repair the torn patellar tendon in his left knee, Nicki Jhabvala of The Athletic reports.
+Laremy Tunsil	OT	Dec 20	Injured Reserve	Oct 28: Tunsil (triceps) could potentially return late in the season, Nicki Jhabvala of The Athletic reports.
+Jaylin Lane	WR	Feb 15	Injured Reserve	Oct 21: Lane underwent surgery Oct. 9 to repair his fractured and dislocated ankle, and he is expected to be cleared for activities before OTAs, Tashan Reed of The Washington Post reports.
+Javontae Jean-Baptiste	LB	Nov 23	Injured Reserve	Oct 19: The Commanders placed Jean-Baptiste (pectoral) on injured reserve Monday.
+Jacory Croskey-Merritt	RB	Nov 23	Injured Reserve	Oct 19: The Commanders placed Croskey-Merritt (groin) on injured reserve Monday.
+Leo Chenal	LB	Feb 15	Injured Reserve	Sep 29: The Commanders placed Chenal (neck) on injured reserve Tuesday.
+Data Provided by Rotowire

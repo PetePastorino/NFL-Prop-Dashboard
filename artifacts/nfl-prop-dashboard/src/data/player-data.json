@@ -168,7 +168,7 @@
       "team": "LAR",
       "week2Opp": "WAS",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
+      "injuryStatus": null,
       "injury": "Nov 2: Stafford left the locker room after Sunday's 24-9 win over the Chargers with a bag of ice wrapped on his right arm, and Rams coach Sean McVay acknowledged Monday that the quarterback has been dealing with some arm soreness, Adam Grosbard of The Orange County Register reports.",
       "stats": {
         "pass_yards": {
@@ -1136,7 +1136,7 @@
       "team": "SEA",
       "week2Opp": "ARI",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Out",
       "injury": null,
       "stats": {
         "pass_yards": {
@@ -1191,7 +1191,7 @@
       "team": "CLE",
       "week2Opp": "NOR",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "pass_yards": {
@@ -2002,7 +2002,7 @@
       "team": "PHI",
       "week2Opp": "NYG",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "pass_yards": {
@@ -2051,7 +2051,7 @@
       "team": "NYJ",
       "week2Opp": "KAN",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
+      "injuryStatus": null,
       "injury": "Nov 2: Hall (quadriceps) is considered \"good to go\" and is expected to return to action in next Sunday's game against the Chiefs, Ian Rapoport of NFL Network reports.",
       "stats": {
         "rush_yards": {
@@ -2349,7 +2349,7 @@
       "team": "PHI",
       "week2Opp": "NYG",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "rush_yards": {
@@ -2976,7 +2976,7 @@
       "team": "HOU",
       "week2Opp": "LAC",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
+      "injuryStatus": "Out",
       "injury": "Nov 2: Texans head coach DeMeco Ryans said Monday that he has \"no significant update\" on the status of Montgomery (groin) heading into a Week 9 matchup with the Chargers, Jonathan M. Alexander of the Houston Chronicle reports.",
       "stats": {
         "rush_yards": {
@@ -3336,7 +3336,7 @@
       "team": "NWE",
       "week2Opp": "GNB",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
+      "injuryStatus": "Out",
       "injury": null,
       "stats": {
         "rush_yards": {
@@ -4758,7 +4758,7 @@
       "team": "ARI",
       "week2Opp": "SEA",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
+      "injuryStatus": "Injured Reserve",
       "injury": "Nov 2: Head coach Mike LaFleur said Monday that Love suffered a \"new\" ankle injury during Sunday's overtime win at Dallas, and that he'll have an update on the running back later this week, Josh Weinfuss of ESPN.com reports.",
       "stats": {
         "rush_yards": {
@@ -4828,7 +4828,7 @@
       "team": "GNB",
       "week2Opp": "NWE",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "rush_yards": {
@@ -5356,7 +5356,7 @@
       "team": "ATL",
       "week2Opp": "CIN",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
+      "injuryStatus": "Out",
       "injury": null,
       "stats": {
         "rush_yards": {
@@ -6292,7 +6292,7 @@
       "team": "DET",
       "week2Opp": "MIA",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "rec_yards": {
@@ -6659,7 +6659,7 @@
       "team": "GNB",
       "week2Opp": "NWE",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
+      "injuryStatus": null,
       "injury": "Nov 2: Packers passing game coordinator Jason Vrable said Monday that Watson (ribs) is sore but \"doing great,\" Matt Schneidman of The Athletic reports.",
       "stats": {
         "rec_yards": {
@@ -6932,7 +6932,7 @@
       "team": "NYJ",
       "week2Opp": "KAN",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Out",
       "injury": null,
       "stats": {
         "rec_yards": {
@@ -7038,7 +7038,7 @@
       "team": "SFO",
       "week2Opp": "LVR",
       "isLowConfidence": false,
-      "injuryStatus": "Questionable",
+      "injuryStatus": null,
       "injury": "Oct 26: Samuel (hamstring) has a chance to return following the 49ers' Week 8 bye, Matt Maiocco of NBC Sports Bay Area reports.",
       "stats": {
         "rec_yards": {
@@ -7682,7 +7682,7 @@
       "team": "NWE",
       "week2Opp": "GNB",
       "isLowConfidence": true,
-      "injuryStatus": "Questionable",
+      "injuryStatus": "Out",
       "injury": "Nov 2: When asked whether Brown (ankle/knee) might practice at some point this week, coach Mike Vrabel said Monday, \"We'll see,\" Doug Kyed of the Boston Herald reports.",
       "stats": {
         "rec_yards": {
@@ -7827,7 +7827,7 @@
       "team": "DAL",
       "week2Opp": "IND",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "rec_yards": {
@@ -8960,7 +8960,7 @@
       "team": "NYG",
       "week2Opp": "PHI",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "rec_yards": {
@@ -9936,7 +9936,7 @@
       "team": "ARI",
       "week2Opp": "SEA",
       "isLowConfidence": false,
-      "injuryStatus": "Out",
+      "injuryStatus": "Injured Reserve",
       "injury": "Nov 2: Bourne (ankle) is expected to miss the remainder of the season, Jonathan Jones of The Athletic reports.",
       "stats": {
         "rec_yards": {
@@ -11454,7 +11454,7 @@
       "team": "BUF",
       "week2Opp": "MIN",
       "isLowConfidence": false,
-      "injuryStatus": null,
+      "injuryStatus": "Questionable",
       "injury": null,
       "stats": {
         "rec_yards": {
