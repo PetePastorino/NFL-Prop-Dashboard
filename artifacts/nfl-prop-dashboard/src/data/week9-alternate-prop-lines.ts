@@ -1,3 +1,31 @@
 import type { AlternatePropLine } from './week8-alternate-prop-lines';
 
-export const WEEK9_ALTERNATE_PROP_LINES: AlternatePropLine[] = [];
+// Sportsbook "N+ yards" offers win at N or more, equivalent to an over N-0.5 line.
+export const WEEK9_ALTERNATE_PROP_LINES: AlternatePropLine[] = [
+  { player: 'Brock Purdy', statKey: 'pass_yards', line: 249.5, odds: -101 },
+  { player: 'Brock Purdy', statKey: 'pass_yards', line: 239.5, odds: -132 },
+  { player: 'Brock Purdy', statKey: 'pass_yards', line: 229.5, odds: -175 },
+  { player: 'Brock Purdy', statKey: 'pass_yards', line: 219.5, odds: -233 },
+  { player: 'Jameson Williams', statKey: 'rec_yards', line: 49.5, odds: -112 },
+  { player: 'Jameson Williams', statKey: 'rec_yards', line: 39.5, odds: -183 },
+  { player: 'Jameson Williams', statKey: 'rec_yards', line: 29.5, odds: -323 },
+  { player: 'Jameson Williams', statKey: 'rec_yards', line: 24.5, odds: -441 },
+  { player: 'AJ Barner', statKey: 'rec_yards', line: 24.5, odds: -101 },
+  { player: 'AJ Barner', statKey: 'rec_yards', line: 19.5, odds: -149 },
+  { player: 'AJ Barner', statKey: 'rec_yards', line: 14.5, odds: -235 },
+  { player: 'AJ Barner', statKey: 'rec_yards', line: 9.5, odds: -422 },
+  { player: 'Marvin Mims', statKey: 'rec_yards', line: 9.5, odds: -114 },
+  { player: 'Marvin Mims', statKey: 'rec_yards', line: 14.5, odds: 134 },
+  { player: 'Xavier Hutchinson', statKey: 'rec_yards', line: 24.5, odds: 120 },
+  { player: 'Xavier Hutchinson', statKey: 'rec_yards', line: 19.5, odds: -121 },
+  { player: 'Xavier Hutchinson', statKey: 'rec_yards', line: 14.5, odds: -188 },
+  { player: 'Xavier Hutchinson', statKey: 'rec_yards', line: 9.5, odds: -313 },
+  { player: 'Tee Higgins', statKey: 'rec_yards', line: 79.5, odds: -101 },
+  { player: 'Tee Higgins', statKey: 'rec_yards', line: 69.5, odds: -150 },
+  { player: 'Tee Higgins', statKey: 'rec_yards', line: 59.5, odds: -226 },
+  { player: 'Tee Higgins', statKey: 'rec_yards', line: 49.5, odds: -370 },
+  { player: 'Patrick Mahomes', statKey: 'pass_yards', line: 249.5, odds: 106 },
+  { player: 'Patrick Mahomes', statKey: 'pass_yards', line: 239.5, odds: -121 },
+  { player: 'Patrick Mahomes', statKey: 'pass_yards', line: 229.5, odds: -156 },
+  { player: 'Patrick Mahomes', statKey: 'pass_yards', line: 219.5, odds: -204 },
+];
