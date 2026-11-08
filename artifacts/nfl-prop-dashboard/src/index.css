@@ -1037,6 +1037,31 @@ select option { color: #fff; background: #0e2a3f; }
   text-transform: uppercase;
 }
 .petes-no-bet-badge svg { flex: 0 0 auto; color: #ffc14d; }
+.ranking-row.petes-hall-of-fame {
+  padding-left: 7px;
+  padding-right: 7px;
+  border: 1px solid rgba(34, 211, 238, .8);
+  border-radius: 8px;
+  background: rgba(34, 211, 238, .09);
+}
+.ranking-row.petes-hall-of-fame:hover { background: rgba(34, 211, 238, .15); }
+.petes-hall-of-fame-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border: 1px solid rgba(34, 211, 238, .72);
+  border-radius: 999px;
+  background: rgba(34, 211, 238, .14);
+  color: #22d3ee !important;
+  font-size: 8px !important;
+  font-weight: 800;
+  letter-spacing: .045em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.petes-hall-of-fame-badge svg { flex: 0 0 auto; color: #22d3ee; }
 .ranking-name, .roster-name, .ranking-line, .player-name, .metric-card strong { color: #fff; }
 .ranking-meta, .roster-meta, .player-meta { color: #b8c7d6; }
 .rank-number, .confidence-score, .no-data-code { color: #8fa3b5; }

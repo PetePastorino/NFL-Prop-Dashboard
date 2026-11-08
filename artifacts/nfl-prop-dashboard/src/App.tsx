@@ -174,6 +174,8 @@ const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }>
 const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
+const PETES_HALL_OF_FAME_PLAYERS = new Set(['Jonathan Taylor', 'Tee Higgins', 'Rashod Bateman', 'Ryan Flournoy', 'Kyren Williams', 'Brock Purdy', 'Bijan Robinson']);
+const WEEK9_PARLAY_EXCLUDED_TEAMS = new Set(['CIN', 'ATL']);
 const PARLAY_MIN_CONFIDENCE = 72;
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
@@ -584,6 +586,7 @@ function AppShell() {
       prop.lean.lean !== 'PASS'
       && prop.confidenceScore >= PARLAY_MIN_CONFIDENCE
       && !PETES_NO_BET_PLAYERS.has(prop.player.name)
+      && !WEEK9_PARLAY_EXCLUDED_TEAMS.has(prop.player.team)
       && !prop.player.injuryStatus
       && !prop.player.isLowConfidence
       && !prop.stat.lowConfidence
@@ -878,7 +881,7 @@ function AppShell() {
                 {topPlayerProps.map((prop, index) => (
                   <button
                     type="button"
-                    className={`ranking-row${PETES_NO_BET_PLAYERS.has(prop.player.name) ? ' petes-no-bet' : ''}`}
+                    className={`ranking-row${PETES_NO_BET_PLAYERS.has(prop.player.name) ? ' petes-no-bet' : ''}${PETES_HALL_OF_FAME_PLAYERS.has(prop.player.name) ? ' petes-hall-of-fame' : ''}`}
                     key={prop.key}
                     onClick={() => selectRankedProp(prop)}
                     data-testid={`button-ranked-prop-${index + 1}`}
@@ -890,6 +893,9 @@ function AppShell() {
                       <span>{prop.position} · {prop.statLabel} · {prop.player.team} vs {prop.player.week2Opp}</span>
                       {PETES_NO_BET_PLAYERS.has(prop.player.name) && (
                         <span className="petes-no-bet-badge"><AlertTriangle size={10} /> Pete's banned list</span>
+                      )}
+                      {PETES_HALL_OF_FAME_PLAYERS.has(prop.player.name) && (
+                        <span className="petes-hall-of-fame-badge"><Trophy size={10} /> Pete's Hall of Fame</span>
                       )}
                       {prop.player.injuryStatus && <InjuryBadge status={prop.player.injuryStatus} compact />}
                     </span>
@@ -1088,6 +1094,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <div><Check size={15} /><span>One player per leg; four-leg options span different teams and games</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
+        <div><Check size={15} /><span>Bengals and Falcons excluded this week</span></div>
         <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
       </section>
       <div className="parlay-color-legend" aria-label="Confidence score color legend">
