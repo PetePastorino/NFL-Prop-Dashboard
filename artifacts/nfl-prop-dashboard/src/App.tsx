@@ -74,6 +74,7 @@ type StatSnapshot = {
   week6Actual?: number | null;
   week7Actual?: number | null;
   week8Actual?: number | null;
+  week9Actual?: number | null;
 };
 
 type Player = {
@@ -171,7 +172,7 @@ const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }>
   SFO: { primary: '#AA0000', secondary: '#FFFFFF' },
   SEA: { primary: '#002244', secondary: '#69BE28' },
 };
-const CURRENT_WEEK_PROJECTIONS_READY = false;
+const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
 const PETES_HALL_OF_FAME_PLAYERS = new Set(['Jonathan Taylor', 'Tee Higgins', 'Rashod Bateman', 'Ryan Flournoy', 'Kyren Williams', 'Brock Purdy', 'Bijan Robinson']);
@@ -666,7 +667,7 @@ function AppShell() {
   );
   const lowConfidenceCount = playersForGame.filter((player) => player.isLowConfidence).length;
   const currentWeekCount = playersForGame.filter(
-    (player) => player.stats[statKey]?.week8Actual !== null && player.stats[statKey]?.week8Actual !== undefined,
+    (player) => player.stats[statKey]?.week9Actual !== null && player.stats[statKey]?.week9Actual !== undefined,
   ).length;
 
   const changePosition = (nextPosition: Position) => {
@@ -815,7 +816,7 @@ function AppShell() {
             </div>
             <div className="overview-stat"><span>Current pool</span><strong>{playersForGame.length}</strong><small>{position} players</small></div>
             <div className="overview-stat"><span>Limited history</span><strong>{lowConfidenceCount}</strong><small>low-confidence flags</small></div>
-            <div className="overview-stat"><span>Week 8 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
+            <div className="overview-stat"><span>Week 9 coverage</span><strong>{currentWeekCount}<small> / {playersForGame.length}</small></strong><small>latest actuals in view</small></div>
           </section>
 
           <section className="control-deck">
