@@ -45,6 +45,13 @@ test('admin preview requires the private secret and a same-origin request', asyn
   assert.equal((await response.json()).accepted[0].key, 'RB:receptions:Jahmyr Gibbs');
 });
 
+test('admin reports a missing password binding separately from an incorrect password', async () => {
+  const request = new Request('https://example.test/api/admin/state', { headers: { Authorization: 'Bearer some-password' } });
+  const response = await worker.fetch(request, { DB: {} });
+  assert.equal(response.status, 503);
+  assert.match((await response.json()).error, /not configured/);
+});
+
 test('Thursday game lines lock at 8:00 PM Eastern and stay locked on Sunday', () => {
   const file = 'Player\tTeam\tProp\tLine\tOver odds\tUnder odds\nJayden Daniels\tWAS\tPassing Yards\t210.5\t-110\t-110\nJahmyr Gibbs\tDET\tRushing Yards\t90.5\t-110\t-110';
   const before = parseUpload(file, new Date('2026-11-13T00:59:59Z'));

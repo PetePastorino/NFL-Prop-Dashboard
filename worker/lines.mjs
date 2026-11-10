@@ -153,6 +153,7 @@ export default {
       return json({ week: WEEK, ...state });
     }
     if (!url.pathname.startsWith('/api/admin/')) return json({ error: 'Not found.' }, 404);
+    if (!env.UPLOAD_PASSWORD) return json({ error: 'Upload password is not configured on the server.' }, 503);
     if (!await isAdmin(request, env)) return json({ error: 'Incorrect upload password.' }, 403);
     const uploader = env.ADMIN_EMAIL ?? 'Pete';
     if (request.method === 'POST' && request.headers.get('Origin') !== url.origin) return json({ error: 'Invalid request origin.' }, 403);
