@@ -506,6 +506,7 @@ function AppShell() {
   const [lines, setLines] = useState<Record<string, string>>(() =>
     Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
   );
+  const locallyEditedLines = useRef(new Set<string>());
   useEffect(() => {
     let active = true;
     const loadSharedLines = async () => {
@@ -514,7 +515,12 @@ function AppShell() {
         if (!response.ok) return;
         const data = await response.json() as { week?: string; lines?: Record<string, { line: string }> };
         if (active && data.week === `${week9Schedule.season}-${week9Schedule.week}` && data.lines) {
-          setLines((previous) => ({ ...previous, ...Object.fromEntries(Object.entries(data.lines!).map(([key, value]) => [key, value.line])) }));
+          setLines((previous) => ({
+            ...previous,
+            ...Object.fromEntries(Object.entries(data.lines!)
+              .filter(([key]) => !locallyEditedLines.current.has(key))
+              .map(([key, value]) => [key, value.line])),
+          }));
         }
       } catch { /* The built-in lines remain available if the shared API is offline. */ }
     };
@@ -964,7 +970,7 @@ function AppShell() {
               statKey={statKey}
               statLabel={statLabel}
               line={activeLine}
-              setLine={(value) => setLines((previous) => ({ ...previous, [lineKey]: value }))}
+              setLine={(value) => { locallyEditedLines.current.add(lineKey); setLines((previous) => ({ ...previous, [lineKey]: value })); }}
               lean={lean}
               confidenceScore={activeRankedProp?.confidenceScore ?? null}
               confidenceLabel={activeRankedProp?.confidence ?? null}
