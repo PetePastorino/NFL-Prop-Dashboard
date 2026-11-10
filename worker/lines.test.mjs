@@ -32,7 +32,7 @@ test('Week 10 uploads use traded teams and exclude bye teams', () => {
 });
 
 test('admin preview requires the private secret and a same-origin request', async () => {
-  const password = 'a-long-private-password-with-32-characters';
+  const password = 'private-upload-password';
   const env = { DB: {}, UPLOAD_PASSWORD: password };
   const text = 'Player\tTeam\tProp\tLine\tOver odds\tUnder odds\nJahmyr Gibbs\tDET\tReceptions\t4.5\t+113\t-144';
   const preview = (authorization, origin) => worker.fetch(new Request('https://example.test/api/admin/preview', {

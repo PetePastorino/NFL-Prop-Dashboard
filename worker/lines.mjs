@@ -97,8 +97,9 @@ function parseUpload(input, now = new Date()) {
 }
 
 async function isAdmin(request, env) {
-  const supplied = request.headers.get('Authorization')?.match(/^Bearer ([A-Za-z0-9_-]{32,128})$/)?.[1];
-  if (!supplied || !env.UPLOAD_PASSWORD) return false;
+  const authorization = request.headers.get('Authorization') ?? '';
+  const supplied = authorization.startsWith('Bearer ') ? authorization.slice(7) : '';
+  if (!supplied || supplied.length > 128 || !env.UPLOAD_PASSWORD) return false;
   const encoder = new TextEncoder();
   const [left, right] = await Promise.all([
     crypto.subtle.digest('SHA-256', encoder.encode(supplied)),
