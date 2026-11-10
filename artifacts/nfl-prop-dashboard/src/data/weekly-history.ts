@@ -1,4 +1,5 @@
 import week8History from './week8-history-snapshot.json';
+import week9History from './week9-history-snapshot.json';
 
 export type PickResult = 'WIN' | 'LOSS' | 'PUSH';
 
@@ -17,7 +18,7 @@ export type RecordSummary = { wins: number; losses: number; pushes: number };
 
 export type ParlayLegResult = 'WIN' | 'LOSS' | 'PUSH' | 'VOID';
 export type WeeklyParlay = {
-  name: 'Best Four' | 'Safer Four';
+  name: 'Best Four' | 'Safer Four' | 'Stinky Unders';
   outcome: 'HIT' | 'MISSED' | 'VOID';
   source: string;
   legs: {
@@ -48,6 +49,7 @@ export type WeeklyHistory = {
 };
 
 export const WEEKLY_HISTORY: WeeklyHistory[] = [
+  week9History as WeeklyHistory,
   week8History as WeeklyHistory,
   {
     week: 7,

@@ -1278,6 +1278,7 @@ function HistoryView() {
   const parlayTickets = parlayWeeks.flatMap((week) => week.parlays ?? []);
   const bestFourHits = parlayTickets.filter((ticket) => ticket.name === 'Best Four' && ticket.outcome === 'HIT').length;
   const saferFourHits = parlayTickets.filter((ticket) => ticket.name === 'Safer Four' && ticket.outcome === 'HIT').length;
+  const stinkyUndersHits = parlayTickets.filter((ticket) => ticket.name === 'Stinky Unders' && ticket.outcome === 'HIT').length;
   const confidenceCareer = WEEKLY_HISTORY.reduce<RecordSummary>(
     (total, week) => ({
       wins: total.wins + week.highConfidence.wins,
@@ -1322,6 +1323,7 @@ function HistoryView() {
         <div className="history-parlay-summary">
           <div><span>Best Four</span><strong>{bestFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Best Four').length}</strong><small>default tickets hit</small></div>
           <div><span>Safer Four</span><strong>{saferFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Safer Four').length}</strong><small>default tickets hit</small></div>
+          <div><span>Stinky Unders</span><strong>{stinkyUndersHits}/{parlayTickets.filter((ticket) => ticket.name === 'Stinky Unders').length}</strong><small>default tickets hit</small></div>
         </div>
         {parlayWeeks.map((week) => (
           <div className="history-parlay-week" key={`parlay-${week.season}-${week.week}`}>
