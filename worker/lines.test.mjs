@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import worker, { parseUpload } from './lines.mjs';
+import worker, { parseUpload, preserveLockedLines } from './lines.mjs';
 
 test('imports the tab-separated sportsbook file with separate receiving markets', () => {
   const text = '# Source: example\nPlayer\tTeam\tProp\tLine\tOver odds\tUnder odds\nJahmyr Gibbs\tDET\tReceiving Yards\t30.5\t-110\t-110\nJahmyr Gibbs\tDET\tReceptions\t4.5\t+113\t-144';
@@ -34,4 +34,28 @@ test('admin preview requires the private secret and a same-origin request', asyn
   const response = await preview(`Bearer ${password}`, 'https://example.test');
   assert.equal(response.status, 200);
   assert.equal((await response.json()).accepted[0].key, 'RB:receptions:Jahmyr Gibbs');
+});
+
+test('Thursday game lines lock at 8:00 PM Eastern and stay locked on Sunday', () => {
+  const file = 'Player\tTeam\tProp\tLine\tOver odds\tUnder odds\nTrevor Lawrence\tJAX\tPassing Yards\t240.5\t-110\t-110\nJahmyr Gibbs\tDET\tRushing Yards\t90.5\t-110\t-110';
+  const before = parseUpload(file, new Date('2026-11-06T00:59:59Z'));
+  assert.equal(before.accepted.length, 2);
+  const atCutoff = parseUpload(file, new Date('2026-11-06T01:00:00Z'));
+  assert.equal(atCutoff.accepted.length, 1);
+  assert.equal(atCutoff.skipped[0].player, 'Trevor Lawrence');
+  assert.match(atCutoff.skipped[0].reason, /Thursday game locked/);
+  const sunday = parseUpload(file, new Date('2026-11-08T17:00:00Z'));
+  assert.equal(sunday.accepted.length, 1);
+});
+
+test('restoring a version retains the current Thursday lines', () => {
+  const thursdayKey = 'QB:pass_yards:Trevor Lawrence';
+  const sundayKey = 'RB:rush_yards:Jahmyr Gibbs';
+  const current = { [thursdayKey]: { line: '240.5' }, [sundayKey]: { line: '90.5' } };
+  const old = { [thursdayKey]: { line: '230.5' }, [sundayKey]: { line: '80.5' } };
+  const restored = preserveLockedLines(old, current, new Date('2026-11-08T17:00:00Z'));
+  assert.equal(restored[thursdayKey].line, '240.5');
+  assert.equal(restored[sundayKey].line, '80.5');
+  const baseline = preserveLockedLines(old, {}, new Date('2026-11-08T17:00:00Z'));
+  assert.equal(baseline[thursdayKey], undefined);
 });

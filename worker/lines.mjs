@@ -13,6 +13,37 @@ const normalize = (value) => value.toLowerCase().replace(/[.'’]/g, '').replace
 const players = Object.entries(playerData).flatMap(([position, roster]) =>
   roster.map((player) => ({ position, ...player, normalizedName: normalize(player.name) })));
 
+function lockedThursdayTeams(now = new Date()) {
+  const easternParts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', hourCycle: 'h23',
+  }).formatToParts(now).map(({ type, value }) => [type, value]));
+  const easternDate = `${easternParts.year}-${easternParts.month}-${easternParts.day}`;
+  const locked = new Set();
+  for (const game of schedule.games) {
+    if (new Date(`${game.date}T00:00:00Z`).getUTCDay() !== 4) continue;
+    if (easternDate > game.date || (easternDate === game.date && Number(easternParts.hour) >= 20)) {
+      locked.add(game.away);
+      locked.add(game.home);
+    }
+  }
+  return locked;
+}
+
+function preserveLockedLines(restored, current, now = new Date()) {
+  const lockedTeams = lockedThursdayTeams(now);
+  const next = { ...restored };
+  for (const player of players) {
+    if (!lockedTeams.has(player.team)) continue;
+    for (const statKey of Object.values(MARKETS)) {
+      const key = `${player.position}:${statKey}:${player.name}`;
+      if (Object.hasOwn(current, key)) next[key] = current[key];
+      else delete next[key];
+    }
+  }
+  return next;
+}
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -20,7 +51,7 @@ function json(data, status = 200) {
   });
 }
 
-function parseUpload(input) {
+function parseUpload(input, now = new Date()) {
   if (typeof input !== 'string' || input.length > 300_000) throw new Error('File must be plain text and under 300 KB.');
   const rows = input.replace(/^\uFEFF/, '').split(/\r?\n/).map((row) => row.trim()).filter((row) => row && !row.startsWith('#'));
   if (rows.length < 2) throw new Error('The file has no prop rows.');
@@ -31,6 +62,7 @@ function parseUpload(input) {
   const accepted = [];
   const skipped = [];
   const seen = new Set();
+  const lockedTeams = lockedThursdayTeams(now);
   for (const [index, raw] of rows.entries()) {
     const cells = raw.split('\t').map((cell) => cell.trim());
     const [name, team, market, line, overOdds, underOdds] = cells;
@@ -46,6 +78,7 @@ function parseUpload(input) {
     else if (!oddsValid(overOdds) || !oddsValid(underOdds)) reason = 'Invalid American odds';
     else if (matches.length !== 1) reason = matches.length ? 'Ambiguous player/team' : 'Player/team not in current model';
     else if (matches[0].stats?.[statKey]?.projection == null) reason = 'No projection for this prop';
+    else if (lockedTeams.has(normalizedTeam)) reason = 'Thursday game locked since 8:00 PM Eastern';
     const key = !reason ? `${matches[0].position}:${statKey}:${matches[0].name}` : '';
     if (!reason && seen.has(key)) reason = 'Duplicate player and prop';
     if (reason) {
@@ -55,7 +88,9 @@ function parseUpload(input) {
     seen.add(key);
     accepted.push({ key, player: matches[0].name, team: normalizedTeam, prop: market, line, overOdds: overOdds || null, underOdds: underOdds || null });
   }
-  if (!accepted.length) throw new Error('No rows matched a current player and prop.');
+  if (!accepted.length && !skipped.some((row) => row.reason.startsWith('Thursday game locked'))) {
+    throw new Error('No rows matched a current player and prop.');
+  }
   return { accepted, skipped };
 }
 
@@ -138,6 +173,7 @@ export default {
         const state = await currentState(env.DB);
         if (body.expectedVersion !== state.version) return json({ error: 'Lines changed since preview. Reload and review again.' }, 409);
         const parsed = parseUpload(body.text);
+        if (!parsed.accepted.length) return json({ error: 'No editable lines in this file. Thursday game lines are locked after 8:00 PM Eastern.' }, 400);
         const merged = { ...state.lines };
         for (const row of parsed.accepted) merged[row.key] = { line: row.line, overOdds: row.overOdds, underOdds: row.underOdds };
         const saved = await saveState(env.DB, merged, uploader, 'upload', parsed.accepted.length, state.version === null);
@@ -153,7 +189,8 @@ export default {
         if (body.expectedVersion !== state.version) return json({ error: 'Lines changed. Reload before restoring.' }, 409);
         const version = await env.DB.prepare('SELECT payload FROM prop_line_versions WHERE id = ? AND week = ?').bind(body.version, WEEK).first();
         if (!version) return json({ error: 'Version not found.' }, 404);
-        const saved = await saveState(env.DB, JSON.parse(version.payload), uploader, 'restore', 0);
+        const restored = preserveLockedLines(JSON.parse(version.payload), state.lines);
+        const saved = await saveState(env.DB, restored, uploader, 'restore', 0);
         return json({ week: WEEK, ...saved });
       } catch (error) { return json({ error: String(error.message ?? error) }, 400); }
     }
@@ -161,4 +198,4 @@ export default {
   },
 };
 
-export { parseUpload };
+export { parseUpload, preserveLockedLines };

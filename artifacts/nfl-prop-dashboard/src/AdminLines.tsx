@@ -74,7 +74,7 @@ export default function AdminLines() {
     <section className="line-admin-card"><h2>Unlock uploads</h2><p>Enter your private upload password. It stays in this browser tab and is not saved.</p><input type="password" autoComplete="off" value={password} onChange={(event) => { setPassword(event.target.value); setState(null); setPreview(null); }} placeholder="Upload password" aria-label="Upload password" /><button disabled={!password || busy} onClick={() => void refresh().catch((error) => { setState(null); setMessage(error.message); })}>Unlock</button></section>
     <section className="line-admin-card">
       <h2>Upload a lines file</h2>
-      <p>Use the tab-separated <code>props.txt</code> file from the scraper. It needs Player, Team, Prop, Line, Over odds, and Under odds columns. Only listed props change; all others stay in place.</p>
+      <p>Use the tab-separated <code>props.txt</code> file from the scraper. It needs Player, Team, Prop, Line, Over odds, and Under odds columns. Only listed props change; all others stay in place. Thursday game lines lock at 8:00 p.m. Eastern on Thursday. Later uploads and restores keep those lines.</p>
       <input type="file" accept=".txt,.tsv,text/plain,text/tab-separated-values" onChange={(event) => void chooseFile(event.target.files?.[0])} aria-label="Prop lines file" />
       <button disabled={busy || !fileText || !state} onClick={() => void inspect()}>Preview changes</button>
       {fileName && <small>Selected: {fileName}</small>}
@@ -86,7 +86,7 @@ export default function AdminLines() {
         {preview.accepted.map((row) => <tr key={row.key}><td>{row.player}</td><td>{row.team}</td><td>{row.prop}</td><td>{row.line}</td><td>{row.overOdds ?? '—'}</td><td>{row.underOdds ?? '—'}</td></tr>)}
       </tbody></table></div>
       {preview.skipped.length > 0 && <details><summary>Skipped rows and reasons</summary><ul>{preview.skipped.map((row) => <li key={row.row}>Row {row.row}: {row.player} · {row.prop} — {row.reason}</li>)}</ul></details>}
-      <button disabled={busy || !state} onClick={() => void apply()}>Apply {preview.accepted.length} lines for all users</button>
+      <button disabled={busy || !state || !preview.accepted.length} onClick={() => void apply()}>Apply {preview.accepted.length} lines for all users</button>
     </section>}
     {message && <p className="line-admin-message" role="status">{message}</p>}
     {state && <section className="line-admin-card"><h2>Saved versions</h2><p>Current version: {state.updatedAt ? new Date(state.updatedAt).toLocaleString() : 'built-in lines only'}</p><ul className="line-admin-versions">{state.versions.map((version) => <li key={version.id}><span>{new Date(version.created_at).toLocaleString()} · {version.kind} · {version.changed_count} lines</span><button disabled={busy || version.id === state.version} onClick={() => void restore(version)}>Restore</button></li>)}</ul></section>}
