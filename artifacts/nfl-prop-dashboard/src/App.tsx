@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import teamLogoFramingJson from '@/data/team-logo-framing.json';
 import week9Schedule from '@/data/week9-schedule.json';
@@ -506,6 +506,22 @@ function AppShell() {
   const [lines, setLines] = useState<Record<string, string>>(() =>
     Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
   );
+  useEffect(() => {
+    let active = true;
+    const loadSharedLines = async () => {
+      try {
+        const response = await fetch('/api/lines', { cache: 'no-store' });
+        if (!response.ok) return;
+        const data = await response.json() as { week?: string; lines?: Record<string, { line: string }> };
+        if (active && data.week === `${week9Schedule.season}-${week9Schedule.week}` && data.lines) {
+          setLines((previous) => ({ ...previous, ...Object.fromEntries(Object.entries(data.lines!).map(([key, value]) => [key, value.line])) }));
+        }
+      } catch { /* The built-in lines remain available if the shared API is offline. */ }
+    };
+    void loadSharedLines();
+    const interval = window.setInterval(() => void loadSharedLines(), 60_000);
+    return () => { active = false; window.clearInterval(interval); };
+  }, []);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const gameRailRef = useRef<HTMLDivElement>(null);
 

@@ -2,8 +2,17 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "nfl-prop-dashboard",
   "compatibility_date": "2026-09-29",
+  "main": "./worker/lines.mjs",
+  "vars": {
+    "ADMIN_EMAIL": "pqpastor@iu.edu"
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "nfl-prop-dashboard-lines", "database_id": "20488c1c-06c4-402d-8369-a889fa40ee17" }
+  ],
   "assets": {
     "directory": "./artifacts/nfl-prop-dashboard/dist/public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
     "not_found_handling": "single-page-application"
   }
 }
