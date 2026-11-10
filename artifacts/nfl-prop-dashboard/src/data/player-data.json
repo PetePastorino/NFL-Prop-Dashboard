@@ -2081,6 +2081,54 @@
           "matchupFactor": 1
         }
       }
+    },
+    {
+      "name": "Fernando Mendoza",
+      "team": "LVR",
+      "week2Opp": "SEA",
+      "isLowConfidence": true,
+      "injuryStatus": null,
+      "injury": null,
+      "stats": {
+        "pass_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 1, "isHome": true, "week5Actual": 48 },
+        "rush_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 1, "isHome": true, "week5Actual": 3 }
+      }
+    },
+    {
+      "name": "Kyle McCord",
+      "team": "MIA",
+      "week2Opp": "IND",
+      "isLowConfidence": true,
+      "injuryStatus": null,
+      "injury": null,
+      "stats": {
+        "pass_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 0, "isHome": false },
+        "rush_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 0, "isHome": false }
+      }
+    },
+    {
+      "name": "Joe Milton",
+      "team": "PHI",
+      "week2Opp": null,
+      "isLowConfidence": true,
+      "injuryStatus": null,
+      "injury": null,
+      "stats": {
+        "pass_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 1, "isHome": false, "week9Actual": 169 },
+        "rush_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 1, "isHome": false, "week9Actual": 64 }
+      }
+    },
+    {
+      "name": "Carson Beck",
+      "team": "ARI",
+      "week2Opp": "LAR",
+      "isLowConfidence": true,
+      "injuryStatus": null,
+      "injury": null,
+      "stats": {
+        "pass_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 0, "isHome": true },
+        "rush_yards": { "projection": null, "rawProjection": null, "lowConfidence": true, "nPriorGames": 0, "isHome": true }
+      }
     }
   ],
   "RB": [

@@ -6,8 +6,12 @@ if (!source) throw new Error('Usage: pnpm run import:projections <current_projec
 
 const inputPath = resolve(source);
 const outputPath = resolve('artifacts/nfl-prop-dashboard/src/data/player-data.json');
+const schedulePath = resolve('artifacts/nfl-prop-dashboard/src/data/week10-schedule.json');
 const data = JSON.parse(await readFile(inputPath, 'utf8'));
 const existing = JSON.parse(await readFile(outputPath, 'utf8'));
+const schedule = JSON.parse(await readFile(schedulePath, 'utf8'));
+const opponents = new Map(schedule.games.flatMap((game) => [[game.away, game.home], [game.home, game.away]]));
+const homeTeams = new Set(schedule.games.filter((game) => !game.neutralSite).map((game) => game.home));
 const positions = ['QB', 'RB', 'WR', 'TE'];
 const actualKeys = ['week1Actual', 'week2Actual', 'week3Actual', 'week4Actual', 'week5Actual', 'week6Actual', 'week7Actual', 'week8Actual', 'week9Actual'];
 
@@ -48,14 +52,14 @@ for (const position of positions) {
     if (importedNames.has(player.name)) continue;
     const preserved = structuredClone(player);
     preserved.isLowConfidence = true;
-    preserved.week2Opp = preserved.team === 'TEN' ? 'IND' : '';
+    preserved.week2Opp = opponents.get(preserved.team) ?? null;
     preserved.injuryStatus = injuries.get(preserved.name)?.[0] ?? null;
     preserved.injury = injuries.get(preserved.name)?.[1] ?? null;
     for (const stat of Object.values(preserved.stats ?? {})) {
       if (Object.hasOwn(stat, 'projection')) stat.projection = null;
       if (Object.hasOwn(stat, 'rawProjection')) stat.rawProjection = null;
       stat.lowConfidence = true;
-      stat.isHome = false;
+      stat.isHome = homeTeams.has(preserved.team);
     }
     data[position].push(preserved);
   }
