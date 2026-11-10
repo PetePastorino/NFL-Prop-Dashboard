@@ -1,0 +1,20 @@
+{
+  "season": 2026,
+  "week": 10,
+  "source": "Trade list supplied by the user on 2026-11-10",
+  "offense": [
+    { "player": "Josh Downs", "position": "WR", "from": "IND", "to": "KAN", "date": "2026-11-10" },
+    { "player": "Kirk Cousins", "position": "QB", "from": "LVR", "to": "MIN", "date": "2026-11-10" },
+    { "player": "Keenan Allen", "position": "WR", "from": "IND", "to": "SFO", "date": "2026-11-10" },
+    { "player": "Jacoby Brissett", "position": "QB", "from": "ARI", "to": "BAL", "date": "2026-11-06" }
+  ],
+  "defense": [
+    { "player": "Daiyan Henley", "position": "LB", "from": "LAC", "to": "DEN", "date": "2026-11-10" },
+    { "player": "Amani Hooker", "position": "S", "from": "TEN", "to": "BUF", "date": "2026-11-10" },
+    { "player": "Jordan Davis", "position": "DT", "from": "PHI", "to": "JAX", "date": "2026-11-09" },
+    { "player": "Davon Godchaux", "position": "DT", "from": "NOR", "to": "JAX", "date": "2026-11-09" },
+    { "player": "Andre Cisco", "position": "S", "from": "NYJ", "to": "DET", "date": "2026-11-09" },
+    { "player": "Jessie Bates", "position": "S", "from": "ATL", "to": "JAX", "date": "2026-11-09" },
+    { "player": "Jeffery Simmons", "position": "DT", "from": "TEN", "to": "CHI", "date": "2026-10-29" }
+  ]
+}

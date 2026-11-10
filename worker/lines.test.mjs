@@ -22,6 +22,15 @@ test('skips unknown rows and refuses a file without valid lines', () => {
   assert.throws(() => parseUpload(header + 'Nobody Real\tDET\tReceiving Yards\t20.5\t-110\t-110'));
 });
 
+test('Week 10 uploads use traded teams and exclude bye teams', () => {
+  const file = 'Player\tTeam\tProp\tLine\tOver odds\tUnder odds\nJosh Downs\tKC\tReceiving Yards\t45.5\t-110\t-110\nJosh Downs\tIND\tReceiving Yards\t45.5\t-110\t-110\nBaker Mayfield\tTB\tPassing Yards\t220.5\t-110\t-110';
+  const result = parseUpload(file, new Date('2026-11-11T17:00:00Z'));
+  assert.equal(result.accepted.length, 1);
+  assert.equal(result.accepted[0].team, 'KAN');
+  assert.equal(result.skipped.length, 2);
+  assert.match(result.skipped[1].reason, /bye/);
+});
+
 test('admin preview requires the private secret and a same-origin request', async () => {
   const password = 'a-long-private-password-with-32-characters';
   const env = { DB: {}, UPLOAD_PASSWORD: password };
@@ -37,25 +46,25 @@ test('admin preview requires the private secret and a same-origin request', asyn
 });
 
 test('Thursday game lines lock at 8:00 PM Eastern and stay locked on Sunday', () => {
-  const file = 'Player\tTeam\tProp\tLine\tOver odds\tUnder odds\nTrevor Lawrence\tJAX\tPassing Yards\t240.5\t-110\t-110\nJahmyr Gibbs\tDET\tRushing Yards\t90.5\t-110\t-110';
-  const before = parseUpload(file, new Date('2026-11-06T00:59:59Z'));
+  const file = 'Player\tTeam\tProp\tLine\tOver odds\tUnder odds\nJayden Daniels\tWAS\tPassing Yards\t210.5\t-110\t-110\nJahmyr Gibbs\tDET\tRushing Yards\t90.5\t-110\t-110';
+  const before = parseUpload(file, new Date('2026-11-13T00:59:59Z'));
   assert.equal(before.accepted.length, 2);
-  const atCutoff = parseUpload(file, new Date('2026-11-06T01:00:00Z'));
+  const atCutoff = parseUpload(file, new Date('2026-11-13T01:00:00Z'));
   assert.equal(atCutoff.accepted.length, 1);
-  assert.equal(atCutoff.skipped[0].player, 'Trevor Lawrence');
+  assert.equal(atCutoff.skipped[0].player, 'Jayden Daniels');
   assert.match(atCutoff.skipped[0].reason, /Thursday game locked/);
-  const sunday = parseUpload(file, new Date('2026-11-08T17:00:00Z'));
+  const sunday = parseUpload(file, new Date('2026-11-15T17:00:00Z'));
   assert.equal(sunday.accepted.length, 1);
 });
 
 test('restoring a version retains the current Thursday lines', () => {
-  const thursdayKey = 'QB:pass_yards:Trevor Lawrence';
+  const thursdayKey = 'QB:pass_yards:Jayden Daniels';
   const sundayKey = 'RB:rush_yards:Jahmyr Gibbs';
-  const current = { [thursdayKey]: { line: '240.5' }, [sundayKey]: { line: '90.5' } };
-  const old = { [thursdayKey]: { line: '230.5' }, [sundayKey]: { line: '80.5' } };
-  const restored = preserveLockedLines(old, current, new Date('2026-11-08T17:00:00Z'));
-  assert.equal(restored[thursdayKey].line, '240.5');
+  const current = { [thursdayKey]: { line: '210.5' }, [sundayKey]: { line: '90.5' } };
+  const old = { [thursdayKey]: { line: '200.5' }, [sundayKey]: { line: '80.5' } };
+  const restored = preserveLockedLines(old, current, new Date('2026-11-15T17:00:00Z'));
+  assert.equal(restored[thursdayKey].line, '210.5');
   assert.equal(restored[sundayKey].line, '80.5');
-  const baseline = preserveLockedLines(old, {}, new Date('2026-11-08T17:00:00Z'));
+  const baseline = preserveLockedLines(old, {}, new Date('2026-11-15T17:00:00Z'));
   assert.equal(baseline[thursdayKey], undefined);
 });

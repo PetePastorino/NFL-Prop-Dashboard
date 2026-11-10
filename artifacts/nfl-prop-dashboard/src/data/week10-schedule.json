@@ -1,0 +1,21 @@
+{
+  "week": 10,
+  "season": 2026,
+  "byes": ["CHI", "DEN", "PHI", "TAM"],
+  "games": [
+    { "away": "WAS", "home": "NYG", "date": "2026-11-12", "time": "8:15 PM", "network": "Prime Video", "site": "MetLife Stadium, East Rutherford, NJ", "line": "NYG -2.5", "total": 41.5 },
+    { "away": "NWE", "home": "DET", "date": "2026-11-15", "time": "9:30 AM", "network": "FOX", "site": "FC Bayern Munich Stadium, Munich, Germany", "neutralSite": true, "line": "DET -2.5", "total": 51.5 },
+    { "away": "KAN", "home": "ATL", "date": "2026-11-15", "time": "1:00 PM", "network": "CBS", "site": "Mercedes-Benz Stadium, Atlanta, GA", "line": "KAN -3.5", "total": 45.5 },
+    { "away": "HOU", "home": "CLE", "date": "2026-11-15", "time": "1:00 PM", "network": "FOX", "site": "Huntington Bank Field, Cleveland, OH", "line": "HOU -4.5", "total": 39.5 },
+    { "away": "MIN", "home": "GNB", "date": "2026-11-15", "time": "1:00 PM", "network": "FOX", "site": "Lambeau Field, Green Bay, WI", "line": "GNB -3.5", "total": 41.5 },
+    { "away": "JAX", "home": "TEN", "date": "2026-11-15", "time": "1:00 PM", "network": "FOX", "site": "Nissan Stadium, Nashville, TN", "line": "JAX -10.5", "total": 46.5 },
+    { "away": "MIA", "home": "IND", "date": "2026-11-15", "time": "1:00 PM", "network": "CBS", "site": "Lucas Oil Stadium, Indianapolis, IN", "line": "IND -2.5", "total": 40.5 },
+    { "away": "CAR", "home": "NOR", "date": "2026-11-15", "time": "1:00 PM", "network": "FOX", "site": "Caesars Superdome, New Orleans, LA", "line": "NOR -1.5", "total": 48.5 },
+    { "away": "BUF", "home": "NYJ", "date": "2026-11-15", "time": "1:00 PM", "network": "CBS", "site": "MetLife Stadium, East Rutherford, NJ", "line": "BUF -8.5", "total": 50.5 },
+    { "away": "SEA", "home": "LVR", "date": "2026-11-15", "time": "4:05 PM", "network": "CBS", "site": "Allegiant Stadium, Las Vegas, NV", "line": "SEA -6", "total": 40.5 },
+    { "away": "LAR", "home": "ARI", "date": "2026-11-15", "time": "4:05 PM", "network": "CBS", "site": "State Farm Stadium, Glendale, AZ", "line": "LAR -9.5", "total": 40.5 },
+    { "away": "SFO", "home": "DAL", "date": "2026-11-15", "time": "4:25 PM", "network": "FOX", "site": "AT&T Stadium, Arlington, TX", "line": "SFO -3.5", "total": 55.5 },
+    { "away": "PIT", "home": "CIN", "date": "2026-11-15", "time": "8:20 PM", "network": "NBC", "site": "Paycor Stadium, Cincinnati, OH", "line": "CIN -3.5", "total": 49.5 },
+    { "away": "LAC", "home": "BAL", "date": "2026-11-16", "time": "8:15 PM", "network": "ESPN", "site": "M&T Bank Stadium, Baltimore, MD", "line": "BAL -5.5", "total": 38.5 }
+  ]
+}

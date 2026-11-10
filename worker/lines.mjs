@@ -1,5 +1,5 @@
 import playerData from '../artifacts/nfl-prop-dashboard/src/data/player-data.json' with { type: 'json' };
-import schedule from '../artifacts/nfl-prop-dashboard/src/data/week9-schedule.json' with { type: 'json' };
+import schedule from '../artifacts/nfl-prop-dashboard/src/data/week10-schedule.json' with { type: 'json' };
 
 const WEEK = `${schedule.season}-${schedule.week}`;
 const MARKETS = {
@@ -9,6 +9,7 @@ const MARKETS = {
   Receptions: 'receptions',
 };
 const TEAM_ALIASES = { NE: 'NWE', GB: 'GNB', SF: 'SFO', KC: 'KAN', LV: 'LVR', NO: 'NOR', TB: 'TAM', LA: 'LAR', WSH: 'WAS' };
+const ACTIVE_TEAMS = new Set(schedule.games.flatMap((game) => [game.away, game.home]));
 const normalize = (value) => value.toLowerCase().replace(/[.'’]/g, '').replace(/\b(jr|sr|ii|iii|iv)\b/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
 const players = Object.entries(playerData).flatMap(([position, roster]) =>
   roster.map((player) => ({ position, ...player, normalizedName: normalize(player.name) })));
@@ -77,7 +78,8 @@ function parseUpload(input, now = new Date()) {
     else if (!validLine) reason = 'Invalid line';
     else if (!oddsValid(overOdds) || !oddsValid(underOdds)) reason = 'Invalid American odds';
     else if (matches.length !== 1) reason = matches.length ? 'Ambiguous player/team' : 'Player/team not in current model';
-    else if (matches[0].stats?.[statKey]?.projection == null) reason = 'No projection for this prop';
+    else if (!ACTIVE_TEAMS.has(normalizedTeam)) reason = 'Team is on bye this week';
+    else if (!matches[0].stats?.[statKey]) reason = 'This prop is not tracked for the player';
     else if (lockedTeams.has(normalizedTeam)) reason = 'Thursday game locked since 8:00 PM Eastern';
     const key = !reason ? `${matches[0].position}:${statKey}:${matches[0].name}` : '';
     if (!reason && seen.has(key)) reason = 'Duplicate player and prop';

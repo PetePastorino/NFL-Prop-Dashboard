@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import teamLogoFramingJson from '@/data/team-logo-framing.json';
-import week9Schedule from '@/data/week9-schedule.json';
+import week10Schedule from '@/data/week10-schedule.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
-import { WEEK9_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week9-initial-prop-lines';
-import { WEEK9_ALTERNATE_PROP_LINES } from '@/data/week9-alternate-prop-lines';
+import { WEEK10_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week10-initial-prop-lines';
+import { WEEK10_ALTERNATE_PROP_LINES } from '@/data/week10-alternate-prop-lines';
 import type { AlternatePropLine } from '@/data/week8-alternate-prop-lines';
 import { WEEKLY_HISTORY, type RecordSummary, type WeeklyParlay } from '@/data/weekly-history';
 import {
@@ -171,11 +171,11 @@ const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }>
   SFO: { primary: '#AA0000', secondary: '#FFFFFF' },
   SEA: { primary: '#002244', secondary: '#69BE28' },
 };
-const CURRENT_WEEK_PROJECTIONS_READY = true;
+const CURRENT_WEEK_PROJECTIONS_READY = false;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
 const PETES_HALL_OF_FAME_PLAYERS = new Set(['Jonathan Taylor', 'Tee Higgins', 'Rashod Bateman', 'Ryan Flournoy', 'Kyren Williams', 'Brock Purdy', 'Bijan Robinson']);
-const WEEK9_PARLAY_EXCLUDED_TEAMS = new Set(['CIN', 'ATL']);
+const PARLAY_EXCLUDED_TEAMS = new Set<string>();
 const PARLAY_MIN_CONFIDENCE = 72;
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
@@ -514,7 +514,7 @@ function AppShell() {
         const response = await fetch('/api/lines', { cache: 'no-store' });
         if (!response.ok) return;
         const data = await response.json() as { week?: string; lines?: Record<string, { line: string }> };
-        if (active && data.week === `${week9Schedule.season}-${week9Schedule.week}` && data.lines) {
+        if (active && data.week === `${week10Schedule.season}-${week10Schedule.week}` && data.lines) {
           setLines((previous) => ({
             ...previous,
             ...Object.fromEntries(Object.entries(data.lines!)
@@ -532,7 +532,7 @@ function AppShell() {
   const gameRailRef = useRef<HTMLDivElement>(null);
 
   const players = PLAYER_DATA[position] ?? [];
-  const gameOptions = week9Schedule.games.map((game) => ({
+  const gameOptions = week10Schedule.games.map((game) => ({
     ...game,
     key: [game.away, game.home].sort().join('|'),
   }));
@@ -608,7 +608,7 @@ function AppShell() {
       prop.lean.lean !== 'PASS'
       && prop.confidenceScore >= PARLAY_MIN_CONFIDENCE
       && !PETES_NO_BET_PLAYERS.has(prop.player.name)
-      && !WEEK9_PARLAY_EXCLUDED_TEAMS.has(prop.player.team)
+      && !PARLAY_EXCLUDED_TEAMS.has(prop.player.team)
       && !prop.player.injuryStatus
       && !prop.player.isLowConfidence
       && !prop.stat.lowConfidence
@@ -626,7 +626,7 @@ function AppShell() {
   const saferFour = useMemo(() => {
     const targetProbability = 0.77;
     const eligible = parlayCandidates.flatMap<SaferParlayLeg>((prop) => {
-      const alternates = WEEK9_ALTERNATE_PROP_LINES
+      const alternates = WEEK10_ALTERNATE_PROP_LINES
         .filter((line) => line.player === prop.player.name && line.statKey === prop.statKey)
         .map((alternate) => ({
           alternate,
@@ -778,7 +778,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : workspaceView === 'parlays' ? 'Suggested parlays' : 'Prop board'}</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week 9 slate</span>
+            <span className="live-indicator"><span /> Week {week10Schedule.week} slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -866,7 +866,7 @@ function AppShell() {
             </div>
             <div className="game-rail-section">
               <div className="game-rail-heading">
-                <div><strong>Choose a game</strong><span>Week {week9Schedule.week} matchups</span></div>
+                <div><strong>Choose a game</strong><span>Week {week10Schedule.week} matchups</span></div>
                 <div className="game-rail-controls">
                   <button type="button" aria-label="Scroll games left" onClick={() => gameRailRef.current?.scrollBy({ left: -420, behavior: 'smooth' })}><ChevronLeft size={17} /></button>
                   <button type="button" aria-label="Scroll games right" onClick={() => gameRailRef.current?.scrollBy({ left: 420, behavior: 'smooth' })}><ChevronRight size={17} /></button>
@@ -931,7 +931,7 @@ function AppShell() {
             ) : (
               <div className="confidence-empty">
                 <div className="confidence-empty-icon"><ListFilter size={18} /></div>
-                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : 'Week 9 projections are pending'}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Paste your sportsbook lines above to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} Week 9 lines are loaded. Rankings will activate after the Week 9 projection run.`}</span></div>
+                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : `Week ${week10Schedule.week} projections are pending`}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Upload sportsbook lines to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} Week ${week10Schedule.week} lines are loaded. Rankings will activate after the projection run.`}</span></div>
               </div>
             )}
           </section>
@@ -1051,9 +1051,9 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
   const [selectedAlternateLines, setSelectedAlternateLines] = useState<Record<string, number>>({});
   const [selectedBestFourKeys, setSelectedBestFourKeys] = useState<Record<number, string>>({});
   const [selectedGameKey, setSelectedGameKey] = useState(() =>
-    [week9Schedule.games[0].away, week9Schedule.games[0].home].sort().join('|'),
+    [week10Schedule.games[0].away, week10Schedule.games[0].home].sort().join('|'),
   );
-  const selectedGame = week9Schedule.games.find((game) =>
+  const selectedGame = week10Schedule.games.find((game) =>
     [game.away, game.home].sort().join('|') === selectedGameKey,
   );
   const gameParlayLegs = parlayCandidates
@@ -1081,7 +1081,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
   const displayedSaferFour = saferFour.map((leg) => {
     const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
     const selectedLine = selectedAlternateLines[selectionKey];
-    const alternate = WEEK9_ALTERNATE_PROP_LINES.find((line) =>
+    const alternate = WEEK10_ALTERNATE_PROP_LINES.find((line) =>
       line.player === leg.prop.player.name
       && line.statKey === leg.prop.statKey
       && line.line === selectedLine,
@@ -1100,7 +1100,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
     <div className="parlay-view">
       <section className="parlay-hero">
         <div>
-          <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK 9</div>
+          <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK {week10Schedule.week}</div>
           <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
           <p>These builders favor stable roles and reliable samples. The four-leg options span different games; the game picker groups qualified players in one matchup.</p>
         </div>
@@ -1116,7 +1116,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <div><Check size={15} /><span>One player per leg; four-leg options span different teams and games</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
-        <div><Check size={15} /><span>Bengals and Falcons excluded this week</span></div>
+        {PARLAY_EXCLUDED_TEAMS.size > 0 && <div><Check size={15} /><span>{[...PARLAY_EXCLUDED_TEAMS].join(' and ')} excluded this week</span></div>}
         <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
       </section>
       <div className="parlay-color-legend" aria-label="Confidence score color legend">
@@ -1131,7 +1131,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
           <label className="game-parlay-picker">
             <span>Choose a game</span>
             <select value={selectedGameKey} onChange={(event) => setSelectedGameKey(event.target.value)} aria-label="Choose a game for a parlay">
-              {week9Schedule.games.map((game) => {
+              {week10Schedule.games.map((game) => {
                 const key = [game.away, game.home].sort().join('|');
                 return <option key={key} value={key}>{game.away} {('neutralSite' in game && game.neutralSite) ? 'vs' : '@'} {game.home}</option>;
               })}
@@ -1191,7 +1191,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
               <div className="safer-leg-list">
                 {displayedSaferFour.map((leg, index) => {
                   const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
-                  const alternateOptions = WEEK9_ALTERNATE_PROP_LINES
+                  const alternateOptions = WEEK10_ALTERNATE_PROP_LINES
                     .filter((line) => line.player === leg.prop.player.name && line.statKey === leg.prop.statKey)
                     .sort((a, b) => b.line - a.line);
                   return (
@@ -1690,7 +1690,7 @@ function NoDataPanel({ statLabel }: { statLabel: string }) {
   return (
     <div className="no-data-panel">
       <div className="no-data-icon"><Database size={23} /></div>
-      <div><h3>Week 9 {statLabel.toLowerCase()} projection unavailable</h3><p>There is not enough verified player history for this stat. A projection will appear when enough game data is available.</p></div>
+      <div><h3>Week {week10Schedule.week} {statLabel.toLowerCase()} projection unavailable</h3><p>Projections for this week are pending. A projection will appear after the model run when enough player history is available.</p></div>
       <span className="no-data-code">NULL / PROJECTION</span>
     </div>
   );

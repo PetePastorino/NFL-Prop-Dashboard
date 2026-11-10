@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import schedule from './data/week9-schedule.json';
+import schedule from './data/week10-schedule.json';
 import './admin-lines.css';
 
 type LineRow = { key: string; player: string; team: string; prop: string; line: string; overOdds: string | null; underOdds: string | null };
