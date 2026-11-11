@@ -383,15 +383,12 @@ function selectDiversifiedProps(props: RankedProp[], count = 4) {
   const selected: RankedProp[] = [];
   const players = new Set<string>();
   const teams = new Set<string>();
-  const games = new Set<string>();
   for (const prop of props) {
     const player = normalized(prop.player.name);
-    const game = matchupKey(prop.player);
-    if (players.has(player) || teams.has(prop.player.team) || games.has(game)) continue;
+    if (players.has(player) || teams.has(prop.player.team)) continue;
     selected.push(prop);
     players.add(player);
     teams.add(prop.player.team);
-    games.add(game);
     if (selected.length === count) break;
   }
   return selected;
@@ -652,14 +649,11 @@ function AppShell() {
     const selected: SaferParlayLeg[] = [];
     const players = new Set<string>();
     const teams = new Set<string>();
-    const games = new Set<string>();
     for (const leg of eligible) {
-      const game = matchupKey(leg.prop.player);
-      if (players.has(leg.prop.player.name) || teams.has(leg.prop.player.team) || games.has(game)) continue;
+      if (players.has(leg.prop.player.name) || teams.has(leg.prop.player.team)) continue;
       selected.push(leg);
       players.add(leg.prop.player.name);
       teams.add(leg.prop.player.team);
-      games.add(game);
       if (selected.length === 4) break;
     }
     return selected;
@@ -1109,7 +1103,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <div>
           <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK {week10Schedule.week}</div>
           <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
-          <p>These builders favor stable roles and reliable samples. The four-leg options span different games; the game picker groups qualified players in one matchup.</p>
+          <p>These builders favor stable roles and reliable samples. Four-leg options use different teams, and opposing-team players may share a game. The game picker groups qualified players in one matchup.</p>
         </div>
         <div className="parlay-hero-seal">
           <Shield size={23} />
@@ -1120,7 +1114,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
       </section>
 
       <section className="parlay-rules" aria-label="Parlay eligibility rules">
-        <div><Check size={15} /><span>One player per leg; four-leg options span different teams and games</span></div>
+        <div><Check size={15} /><span>One player per team in four-leg options; opposing teams may share a game</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
         <div className="backup-qb-rule"><AlertTriangle size={15} /><span>Backup QB warning: WR and TE props from BAL, LVR, ARI, MIA, SEA, and MIN excluded in both directions</span></div>
@@ -1177,8 +1171,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
                 const otherLegs = displayedBestFour.filter((_, otherIndex) => otherIndex !== index);
                 const options = parlayCandidates.filter((candidate) => candidate.key === prop.key || !otherLegs.some((other) =>
                   normalized(other.player.name) === normalized(candidate.player.name)
-                  || other.player.team === candidate.player.team
-                  || matchupKey(other.player) === matchupKey(candidate.player),
+                  || other.player.team === candidate.player.team,
                 ));
                 return <ParlayLeg key={`${index}:${prop.key}`} prop={prop} index={index} options={options} onReplace={(key) => setSelectedBestFourKeys((current) => ({ ...current, [index]: key }))} onSelect={onSelect} />;
               })}
