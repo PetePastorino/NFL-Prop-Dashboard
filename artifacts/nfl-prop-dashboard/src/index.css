@@ -1037,6 +1037,23 @@ select option { color: #fff; background: #0e2a3f; }
   text-transform: uppercase;
 }
 .petes-no-bet-badge svg { flex: 0 0 auto; color: #ffc14d; }
+.main-canvas .backup-qb-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border: 1px solid #ffc14d;
+  border-radius: 999px;
+  background: #ffc14d;
+  color: #04121c !important;
+  font-family: var(--app-font-mono);
+  font-size: 8px !important;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.main-canvas .backup-qb-badge svg { flex: 0 0 auto; color: #04121c; }
 .ranking-row.petes-hall-of-fame {
   padding-left: 7px;
   padding-right: 7px;
@@ -1260,6 +1277,13 @@ select option { color: #fff; background: #0e2a3f; }
   border-color: #ffc14d;
   font-weight: 800;
 }
+.main-canvas .alert-chip.backup-qb-warning {
+  color: #04121c !important;
+  background: #ffc14d;
+  border: 1px solid #ffc14d;
+  font-weight: 800;
+}
+.main-canvas .alert-chip.backup-qb-warning svg { color: #04121c; }
 .main-canvas .result-pill {
   min-width: 50px;
   padding: 5px 8px;
@@ -1328,6 +1352,7 @@ select option { color: #fff; background: #0e2a3f; }
 .parlay-rules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
 .parlay-rules > div { min-height: 48px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid #2a4a66; border-radius: 8px; background: rgba(14,42,63,.94); }
 .parlay-rules svg { flex: 0 0 auto; color: #2ee59d; }
+.parlay-rules .backup-qb-rule svg { color: #ffc14d; }
 .parlay-rules span { color: #fff; font-size: 8px; line-height: 1.35; }
 .parlay-color-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 16px; margin: -3px 0 14px; color: #b8c7d6; font-size: 10px; }
 .main-canvas .parlay-color-legend-over { color: #2ee59d !important; font-weight: 700; }

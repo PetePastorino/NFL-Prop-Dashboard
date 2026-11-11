@@ -174,9 +174,12 @@ const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }>
 };
 const CURRENT_WEEK_PROJECTIONS_READY = true;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
-const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray']);
+const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray', 'Jameson Williams']);
 const PETES_HALL_OF_FAME_PLAYERS = new Set(['Jonathan Taylor', 'Tee Higgins', 'Rashod Bateman', 'Ryan Flournoy', 'Kyren Williams', 'Brock Purdy', 'Bijan Robinson']);
 const PARLAY_EXCLUDED_TEAMS = new Set<string>();
+const BACKUP_QB_WARNING_TEAMS = new Set(['BAL', 'LVR', 'ARI', 'MIA', 'SEA', 'MIN']);
+const hasBackupQbWarning = (position: Position, team: string) =>
+  (position === 'WR' || position === 'TE') && BACKUP_QB_WARNING_TEAMS.has(team);
 const PARLAY_MIN_CONFIDENCE = 72;
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
@@ -610,6 +613,7 @@ function AppShell() {
       && prop.confidenceScore >= PARLAY_MIN_CONFIDENCE
       && !PETES_NO_BET_PLAYERS.has(prop.player.name)
       && !PARLAY_EXCLUDED_TEAMS.has(prop.player.team)
+      && !hasBackupQbWarning(prop.position, prop.player.team)
       && !prop.player.injuryStatus
       && !prop.player.isLowConfidence
       && !prop.stat.lowConfidence
@@ -920,6 +924,7 @@ function AppShell() {
                       {PETES_HALL_OF_FAME_PLAYERS.has(prop.player.name) && (
                         <span className="petes-hall-of-fame-badge"><Trophy size={10} /> Pete's Hall of Fame</span>
                       )}
+                      {hasBackupQbWarning(prop.position, prop.player.team) && <BackupQbBadge />}
                       {prop.player.injuryStatus && <InjuryBadge status={prop.player.injuryStatus} compact />}
                     </span>
                     <span className="ranking-line">{prop.line}</span>
@@ -948,6 +953,7 @@ function AppShell() {
                   <PlayerRow
                     key={player.name}
                     player={player}
+                    position={position}
                     rank={index + 1}
                     statKey={statKey}
                     active={player.name === selectedName}
@@ -1117,6 +1123,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <div><Check size={15} /><span>One player per leg; four-leg options span different teams and games</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
+        <div className="backup-qb-rule"><AlertTriangle size={15} /><span>Backup QB warning: WR and TE props from BAL, LVR, ARI, MIA, SEA, and MIN excluded in both directions</span></div>
         {PARLAY_EXCLUDED_TEAMS.size > 0 && <div><Check size={15} /><span>{[...PARLAY_EXCLUDED_TEAMS].join(' and ')} excluded this week</span></div>}
         <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
       </section>
@@ -1444,6 +1451,7 @@ function HistoryRecordCard({ label, record, detail, featured = false }: { label:
 
 function PlayerRow({
   player,
+  position,
   rank,
   statKey,
   active,
@@ -1451,6 +1459,7 @@ function PlayerRow({
   onSelect,
 }: {
   player: Player;
+  position: Position;
   rank: number;
   statKey: string;
   active: boolean;
@@ -1477,6 +1486,7 @@ function PlayerRow({
       <span className="player-row-right">
         {lean.lean !== '—' && <LeanPill lean={lean.lean} compact />}
         {player.injuryStatus && <InjuryBadge status={player.injuryStatus} compact />}
+        {hasBackupQbWarning(position, player.team) && <BackupQbBadge />}
         {player.isLowConfidence && <span className="tiny-flag">Limited</span>}
         {active && <span className="active-arrow"><ArrowUpRight size={14} /></span>}
       </span>
@@ -1499,6 +1509,10 @@ function InjuryBadge({ status, compact = false }: { status: string; compact?: bo
       <AlertTriangle size={compact ? 10 : 13} /> {status}
     </span>
   );
+}
+
+function BackupQbBadge() {
+  return <span className="backup-qb-badge"><AlertTriangle size={10} /> Backup QB</span>;
 }
 
 function DetailPanel({
@@ -1587,8 +1601,9 @@ function DetailPanel({
 
       <div className="detail-alerts">
         {player.injuryStatus && <InjuryBadge status={player.injuryStatus} />}
+        {hasBackupQbWarning(position, player.team) && <span className="alert-chip backup-qb-warning"><AlertTriangle size={13} /> Backup QB uncertainty · excluded from parlays</span>}
         {player.isLowConfidence && <span className="alert-chip limited"><Gauge size={13} /> Limited history · {stat?.nPriorGames ?? 0} games</span>}
-        {!player.injuryStatus && !player.isLowConfidence && <span className="alert-chip clear"><Sparkles size={13} /> Full-history signal</span>}
+        {!player.injuryStatus && !player.isLowConfidence && !hasBackupQbWarning(position, player.team) && <span className="alert-chip clear"><Sparkles size={13} /> Full-history signal</span>}
       </div>
 
       {!hasProjection ? (
