@@ -348,7 +348,7 @@ function hybridConfidenceScore(prop: RankedProp) {
     if (outlierRatio > 2.5) score = Math.min(score, 79);
     else if (outlierRatio > 1.5) score = Math.min(score, 89);
   }
-  if (reliableRate < 0.50) score = Math.min(score, 71);
+  if (reliableRate < HYBRID_CONFIDENCE.breakevenRate) score = Math.min(score, 71);
   if (prop.player.isLowConfidence || prop.stat.lowConfidence) score = Math.min(score, 74);
   if (prop.player.injuryStatus) score = Math.min(score, 79);
   return Math.round(Math.max(0, Math.min(100, score)));
