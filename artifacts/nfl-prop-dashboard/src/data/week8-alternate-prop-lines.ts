@@ -1,6 +1,6 @@
 export type AlternatePropLine = {
   player: string;
-  statKey: 'pass_yards' | 'rec_yards';
+  statKey: 'pass_yards' | 'rec_yards' | 'receptions';
   line: number;
   odds: number;
 };

@@ -1,3 +1,29 @@
 import type { AlternatePropLine } from './week8-alternate-prop-lines';
 
-export const WEEK10_ALTERNATE_PROP_LINES: AlternatePropLine[] = [];
+// User-supplied November 11 sportsbook N+ offers win at N or more, equivalent to OVER N-0.5.
+export const WEEK10_ALTERNATE_PROP_LINES: AlternatePropLine[] = [
+  { player: 'Parker Washington', statKey: 'rec_yards', line: 69.5, odds: 113 },
+  { player: 'Parker Washington', statKey: 'rec_yards', line: 59.5, odds: -135 },
+  { player: 'Parker Washington', statKey: 'rec_yards', line: 49.5, odds: -210 },
+  { player: 'Parker Washington', statKey: 'rec_yards', line: 39.5, odds: -355 },
+  { player: 'Khalil Shakir', statKey: 'rec_yards', line: 39.5, odds: -116 },
+  { player: 'Khalil Shakir', statKey: 'rec_yards', line: 29.5, odds: -213 },
+  { player: 'Khalil Shakir', statKey: 'rec_yards', line: 24.5, odds: -304 },
+  { player: 'Khalil Shakir', statKey: 'rec_yards', line: 19.5, odds: -454 },
+  { player: 'Darnell Washington', statKey: 'rec_yards', line: 29.5, odds: -102 },
+  { player: 'Darnell Washington', statKey: 'rec_yards', line: 24.5, odds: -143 },
+  { player: 'Darnell Washington', statKey: 'rec_yards', line: 19.5, odds: -209 },
+  { player: 'Darnell Washington', statKey: 'rec_yards', line: 14.5, odds: -321 },
+  { player: 'Mike Gesicki', statKey: 'rec_yards', line: 24.5, odds: -104 },
+  { player: 'Mike Gesicki', statKey: 'rec_yards', line: 19.5, odds: -152 },
+  { player: 'Mike Gesicki', statKey: 'rec_yards', line: 14.5, odds: -239 },
+  { player: 'Mike Gesicki', statKey: 'rec_yards', line: 9.5, odds: -420 },
+  { player: 'Isaac Teslaa', statKey: 'rec_yards', line: 9.5, odds: -224 },
+  { player: 'Isaac Teslaa', statKey: 'rec_yards', line: 14.5, odds: -144 },
+  { player: 'Isaac Teslaa', statKey: 'rec_yards', line: 19.5, odds: 103 },
+  { player: 'Isaac Teslaa', statKey: 'rec_yards', line: 24.5, odds: 147 },
+  { player: 'Christian McCaffrey', statKey: 'receptions', line: 4.5, odds: 101 },
+  { player: 'Christian McCaffrey', statKey: 'receptions', line: 3.5, odds: -216 },
+  { player: 'Christian McCaffrey', statKey: 'receptions', line: 2.5, odds: -581 },
+  { player: 'Christian McCaffrey', statKey: 'receptions', line: 1.5, odds: -2600 },
+];
