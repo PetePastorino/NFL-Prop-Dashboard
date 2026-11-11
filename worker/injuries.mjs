@@ -43,6 +43,7 @@ function parseInjuryUpload(input) {
   const mode = espn ? 'full' : 'patch';
   const accepted = [];
   const skipped = [];
+  let ignoredCount = 0;
   const seen = new Set();
   const teamsSeen = new Set();
   let currentTeam = null;
@@ -58,6 +59,10 @@ function parseInjuryUpload(input) {
     const team = TEAM_NAMES[teamCell] ?? TEAM_ALIASES[teamCell?.toUpperCase()] ?? teamCell?.toUpperCase();
     const status = normalizeStatus(statusCell);
     const player = playerByKey.get(`${team}:${normalize(name ?? '')}`);
+    if (mode === 'full' && !player && status !== undefined) {
+      ignoredCount++;
+      continue;
+    }
     let reason = '';
     if (mode === 'full' && (cells.length < 4 || !currentTeam)) reason = 'Missing team or injury columns';
     else if (mode === 'patch' && cells.length !== 3) reason = 'Expected three tab-separated columns';
@@ -76,7 +81,7 @@ function parseInjuryUpload(input) {
     throw new Error('A full injury report must include all 32 team headings so missing players can be safely cleared. Use Player, Team, Status rows for a partial update.');
   }
   if (mode === 'patch' && !accepted.length) throw new Error('No injury rows matched a current player and team.');
-  return { mode, accepted, skipped, teamCount: teamsSeen.size };
+  return { mode, accepted, skipped, ignoredCount, teamCount: teamsSeen.size };
 }
 
 function baselineInjuries() {

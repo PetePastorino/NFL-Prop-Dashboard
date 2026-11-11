@@ -29,10 +29,12 @@ test('full reports clear players missing from the new snapshot', () => {
     'San Francisco 49ers', 'Seattle Seahawks', 'Tampa Bay Buccaneers',
     'Tennessee Titans', 'Washington Commanders',
   ];
-  const report = `NFL Injuries\nTeam Injuries\n${teamHeadings.map((team) => `${team}\nNAME\tPOS\tEST. RETURN DATE\tSTATUS\tCOMMENT\n${team === 'Kansas City Chiefs' ? 'Patrick Mahomes\tQB\tNov 15\tOut\t' : ''}`).join('\n')}`;
+  const report = `NFL Injuries\nTeam Injuries\n${teamHeadings.map((team) => `${team}\nNAME\tPOS\tEST. RETURN DATE\tSTATUS\tCOMMENT\n${team === 'Kansas City Chiefs' ? 'Patrick Mahomes\tQB\tNov 15\tOut\t\nUnknown Defender\tLB\tNov 15\tQuestionable\t' : ''}`).join('\n')}`;
   const parsed = parseInjuryUpload(report);
   assert.equal(parsed.mode, 'full');
   assert.equal(parsed.teamCount, 32);
+  assert.equal(parsed.skipped.length, 0);
+  assert.equal(parsed.ignoredCount, 1);
   const next = applyInjuryUpload(parsed, baselineInjuries());
   assert.deepEqual(next, { 'KAN:Patrick Mahomes': 'Out' });
   assert.ok(injuryChanges(baselineInjuries(), next).some((change) => change.key === 'GNB:Josh Jacobs' && change.status === null));

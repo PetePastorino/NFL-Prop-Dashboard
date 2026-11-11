@@ -6,7 +6,7 @@ type Change = { key: string; player: string; team: string; previous: string | nu
 type Skipped = { row: number; player: string; team: string; reason: string };
 type Version = { id: string; created_at: string; kind: string; changed_count: number };
 type State = { week: string; version: string | null; updatedAt: string | null; versions: Version[] };
-type Preview = { week: string; version: string | null; mode: 'full' | 'patch'; accepted: unknown[]; skipped: Skipped[]; changes: Change[]; teamCount: number };
+type Preview = { week: string; version: string | null; mode: 'full' | 'patch'; accepted: unknown[]; skipped: Skipped[]; ignoredCount: number; changes: Change[]; teamCount: number };
 
 async function readJson(response: Response) {
   const result = await response.json();
@@ -90,7 +90,7 @@ export default function AdminInjuries() {
     </section>
     {preview && <section className="line-admin-card">
       <h2>Preview · {preview.changes.length} changes, {preview.skipped.length} skipped</h2>
-      <p>{preview.mode === 'full' ? `Full report from ${preview.teamCount} teams. Missing players will be cleared.` : 'Partial update. Unlisted players stay unchanged.'} Review all changes before applying.</p>
+      <p>{preview.mode === 'full' ? `Full report from ${preview.teamCount} teams. ${preview.ignoredCount} players outside the tracked model were ignored. Missing tracked players will be cleared.` : 'Partial update. Unlisted players stay unchanged.'} Review all changes before applying.</p>
       <div className="line-admin-table"><table><thead><tr><th>Player</th><th>Team</th><th>Current</th><th>New</th></tr></thead><tbody>
         {preview.changes.map((row) => <tr key={row.key}><td>{row.player}</td><td>{row.team}</td><td>{row.previous ?? 'Clear'}</td><td>{row.status ?? 'Clear'}</td></tr>)}
       </tbody></table></div>
