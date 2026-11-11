@@ -36,4 +36,12 @@ export const WEEK10_ALTERNATE_PROP_LINES: AlternatePropLine[] = [
   { player: 'Brock Purdy', statKey: 'pass_yards', line: 259.5, odds: -104 },
   { player: 'Brock Purdy', statKey: 'pass_yards', line: 249.5, odds: -129 },
   { player: 'Brock Purdy', statKey: 'pass_yards', line: 239.5, odds: -162 },
+  { player: 'Tank Dell', statKey: 'rec_yards', line: 29.5, odds: -128 },
+  { player: 'Tank Dell', statKey: 'rec_yards', line: 24.5, odds: -176 },
+  { player: 'Tank Dell', statKey: 'rec_yards', line: 19.5, odds: -248 },
+  { player: 'Tank Dell', statKey: 'rec_yards', line: 14.5, odds: -376 },
+  { player: 'Dalton Schultz', statKey: 'rec_yards', line: 29.5, odds: -123 },
+  { player: 'Dalton Schultz', statKey: 'rec_yards', line: 24.5, odds: -177 },
+  { player: 'Dalton Schultz', statKey: 'rec_yards', line: 19.5, odds: -266 },
+  { player: 'Dalton Schultz', statKey: 'rec_yards', line: 14.5, odds: -432 },
 ];
