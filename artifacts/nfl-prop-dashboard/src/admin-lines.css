@@ -6,6 +6,8 @@
 .line-admin p, .line-admin small { color: #b8c7d6; line-height: 1.5; }
 .line-admin-card { background: #0e2a3f; border: 1px solid #2a4a66; border-radius: 12px; padding: 22px; margin-bottom: 20px; }
 .line-admin-card input { display: block; margin: 18px 0; color: #fff; }
+.line-admin-card textarea { display: block; width: 100%; max-width: 100%; min-height: 130px; margin: 18px 0; padding: 12px; color: #fff; background: #071b2b; border: 1px solid #4a6680; border-radius: 7px; font: .85rem/1.5 ui-monospace, Consolas, monospace; }
+.line-admin-card textarea::placeholder { color: #9bb1c4; }
 .line-admin button { background: #22d3ee; color: #04121c; border: 0; border-radius: 7px; padding: 9px 14px; margin-right: 12px; font-weight: 700; cursor: pointer; }
 .line-admin button:disabled { opacity: .45; cursor: not-allowed; }
 .line-admin-table { max-height: 420px; overflow: auto; margin: 14px 0; }

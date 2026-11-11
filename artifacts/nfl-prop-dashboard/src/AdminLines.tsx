@@ -70,7 +70,7 @@ export default function AdminLines() {
   };
 
   return <main className="line-admin">
-    <header><a href="/">← Dashboard</a><h1>Admin · Prop lines</h1><p>Week {schedule.week}, {schedule.season} · {state ? 'Unlocked' : 'Locked'}</p></header>
+    <header><a href="/">← Dashboard</a><h1>Admin · Prop lines</h1><p>Week {schedule.week}, {schedule.season} · {state ? 'Unlocked' : 'Locked'} · <a href="/admin/injuries">Injury uploader</a></p></header>
     <section className="line-admin-card"><h2>Unlock uploads</h2><p>Enter your private upload password. It stays in this browser tab and is not saved.</p><input type="password" autoComplete="off" value={password} onChange={(event) => { setPassword(event.target.value); setState(null); setPreview(null); }} placeholder="Upload password" aria-label="Upload password" /><button disabled={!password || busy} onClick={() => void refresh().catch((error) => { setState(null); setMessage(error.message); })}>Unlock</button></section>
     <section className="line-admin-card">
       <h2>Upload a lines file</h2>

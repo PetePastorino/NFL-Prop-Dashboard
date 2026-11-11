@@ -1,5 +1,6 @@
 import playerData from '../artifacts/nfl-prop-dashboard/src/data/player-data.json' with { type: 'json' };
 import schedule from '../artifacts/nfl-prop-dashboard/src/data/week10-schedule.json' with { type: 'json' };
+import { parseInjuryUpload, baselineInjuries, applyInjuryUpload, injuryChanges } from './injuries.mjs';
 
 const WEEK = `${schedule.season}-${schedule.week}`;
 const MARKETS = {
@@ -50,6 +51,24 @@ function json(data, status = 200) {
     status,
     headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' },
   });
+}
+
+async function readLimitedText(request, maximumBytes = 350_000) {
+  if (!request.body) return '';
+  const reader = request.body.getReader();
+  const decoder = new TextDecoder();
+  let size = 0;
+  let text = '';
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maximumBytes) throw new Error('Injury upload is too large. Keep it under 300 KB.');
+      text += decoder.decode(value, { stream: true });
+    }
+    return text + decoder.decode();
+  } finally { reader.releaseLock(); }
 }
 
 function parseUpload(input, now = new Date()) {
@@ -143,6 +162,36 @@ async function saveState(db, lines, uploader, kind, changedCount, createBaseline
   return { version, updatedAt: now };
 }
 
+async function ensureInjurySchema(db) {
+  await db.exec('CREATE TABLE IF NOT EXISTS injury_state (week TEXT PRIMARY KEY, version TEXT NOT NULL, payload TEXT NOT NULL, updated_at TEXT NOT NULL)');
+  await db.exec('CREATE TABLE IF NOT EXISTS injury_versions (id TEXT PRIMARY KEY, week TEXT NOT NULL, created_at TEXT NOT NULL, uploader TEXT NOT NULL, kind TEXT NOT NULL, changed_count INTEGER NOT NULL, payload TEXT NOT NULL)');
+}
+
+async function currentInjuryState(db) {
+  try {
+    const state = await db.prepare('SELECT version, payload, updated_at FROM injury_state WHERE week = ?').bind(WEEK).first();
+    return state ? { version: state.version, statuses: JSON.parse(state.payload), updatedAt: state.updated_at } : { version: null, statuses: baselineInjuries(), updatedAt: null };
+  } catch (error) {
+    if (/no such table/i.test(String(error))) return { version: null, statuses: baselineInjuries(), updatedAt: null };
+    throw error;
+  }
+}
+
+async function saveInjuryState(db, statuses, uploader, kind, changedCount, baseline = null) {
+  const version = crypto.randomUUID();
+  const now = new Date().toISOString();
+  const statements = [];
+  if (baseline) {
+    statements.push(db.prepare('INSERT INTO injury_versions (id, week, created_at, uploader, kind, changed_count, payload) VALUES (?, ?, ?, ?, ?, ?, ?)').bind(crypto.randomUUID(), WEEK, now, uploader, 'baseline', 0, JSON.stringify(baseline)));
+  }
+  statements.push(
+    db.prepare('INSERT INTO injury_versions (id, week, created_at, uploader, kind, changed_count, payload) VALUES (?, ?, ?, ?, ?, ?, ?)').bind(version, WEEK, now, uploader, kind, changedCount, JSON.stringify(statuses)),
+    db.prepare('INSERT INTO injury_state (week, version, payload, updated_at) VALUES (?, ?, ?, ?) ON CONFLICT(week) DO UPDATE SET version = excluded.version, payload = excluded.payload, updated_at = excluded.updated_at').bind(WEEK, version, JSON.stringify(statuses), now),
+  );
+  await db.batch(statements);
+  return { version, updatedAt: now };
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -150,6 +199,10 @@ export default {
     if (!env.DB) return json({ error: 'Shared line storage is not configured.' }, 503);
     if (url.pathname === '/api/lines' && request.method === 'GET') {
       const state = await currentState(env.DB);
+      return json({ week: WEEK, ...state });
+    }
+    if (url.pathname === '/api/injuries' && request.method === 'GET') {
+      const state = await currentInjuryState(env.DB);
       return json({ week: WEEK, ...state });
     }
     if (!url.pathname.startsWith('/api/admin/')) return json({ error: 'Not found.' }, 404);
@@ -162,6 +215,49 @@ export default {
       const state = await currentState(env.DB);
       const versions = await env.DB.prepare('SELECT id, created_at, uploader, kind, changed_count FROM prop_line_versions WHERE week = ? ORDER BY created_at DESC LIMIT 20').bind(WEEK).all();
       return json({ week: WEEK, ...state, versions: versions.results });
+    }
+    if (url.pathname === '/api/admin/injuries/state' && request.method === 'GET') {
+      await ensureInjurySchema(env.DB);
+      const state = await currentInjuryState(env.DB);
+      const versions = await env.DB.prepare('SELECT id, created_at, uploader, kind, changed_count FROM injury_versions WHERE week = ? ORDER BY created_at DESC LIMIT 20').bind(WEEK).all();
+      return json({ week: WEEK, ...state, versions: versions.results });
+    }
+    if (url.pathname === '/api/admin/injuries/preview' && request.method === 'POST') {
+      try {
+        const parsed = parseInjuryUpload(await readLimitedText(request));
+        const state = await currentInjuryState(env.DB);
+        const next = applyInjuryUpload(parsed, state.statuses);
+        return json({ week: WEEK, version: state.version, ...parsed, changes: injuryChanges(state.statuses, next) });
+      } catch (error) { return json({ error: String(error.message ?? error) }, 400); }
+    }
+    if (url.pathname === '/api/admin/injuries/apply' && request.method === 'POST') {
+      try {
+        const body = JSON.parse(await readLimitedText(request));
+        if (body.week !== WEEK || typeof body.text !== 'string') return json({ error: 'Wrong week or file format.' }, 400);
+        await ensureInjurySchema(env.DB);
+        const state = await currentInjuryState(env.DB);
+        if (body.expectedVersion !== state.version) return json({ error: 'Injuries changed since preview. Reload and review again.' }, 409);
+        const parsed = parseInjuryUpload(body.text);
+        const next = applyInjuryUpload(parsed, state.statuses);
+        const changes = injuryChanges(state.statuses, next);
+        if (!changes.length) return json({ error: 'No injury status changes in this file.' }, 400);
+        const saved = await saveInjuryState(env.DB, next, uploader, 'upload', changes.length, state.version === null ? state.statuses : null);
+        return json({ week: WEEK, ...saved, changedCount: changes.length, skippedCount: parsed.skipped.length });
+      } catch (error) { return json({ error: String(error.message ?? error) }, 400); }
+    }
+    if (url.pathname === '/api/admin/injuries/restore' && request.method === 'POST') {
+      try {
+        const body = await request.json();
+        if (body.week !== WEEK || typeof body.version !== 'string') return json({ error: 'Wrong week or version.' }, 400);
+        await ensureInjurySchema(env.DB);
+        const state = await currentInjuryState(env.DB);
+        if (body.expectedVersion !== state.version) return json({ error: 'Injuries changed. Reload before restoring.' }, 409);
+        const version = await env.DB.prepare('SELECT payload FROM injury_versions WHERE id = ? AND week = ?').bind(body.version, WEEK).first();
+        if (!version) return json({ error: 'Version not found.' }, 404);
+        const restored = JSON.parse(version.payload);
+        const saved = await saveInjuryState(env.DB, restored, uploader, 'restore', injuryChanges(state.statuses, restored).length);
+        return json({ week: WEEK, ...saved });
+      } catch (error) { return json({ error: String(error.message ?? error) }, 400); }
     }
     if (url.pathname === '/api/admin/preview' && request.method === 'POST') {
       try {

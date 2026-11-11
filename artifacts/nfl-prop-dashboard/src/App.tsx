@@ -507,6 +507,7 @@ function AppShell() {
   const [lines, setLines] = useState<Record<string, string>>(() =>
     Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
   );
+  const [liveInjuries, setLiveInjuries] = useState<Record<string, string> | null>(null);
   const locallyEditedLines = useRef(new Set<string>());
   useEffect(() => {
     let active = true;
@@ -529,10 +530,36 @@ function AppShell() {
     const interval = window.setInterval(() => void loadSharedLines(), 60_000);
     return () => { active = false; window.clearInterval(interval); };
   }, []);
+  useEffect(() => {
+    let active = true;
+    const loadSharedInjuries = async () => {
+      try {
+        const response = await fetch('/api/injuries', { cache: 'no-store' });
+        if (!response.ok) return;
+        const data = await response.json() as { week?: string; statuses?: Record<string, string> };
+        if (active && data.week === `${week10Schedule.season}-${week10Schedule.week}` && data.statuses) {
+          setLiveInjuries(data.statuses);
+        }
+      } catch { /* Built-in injury tags remain available if the shared API is offline. */ }
+    };
+    void loadSharedInjuries();
+    const interval = window.setInterval(() => void loadSharedInjuries(), 60_000);
+    return () => { active = false; window.clearInterval(interval); };
+  }, []);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const gameRailRef = useRef<HTMLDivElement>(null);
 
-  const players = PLAYER_DATA[position] ?? [];
+  const currentPlayerData = useMemo<PlayerData>(() => {
+    if (!liveInjuries) return PLAYER_DATA;
+    return Object.fromEntries(Object.entries(PLAYER_DATA).map(([entryPosition, roster]) => [
+      entryPosition,
+      roster.map((player) => {
+        const status = liveInjuries[`${player.team}:${player.name}`] ?? null;
+        return { ...player, injuryStatus: status, injury: status === player.injuryStatus ? player.injury : null };
+      }),
+    ]));
+  }, [liveInjuries]);
+  const players = currentPlayerData[position] ?? [];
   const gameOptions = week10Schedule.games.map((game) => ({
     ...game,
     key: [game.away, game.home].sort().join('|'),
@@ -566,7 +593,7 @@ function AppShell() {
     : { lean: '—' as Lean, confidence: null, edge: null, edgePct: null };
   const rankedProps = useMemo<RankedProp[]>(() => {
     if (!CURRENT_WEEK_PROJECTIONS_READY) return [];
-    const props = (Object.entries(PLAYER_DATA) as [Position, Player[]][])
+    const props = (Object.entries(currentPlayerData) as [Position, Player[]][])
       .flatMap(([entryPosition, roster]) =>
         roster.flatMap((player) =>
           STAT_TYPES[entryPosition].flatMap((statDefinition) => {
@@ -592,7 +619,7 @@ function AppShell() {
         ),
       );
     return spreadBoardStrengthScores(props);
-  }, [lines]);
+  }, [lines, currentPlayerData]);
   const gameRankedProps = useMemo(
     () =>
       gameFilter === 'all'
@@ -661,7 +688,7 @@ function AppShell() {
     return selected;
   }, [parlayCandidates]);
   const activeRankedProp = rankedProps.find((prop) => prop.key === lineKey);
-  const playerCount = Object.values(PLAYER_DATA).reduce(
+  const playerCount = Object.values(currentPlayerData).reduce(
     (total, roster) => total + roster.length,
     0,
   );
@@ -673,7 +700,7 @@ function AppShell() {
   const changePosition = (nextPosition: Position) => {
     setPosition(nextPosition);
     setStatKey(STAT_TYPES[nextPosition][0].key);
-    const nextPlayers = (PLAYER_DATA[nextPosition] ?? []).filter(
+    const nextPlayers = (currentPlayerData[nextPosition] ?? []).filter(
       (player) => gameFilter === 'all' || matchupKey(player) === gameFilter,
     );
     setSelectedName(nextPlayers[0]?.name ?? null);
@@ -749,7 +776,7 @@ function AppShell() {
             >
               <span className="position-code">{item}</span>
               <span>{positionDescriptions[item]}</span>
-              <span className="position-count">{PLAYER_DATA[item]?.length ?? 0}</span>
+              <span className="position-count">{currentPlayerData[item]?.length ?? 0}</span>
             </button>
           ))}
         </div></>}
