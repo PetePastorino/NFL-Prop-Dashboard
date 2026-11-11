@@ -601,7 +601,9 @@ function AppShell() {
     [gameFilter, rankedProps],
   );
   const topPlayerProps = useMemo(
-    () => strongestPropPerPlayer(gameRankedProps).slice(0, 10),
+    () => strongestPropPerPlayer(
+      gameRankedProps.filter((prop) => !hasBackupQbWarning(prop.position, prop.player.team)),
+    ).slice(0, 10),
     [gameRankedProps],
   );
   const parlayCandidates = useMemo(
@@ -893,7 +895,7 @@ function AppShell() {
             <div className="confidence-panel-heading">
               <div className="confidence-title">
                 <span className="section-index">02</span>
-                <div><h2>Confidence board</h2><p>Backtested hybrid signal strength blends edge, normal projection error, player history, market reliability, injuries, and projection stability. Every prop is scored independently; each player appears once.</p></div>
+                <div><h2>Confidence board</h2><p>Backtested hybrid signal strength blends edge, normal projection error, player history, market reliability, injuries, and projection stability. Every prop is scored independently; each player appears once. WR and TE props with a backup QB warning are excluded from this Top 10.</p></div>
               </div>
               <div className="confidence-summary"><ListFilter size={15} /> {gameRankedProps.length ? `${topPlayerProps.length} strongest players · ${gameRankedProps.length} lines ranked` : 'Waiting for lines'}</div>
             </div>
@@ -918,7 +920,6 @@ function AppShell() {
                       {PETES_HALL_OF_FAME_PLAYERS.has(prop.player.name) && (
                         <span className="petes-hall-of-fame-badge"><Trophy size={10} /> Pete's Hall of Fame</span>
                       )}
-                      {hasBackupQbWarning(prop.position, prop.player.team) && <BackupQbBadge />}
                       {prop.player.injuryStatus && <InjuryBadge status={prop.player.injuryStatus} compact />}
                     </span>
                     <span className="ranking-line">{prop.line}</span>
