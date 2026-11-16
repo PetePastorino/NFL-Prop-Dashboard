@@ -3,6 +3,8 @@ import playerDataJson from '@/data/player-data.json';
 import teamLogoFramingJson from '@/data/team-logo-framing.json';
 import week10Schedule from '@/data/week10-schedule.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
+import marketOverCheck from '@/data/market-over-check.json';
+import { marketOverProbability } from '@/lib/market-over-check';
 import { WEEK10_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week10-initial-prop-lines';
 import { WEEK10_ALTERNATE_PROP_LINES } from '@/data/week10-alternate-prop-lines';
 import type { AlternatePropLine } from '@/data/week8-alternate-prop-lines';
@@ -394,6 +396,23 @@ function selectDiversifiedProps(props: RankedProp[], count = 4) {
   return selected;
 }
 
+function conflictsWithMarketOverCheck(prop: RankedProp) {
+  if (prop.lean.lean !== 'OVER' || prop.stat.projection == null) return false;
+  const line = Number(prop.line);
+  if (!Number.isFinite(line)) return false;
+  return marketOverProbability({
+    position: prop.position,
+    statKey: prop.statKey,
+    line,
+    projection: prop.stat.projection,
+    priorAvg: prop.stat.priorAvg,
+    priorLast5: prop.stat.priorLast5,
+    nPriorGames: prop.stat.nPriorGames,
+    injury: Boolean(prop.player.injuryStatus),
+    lowHistory: Boolean(prop.player.isLowConfidence || prop.stat.lowConfidence),
+  }) < marketOverCheck.threshold;
+}
+
 function parseBulkLines(input: string, ignoreUnsupported = false) {
   const allPlayers = (Object.entries(PLAYER_DATA) as [Position, Player[]][]).flatMap(
     ([position, roster]) => roster.map((player) => ({ position, player })),
@@ -643,7 +662,8 @@ function AppShell() {
       && !prop.player.injuryStatus
       && !prop.player.isLowConfidence
       && !prop.stat.lowConfidence
-      && prop.stat.nPriorGames >= 8,
+      && prop.stat.nPriorGames >= 8
+      && !conflictsWithMarketOverCheck(prop),
     ),
     [rankedProps],
   );
@@ -1098,7 +1118,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
   const stinkyUnders = selectDiversifiedProps(parlayCandidates.filter((prop) =>
     prop.lean.lean === 'UNDER' && !bestFourPlayers.has(normalized(prop.player.name)),
   ));
-  const stinkyAverageSignal = stinkyUnders.length === 4
+  const stinkyAverageSignal = stinkyUnders.length >= 2
     ? Math.round(stinkyUnders.reduce((sum, prop) => sum + prop.confidenceScore, 0) / stinkyUnders.length)
     : null;
   const roundRobin = displayedBestFour.length === 4
@@ -1121,7 +1141,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
       impliedProbability: impliedProbabilityFromAmericanOdds(alternate.odds),
     };
   });
-  const saferJointImplied = displayedSaferFour.length === 4
+  const saferJointImplied = displayedSaferFour.length >= 2
     ? displayedSaferFour.reduce((probability, leg) => probability * leg.impliedProbability, 1)
     : null;
 
@@ -1131,23 +1151,24 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <div>
           <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK {week10Schedule.week}</div>
           <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
-          <p>These builders favor stable roles and reliable samples. Four-leg options use different teams, and opposing-team players may share a game. The game picker groups qualified players in one matchup.</p>
+          <p>These builders favor stable roles and reliable samples. Tickets use two to four players from different teams; opposing-team players may share a game. The game picker groups qualified players in one matchup.</p>
         </div>
         <div className="parlay-hero-seal">
           <Shield size={23} />
           <span>Builder status</span>
-          <strong>{bestFour.length === 4 ? 'READY' : 'LIMITED'}</strong>
+          <strong>{bestFour.length >= 2 ? 'READY' : 'LIMITED'}</strong>
           <small>Standard + alternate lines</small>
         </div>
       </section>
 
       <section className="parlay-rules" aria-label="Parlay eligibility rules">
-        <div><Check size={15} /><span>One player per team in four-leg options; opposing teams may share a game</span></div>
+        <div><Check size={15} /><span>One player per team in multi-game tickets; opposing teams may share a game</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
         <div className="backup-qb-rule"><AlertTriangle size={15} /><span>Backup QB warning: WR and TE props from BAL, LVR, ARI, MIA, SEA, and MIN excluded in both directions</span></div>
         {PARLAY_EXCLUDED_TEAMS.size > 0 && <div><Check size={15} /><span>{[...PARLAY_EXCLUDED_TEAMS].join(' and ')} excluded this week</span></div>}
         <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
+        <div><Check size={15} /><span>Overs must agree with a separate historical outcome check</span></div>
       </section>
       <div className="parlay-color-legend" aria-label="Confidence score color legend">
         <span className="parlay-color-legend-over">▲ Green score = Over</span>
@@ -1187,14 +1208,15 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
       <div className="parlay-layout">
         <section className="parlay-card best-four-card">
           <div className="parlay-card-heading">
-            <div><Trophy size={18} /><span><strong>Best Four</strong><small>Strongest diversified standard-line signals</small></span></div>
+            <div><Trophy size={18} /><span><strong>Best Four</strong><small>Up to four strongest diversified standard-line signals</small></span></div>
             <div className="parlay-heading-actions">
               <button type="button" onClick={() => setSelectedBestFourKeys({})}>Reset players</button>
               <div className="parlay-signal"><span>Average signal</span><strong>{averageSignal ?? '—'}<small>/100</small></strong></div>
             </div>
           </div>
-          {bestFour.length === 4 ? (
+          {bestFour.length >= 2 ? (
             <div className="parlay-leg-list">
+              <div className="game-parlay-summary"><strong>{displayedBestFour.length}-leg suggestion</strong><span>Average signal {averageSignal}/100</span></div>
               {displayedBestFour.map((prop, index) => {
                 const otherLegs = displayedBestFour.filter((_, otherIndex) => otherIndex !== index);
                 const options = parlayCandidates.filter((candidate) => candidate.key === prop.key || !otherLegs.some((other) =>
@@ -1205,7 +1227,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
               })}
             </div>
           ) : (
-            <div className="parlay-empty"><AlertTriangle size={20} /><div><strong>Not enough qualified legs</strong><span>The builder found {bestFour.length} of 4 required diversified signals. It will not weaken the safety gates just to fill a ticket.</span></div></div>
+            <div className="parlay-empty"><AlertTriangle size={20} /><div><strong>Not enough qualified legs</strong><span>The builder found {bestFour.length} of 2 required diversified signals.</span></div></div>
           )}
           <div className="parlay-card-note"><AlertTriangle size={14} /><span>Signal scores rank model support; they are not win probabilities. Standard-line prices are not loaded, so expected value for the Best Four cannot yet be calculated.</span></div>
         </section>
@@ -1213,11 +1235,12 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <aside className="parlay-side-stack">
           <section className="parlay-card safer-four-card">
             <div className="parlay-card-heading compact">
-              <div><Sparkles size={17} /><span><strong>Safer Four</strong><small>Alternate lines targeting 75–80% book-implied per leg</small></span></div>
+              <div><Sparkles size={17} /><span><strong>Safer Four</strong><small>Up to four alternate lines targeting 75–80% book-implied per leg</small></span></div>
               {saferJointImplied !== null && <div className="safer-summary"><strong>{(saferJointImplied * 100).toFixed(1)}%</strong><span>joint implied</span></div>}
             </div>
-            {saferFour.length === 4 ? (
+            {saferFour.length >= 2 ? (
               <div className="safer-leg-list">
+                <div className="game-parlay-summary"><strong>{displayedSaferFour.length}-leg suggestion</strong></div>
                 {displayedSaferFour.map((leg, index) => {
                   const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
                   const alternateOptions = WEEK10_ALTERNATE_PROP_LINES
@@ -1243,7 +1266,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
                   );
                 })}
                 <div className="safer-price">
-                  <span>Approximate four-leg price</span>
+                  <span>Approximate {displayedSaferFour.length}-leg price</span>
                   <strong>{formatCombinedAmericanOdds(displayedSaferFour)}</strong>
                   <button type="button" onClick={() => setSelectedAlternateLines({})}>Reset suggested lines</button>
                 </div>
@@ -1252,7 +1275,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
               <div className="parlay-locked">
                 <Shield size={25} />
                 <strong>Not enough qualifying alternate lines</strong>
-                <span>{saferFour.length} of 4 diversified legs currently meet the 74–81% book-implied target.</span>
+                <span>{saferFour.length} of 2 diversified legs currently meet the 74–81% book-implied target.</span>
               </div>
             )}
             <div className="parlay-card-note"><AlertTriangle size={14} /><span>Book-implied percentages include sportsbook margin and are not model win probabilities. The displayed price is a mathematical estimate; confirm the live parlay price before betting.</span></div>
@@ -1260,11 +1283,12 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
 
           <section className="parlay-card stinky-unders-card" aria-label="Stinky Unders parlay">
             <div className="parlay-card-heading compact">
-              <div><Trophy size={17} /><span><strong>Stinky Unders</strong><small>Four strongest qualified unders outside Best Four</small></span></div>
+              <div><Trophy size={17} /><span><strong>Stinky Unders</strong><small>Up to four strongest qualified unders outside Best Four</small></span></div>
               {stinkyAverageSignal !== null && <div className="stinky-summary"><strong>{stinkyAverageSignal}<small>/100</small></strong><span>average signal</span></div>}
             </div>
-            {stinkyUnders.length === 4 ? (
+            {stinkyUnders.length >= 2 ? (
               <div className="stinky-leg-list">
+                <div className="game-parlay-summary"><strong>{stinkyUnders.length}-leg suggestion</strong></div>
                 {stinkyUnders.map((prop, index) => (
                   <div className="stinky-leg" key={prop.key}>
                     <span className="stinky-leg-number">{String(index + 1).padStart(2, '0')}</span>
@@ -1281,7 +1305,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
               <div className="parlay-locked" role="status">
                 <Shield size={25} />
                 <strong>Not enough qualified unders</strong>
-                <span>{stinkyUnders.length} of 4 eligible unders remain after excluding Best Four players and applying the same team and game rules.</span>
+                <span>{stinkyUnders.length} of 2 eligible unders remain after excluding Best Four players and applying the same team and game rules.</span>
               </div>
             )}
             <div className="parlay-card-note"><AlertTriangle size={14} /><span>Scores show signal strength, not win probability. Standard-line odds are not loaded, so a combined payout cannot be calculated.</span></div>

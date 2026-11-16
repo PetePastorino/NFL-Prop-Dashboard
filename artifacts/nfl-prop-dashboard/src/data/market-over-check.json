@@ -1,0 +1,51 @@
+{
+  "name": "Pregame market disagreement check",
+  "sourceWeeks": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "sourceRows": 1618,
+  "target": "Probability actual exceeds the posted line",
+  "featureOrder": [
+    "intercept",
+    "QB",
+    "RB",
+    "WR",
+    "pass_yards",
+    "rush_yards",
+    "rec_yards",
+    "projection_minus_line_scaled",
+    "prior_avg_minus_line_scaled",
+    "last5_minus_prior_avg_scaled",
+    "history_fraction",
+    "injury_flag",
+    "low_history_flag"
+  ],
+  "weights": [
+    -0.033317914469427064,
+    -0.11486616244526247,
+    -0.030192260470683473,
+    -0.011936985316166809,
+    0.3959411914844011,
+    -0.13029588880524204,
+    0.0657527477860805,
+    0.42399458695007064,
+    -0.1461406184411067,
+    0.06317998902729989,
+    -0.201278780470332,
+    -0.2347041102652698,
+    -0.22278568070341528
+  ],
+  "scale": {
+    "pass_yards": 75,
+    "rush_yards": 25,
+    "rec_yards": 30,
+    "receptions": 2
+  },
+  "threshold": 0.5
+}
