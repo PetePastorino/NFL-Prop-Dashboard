@@ -119,7 +119,10 @@ type RankedProp = {
   lean: ReturnType<typeof leanFromLine>;
   confidence: 'High' | 'Medium' | 'Low';
   confidenceScore: number;
+  odds: number | null;
 };
+
+type UploadedLineOdds = { overOdds: string | null; underOdds: string | null };
 
 type SaferParlayLeg = {
   prop: RankedProp;
@@ -396,6 +399,51 @@ function selectDiversifiedProps(props: RankedProp[], count = 4) {
   return selected;
 }
 
+const BEST_FOUR_MIN_DECIMAL_ODDS = 9; // +800 American odds.
+
+function selectPricedBestFour(props: RankedProp[]) {
+  const eligible = props.filter((prop) => prop.odds !== null).slice(0, 80);
+  let best: RankedProp[] = [];
+  let bestScore = -1;
+  const selected: RankedProp[] = [];
+  const players = new Set<string>();
+  const teams = new Set<string>();
+
+  function search(start: number, decimalOdds: number, score: number) {
+    if (selected.length === 4) {
+      if (decimalOdds >= BEST_FOUR_MIN_DECIMAL_ODDS && score > bestScore) {
+        best = [...selected];
+        bestScore = score;
+      }
+      return;
+    }
+    const remaining = 4 - selected.length;
+    if (eligible.length - start < remaining) return;
+    if (bestScore >= 0 && score + eligible.slice(start, start + remaining)
+      .reduce((sum, prop) => sum + prop.confidenceScore, 0) <= bestScore) return;
+
+    for (let index = start; index <= eligible.length - remaining; index++) {
+      const prop = eligible[index];
+      const player = normalized(prop.player.name);
+      if (players.has(player) || teams.has(prop.player.team)) continue;
+      selected.push(prop);
+      players.add(player);
+      teams.add(prop.player.team);
+      search(index + 1, decimalOdds * decimalOddsFromAmerican(prop.odds!), score + prop.confidenceScore);
+      selected.pop();
+      players.delete(player);
+      teams.delete(prop.player.team);
+    }
+  }
+
+  search(0, 1, 0);
+  return best;
+}
+
+function uploadedAmericanOdds(value: string | null | undefined) {
+  return value && /^[+-]\d+$/.test(value) && Math.abs(Number(value)) >= 100 ? Number(value) : null;
+}
+
 function conflictsWithMarketOverCheck(prop: RankedProp) {
   if (prop.lean.lean !== 'OVER' || prop.stat.projection == null) return false;
   const line = Number(prop.line);
@@ -526,6 +574,7 @@ function AppShell() {
   const [lines, setLines] = useState<Record<string, string>>(() =>
     Object.fromEntries(initialImport.accepted.map((item) => [item.key, item.line])),
   );
+  const [lineOdds, setLineOdds] = useState<Record<string, UploadedLineOdds>>({});
   const [liveInjuries, setLiveInjuries] = useState<Record<string, string> | null>(null);
   const locallyEditedLines = useRef(new Set<string>());
   useEffect(() => {
@@ -534,7 +583,7 @@ function AppShell() {
       try {
         const response = await fetch('/api/lines', { cache: 'no-store' });
         if (!response.ok) return;
-        const data = await response.json() as { week?: string; lines?: Record<string, { line: string }> };
+        const data = await response.json() as { week?: string; lines?: Record<string, { line: string } & UploadedLineOdds> };
         if (active && data.week === `${week10Schedule.season}-${week10Schedule.week}` && data.lines) {
           setLines((previous) => ({
             ...previous,
@@ -542,6 +591,8 @@ function AppShell() {
               .filter(([key]) => !locallyEditedLines.current.has(key))
               .map(([key, value]) => [key, value.line])),
           }));
+          setLineOdds(Object.fromEntries(Object.entries(data.lines)
+            .map(([key, value]) => [key, { overOdds: value.overOdds ?? null, underOdds: value.underOdds ?? null }])));
         }
       } catch { /* The built-in lines remain available if the shared API is offline. */ }
     };
@@ -622,6 +673,12 @@ function AppShell() {
             const stat = player.stats[statDefinition.key];
             if (!line || !stat || stat.projection === null || stat.projection === undefined) return [];
             const lineLean = leanFromLine(stat, line);
+            const uploadedOdds = lineOdds[key];
+            const odds = lineLean.lean === 'OVER'
+              ? uploadedAmericanOdds(uploadedOdds?.overOdds)
+              : lineLean.lean === 'UNDER'
+                ? uploadedAmericanOdds(uploadedOdds?.underOdds)
+                : null;
             return [{
               key,
               position: entryPosition,
@@ -633,12 +690,13 @@ function AppShell() {
               lean: lineLean,
               confidence: 'Low' as const,
               confidenceScore: 0,
+              odds,
             }];
           }),
         ),
       );
     return spreadBoardStrengthScores(props);
-  }, [lines, currentPlayerData]);
+  }, [lines, lineOdds, currentPlayerData]);
   const gameRankedProps = useMemo(
     () =>
       gameFilter === 'all'
@@ -668,7 +726,7 @@ function AppShell() {
     [rankedProps],
   );
   const bestFour = useMemo(() => {
-    return selectDiversifiedProps(parlayCandidates);
+    return selectPricedBestFour(parlayCandidates);
   }, [parlayCandidates]);
   const parlayCandidateChoices = useMemo(
     () => strongestPropPerPlayer(parlayCandidates),
@@ -1047,13 +1105,13 @@ function ParlayLeg({ prop, index, options, onReplace, onSelect }: { prop: Ranked
         <select value={prop.key} onChange={(event) => onReplace(event.target.value)} aria-label={`Replace ${prop.player.name} in Best Four`}>
           {options.map((option) => (
             <option key={option.key} value={option.key}>
-              {option.player.name} — {option.statLabel} {option.lean.lean} {option.line} ({option.confidenceScore})
+              {option.player.name} — {option.statLabel} {option.lean.lean} {option.line} · {option.odds === null ? 'odds unavailable' : formatAmericanOdds(option.odds)} ({option.confidenceScore})
             </option>
           ))}
         </select>
         <small>{prop.position} · {prop.player.team} vs {prop.player.week2Opp}</small>
       </label>
-      <span className="parlay-leg-line">{prop.lean.lean} {prop.line}</span>
+      <span className="parlay-leg-line">{prop.lean.lean} {prop.line}{prop.odds !== null ? ` · ${formatAmericanOdds(prop.odds)}` : ''}</span>
       <span className={`parlay-leg-score ${prop.lean.lean === 'OVER' ? 'over' : 'under'}`}>{prop.confidenceScore}<small>/100</small></span>
       <button className="parlay-leg-detail" type="button" onClick={() => onSelect(prop)} aria-label={`View ${prop.player.name} details`}><ArrowUpRight size={14} /></button>
     </div>
@@ -1088,6 +1146,17 @@ function formatAmericanOdds(odds: number) {
   return odds > 0 ? `+${odds}` : String(odds);
 }
 
+function combinedDecimalOdds(props: RankedProp[]) {
+  if (props.some((prop) => prop.odds === null)) return null;
+  return props.reduce((product, prop) => product * decimalOddsFromAmerican(prop.odds!), 1);
+}
+
+function formatDecimalAsAmerican(decimal: number) {
+  return decimal >= 2
+    ? `+${Math.round((decimal - 1) * 100)}`
+    : `-${Math.round(100 / (decimal - 1))}`;
+}
+
 function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
   if (!legs.length) return '—';
   const decimal = legs.reduce((product, leg) => product * decimalOddsFromAmerican(leg.alternate.odds), 1);
@@ -1112,8 +1181,9 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
   const gameParlaySignal = gameParlayReady
     ? Math.round(gameParlayLegs.reduce((sum, prop) => sum + prop.confidenceScore, 0) / gameParlayLegs.length)
     : null;
-  const candidateByKey = new Map(parlayCandidates.map((prop) => [prop.key, prop]));
+  const candidateByKey = new Map(parlayCandidates.filter((prop) => prop.odds !== null).map((prop) => [prop.key, prop]));
   const displayedBestFour = bestFour.map((defaultProp, index) => candidateByKey.get(selectedBestFourKeys[index]) ?? defaultProp);
+  const bestFourDecimalOdds = displayedBestFour.length === 4 ? combinedDecimalOdds(displayedBestFour) : null;
   const bestFourPlayers = new Set(displayedBestFour.map((prop) => normalized(prop.player.name)));
   const stinkyUnders = selectDiversifiedProps(parlayCandidates.filter((prop) =>
     prop.lean.lean === 'UNDER' && !bestFourPlayers.has(normalized(prop.player.name)),
@@ -1151,12 +1221,12 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <div>
           <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK {week10Schedule.week}</div>
           <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
-          <p>These builders favor stable roles and reliable samples. Tickets use two to four players from different teams; opposing-team players may share a game. The game picker groups qualified players in one matchup.</p>
+          <p>Best Four targets exactly four qualified legs and an estimated +800 or better payout. Other builders favor stable roles and reliable samples. Opposing-team players may share a game.</p>
         </div>
         <div className="parlay-hero-seal">
           <Shield size={23} />
           <span>Builder status</span>
-          <strong>{bestFour.length >= 2 ? 'READY' : 'LIMITED'}</strong>
+          <strong>{bestFour.length === 4 ? 'READY' : 'LIMITED'}</strong>
           <small>Standard + alternate lines</small>
         </div>
       </section>
@@ -1208,28 +1278,32 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
       <div className="parlay-layout">
         <section className="parlay-card best-four-card">
           <div className="parlay-card-heading">
-            <div><Trophy size={18} /><span><strong>Best Four</strong><small>Up to four strongest diversified standard-line signals</small></span></div>
+            <div><Trophy size={18} /><span><strong>Best Four</strong><small>Four qualified standard lines · estimated +800 or better</small></span></div>
             <div className="parlay-heading-actions">
               <button type="button" onClick={() => setSelectedBestFourKeys({})}>Reset players</button>
               <div className="parlay-signal"><span>Average signal</span><strong>{averageSignal ?? '—'}<small>/100</small></strong></div>
             </div>
           </div>
-          {bestFour.length >= 2 ? (
+          {bestFour.length === 4 ? (
             <div className="parlay-leg-list">
-              <div className="game-parlay-summary"><strong>{displayedBestFour.length}-leg suggestion</strong><span>Average signal {averageSignal}/100</span></div>
+              <div className="game-parlay-summary"><strong>4-leg suggestion · estimated {bestFourDecimalOdds === null ? 'odds unavailable' : formatDecimalAsAmerican(bestFourDecimalOdds)}</strong><span>Average signal {averageSignal}/100</span></div>
               {displayedBestFour.map((prop, index) => {
                 const otherLegs = displayedBestFour.filter((_, otherIndex) => otherIndex !== index);
-                const options = parlayCandidates.filter((candidate) => candidate.key === prop.key || !otherLegs.some((other) =>
-                  normalized(other.player.name) === normalized(candidate.player.name)
-                  || other.player.team === candidate.player.team,
+                const options = parlayCandidates.filter((candidate) => candidate.odds !== null && (
+                  candidate.key === prop.key || (
+                    !otherLegs.some((other) =>
+                      normalized(other.player.name) === normalized(candidate.player.name)
+                      || other.player.team === candidate.player.team)
+                    && (combinedDecimalOdds([...otherLegs, candidate]) ?? 0) >= BEST_FOUR_MIN_DECIMAL_ODDS
+                  )
                 ));
                 return <ParlayLeg key={`${index}:${prop.key}`} prop={prop} index={index} options={options} onReplace={(key) => setSelectedBestFourKeys((current) => ({ ...current, [index]: key }))} onSelect={onSelect} />;
               })}
             </div>
           ) : (
-            <div className="parlay-empty"><AlertTriangle size={20} /><div><strong>Not enough qualified legs</strong><span>The builder found {bestFour.length} of 2 required diversified signals.</span></div></div>
+            <div className="parlay-empty"><AlertTriangle size={20} /><div><strong>No qualifying +800 ticket</strong><span>Best Four needs four eligible players with uploaded odds and an estimated combined price of at least +800.</span></div></div>
           )}
-          <div className="parlay-card-note"><AlertTriangle size={14} /><span>Signal scores rank model support; they are not win probabilities. Standard-line prices are not loaded, so expected value for the Best Four cannot yet be calculated.</span></div>
+          <div className="parlay-card-note"><AlertTriangle size={14} /><span>Estimated payout multiplies uploaded single-leg odds. Verify the actual betslip price before placing a ticket, especially when two legs share a game. Signal scores are not win probabilities.</span></div>
         </section>
 
         <aside className="parlay-side-stack">
