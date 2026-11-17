@@ -1468,7 +1468,7 @@ function HistoryView() {
           <div><span className="section-index">01</span><h2>Parlay history</h2></div>
           <span>{parlayWeeks.length} tracked week{parlayWeeks.length === 1 ? '' : 's'}</span>
         </div>
-        <p className="history-parlay-intro">These results grade the saved default builder tickets. Changes made in a browser were not saved and may differ from a ticket you placed.</p>
+        <p className="history-parlay-intro">These results reconstruct the default builder tickets from saved weekly inputs. Changes made in a browser were not archived and may differ from a ticket you placed.</p>
         <div className="history-parlay-summary">
           <div><span>Best Four</span><strong>{bestFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Best Four').length}</strong><small>default tickets hit</small></div>
           <div><span>Safer Four</span><strong>{saferFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Safer Four').length}</strong><small>default tickets hit</small></div>

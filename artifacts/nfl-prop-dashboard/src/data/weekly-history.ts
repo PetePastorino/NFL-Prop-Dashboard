@@ -1,5 +1,6 @@
-import week8History from './week8-history-snapshot.json';
+import week10History from './week10-history-snapshot.json';
 import week9History from './week9-history-snapshot.json';
+import week8History from './week8-history-snapshot.json';
 
 export type PickResult = 'WIN' | 'LOSS' | 'PUSH';
 
@@ -49,6 +50,7 @@ export type WeeklyHistory = {
 };
 
 export const WEEKLY_HISTORY: WeeklyHistory[] = [
+  week10History as WeeklyHistory,
   week9History as WeeklyHistory,
   week8History as WeeklyHistory,
   {

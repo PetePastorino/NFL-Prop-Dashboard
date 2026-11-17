@@ -1,0 +1,929 @@
+{
+  "week": 10,
+  "season": 2026,
+  "label": "November 12–16, 2026",
+  "gamesGraded": 14,
+  "gamesScheduled": 14,
+  "allLeans": {
+    "wins": 144,
+    "losses": 149,
+    "pushes": 0
+  },
+  "highConfidence": {
+    "wins": 30,
+    "losses": 37,
+    "pushes": 0
+  },
+  "topPicks": {
+    "wins": 6,
+    "losses": 4,
+    "pushes": 0
+  },
+  "topPickLimit": 10,
+  "highConfidencePicks": [
+    {
+      "player": "Justin Jefferson",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 7.5,
+      "projection": 4.2,
+      "actual": 9,
+      "result": "LOSS"
+    },
+    {
+      "player": "Justin Jefferson",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "UNDER",
+      "line": 90.5,
+      "projection": 48.7,
+      "actual": 74,
+      "result": "WIN"
+    },
+    {
+      "player": "Brian Thomas",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 0.5,
+      "projection": 3.8,
+      "actual": 3,
+      "result": "WIN"
+    },
+    {
+      "player": "Deebo Samuel",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 37.5,
+      "projection": 64.2,
+      "actual": 31,
+      "result": "LOSS"
+    },
+    {
+      "player": "Christian McCaffrey",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 4.5,
+      "projection": 6.5,
+      "actual": 4,
+      "result": "LOSS"
+    },
+    {
+      "player": "Brian Thomas",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 10.5,
+      "projection": 49.8,
+      "actual": 29,
+      "result": "WIN"
+    },
+    {
+      "player": "Parker Washington",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 62.5,
+      "projection": 87,
+      "actual": 152,
+      "result": "WIN"
+    },
+    {
+      "player": "Tucker Kraft",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 4.5,
+      "projection": 2.8,
+      "actual": 1,
+      "result": "WIN"
+    },
+    {
+      "player": "Dalton Kincaid",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 42.5,
+      "projection": 65.2,
+      "actual": 58,
+      "result": "WIN"
+    },
+    {
+      "player": "Darnell Washington",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 30.5,
+      "projection": 52,
+      "actual": 5,
+      "result": "LOSS"
+    },
+    {
+      "player": "Khalil Shakir",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 44.5,
+      "projection": 65.2,
+      "actual": 26,
+      "result": "LOSS"
+    },
+    {
+      "player": "Juwan Johnson",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 24.5,
+      "projection": 44.2,
+      "actual": 28,
+      "result": "WIN"
+    },
+    {
+      "player": "Khalil Shakir",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 3.5,
+      "projection": 4.9,
+      "actual": 2,
+      "result": "LOSS"
+    },
+    {
+      "player": "Alvin Kamara",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 3.9,
+      "actual": 3,
+      "result": "WIN"
+    },
+    {
+      "player": "Mike Gesicki",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 24.5,
+      "projection": 49.7,
+      "actual": 9,
+      "result": "LOSS"
+    },
+    {
+      "player": "Christian McCaffrey",
+      "position": "RB",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 33.5,
+      "projection": 50.7,
+      "actual": 161,
+      "result": "WIN"
+    },
+    {
+      "player": "Alvin Kamara",
+      "position": "RB",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 14.5,
+      "projection": 31.6,
+      "actual": 10,
+      "result": "LOSS"
+    },
+    {
+      "player": "Juwan Johnson",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 3.8,
+      "actual": 2,
+      "result": "LOSS"
+    },
+    {
+      "player": "Trevor Lawrence",
+      "position": "QB",
+      "stat": "Pass Yards",
+      "lean": "OVER",
+      "line": 246.5,
+      "projection": 310.4,
+      "actual": 352,
+      "result": "WIN"
+    },
+    {
+      "player": "Tommy Tremble",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 15.5,
+      "projection": 32.2,
+      "actual": 48,
+      "result": "WIN"
+    },
+    {
+      "player": "Drake London",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 5.5,
+      "projection": 4,
+      "actual": 6,
+      "result": "LOSS"
+    },
+    {
+      "player": "Deebo Samuel",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 3.5,
+      "projection": 4.7,
+      "actual": 3,
+      "result": "LOSS"
+    },
+    {
+      "player": "Xavier Worthy",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 27.5,
+      "projection": 48.5,
+      "actual": 0,
+      "result": "LOSS"
+    },
+    {
+      "player": "Xavier Worthy",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 4.1,
+      "actual": 0,
+      "result": "LOSS"
+    },
+    {
+      "player": "Dalton Kincaid",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 3.5,
+      "projection": 4.7,
+      "actual": 2,
+      "result": "LOSS"
+    },
+    {
+      "player": "Brock Purdy",
+      "position": "QB",
+      "stat": "Pass Yards",
+      "lean": "OVER",
+      "line": 261.5,
+      "projection": 322.7,
+      "actual": 389,
+      "result": "WIN"
+    },
+    {
+      "player": "Hunter Henry",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 35.5,
+      "projection": 50.2,
+      "actual": 22,
+      "result": "LOSS"
+    },
+    {
+      "player": "Isaac Teslaa",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 17.5,
+      "projection": 47.3,
+      "actual": 19,
+      "result": "WIN"
+    },
+    {
+      "player": "Dalton Schultz",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 30.5,
+      "projection": 43.9,
+      "actual": 11,
+      "result": "LOSS"
+    },
+    {
+      "player": "James Cook",
+      "position": "RB",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 8.5,
+      "projection": 21.5,
+      "actual": 0,
+      "result": "LOSS"
+    },
+    {
+      "player": "Emmett Johnson",
+      "position": "RB",
+      "stat": "Rush Yards",
+      "lean": "UNDER",
+      "line": 75.5,
+      "projection": 19,
+      "actual": 101,
+      "result": "LOSS"
+    },
+    {
+      "player": "Josh Allen",
+      "position": "QB",
+      "stat": "Pass Yards",
+      "lean": "OVER",
+      "line": 237.5,
+      "projection": 291.4,
+      "actual": 196,
+      "result": "LOSS"
+    },
+    {
+      "player": "Jakobi Meyers",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 41.5,
+      "projection": 76.2,
+      "actual": 34,
+      "result": "LOSS"
+    },
+    {
+      "player": "Ryan Flournoy",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 35.5,
+      "projection": 53.6,
+      "actual": 71,
+      "result": "WIN"
+    },
+    {
+      "player": "Garrett Wilson",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 5.5,
+      "projection": 4.2,
+      "actual": 7,
+      "result": "LOSS"
+    },
+    {
+      "player": "Blake Corum",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 1.5,
+      "projection": 0.4,
+      "actual": 3,
+      "result": "LOSS"
+    },
+    {
+      "player": "Darnell Washington",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 3.4,
+      "actual": 1,
+      "result": "LOSS"
+    },
+    {
+      "player": "Pat Freiermuth",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 26.5,
+      "projection": 53.5,
+      "actual": 35,
+      "result": "WIN"
+    },
+    {
+      "player": "Cooper Kupp",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 18.5,
+      "projection": 41.7,
+      "actual": 34,
+      "result": "WIN"
+    },
+    {
+      "player": "Trey McBride",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 6.5,
+      "projection": 3.6,
+      "actual": 5,
+      "result": "WIN"
+    },
+    {
+      "player": "Pat Freiermuth",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 4,
+      "actual": 2,
+      "result": "LOSS"
+    },
+    {
+      "player": "Mike Gesicki",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 3.8,
+      "actual": 1,
+      "result": "LOSS"
+    },
+    {
+      "player": "Chuba Hubbard",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 3.5,
+      "projection": 2.5,
+      "actual": 5,
+      "result": "LOSS"
+    },
+    {
+      "player": "Xavier Hutchinson",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 3.5,
+      "projection": 2.5,
+      "actual": 4,
+      "result": "LOSS"
+    },
+    {
+      "player": "Javonte Williams",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 4.2,
+      "actual": 1,
+      "result": "LOSS"
+    },
+    {
+      "player": "Bijan Robinson",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 4.5,
+      "projection": 3.4,
+      "actual": 4,
+      "result": "WIN"
+    },
+    {
+      "player": "Breece Hall",
+      "position": "RB",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 16.5,
+      "projection": 26.4,
+      "actual": 67,
+      "result": "WIN"
+    },
+    {
+      "player": "Brock Bowers",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 5.5,
+      "projection": 4.1,
+      "actual": 2,
+      "result": "WIN"
+    },
+    {
+      "player": "Chuba Hubbard",
+      "position": "RB",
+      "stat": "Rec Yards",
+      "lean": "UNDER",
+      "line": 19.5,
+      "projection": 11.6,
+      "actual": 80,
+      "result": "LOSS"
+    },
+    {
+      "player": "Jakobi Meyers",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 3.5,
+      "projection": 5.3,
+      "actual": 3,
+      "result": "LOSS"
+    },
+    {
+      "player": "Zay Flowers",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 5.5,
+      "projection": 4.4,
+      "actual": 6,
+      "result": "LOSS"
+    },
+    {
+      "player": "Chase Brown",
+      "position": "RB",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 24.5,
+      "projection": 32.7,
+      "actual": 39,
+      "result": "WIN"
+    },
+    {
+      "player": "Mark Andrews",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 24.5,
+      "projection": 32.7,
+      "actual": 82,
+      "result": "WIN"
+    },
+    {
+      "player": "Rashod Bateman",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 23.5,
+      "projection": 31.6,
+      "actual": 42,
+      "result": "WIN"
+    },
+    {
+      "player": "Jerry Jeudy",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 1.5,
+      "projection": 2.3,
+      "actual": 2,
+      "result": "WIN"
+    },
+    {
+      "player": "Matthew Stafford",
+      "position": "QB",
+      "stat": "Pass Yards",
+      "lean": "OVER",
+      "line": 207.5,
+      "projection": 246.8,
+      "actual": 249,
+      "result": "WIN"
+    },
+    {
+      "player": "Zay Flowers",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "UNDER",
+      "line": 75.5,
+      "projection": 63.2,
+      "actual": 74,
+      "result": "WIN"
+    },
+    {
+      "player": "Jerry Jeudy",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 18.5,
+      "projection": 28.8,
+      "actual": 74,
+      "result": "WIN"
+    },
+    {
+      "player": "Dylan Sampson",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 3.5,
+      "projection": 2.1,
+      "actual": 4,
+      "result": "LOSS"
+    },
+    {
+      "player": "Nico Collins",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 4.5,
+      "projection": 3.6,
+      "actual": 9,
+      "result": "LOSS"
+    },
+    {
+      "player": "Rashid Shaheed",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 17.5,
+      "projection": 37.7,
+      "actual": 8,
+      "result": "LOSS"
+    },
+    {
+      "player": "Woody Marks",
+      "position": "RB",
+      "stat": "Rush Yards",
+      "lean": "UNDER",
+      "line": 64.5,
+      "projection": 46.6,
+      "actual": 50,
+      "result": "WIN"
+    },
+    {
+      "player": "Devaughn Vele",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 29.5,
+      "projection": 47.3,
+      "actual": 14,
+      "result": "LOSS"
+    },
+    {
+      "player": "Michael Mayer",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 22.5,
+      "projection": 30.3,
+      "actual": 16,
+      "result": "LOSS"
+    },
+    {
+      "player": "Trey McBride",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "UNDER",
+      "line": 56.5,
+      "projection": 34,
+      "actual": 37,
+      "result": "WIN"
+    },
+    {
+      "player": "Garrett Wilson",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "UNDER",
+      "line": 60.5,
+      "projection": 50,
+      "actual": 106,
+      "result": "LOSS"
+    },
+    {
+      "player": "Tommy Tremble",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 3.2,
+      "actual": 4,
+      "result": "WIN"
+    }
+  ],
+  "parlays": [
+    {
+      "name": "Best Four",
+      "outcome": "MISSED",
+      "source": "Default ticket reconstructed from pregame rules (commit 0b26d24) and saved Week 10 inputs; browser substitutions were not archived.",
+      "legs": [
+        {
+          "player": "Deebo Samuel",
+          "stat": "Rec Yards",
+          "lean": "OVER",
+          "line": 37.5,
+          "actual": 31,
+          "result": "LOSS",
+          "odds": -113
+        },
+        {
+          "player": "Parker Washington",
+          "stat": "Rec Yards",
+          "lean": "OVER",
+          "line": 62.5,
+          "actual": 152,
+          "result": "WIN",
+          "odds": -114
+        },
+        {
+          "player": "Tucker Kraft",
+          "stat": "Receptions",
+          "lean": "UNDER",
+          "line": 4.5,
+          "actual": 1,
+          "result": "WIN",
+          "odds": -165
+        },
+        {
+          "player": "Dalton Kincaid",
+          "stat": "Rec Yards",
+          "lean": "OVER",
+          "line": 42.5,
+          "actual": 58,
+          "result": "WIN",
+          "odds": -112
+        }
+      ]
+    },
+    {
+      "name": "Safer Four",
+      "outcome": "MISSED",
+      "source": "Default ticket reconstructed from pregame rules (commit 0b26d24) and saved Week 10 inputs; browser substitutions were not archived.",
+      "legs": [
+        {
+          "player": "Parker Washington",
+          "stat": "Rec Yards",
+          "lean": "OVER",
+          "line": 39.5,
+          "actual": 152,
+          "result": "WIN",
+          "odds": -355
+        },
+        {
+          "player": "Mike Gesicki",
+          "stat": "Rec Yards",
+          "lean": "OVER",
+          "line": 9.5,
+          "actual": 9,
+          "result": "LOSS",
+          "odds": -420
+        },
+        {
+          "player": "Darnell Washington",
+          "stat": "Rec Yards",
+          "lean": "OVER",
+          "line": 14.5,
+          "actual": 5,
+          "result": "LOSS",
+          "odds": -321
+        },
+        {
+          "player": "Dalton Kincaid",
+          "stat": "Rec Yards",
+          "lean": "OVER",
+          "line": 24.5,
+          "actual": 58,
+          "result": "WIN",
+          "odds": -314
+        }
+      ]
+    },
+    {
+      "name": "Stinky Unders",
+      "outcome": "MISSED",
+      "source": "Default ticket reconstructed from pregame rules (commit 0b26d24) and saved Week 10 inputs; browser substitutions were not archived.",
+      "legs": [
+        {
+          "player": "Drake London",
+          "stat": "Receptions",
+          "lean": "UNDER",
+          "line": 5.5,
+          "actual": 6,
+          "result": "LOSS",
+          "odds": -102
+        },
+        {
+          "player": "Emmett Johnson",
+          "stat": "Rush Yards",
+          "lean": "UNDER",
+          "line": 75.5,
+          "actual": 101,
+          "result": "LOSS",
+          "odds": -112
+        },
+        {
+          "player": "Garrett Wilson",
+          "stat": "Receptions",
+          "lean": "UNDER",
+          "line": 5.5,
+          "actual": 7,
+          "result": "LOSS",
+          "odds": -132
+        },
+        {
+          "player": "Blake Corum",
+          "stat": "Receptions",
+          "lean": "UNDER",
+          "line": 1.5,
+          "actual": 3,
+          "result": "LOSS",
+          "odds": -158
+        }
+      ]
+    }
+  ],
+  "picks": [
+    {
+      "player": "Brian Thomas",
+      "position": "WR",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 0.5,
+      "projection": 3.8,
+      "actual": 3,
+      "result": "WIN"
+    },
+    {
+      "player": "Deebo Samuel",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 37.5,
+      "projection": 64.2,
+      "actual": 31,
+      "result": "LOSS"
+    },
+    {
+      "player": "Christian McCaffrey",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 4.5,
+      "projection": 6.5,
+      "actual": 4,
+      "result": "LOSS"
+    },
+    {
+      "player": "Parker Washington",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 62.5,
+      "projection": 87,
+      "actual": 152,
+      "result": "WIN"
+    },
+    {
+      "player": "Tucker Kraft",
+      "position": "TE",
+      "stat": "Receptions",
+      "lean": "UNDER",
+      "line": 4.5,
+      "projection": 2.8,
+      "actual": 1,
+      "result": "WIN"
+    },
+    {
+      "player": "Dalton Kincaid",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 42.5,
+      "projection": 65.2,
+      "actual": 58,
+      "result": "WIN"
+    },
+    {
+      "player": "Darnell Washington",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 30.5,
+      "projection": 52,
+      "actual": 5,
+      "result": "LOSS"
+    },
+    {
+      "player": "Khalil Shakir",
+      "position": "WR",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 44.5,
+      "projection": 65.2,
+      "actual": 26,
+      "result": "LOSS"
+    },
+    {
+      "player": "Juwan Johnson",
+      "position": "TE",
+      "stat": "Rec Yards",
+      "lean": "OVER",
+      "line": 24.5,
+      "projection": 44.2,
+      "actual": 28,
+      "result": "WIN"
+    },
+    {
+      "player": "Alvin Kamara",
+      "position": "RB",
+      "stat": "Receptions",
+      "lean": "OVER",
+      "line": 2.5,
+      "projection": 3.9,
+      "actual": 3,
+      "result": "WIN"
+    }
+  ],
+  "note": "All 14 games graded from user-supplied logs against the saved Week 10 projections and uploaded lines. The line snapshot was saved 2026-11-16T23:40:39.729Z, before Monday kickoff; earlier Sunday upload versions were unavailable, so Sunday closing prices are unverified. The injury snapshot was saved 2026-11-15T17:39:07.620Z; players with confirmed appearances were treated as available despite later Out tags. Elijah Higgins, Tory Horton, Foster Moreau had no game-log row, so their props remain ungraded without a confirmed appearance. PASS calls are excluded. Parlay tickets reconstruct the earlier default builder, before the later +800 Best Four rule; browser substitutions were not archived."
+}

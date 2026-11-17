@@ -9,10 +9,14 @@ const gitRefFlag = process.argv.indexOf('--git-ref');
 const gitRef = gitRefFlag >= 0 ? process.argv[gitRefFlag + 1] : undefined;
 const linesFileFlag = process.argv.indexOf('--lines-file');
 const linesFile = linesFileFlag >= 0 ? process.argv[linesFileFlag + 1] : undefined;
+const linesJsonFlag = process.argv.indexOf('--lines-json');
+const linesJson = linesJsonFlag >= 0 ? process.argv[linesJsonFlag + 1] : undefined;
+const injuriesJsonFlag = process.argv.indexOf('--injuries-json');
+const injuriesJson = injuriesJsonFlag >= 0 ? process.argv[injuriesJsonFlag + 1] : undefined;
 let useLegacyConfidence = false;
 
 if (!resultsDir) {
-  console.error('Usage: node scripts/grade-week-history.mjs <results-directory> [projections-json] [--git-ref <ref>] [--lines-file <path>]');
+  console.error('Usage: node scripts/grade-week-history.mjs <results-directory> [projections-json] [--git-ref <ref>] [--lines-file <path> | --lines-json <path>] [--injuries-json <path>]');
   process.exit(1);
 }
 
@@ -106,6 +110,8 @@ const STAT_ALIASES = {
   rec_yards: ['receiving yards', 'rec yards', 'receiving yds', 'rec yds', 'rec yard'],
   receptions: ['receptions', 'reception', 'catches', 'catch', 'rec pts', 'recpt'],
 };
+const BACKUP_QB_WARNING_TEAMS = new Set(['BAL', 'LVR', 'ARI', 'MIA', 'SEA', 'MIN']);
+const isUnavailable = (player) => /(?:^|\b)(?:out|doubtful|injured reserve|reserve-ret|ir|pup|nfi|suspended)(?:\b|$)/i.test(player.injuryStatus ?? '');
 
 function statKeyFromText(value, position) {
   const availableStats = position ? STAT_TYPES[position] : Object.values(STAT_TYPES).flat();
@@ -349,22 +355,42 @@ function strongestPropPerPlayer(props) {
   });
 }
 
-const playerData = gitRef
+const { csvFiles, actuals, duplicates } = readActuals(path.resolve(resultsDir));
+let playerData = gitRef
   ? playerDataForGitRef()
   : projectionsPath
     ? JSON.parse(fs.readFileSync(path.resolve(projectionsPath), 'utf8'))
     : parsePlayerData(fs.readFileSync(sourcePath, 'utf8'));
-const initialLines = parseInitialLines(
-  gitRef
-    ? readGitFile(linesFile ?? 'artifacts/nfl-prop-dashboard/src/data/initial-prop-lines.ts')
-    : fs.readFileSync(linesFile ? path.resolve(linesFile) : linesPath, 'utf8'),
-);
-const parsedLines = parseBulkLines(initialLines, playerData);
+if (injuriesJson) {
+  const injuryState = JSON.parse(fs.readFileSync(path.resolve(injuriesJson), 'utf8'));
+  const statuses = injuryState.statuses ?? {};
+  playerData = Object.fromEntries(Object.entries(playerData).map(([position, roster]) => [
+    position,
+    roster.map((player) => {
+      const liveStatus = statuses[`${player.team}:${player.name}`] ?? null;
+      const appearance = actuals.get(normalized(player.name));
+      // The saved injury feed can reflect an in-game injury. A player with a
+      // confirmed game-log appearance was available at kickoff.
+      const injuryStatus = isUnavailable({ injuryStatus: liveStatus }) && appearance?.team === player.team
+        ? player.injuryStatus ?? null : liveStatus;
+      return { ...player, injuryStatus };
+    }),
+  ]));
+}
+const parsedLines = linesJson
+  ? (() => {
+    const state = JSON.parse(fs.readFileSync(path.resolve(linesJson), 'utf8'));
+    return { accepted: Object.entries(state.lines ?? {}).map(([key, value]) => ({ key, line: String(value.line) })), errors: [] };
+  })()
+  : parseBulkLines(parseInitialLines(
+    gitRef
+      ? readGitFile(linesFile ?? 'artifacts/nfl-prop-dashboard/src/data/initial-prop-lines.ts')
+      : fs.readFileSync(linesFile ? path.resolve(linesFile) : linesPath, 'utf8'),
+  ), playerData);
 const lineMap = new Map(parsedLines.accepted.map(({ key, line }) => [key, line]));
-const { csvFiles, actuals, duplicates } = readActuals(path.resolve(resultsDir));
-
 const rankedProps = spreadBoardStrengthScores(Object.entries(playerData)
   .flatMap(([position, roster]) => roster.flatMap((player) =>
+    isUnavailable(player) ? [] :
     STAT_TYPES[position].flatMap((statDefinition) => {
       const key = `${position}:${statDefinition.key}:${player.name}`;
       const line = lineMap.get(key);
@@ -410,6 +436,7 @@ const graded = rankedProps.flatMap((prop) => {
   return [{
     key: prop.key,
     player: prop.player.name,
+    team: prop.player.team,
     position: prop.position,
     statKey: prop.statKey,
     stat: prop.statLabel,
@@ -428,7 +455,8 @@ const graded = rankedProps.flatMap((prop) => {
 
 const gradedNonPass = graded.filter((prop) => prop.lean !== 'PASS');
 const topTenKeys = new Set(
-  strongestPropPerPlayer(rankedProps.filter((prop) => prop.lean !== 'PASS'))
+  strongestPropPerPlayer(rankedProps.filter((prop) => prop.lean !== 'PASS'
+    && !((prop.position === 'WR' || prop.position === 'TE') && BACKUP_QB_WARNING_TEAMS.has(prop.player.team))))
     .slice(0, 10)
     .map((prop) => prop.key),
 );
