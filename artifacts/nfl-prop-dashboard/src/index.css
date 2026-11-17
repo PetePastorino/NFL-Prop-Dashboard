@@ -1541,6 +1541,8 @@ select option { color: #fff; background: #0e2a3f; }
 .game-choice-footer strong { color: inherit; font-family: var(--app-font-mono); font-size: 8px; white-space: nowrap; }
 .all-games-choice { flex-basis: 104px; align-items: center; }
 .nfl-shield-crop { width: 43px; height: 57px; display: block; margin: auto; background-image: url('/nfl-logo.png'); background-size: contain; background-position: center; background-repeat: no-repeat; }
+.slate-update-note { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; padding: 10px 12px; border: 1px solid #365875; border-radius: 8px; color: #d6e6ef; background: #0e2a3f; font-size: 11px; line-height: 1.4; }
+.slate-update-note svg { flex: 0 0 auto; color: #00a8c6; }
 @media (max-width: 650px) {
   .game-choice { flex-basis: 108px; }
   .all-games-choice { flex-basis: 100px; }

@@ -576,6 +576,7 @@ function AppShell() {
   );
   const [lineOdds, setLineOdds] = useState<Record<string, UploadedLineOdds>>({});
   const [liveInjuries, setLiveInjuries] = useState<Record<string, string> | null>(null);
+  const [injuryUpdatedAt, setInjuryUpdatedAt] = useState<string | null>(null);
   const locallyEditedLines = useRef(new Set<string>());
   useEffect(() => {
     let active = true;
@@ -606,9 +607,10 @@ function AppShell() {
       try {
         const response = await fetch('/api/injuries', { cache: 'no-store' });
         if (!response.ok) return;
-        const data = await response.json() as { week?: string; statuses?: Record<string, string> };
+        const data = await response.json() as { week?: string; statuses?: Record<string, string>; updatedAt?: string | null };
         if (active && data.week === `${currentSchedule.season}-${currentSchedule.week}` && data.statuses) {
           setLiveInjuries(data.statuses);
+          setInjuryUpdatedAt(data.updatedAt ?? null);
         }
       } catch { /* Built-in injury tags remain available if the shared API is offline. */ }
     };
@@ -913,6 +915,8 @@ function AppShell() {
               <div className="meta-block"><span>Current view</span><strong>{position} · {statLabel}</strong></div>
             </div>
           </section>
+
+          {!injuryUpdatedAt && <p className="slate-update-note"><AlertTriangle size={14} /> Week {currentSchedule.week} injury update pending. Badges reflect the last supplied report until you upload a new one.</p>}
 
           <section className="overview-strip" aria-label="Dataset summary">
             <div className="overview-main">
