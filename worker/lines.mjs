@@ -1,5 +1,5 @@
 import playerData from '../artifacts/nfl-prop-dashboard/src/data/player-data.json' with { type: 'json' };
-import schedule from '../artifacts/nfl-prop-dashboard/src/data/week10-schedule.json' with { type: 'json' };
+import schedule from '../artifacts/nfl-prop-dashboard/src/data/week11-schedule.json' with { type: 'json' };
 import { parseInjuryUpload, baselineInjuries, applyInjuryUpload, injuryChanges } from './injuries.mjs';
 
 const WEEK = `${schedule.season}-${schedule.week}`;

@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import playerDataJson from '@/data/player-data.json';
 import teamLogoFramingJson from '@/data/team-logo-framing.json';
-import week10Schedule from '@/data/week10-schedule.json';
+import currentSchedule from '@/data/week11-schedule.json';
 import hybridConfidenceJson from '@/data/hybrid-confidence-calibration.json';
 import marketOverCheck from '@/data/market-over-check.json';
 import { marketOverProbability } from '@/lib/market-over-check';
-import { WEEK10_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week10-initial-prop-lines';
-import { WEEK10_ALTERNATE_PROP_LINES } from '@/data/week10-alternate-prop-lines';
+import { WEEK11_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week11-initial-prop-lines';
+import { WEEK11_ALTERNATE_PROP_LINES as CURRENT_ALTERNATE_PROP_LINES } from '@/data/week11-alternate-prop-lines';
 import type { AlternatePropLine } from '@/data/week8-alternate-prop-lines';
 import HistoryPage from '@/HistoryPage';
 import {
@@ -177,7 +177,7 @@ const TEAM_AVATAR_COLORS: Record<string, { primary: string; secondary: string }>
   SFO: { primary: '#AA0000', secondary: '#FFFFFF' },
   SEA: { primary: '#002244', secondary: '#69BE28' },
 };
-const CURRENT_WEEK_PROJECTIONS_READY = true;
+const CURRENT_WEEK_PROJECTIONS_READY = false;
 const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray', 'Jameson Williams']);
 const PETES_HALL_OF_FAME_PLAYERS = new Set(['Jonathan Taylor', 'Tee Higgins', 'Rashod Bateman', 'Ryan Flournoy', 'Kyren Williams', 'Brock Purdy', 'Bijan Robinson']);
@@ -584,7 +584,7 @@ function AppShell() {
         const response = await fetch('/api/lines', { cache: 'no-store' });
         if (!response.ok) return;
         const data = await response.json() as { week?: string; lines?: Record<string, { line: string } & UploadedLineOdds> };
-        if (active && data.week === `${week10Schedule.season}-${week10Schedule.week}` && data.lines) {
+        if (active && data.week === `${currentSchedule.season}-${currentSchedule.week}` && data.lines) {
           setLines((previous) => ({
             ...previous,
             ...Object.fromEntries(Object.entries(data.lines!)
@@ -607,7 +607,7 @@ function AppShell() {
         const response = await fetch('/api/injuries', { cache: 'no-store' });
         if (!response.ok) return;
         const data = await response.json() as { week?: string; statuses?: Record<string, string> };
-        if (active && data.week === `${week10Schedule.season}-${week10Schedule.week}` && data.statuses) {
+        if (active && data.week === `${currentSchedule.season}-${currentSchedule.week}` && data.statuses) {
           setLiveInjuries(data.statuses);
         }
       } catch { /* Built-in injury tags remain available if the shared API is offline. */ }
@@ -630,7 +630,7 @@ function AppShell() {
     ]));
   }, [liveInjuries]);
   const players = currentPlayerData[position] ?? [];
-  const gameOptions = week10Schedule.games.map((game) => ({
+  const gameOptions = currentSchedule.games.map((game) => ({
     ...game,
     key: [game.away, game.home].sort().join('|'),
   }));
@@ -735,7 +735,7 @@ function AppShell() {
   const saferFour = useMemo(() => {
     const targetProbability = 0.77;
     const eligible = parlayCandidates.flatMap<SaferParlayLeg>((prop) => {
-      const alternates = WEEK10_ALTERNATE_PROP_LINES
+      const alternates = CURRENT_ALTERNATE_PROP_LINES
         .filter((line) => line.player === prop.player.name && line.statKey === prop.statKey)
         .map((alternate) => ({
           alternate,
@@ -884,7 +884,7 @@ function AppShell() {
           </button>
           <div className="breadcrumbs"><span>Research</span><ChevronDown size={13} /><strong>{workspaceView === 'history' ? 'History' : workspaceView === 'parlays' ? 'Suggested parlays' : 'Prop board'}</strong></div>
           <div className="topbar-right">
-            <span className="live-indicator"><span /> Week {week10Schedule.week} slate</span>
+            <span className="live-indicator"><span /> Week {currentSchedule.week} slate</span>
             <button className="icon-button" type="button" aria-label="Help" data-testid="button-help" onClick={() => document.querySelector('.method-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}><CircleHelp size={18} /></button>
             <div className="avatar" data-testid="text-user-avatar">RN</div>
           </div>
@@ -972,7 +972,7 @@ function AppShell() {
             </div>
             <div className="game-rail-section">
               <div className="game-rail-heading">
-                <div><strong>Choose a game</strong><span>Week {week10Schedule.week} matchups</span></div>
+                <div><strong>Choose a game</strong><span>Week {currentSchedule.week} matchups</span></div>
                 <div className="game-rail-controls">
                   <button type="button" aria-label="Scroll games left" onClick={() => gameRailRef.current?.scrollBy({ left: -420, behavior: 'smooth' })}><ChevronLeft size={17} /></button>
                   <button type="button" aria-label="Scroll games right" onClick={() => gameRailRef.current?.scrollBy({ left: 420, behavior: 'smooth' })}><ChevronRight size={17} /></button>
@@ -1037,7 +1037,7 @@ function AppShell() {
             ) : (
               <div className="confidence-empty">
                 <div className="confidence-empty-icon"><ListFilter size={18} /></div>
-                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : `Week ${week10Schedule.week} projections are pending`}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Upload sportsbook lines to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} Week ${week10Schedule.week} lines are loaded. Rankings will activate after the projection run.`}</span></div>
+                <div><strong>{CURRENT_WEEK_PROJECTIONS_READY ? 'Your strongest signals will appear here' : `Week ${currentSchedule.week} projections are pending`}</strong><span>{CURRENT_WEEK_PROJECTIONS_READY ? 'Upload sportsbook lines to rank every loaded prop by model confidence.' : `${Object.keys(lines).length} Week ${currentSchedule.week} lines are loaded. Rankings will activate after the projection run.`}</span></div>
               </div>
             )}
           </section>
@@ -1169,9 +1169,9 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
   const [selectedAlternateLines, setSelectedAlternateLines] = useState<Record<string, number>>({});
   const [selectedBestFourKeys, setSelectedBestFourKeys] = useState<Record<number, string>>({});
   const [selectedGameKey, setSelectedGameKey] = useState(() =>
-    [week10Schedule.games[0].away, week10Schedule.games[0].home].sort().join('|'),
+    [currentSchedule.games[0].away, currentSchedule.games[0].home].sort().join('|'),
   );
-  const selectedGame = week10Schedule.games.find((game) =>
+  const selectedGame = currentSchedule.games.find((game) =>
     [game.away, game.home].sort().join('|') === selectedGameKey,
   );
   const gameParlayLegs = parlayCandidates
@@ -1200,7 +1200,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
   const displayedSaferFour = saferFour.map((leg) => {
     const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
     const selectedLine = selectedAlternateLines[selectionKey];
-    const alternate = WEEK10_ALTERNATE_PROP_LINES.find((line) =>
+    const alternate = CURRENT_ALTERNATE_PROP_LINES.find((line) =>
       line.player === leg.prop.player.name
       && line.statKey === leg.prop.statKey
       && line.line === selectedLine,
@@ -1219,7 +1219,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
     <div className="parlay-view">
       <section className="parlay-hero">
         <div>
-          <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK {week10Schedule.week}</div>
+          <div className="eyebrow"><span className="eyebrow-line" /> SUGGESTED PARLAYS / WEEK {currentSchedule.week}</div>
           <h1>Build the ticket.<br /><em>Respect the risk.</em></h1>
           <p>Best Four targets exactly four qualified legs and an estimated +800 or better payout. Other builders favor stable roles and reliable samples. Opposing-team players may share a game.</p>
         </div>
@@ -1252,7 +1252,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
           <label className="game-parlay-picker">
             <span>Choose a game</span>
             <select value={selectedGameKey} onChange={(event) => setSelectedGameKey(event.target.value)} aria-label="Choose a game for a parlay">
-              {week10Schedule.games.map((game) => {
+              {currentSchedule.games.map((game) => {
                 const key = [game.away, game.home].sort().join('|');
                 return <option key={key} value={key}>{game.away} {('neutralSite' in game && game.neutralSite) ? 'vs' : '@'} {game.home}</option>;
               })}
@@ -1317,7 +1317,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
                 <div className="game-parlay-summary"><strong>{displayedSaferFour.length}-leg suggestion</strong></div>
                 {displayedSaferFour.map((leg, index) => {
                   const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
-                  const alternateOptions = WEEK10_ALTERNATE_PROP_LINES
+                  const alternateOptions = CURRENT_ALTERNATE_PROP_LINES
                     .filter((line) => line.player === leg.prop.player.name && line.statKey === leg.prop.statKey)
                     .sort((a, b) => b.line - a.line);
                   return (
@@ -1441,7 +1441,7 @@ function PlayerRow({
       <PlayerAvatar name={player.name} team={player.team} />
       <span className="player-info">
         <strong>{player.name}</strong>
-        <span>{playerMatchupLabel(player, stat?.isHome)} <i>·</i> {venueLabel(stat?.isHome)}</span>
+        <span>{playerMatchupLabel(player, stat?.isHome)}{player.week2Opp && <> <i>·</i> {venueLabel(stat?.isHome)}</>}</span>
       </span>
       <span className="player-row-right">
         {lean.lean !== '—' && <LeanPill lean={lean.lean} compact />}
@@ -1666,7 +1666,7 @@ function NoDataPanel({ statLabel }: { statLabel: string }) {
   return (
     <div className="no-data-panel">
       <div className="no-data-icon"><Database size={23} /></div>
-      <div><h3>Week {week10Schedule.week} {statLabel.toLowerCase()} projection unavailable</h3><p>Projections for this week are pending. A projection will appear after the model run when enough player history is available.</p></div>
+      <div><h3>Week {currentSchedule.week} {statLabel.toLowerCase()} projection unavailable</h3><p>Projections for this week are pending. A projection will appear after the model run when enough player history is available.</p></div>
       <span className="no-data-code">NULL / PROJECTION</span>
     </div>
   );

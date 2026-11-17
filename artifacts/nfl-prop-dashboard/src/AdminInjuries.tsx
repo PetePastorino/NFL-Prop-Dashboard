@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import schedule from './data/week10-schedule.json';
+import schedule from './data/week11-schedule.json';
 import './admin-lines.css';
 
 type Change = { key: string; player: string; team: string; previous: string | null; status: string | null };

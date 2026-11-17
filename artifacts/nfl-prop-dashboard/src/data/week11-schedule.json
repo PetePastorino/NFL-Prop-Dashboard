@@ -1,0 +1,20 @@
+{
+  "week": 11,
+  "season": 2026,
+  "byes": ["ATL", "CLE", "GNB", "LAR", "NWE", "SEA"],
+  "games": [
+    { "away": "IND", "home": "HOU", "date": "2026-11-19", "time": "8:15 PM", "network": "Prime Video", "site": "Reliant Stadium, Houston, TX", "line": "HOU -12.5", "total": 44.5 },
+    { "away": "MIA", "home": "BUF", "date": "2026-11-22", "time": "1:00 PM", "network": "CBS", "site": "Highmark Stadium, Orchard Park, NY", "line": "BUF -16.5", "total": 45.5 },
+    { "away": "NOR", "home": "CHI", "date": "2026-11-22", "time": "1:00 PM", "network": "FOX", "site": "Soldier Field, Chicago, IL", "line": "CHI -11.5", "total": 48.5 },
+    { "away": "TEN", "home": "DAL", "date": "2026-11-22", "time": "1:00 PM", "network": "FOX", "site": "AT&T Stadium, Arlington, TX", "line": "DAL -8.5", "total": 54.5 },
+    { "away": "TAM", "home": "DET", "date": "2026-11-22", "time": "1:00 PM", "network": "FOX", "site": "Ford Field, Detroit, MI", "line": "DET -6.5", "total": 45.5 },
+    { "away": "ARI", "home": "KAN", "date": "2026-11-22", "time": "1:00 PM", "network": "CBS", "site": "Arrowhead Stadium, Kansas City, MO", "line": "KAN -16.5", "total": 41.5 },
+    { "away": "PIT", "home": "PHI", "date": "2026-11-22", "time": "1:00 PM", "network": "CBS", "site": "Lincoln Financial Field, Philadelphia, PA", "line": "PIT -4.5", "total": 38.5 },
+    { "away": "BAL", "home": "CAR", "date": "2026-11-22", "time": "1:00 PM", "network": "FOX", "site": "Bank of America Stadium, Charlotte, NC", "line": "CAR -2.5", "total": 43.5 },
+    { "away": "NYJ", "home": "LAC", "date": "2026-11-22", "time": "4:05 PM", "network": "FOX", "site": "SoFi Stadium, Inglewood, CA", "line": "LAC -3.5", "total": 41.5 },
+    { "away": "LVR", "home": "DEN", "date": "2026-11-22", "time": "4:25 PM", "network": "CBS", "site": "Empower Field at Mile High, Denver, CO", "line": "DEN -10", "total": 40.5 },
+    { "away": "JAX", "home": "NYG", "date": "2026-11-22", "time": "4:25 PM", "network": "CBS", "site": "MetLife Stadium, East Rutherford, NJ", "line": "JAX -6", "total": 46.5 },
+    { "away": "MIN", "home": "SFO", "date": "2026-11-22", "time": "8:20 PM", "network": "NBC", "site": "Estadio Banorte, Mexico City, Mexico", "neutralSite": true, "line": "SFO -3", "total": 45.5 },
+    { "away": "CIN", "home": "WAS", "date": "2026-11-23", "time": "8:15 PM", "network": "ESPN", "site": "Northwest Stadium, Landover, MD", "line": "CIN -6.5", "total": 52.5 }
+  ]
+}
