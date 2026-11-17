@@ -183,6 +183,11 @@ const HYBRID_CONFIDENCE = hybridConfidenceJson as HybridConfidenceCalibration;
 const PETES_NO_BET_PLAYERS = new Set(['Evan Engram', 'Alvin Kamara', 'Brian Thomas', 'Kyler Murray', 'Jameson Williams']);
 const PETES_HALL_OF_FAME_PLAYERS = new Set(['Jonathan Taylor', 'Tee Higgins', 'Rashod Bateman', 'Ryan Flournoy', 'Kyren Williams', 'Brock Purdy', 'Bijan Robinson']);
 const PARLAY_EXCLUDED_TEAMS = new Set<string>();
+const THURSDAY_PARLAY_TEAMS = new Set(
+  currentSchedule.games
+    .filter((game) => new Date(`${game.date}T12:00:00Z`).getUTCDay() === 4)
+    .flatMap((game) => [game.away, game.home]),
+);
 const BACKUP_QB_WARNING_TEAMS = new Set(['BAL', 'LVR', 'ARI', 'MIA', 'SEA', 'MIN', 'KAN']);
 const hasBackupQbWarning = (position: Position, team: string) =>
   (position === 'WR' || position === 'TE') && BACKUP_QB_WARNING_TEAMS.has(team);
@@ -728,16 +733,22 @@ function AppShell() {
     ),
     [rankedProps],
   );
-  const bestFour = useMemo(() => {
-    return selectPricedBestFour(parlayCandidates);
-  }, [parlayCandidates]);
+  const fourTicketCandidates = useMemo(
+    () => parlayCandidates.filter((prop) => !THURSDAY_PARLAY_TEAMS.has(prop.player.team)),
+    [parlayCandidates],
+  );
+  const bestFour = useMemo(() => selectPricedBestFour(fourTicketCandidates), [fourTicketCandidates]);
   const parlayCandidateChoices = useMemo(
     () => strongestPropPerPlayer(parlayCandidates),
     [parlayCandidates],
   );
+  const fourTicketCandidateChoices = useMemo(
+    () => strongestPropPerPlayer(fourTicketCandidates),
+    [fourTicketCandidates],
+  );
   const saferFour = useMemo(() => {
     const targetProbability = 0.77;
-    const eligible = parlayCandidates.flatMap<SaferParlayLeg>((prop) => {
+    const eligible = fourTicketCandidates.flatMap<SaferParlayLeg>((prop) => {
       const alternates = CURRENT_ALTERNATE_PROP_LINES
         .filter((line) => line.player === prop.player.name && line.statKey === prop.statKey)
         .map((alternate) => ({
@@ -767,7 +778,7 @@ function AppShell() {
       if (selected.length === 4) break;
     }
     return selected;
-  }, [parlayCandidates]);
+  }, [fourTicketCandidates]);
   const activeRankedProp = rankedProps.find((prop) => prop.key === lineKey);
   const playerCount = Object.values(currentPlayerData).reduce(
     (total, roster) => total + roster.length,
@@ -898,6 +909,7 @@ function AppShell() {
             <ParlayView
               bestFour={bestFour}
               parlayCandidates={parlayCandidateChoices}
+              fourTicketCandidates={fourTicketCandidateChoices}
               saferFour={saferFour}
               onSelect={(prop) => {
                 setWorkspaceView('dashboard');
@@ -1156,6 +1168,19 @@ function combinedDecimalOdds(props: RankedProp[]) {
   return props.reduce((product, prop) => product * decimalOddsFromAmerican(prop.odds!), 1);
 }
 
+function estimatedParlayOdds(props: RankedProp[]) {
+  if (!props.length) return null;
+  const missing = props.filter((prop) => prop.odds === null).length;
+  const pricedDecimal = props.reduce(
+    (product, prop) => product * (prop.odds === null ? 1 : decimalOddsFromAmerican(prop.odds)),
+    1,
+  );
+  if (!missing) return { label: formatDecimalAsAmerican(pricedDecimal), missing };
+  const low = pricedDecimal * decimalOddsFromAmerican(-120) ** missing;
+  const high = pricedDecimal * decimalOddsFromAmerican(-110) ** missing;
+  return { label: `${formatDecimalAsAmerican(low)} to ${formatDecimalAsAmerican(high)}`, missing };
+}
+
 function formatDecimalAsAmerican(decimal: number) {
   return decimal >= 2
     ? `+${Math.round((decimal - 1) * 100)}`
@@ -1170,7 +1195,7 @@ function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
     : `-${Math.round(100 / (decimal - 1))}`;
 }
 
-function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestFour: RankedProp[]; parlayCandidates: RankedProp[]; saferFour: SaferParlayLeg[]; onSelect: (prop: RankedProp) => void }) {
+function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFour, onSelect }: { bestFour: RankedProp[]; parlayCandidates: RankedProp[]; fourTicketCandidates: RankedProp[]; saferFour: SaferParlayLeg[]; onSelect: (prop: RankedProp) => void }) {
   const [selectedAlternateLines, setSelectedAlternateLines] = useState<Record<string, number>>({});
   const [selectedBestFourKeys, setSelectedBestFourKeys] = useState<Record<number, string>>({});
   const [selectedGameKey, setSelectedGameKey] = useState(() =>
@@ -1186,13 +1211,15 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
   const gameParlaySignal = gameParlayReady
     ? Math.round(gameParlayLegs.reduce((sum, prop) => sum + prop.confidenceScore, 0) / gameParlayLegs.length)
     : null;
-  const candidateByKey = new Map(parlayCandidates.filter((prop) => prop.odds !== null).map((prop) => [prop.key, prop]));
+  const gameParlayPrice = gameParlayReady ? estimatedParlayOdds(gameParlayLegs) : null;
+  const candidateByKey = new Map(fourTicketCandidates.filter((prop) => prop.odds !== null).map((prop) => [prop.key, prop]));
   const displayedBestFour = bestFour.map((defaultProp, index) => candidateByKey.get(selectedBestFourKeys[index]) ?? defaultProp);
   const bestFourDecimalOdds = displayedBestFour.length === 4 ? combinedDecimalOdds(displayedBestFour) : null;
   const bestFourPlayers = new Set(displayedBestFour.map((prop) => normalized(prop.player.name)));
-  const stinkyUnders = selectDiversifiedProps(parlayCandidates.filter((prop) =>
+  const stinkyUnders = selectDiversifiedProps(fourTicketCandidates.filter((prop) =>
     prop.lean.lean === 'UNDER' && !bestFourPlayers.has(normalized(prop.player.name)),
   ));
+  const stinkyPrice = stinkyUnders.length >= 2 ? estimatedParlayOdds(stinkyUnders) : null;
   const stinkyAverageSignal = stinkyUnders.length >= 2
     ? Math.round(stinkyUnders.reduce((sum, prop) => sum + prop.confidenceScore, 0) / stinkyUnders.length)
     : null;
@@ -1240,8 +1267,9 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         <div><Check size={15} /><span>One player per team in multi-game tickets; opposing teams may share a game</span></div>
         <div><Check size={15} /><span>No injuries or limited signal</span></div>
         <div><Check size={15} /><span>Pete's banned list excluded</span></div>
-        <div className="backup-qb-rule"><AlertTriangle size={15} /><span>Backup QB warning: WR and TE props from BAL, LVR, ARI, MIA, SEA, and MIN excluded in both directions</span></div>
+        <div className="backup-qb-rule"><AlertTriangle size={15} /><span>Backup QB warning: WR and TE props from BAL, LVR, ARI, MIA, SEA, MIN, and KAN excluded in both directions</span></div>
         {PARLAY_EXCLUDED_TEAMS.size > 0 && <div><Check size={15} /><span>{[...PARLAY_EXCLUDED_TEAMS].join(' and ')} excluded this week</span></div>}
+        <div><Check size={15} /><span>Thursday teams excluded from Best Four, Safer Four, Stinky Unders, and round robins</span></div>
         <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
         <div><Check size={15} /><span>Overs must agree with a separate historical outcome check</span></div>
       </section>
@@ -1267,7 +1295,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         {gameParlayReady ? (
           <>
             <div className="game-parlay-summary">
-              <strong>{gameParlayLegs.length}-leg parlay · {selectedGame?.away} {selectedGame && 'neutralSite' in selectedGame && selectedGame.neutralSite ? 'vs' : '@'} {selectedGame?.home}</strong>
+              <strong>{gameParlayLegs.length}-leg parlay · {selectedGame?.away} {selectedGame && 'neutralSite' in selectedGame && selectedGame.neutralSite ? 'vs' : '@'} {selectedGame?.home} · Est. {gameParlayPrice?.label}</strong>
               <span>Average signal {gameParlaySignal}/100</span>
             </div>
             <div className="parlay-leg-list">
@@ -1277,7 +1305,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         ) : (
           <div className="parlay-empty" role="status"><AlertTriangle size={20} /><div><strong>Low confidence game</strong><span>{gameParlayLegs.length} of 2 required players pass the existing parlay rules.</span></div></div>
         )}
-        <div className="parlay-card-note"><AlertTriangle size={14} /><span>Same-game legs can move together. Signal scores are not win probabilities, and a combined payout cannot be shown without prices for each standard line.</span></div>
+        <div className="parlay-card-note"><AlertTriangle size={14} /><span>Estimated prices multiply uploaded leg odds. For missing odds, the range assumes -120 to -110 per unpriced leg. Same-game legs may be repriced; verify the sportsbook betslip.</span></div>
       </section>
 
       <div className="parlay-layout">
@@ -1294,7 +1322,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
               <div className="game-parlay-summary"><strong>4-leg suggestion · estimated {bestFourDecimalOdds === null ? 'odds unavailable' : formatDecimalAsAmerican(bestFourDecimalOdds)}</strong><span>Average signal {averageSignal}/100</span></div>
               {displayedBestFour.map((prop, index) => {
                 const otherLegs = displayedBestFour.filter((_, otherIndex) => otherIndex !== index);
-                const options = parlayCandidates.filter((candidate) => candidate.odds !== null && (
+                const options = fourTicketCandidates.filter((candidate) => candidate.odds !== null && (
                   candidate.key === prop.key || (
                     !otherLegs.some((other) =>
                       normalized(other.player.name) === normalized(candidate.player.name)
@@ -1367,7 +1395,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
             </div>
             {stinkyUnders.length >= 2 ? (
               <div className="stinky-leg-list">
-                <div className="game-parlay-summary"><strong>{stinkyUnders.length}-leg suggestion</strong></div>
+                <div className="game-parlay-summary"><strong>{stinkyUnders.length}-leg suggestion · Est. {stinkyPrice?.label}</strong></div>
                 {stinkyUnders.map((prop, index) => (
                   <div className="stinky-leg" key={prop.key}>
                     <span className="stinky-leg-number">{String(index + 1).padStart(2, '0')}</span>
@@ -1387,7 +1415,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
                 <span>{stinkyUnders.length} of 2 eligible unders remain after excluding Best Four players and applying the same team and game rules.</span>
               </div>
             )}
-            <div className="parlay-card-note"><AlertTriangle size={14} /><span>Scores show signal strength, not win probability. Standard-line odds are not loaded, so a combined payout cannot be calculated.</span></div>
+            <div className="parlay-card-note"><AlertTriangle size={14} /><span>Estimate uses uploaded under odds where available and assumes -120 to -110 for each missing price. Verify the sportsbook betslip; signal scores are not win probabilities.</span></div>
           </section>
 
         </aside>
@@ -1402,7 +1430,7 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
           <div className="round-robin-grid">
             {roundRobin.map((ticket, index) => (
               <article key={`ticket-${index}`} className="round-robin-ticket">
-                <div><strong>Ticket {String.fromCharCode(65 + index)}</strong><span>Leaves out {displayedBestFour[index].player.name}</span></div>
+                <div><strong>Ticket {String.fromCharCode(65 + index)} · Est. {estimatedParlayOdds(ticket)?.label}</strong><span>Leaves out {displayedBestFour[index].player.name}</span></div>
                 <ol>{ticket.map((prop) => <li key={prop.key}><RankingTeamLogo name={prop.player.name} team={prop.player.team} /><span>{prop.player.name}</span><strong className={prop.lean.lean === 'OVER' ? 'over' : 'under'}>{prop.lean.lean} {prop.line}</strong></li>)}</ol>
               </article>
             ))}
