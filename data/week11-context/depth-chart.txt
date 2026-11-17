@@ -1,0 +1,498 @@
+Legend:   (N) = New to Team (R) = Rookie (IR) = Injured Reserve (PUP) = Physically Unable to Perform (IR-R) = Injured Reserve w/ opportunity to return (SUS) = Suspended
+TeamQuarterbacks	Running Backs	Wide Receivers	Tight Ends	Kickers
+
+ARI
+Carson Beck
+Gardner Minshew II (N)
+Tyler Allgeier
+Bam Knight
+James Conner (IR)
+Michael Wilson
+Kendrick Bourne (N)
+Devin Duvernay (N)
+Simi Fehoko
+Jalen Brooks (IR)
+Reggie Virgil
+Trey McBride
+Elijah Higgins
+Teagan Quitoriano (N)
+Chad Ryland
+
+ATL
+Michael Penix Jr.
+Tua Tagovailoa (N)
+Cooper Rush
+Bijan Robinson
+Brian Robinson Jr. (N)
+Drake London
+Jahan Dotson (N)
+Olamide Zaccheaus (N)
+Dylan Drummond
+Chris Blair
+Kyle Pitts Sr.
+Austin Hooper (N)
+Charlie Woerner
+
+BAL
+Joe Fagnano
+Lamar Jackson
+Tyler Huntley
+Derrick Henry
+Justice Hill
+Rasheen Ali
+Rashod Bateman
+Devontez Walker
+LaJohntay Wester
+Zay Flowers
+Chris Moore
+Mark Andrews
+Durham Smythe
+
+BUF
+Josh Allen
+Kyle Allen (N)
+James Cook III
+Ray Davis
+Ty Johnson
+DJ Moore
+Khalil Shakir
+Keon Coleman
+Joshua Palmer (N)
+Dalton Kincaid
+Dawson Knox
+Jackson Hawes
+Tyler Bass (IR)
+
+CAR
+Bryce Young
+Kenny Pickett (N)
+Chuba Hubbard
+Jonathon Brooks (IR)
+AJ Dillon (N)
+Trevor Etienne (R) (IR)
+Tetairoa McMillan
+Jalen Coker
+Xavier Legette (IR)
+John Metchie III (N)
+Brycen Tremayne
+David Moore
+Darren Waller
+Tommy Tremble
+Ja'Tavion Sanders
+Mitchell Evans
+
+CHI
+Caleb Williams
+Tyson Bagent
+D'Andre Swift
+Kyle Monangai
+Roschon Johnson
+Rome Odunze
+Luther Burden III
+Kalif Raymond (N)
+Scotty Miller
+Colston Loveland
+Cole Kmet
+Cairo Santos
+
+CIN
+Joe Burrow
+Chase Brown
+Samaje Perine
+Tahj Brooks
+Ja'Marr Chase
+Tee Higgins
+Andrei Iosivas (IR)
+Dohnte Meyers
+Mike Gesicki
+Drew Sample
+Erick All Jr. (IR)
+Tanner Hudson
+Evan McPherson
+
+CLE
+Deshaun Watson
+Shedeur Sanders
+Quinshon Judkins
+Dylan Sampson
+Jerry Jeudy
+Isaiah Bond
+Tylan Wallace
+Malachi Corley
+Harold Fannin Jr.
+Blake Whiteheart
+Andre Szmyt
+
+DAL
+Dak Prescott
+Sam Howell (N)
+Javonte Williams
+Israel Abanikanda
+Hunter Luepke
+CeeDee Lamb
+George Pickens
+Ryan Flournoy
+KaVontae Turpin
+Jonathan Mingo
+Jake Ferguson
+Luke Schoonmaker
+Brevyn Spann-Ford
+Brandon Aubrey
+
+DEN
+Bo Nix
+Jarrett Stidham
+J.K. Dobbins
+RJ Harvey
+Tyler Badie (IR)
+Jaylen Waddle (N)
+Courtland Sutton
+Troy Franklin
+Pat Bryant (IR)
+Marvin Mims Jr.
+Lil'Jordan Humphrey
+Evan Engram
+Adam Trautman
+Nate Adkins
+Wil Lutz
+
+DET
+Jared Goff
+Joshua Dobbs
+Jahmyr Gibbs
+Isiah Pacheco (N) (IR)
+Sione Vaki
+Jacob Saylors
+Amon-Ra St. Brown
+Jameson Williams
+Isaac TeSlaa
+Tay Martin
+Sam LaPorta (IR)
+Brock Wright
+Tyler Conklin (N)
+Jake Bates
+
+GB
+Jordan Love
+Tyrod Taylor (N)
+Josh Jacobs
+MarShawn Lloyd
+Pierre Strong Jr.
+Chris Brooks (IR)
+Kaleb Johnson
+Christian Watson
+Jayden Reed (IR)
+Matthew Golden
+Savion Williams
+Skyy Moore (N) (IR)
+Bo Melton
+Tucker Kraft
+Jonnu Smith
+Josh Whyle
+
+HOU
+C.J. Stroud
+Davis Mills
+David Montgomery (N)
+Woody Marks
+Nico Collins
+Marvin Harrison Jr. (N)
+Kayshon Boutte
+Xavier Hutchinson
+Jaylin Noel (IR)
+Tank Dell
+Jayden Higgins (IR)
+Dalton Schultz
+Cade Stover
+Foster Moreau (N)
+Ka'imi Fairbairn
+
+IND
+Daniel Jones (IR)
+Anthony Richardson Sr.
+Jonathan Taylor
+DJ Giddens
+Laquon Treadwell
+Josh Downs
+Anthony Gould
+Alec Pierce (IR)
+Keenan Allen
+Ashton Dulin
+Tyler Warren
+Will Mallory
+Mo Alie-Cox
+Drew Ogletree
+
+JAC
+Trevor Lawrence
+Quinn Ewers
+Bhayshul Tuten
+Chris Rodriguez Jr.
+LeQuint Allen Jr.
+Ameer Abdullah
+Parker Washington
+Jakobi Meyers
+Brian Thomas Jr.
+Travis Hunter
+Brenton Strange
+Quintin Morris
+Cam Little
+
+KC
+Patrick Mahomes (IR)
+Justin Fields (N)
+Kenneth Walker III
+Brashard Smith (R)
+Rashee Rice
+Xavier Worthy
+Tyquan Thornton (IR)
+Jalen Royals
+Nikko Remigio
+Travis Kelce
+Noah Gray
+Jared Wiley
+Jake Briningstool
+Harrison Butker
+
+LVR
+Fernando Mendoza (R)
+Aidan O'Connell
+Ashton Jeanty
+Dylan Laube
+Tre Tucker
+Jalen Nailor
+Jack Bech (IR)
+Dont'e Thornton Jr.
+Brock Bowers
+Michael Mayer
+Ian Thomas
+Matt Gay (N)
+
+LAC
+Justin Herbert
+Omarion Hampton
+Keaton Mitchell (N)
+Kimani Vidal
+Quentin Johnston
+Tre' Harris
+Derius Davis
+KeAndre Lambert-Smith
+Ladd McConkey
+David Njoku (IR)
+Charlie Kolar
+Oronde Gadsden II
+Cameron Dicker
+
+LAR
+Matthew Stafford
+Stetson Bennett IV
+Kyren Williams
+Blake Corum
+Ronnie Rivers (IR)
+Puka Nacua
+Davante Adams (IR)
+Konata Mumpfield
+Jordan Whittington
+Xavier Smith
+Tutu Atwell
+Terrance Ferguson (IR)
+Colby Parkinson
+Tyler Higbee
+Davis Allen
+
+MIA
+Malik Willis (N)
+Kyle McCord
+Ollie Gordon II
+Jaylen Wright
+Carlos Washington Jr.
+Caleb Douglas
+Malik Washington
+Jalen Tolbert (N)
+Chris Bell
+Greg Dulcich
+Ben Sims (N)
+Riley Patterson
+
+MIN
+Kirk Cousins
+Aaron Jones Sr.
+Jordan Mason (IR)
+Justin Jefferson
+Jordan Addison
+Jauan Jennings (N)
+Tai Felton
+Myles Price
+T.J. Hockenson
+Josh Oliver
+Ben Yurosek
+Gavin Bartholomew
+Will Reichard
+
+NE
+Drake Maye
+Tommy DeVito
+Rhamondre Stevenson
+TreVeyon Henderson
+Corey Kiner
+Lan Larison
+A.J. Brown (IR)
+Romeo Doubs (N)
+DeMario Douglas
+Kyle Williams
+Efton Chism III
+Mack Hollins
+Hunter Henry
+
+NO
+Tyler Shough
+Spencer Rattler
+Travis Etienne Jr. (N) (IR)
+Alvin Kamara
+Ty Chandler
+Audric Estime
+Chris Olave
+Devaughn Vele
+Jordyn Tyson
+Juwan Johnson
+Noah Fant (N)
+
+NYG
+J.J. McCarthy
+Jaxson Dart (IR)
+Jameis Winston
+Cam Skattebo
+Tyrone Tracy Jr.
+Devin Singletary
+Malik Nabers (IR)
+Darnell Mooney
+Calvin Austin III (N) (IR)
+Braxton Berrios
+Gunner Olszewski (IR)
+Isaiah Likely (N)
+Theo Johnson
+Chris Manhertz
+
+NYJ
+Geno Smith (N)
+Breece Hall
+Braelon Allen
+Isaiah Davis
+Garrett Wilson
+Adonai Mitchell
+Isaiah Williams
+Tim Patrick (IR)
+Arian Smith (IR)
+Omar Cooper Jr.
+Mason Taylor
+Jeremy Ruckert
+Jelani Woods
+
+PHI
+Tanner McKee
+Jalen Hurts (IR)
+Saquon Barkley
+Tank Bigsby (IR)
+Will Shipley (IR)
+DeVonta Smith
+Dontayvion Wicks (N)
+Elijah Moore
+Johnny Wilson
+Dallas Goedert
+Jake Elliott
+
+PIT
+Aaron Rodgers
+Mason Rudolph
+Will Howard
+Jaylen Warren
+Rico Dowdle (N)
+Travis Homer (N)
+DK Metcalf
+Michael Pittman Jr. (N) (IR)
+Roman Wilson (IR)
+Ben Skowronek
+Pat Freiermuth
+Darnell Washington
+Robert Tonyan
+Chris Boswell
+
+SEA
+Sam Darnold
+Drew Lock
+Emanuel Wilson
+Jadarian Price
+Zach Charbonnet (IR)
+George Holani
+Jaxon Smith-Njigba
+Rashid Shaheed
+Cooper Kupp
+Tory Horton
+Jake Bobo (IR)
+AJ Barner
+Elijah Arroyo
+Eric Saubert
+Jason Myers
+
+SF
+Brock Purdy
+Mac Jones
+Christian McCaffrey
+Kaelon Black
+Jordan James
+Kyle Juszczyk
+Mike Evans
+Deebo Samuel Sr.
+Jacob Cowing
+Jordan Watkins
+Christian Kirk (IR)
+Demarcus Robinson (IR)
+George Kittle
+Jake Tonges (IR)
+Luke Farrell
+Brayden Willis
+Eddy Pineiro
+
+TB
+Baker Mayfield
+Bucky Irving
+Kenny Gainwell
+Sean Tucker
+Emeka Egbuka
+Chris Godwin Jr.
+Ted Hurst III
+Jalen McMillan
+Tez Johnson
+Cade Otton
+Payne Durham
+Chase McLaughlin
+
+TEN
+Cam Ward
+Mitchell Trubisky (N)
+Tony Pollard
+Tyjae Spears
+Wan'Dale Robinson (N)
+Elic Ayomanor
+Calvin Ridley
+Chimere Dike
+Carnell Tate
+Gunnar Helm
+Daniel Bellinger (N)
+Joey Slye
+
+WAS
+Jayden Daniels
+Marcus Mariota
+Jacory Croskey-Merritt (IR)
+Rachaad White
+Jeremy McNichols
+Terry McLaurin (IR)
+Stefon Diggs
+Treylon Burks
+Dyami Brown
+Luke McCaffrey
+Jaylin Lane
+Chig Okonkwo
+John Bates
+Ben Sinnott
