@@ -8,7 +8,7 @@ import { marketOverProbability } from '@/lib/market-over-check';
 import { WEEK10_INITIAL_PROP_LINES as INITIAL_PROP_LINES } from '@/data/week10-initial-prop-lines';
 import { WEEK10_ALTERNATE_PROP_LINES } from '@/data/week10-alternate-prop-lines';
 import type { AlternatePropLine } from '@/data/week8-alternate-prop-lines';
-import { WEEKLY_HISTORY, type RecordSummary, type WeeklyParlay } from '@/data/weekly-history';
+import HistoryPage from '@/HistoryPage';
 import {
   Activity,
   AlertTriangle,
@@ -562,7 +562,7 @@ function RankingTeamLogo({ name, team }: { name: string; team: string }) {
 }
 
 function AppShell() {
-  const [workspaceView, setWorkspaceView] = useState<'dashboard' | 'parlays' | 'history'>('dashboard');
+  const [workspaceView, setWorkspaceView] = useState<'dashboard' | 'parlays' | 'history'>(() => /^#week-\d+$/.test(window.location.hash) ? 'history' : 'dashboard');
   const [position, setPosition] = useState<Position>('WR');
   const [statKey, setStatKey] = useState(STAT_TYPES.WR[0].key);
   const [selectedName, setSelectedName] = useState(
@@ -891,7 +891,7 @@ function AppShell() {
         </header>
 
         <div className="content-wrap">
-          {workspaceView === 'history' ? <HistoryView /> : workspaceView === 'parlays' ? (
+          {workspaceView === 'history' ? <HistoryPage /> : workspaceView === 'parlays' ? (
             <ParlayView
               bestFour={bestFour}
               parlayCandidates={parlayCandidateChoices}
@@ -1405,165 +1405,6 @@ function ParlayView({ bestFour, parlayCandidates, saferFour, onSelect }: { bestF
         ) : <div className="parlay-empty"><span>Round robin tickets appear after four legs clear every gate.</span></div>}
         <div className="parlay-card-note"><Shield size={14} /><span>A round robin reduces all-or-nothing risk but costs four separate stakes. It does not make weak legs safer.</span></div>
       </section>
-    </div>
-  );
-}
-
-function recordTotal(record: RecordSummary) {
-  return record.wins + record.losses + record.pushes;
-}
-
-function hitRate(record: RecordSummary) {
-  const decisions = record.wins + record.losses;
-  return decisions ? `${((record.wins / decisions) * 100).toFixed(1)}%` : '—';
-}
-
-function recordLabel(record: RecordSummary) {
-  return `${record.wins}–${record.losses}${record.pushes ? `–${record.pushes}` : ''}`;
-}
-
-function HistoryView() {
-  const parlayWeeks = WEEKLY_HISTORY.filter((week) => week.parlays?.length);
-  const parlayTickets = parlayWeeks.flatMap((week) => week.parlays ?? []);
-  const bestFourHits = parlayTickets.filter((ticket) => ticket.name === 'Best Four' && ticket.outcome === 'HIT').length;
-  const saferFourHits = parlayTickets.filter((ticket) => ticket.name === 'Safer Four' && ticket.outcome === 'HIT').length;
-  const stinkyUndersHits = parlayTickets.filter((ticket) => ticket.name === 'Stinky Unders' && ticket.outcome === 'HIT').length;
-  const confidenceCareer = WEEKLY_HISTORY.reduce<RecordSummary>(
-    (total, week) => ({
-      wins: total.wins + week.highConfidence.wins,
-      losses: total.losses + week.highConfidence.losses,
-      pushes: total.pushes + week.highConfidence.pushes,
-    }),
-    { wins: 0, losses: 0, pushes: 0 },
-  );
-  const topCareer = WEEKLY_HISTORY.reduce<RecordSummary>(
-    (total, week) => ({
-      wins: total.wins + week.topPicks.wins,
-      losses: total.losses + week.topPicks.losses,
-      pushes: total.pushes + week.topPicks.pushes,
-    }),
-    { wins: 0, losses: 0, pushes: 0 },
-  );
-
-  return (
-    <div className="history-view">
-      <section className="history-hero">
-        <div>
-          <div className="eyebrow"><span className="eyebrow-line" /> RESULTS LEDGER / 02</div>
-          <h1>Track the calls.<br /><em>Keep the receipts.</em></h1>
-          <p className="intro-copy">A permanent week-by-week record of every high-confidence call and the confidence board’s strongest picks.</p>
-        </div>
-        <div className="history-seal"><Trophy size={26} /><span>Top picks</span><strong>{recordLabel(topCareer)}</strong><small>{hitRate(topCareer)} hit rate</small></div>
-      </section>
-
-      <section className="history-overview" aria-label="Season record summary">
-        <HistoryRecordCard label="All high-confidence picks" record={confidenceCareer} detail={`${recordTotal(confidenceCareer)} graded picks`} />
-        <HistoryRecordCard label="Top confidence picks" record={topCareer} detail={`${recordTotal(topCareer)} tracked picks`} featured />
-        <div className="history-stat-card"><span>Weeks tracked</span><strong>{WEEKLY_HISTORY.length}</strong><small>2026 season</small></div>
-        <div className="history-stat-card"><span>Last updated</span><strong>W{WEEKLY_HISTORY[0]?.week ?? '—'}</strong><small>All games final</small></div>
-      </section>
-
-      <section className="history-parlays" aria-label="Parlay history">
-        <div className="history-section-heading">
-          <div><span className="section-index">01</span><h2>Parlay history</h2></div>
-          <span>{parlayWeeks.length} tracked week{parlayWeeks.length === 1 ? '' : 's'}</span>
-        </div>
-        <p className="history-parlay-intro">These results reconstruct the default builder tickets from saved weekly inputs. Changes made in a browser were not archived and may differ from a ticket you placed.</p>
-        <div className="history-parlay-summary">
-          <div><span>Best Four</span><strong>{bestFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Best Four').length}</strong><small>default tickets hit</small></div>
-          <div><span>Safer Four</span><strong>{saferFourHits}/{parlayTickets.filter((ticket) => ticket.name === 'Safer Four').length}</strong><small>default tickets hit</small></div>
-          <div><span>Stinky Unders</span><strong>{stinkyUndersHits}/{parlayTickets.filter((ticket) => ticket.name === 'Stinky Unders').length}</strong><small>default tickets hit</small></div>
-        </div>
-        {parlayWeeks.map((week) => (
-          <div className="history-parlay-week" key={`parlay-${week.season}-${week.week}`}>
-            <h3>Week {week.week} · {week.season}</h3>
-            <div className="history-parlay-grid">
-              {week.parlays?.map((ticket) => <HistoryParlayCard ticket={ticket} key={ticket.name} />)}
-            </div>
-          </div>
-        ))}
-      </section>
-
-      <section className="history-ledger">
-        <div className="history-section-heading">
-          <div><span className="section-index">02</span><h2>Weekly ledger</h2></div>
-          <span>{WEEKLY_HISTORY.length} completed week{WEEKLY_HISTORY.length === 1 ? '' : 's'}</span>
-        </div>
-        {WEEKLY_HISTORY.map((week) => {
-          const displayedPicks = week.highConfidencePicks ?? week.picks;
-          const hasFullConfidenceBoard = Boolean(week.highConfidencePicks);
-
-          return (
-          <article className="week-card" key={`${week.season}-${week.week}`}>
-            <div className="week-card-head">
-              <div><span className="week-badge">WEEK {week.week}</span><h3>{week.season} regular season</h3><p>{week.label} · {week.gamesGraded}/{week.gamesScheduled} games graded</p></div>
-              <span className="final-chip"><Check size={13} /> Final</span>
-            </div>
-            <div className="week-record-grid">
-              <HistoryRecordCard label="All high-confidence picks" record={week.highConfidence} detail={`${recordTotal(week.highConfidence)} graded picks`} />
-              <HistoryRecordCard label={`Top ${week.topPickLimit} board`} record={week.topPicks} detail={`${recordTotal(week.topPicks)} picks`} featured />
-            </div>
-            <div className="history-table-heading">
-              <strong>{hasFullConfidenceBoard ? 'All high-confidence picks' : `Top ${week.topPickLimit} archived picks`}</strong>
-              <span>{displayedPicks.length} picks shown</span>
-            </div>
-            <div className="history-table-wrap">
-              <table className="history-table">
-                <thead><tr><th>#</th><th>Player</th><th>Prop</th><th>Call</th><th>Line</th><th>Projection</th><th>Actual</th><th>Result</th></tr></thead>
-                <tbody>
-                  {displayedPicks.map((pick, index) => (
-                    <tr key={`${week.week}-${pick.player}-${pick.stat}`}>
-                      <td>{String(index + 1).padStart(2, '0')}</td>
-                      <td><strong>{pick.player}</strong><span>{pick.position}</span></td>
-                      <td>{pick.stat}</td>
-                      <td><span className={`history-call ${pick.lean.toLowerCase()}`}>{pick.lean}</span></td>
-                      <td>{formatValue(pick.line)}</td>
-                      <td>{formatValue(pick.projection)}</td>
-                      <td>{formatValue(pick.actual)}</td>
-                      <td><span className={`result-pill ${pick.result.toLowerCase()}`}>{pick.result}</span></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {week.note && <p className="week-note"><CircleHelp size={13} /> {week.note}</p>}
-          </article>
-          );
-        })}
-      </section>
-      <footer className="page-footer"><div><span className="footer-mark">FN</span><span>Field Note Results Ledger</span></div><span>Records use imported lines and exclude PASS calls. Full high-confidence detail begins with Week 4.</span></footer>
-    </div>
-  );
-}
-
-function HistoryParlayCard({ ticket }: { ticket: WeeklyParlay }) {
-  const wins = ticket.legs.filter((leg) => leg.result === 'WIN').length;
-  const losses = ticket.legs.filter((leg) => leg.result === 'LOSS').length;
-  const voids = ticket.legs.filter((leg) => leg.result === 'VOID').length;
-  return (
-    <article className="history-parlay-card">
-      <header>
-        <div><strong>{ticket.name}</strong><span>{wins} won · {losses} lost{voids ? ` · ${voids} void` : ''}</span></div>
-        <span className={`history-parlay-outcome ${ticket.outcome.toLowerCase()}`}>{ticket.outcome}</span>
-      </header>
-      <ol>{ticket.legs.map((leg) => (
-        <li key={`${leg.player}-${leg.stat}`}>
-          <div><strong>{leg.player}</strong><span>{leg.stat} · {leg.lean} {formatValue(leg.line)}{leg.odds !== undefined ? ` · ${formatAmericanOdds(leg.odds)}` : ''}</span></div>
-          <span className="history-parlay-actual">{leg.actual === null ? 'Void' : formatValue(leg.actual)}</span>
-          <span className={`result-pill ${leg.result.toLowerCase()}`}>{leg.result}</span>
-        </li>
-      ))}</ol>
-      <p>Saved default selections; browser substitutions are not included.</p>
-    </article>
-  );
-}
-
-function HistoryRecordCard({ label, record, detail, featured = false }: { label: string; record: RecordSummary; detail: string; featured?: boolean }) {
-  return (
-    <div className={`history-record-card ${featured ? 'featured' : ''}`}>
-      <span>{label}</span>
-      <div><strong>{recordLabel(record)}</strong><em>{hitRate(record)}</em></div>
-      <small>{detail} · W–L{record.pushes ? '–P' : ''}</small>
     </div>
   );
 }
