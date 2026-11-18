@@ -1365,6 +1365,11 @@ select option { color: #fff; background: #0e2a3f; }
 .game-parlay-picker option { color: #fff; background: #0e2a3f; }
 .game-parlay-summary { display: flex; justify-content: space-between; gap: 10px; padding: 11px 18px; border-bottom: 1px solid #2a4a66; color: #fff; font-size: 10px; }
 .game-parlay-summary span { color: #22d3ee; font-family: var(--app-font-mono); }
+.parlay-payout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin: 9px 10px; padding: 11px 13px; border: 1px solid #2a4a66; border-radius: 8px; background: #0e2a3f; }
+.parlay-payout > div { min-width: 0; display: grid; align-content: center; gap: 4px; }
+.parlay-payout span { color: #b8c7d6; font-family: var(--app-font-mono); font-size: 8px; line-height: 1.35; }
+.parlay-payout strong { color: #22d3ee; font-family: var(--app-font-mono); font-size: 18px; line-height: 1.15; overflow-wrap: anywhere; }
+.parlay-payout > div:last-child strong { color: #fff; }
 .game-parlay-leg .parlay-leg-player strong { color: #fff; font-size: 10px; }
 .parlay-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .8fr); gap: 12px; }
 .parlay-side-stack { display: grid; gap: 12px; }
@@ -1451,9 +1456,11 @@ select option { color: #fff; background: #0e2a3f; }
 .round-robin-badge { display: inline-flex !important; padding: 5px 8px; border: 1px solid #4da3ff; border-radius: 999px; color: #fff; background: rgba(8,120,255,.18); font-family: var(--app-font-mono); font-size: 8px; }
 .round-robin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 12px; }
 .round-robin-ticket { padding: 12px; border: 1px solid #2a4a66; border-radius: 8px; background: #0e2a3f; }
-.round-robin-ticket > div { display: flex; flex-direction: column; gap: 3px; padding-bottom: 9px; border-bottom: 1px solid #2a4a66; }
-.round-robin-ticket > div strong { color: #fff; font-size: 10px; }
-.round-robin-ticket > div span { color: #b8c7d6; font-size: 7px; }
+.round-robin-ticket > div:first-child { display: flex; flex-direction: column; gap: 3px; padding-bottom: 9px; border-bottom: 1px solid #2a4a66; }
+.round-robin-ticket > div:first-child strong { color: #fff; font-size: 10px; }
+.round-robin-ticket > div:first-child span { color: #b8c7d6; font-size: 7px; }
+.round-robin-ticket .parlay-payout { grid-template-columns: 1fr; margin: 10px 0 0; padding: 9px; }
+.round-robin-ticket .parlay-payout strong { font-size: 12px; }
 .round-robin-ticket ol { display: grid; gap: 7px; margin: 10px 0 0; padding: 0; list-style: none; }
 .round-robin-ticket li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .round-robin-ticket li .ranking-team-logo { flex: 0 0 26px; width: 26px; height: 26px; border-radius: 5px; }
@@ -1517,6 +1524,8 @@ select option { color: #fff; background: #0e2a3f; }
   .safer-leg > .ranking-team-logo { width: 30px; height: 30px; }
   .safer-line-picker { grid-column: 3; justify-items: stretch; }
   .safer-line-picker select { width: 100%; }
+  .parlay-payout { gap: 6px; padding: 9px; }
+  .parlay-payout strong { font-size: 15px; }
 }
 
 /* Week matchup selector replaces the bulk line entry panel. */

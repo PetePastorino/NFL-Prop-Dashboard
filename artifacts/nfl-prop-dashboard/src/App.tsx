@@ -1175,10 +1175,10 @@ function estimatedParlayOdds(props: RankedProp[]) {
     (product, prop) => product * (prop.odds === null ? 1 : decimalOddsFromAmerican(prop.odds)),
     1,
   );
-  if (!missing) return { label: formatDecimalAsAmerican(pricedDecimal), missing };
+  if (!missing) return { lowDecimal: pricedDecimal, highDecimal: pricedDecimal, missing };
   const low = pricedDecimal * decimalOddsFromAmerican(-120) ** missing;
   const high = pricedDecimal * decimalOddsFromAmerican(-110) ** missing;
-  return { label: `${formatDecimalAsAmerican(low)} to ${formatDecimalAsAmerican(high)}`, missing };
+  return { lowDecimal: low, highDecimal: high, missing };
 }
 
 function formatDecimalAsAmerican(decimal: number) {
@@ -1187,12 +1187,21 @@ function formatDecimalAsAmerican(decimal: number) {
     : `-${Math.round(100 / (decimal - 1))}`;
 }
 
-function formatCombinedAmericanOdds(legs: SaferParlayLeg[]) {
-  if (!legs.length) return '—';
-  const decimal = legs.reduce((product, leg) => product * decimalOddsFromAmerican(leg.alternate.odds), 1);
-  return decimal >= 2
-    ? `+${Math.round((decimal - 1) * 100)}`
-    : `-${Math.round(100 / (decimal - 1))}`;
+const formatDollars = (amount: number) => `$${amount.toFixed(2)}`;
+
+function ParlayPayout({ price }: { price: NonNullable<ReturnType<typeof estimatedParlayOdds>> }) {
+  const odds = price.missing
+    ? `${formatDecimalAsAmerican(price.lowDecimal)} to ${formatDecimalAsAmerican(price.highDecimal)}`
+    : formatDecimalAsAmerican(price.lowDecimal);
+  const returnAmount = price.missing
+    ? `${formatDollars(10 * price.lowDecimal)} to ${formatDollars(10 * price.highDecimal)}`
+    : formatDollars(10 * price.lowDecimal);
+  return (
+    <div className="parlay-payout" aria-label={`Estimated parlay odds ${odds}; a ten dollar bet returns ${returnAmount} total`}>
+      <div><span>Entire parlay odds {price.missing ? '· estimated range' : '· estimated'}</span><strong>{odds}</strong></div>
+      <div><span>$10 total return if all hit · incl. stake</span><strong>{returnAmount}</strong></div>
+    </div>
+  );
 }
 
 function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFour, onSelect }: { bestFour: RankedProp[]; parlayCandidates: RankedProp[]; fourTicketCandidates: RankedProp[]; saferFour: SaferParlayLeg[]; onSelect: (prop: RankedProp) => void }) {
@@ -1215,6 +1224,7 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
   const candidateByKey = new Map(fourTicketCandidates.filter((prop) => prop.odds !== null).map((prop) => [prop.key, prop]));
   const displayedBestFour = bestFour.map((defaultProp, index) => candidateByKey.get(selectedBestFourKeys[index]) ?? defaultProp);
   const bestFourDecimalOdds = displayedBestFour.length === 4 ? combinedDecimalOdds(displayedBestFour) : null;
+  const bestFourPrice = bestFourDecimalOdds === null ? null : { lowDecimal: bestFourDecimalOdds, highDecimal: bestFourDecimalOdds, missing: 0 };
   const bestFourPlayers = new Set(displayedBestFour.map((prop) => normalized(prop.player.name)));
   const stinkyUnders = selectDiversifiedProps(fourTicketCandidates.filter((prop) =>
     prop.lean.lean === 'UNDER' && !bestFourPlayers.has(normalized(prop.player.name)),
@@ -1246,6 +1256,10 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
   const saferJointImplied = displayedSaferFour.length >= 2
     ? displayedSaferFour.reduce((probability, leg) => probability * leg.impliedProbability, 1)
     : null;
+  const saferDecimalOdds = displayedSaferFour.length >= 2
+    ? displayedSaferFour.reduce((product, leg) => product * decimalOddsFromAmerican(leg.alternate.odds), 1)
+    : null;
+  const saferPrice = saferDecimalOdds === null ? null : { lowDecimal: saferDecimalOdds, highDecimal: saferDecimalOdds, missing: 0 };
 
   return (
     <div className="parlay-view">
@@ -1295,9 +1309,10 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
         {gameParlayReady ? (
           <>
             <div className="game-parlay-summary">
-              <strong>{gameParlayLegs.length}-leg parlay · {selectedGame?.away} {selectedGame && 'neutralSite' in selectedGame && selectedGame.neutralSite ? 'vs' : '@'} {selectedGame?.home} · Est. {gameParlayPrice?.label}</strong>
+              <strong>{gameParlayLegs.length}-leg parlay · {selectedGame?.away} {selectedGame && 'neutralSite' in selectedGame && selectedGame.neutralSite ? 'vs' : '@'} {selectedGame?.home}</strong>
               <span>Average signal {gameParlaySignal}/100</span>
             </div>
+            {gameParlayPrice && <ParlayPayout price={gameParlayPrice} />}
             <div className="parlay-leg-list">
               {gameParlayLegs.map((prop, index) => <GameParlayLeg key={prop.key} prop={prop} index={index} onSelect={onSelect} />)}
             </div>
@@ -1319,7 +1334,8 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
           </div>
           {bestFour.length === 4 ? (
             <div className="parlay-leg-list">
-              <div className="game-parlay-summary"><strong>4-leg suggestion · estimated {bestFourDecimalOdds === null ? 'odds unavailable' : formatDecimalAsAmerican(bestFourDecimalOdds)}</strong><span>Average signal {averageSignal}/100</span></div>
+              <div className="game-parlay-summary"><strong>4-leg suggestion</strong><span>Average signal {averageSignal}/100</span></div>
+              {bestFourPrice && <ParlayPayout price={bestFourPrice} />}
               {displayedBestFour.map((prop, index) => {
                 const otherLegs = displayedBestFour.filter((_, otherIndex) => otherIndex !== index);
                 const options = fourTicketCandidates.filter((candidate) => candidate.odds !== null && (
@@ -1348,6 +1364,7 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
             {saferFour.length >= 2 ? (
               <div className="safer-leg-list">
                 <div className="game-parlay-summary"><strong>{displayedSaferFour.length}-leg suggestion</strong></div>
+                {saferPrice && <ParlayPayout price={saferPrice} />}
                 {displayedSaferFour.map((leg, index) => {
                   const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
                   const alternateOptions = CURRENT_ALTERNATE_PROP_LINES
@@ -1373,8 +1390,6 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
                   );
                 })}
                 <div className="safer-price">
-                  <span>Approximate {displayedSaferFour.length}-leg price</span>
-                  <strong>{formatCombinedAmericanOdds(displayedSaferFour)}</strong>
                   <button type="button" onClick={() => setSelectedAlternateLines({})}>Reset suggested lines</button>
                 </div>
               </div>
@@ -1395,7 +1410,8 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
             </div>
             {stinkyUnders.length >= 2 ? (
               <div className="stinky-leg-list">
-                <div className="game-parlay-summary"><strong>{stinkyUnders.length}-leg suggestion · Est. {stinkyPrice?.label}</strong></div>
+                <div className="game-parlay-summary"><strong>{stinkyUnders.length}-leg suggestion</strong></div>
+                {stinkyPrice && <ParlayPayout price={stinkyPrice} />}
                 {stinkyUnders.map((prop, index) => (
                   <div className="stinky-leg" key={prop.key}>
                     <span className="stinky-leg-number">{String(index + 1).padStart(2, '0')}</span>
@@ -1430,13 +1446,14 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
           <div className="round-robin-grid">
             {roundRobin.map((ticket, index) => (
               <article key={`ticket-${index}`} className="round-robin-ticket">
-                <div><strong>Ticket {String.fromCharCode(65 + index)} · Est. {estimatedParlayOdds(ticket)?.label}</strong><span>Leaves out {displayedBestFour[index].player.name}</span></div>
+                <div><strong>Ticket {String.fromCharCode(65 + index)}</strong><span>Leaves out {displayedBestFour[index].player.name}</span></div>
+                {estimatedParlayOdds(ticket) && <ParlayPayout price={estimatedParlayOdds(ticket)!} />}
                 <ol>{ticket.map((prop) => <li key={prop.key}><RankingTeamLogo name={prop.player.name} team={prop.player.team} /><span>{prop.player.name}</span><strong className={prop.lean.lean === 'OVER' ? 'over' : 'under'}>{prop.lean.lean} {prop.line}</strong></li>)}</ol>
               </article>
             ))}
           </div>
         ) : <div className="parlay-empty"><span>Round robin tickets appear after four legs clear every gate.</span></div>}
-        <div className="parlay-card-note"><Shield size={14} /><span>A round robin reduces all-or-nothing risk but costs four separate stakes. It does not make weak legs safer.</span></div>
+        <div className="parlay-card-note"><Shield size={14} /><span>Returns shown are for each $10 ticket. All four tickets cost $40 total; only winning combinations return money. Verify the betslip prices.</span></div>
       </section>
     </div>
   );
