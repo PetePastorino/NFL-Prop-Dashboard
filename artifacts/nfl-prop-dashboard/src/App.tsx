@@ -192,6 +192,21 @@ const BACKUP_QB_WARNING_TEAMS = new Set(['BAL', 'LVR', 'ARI', 'MIA', 'SEA', 'MIN
 const hasBackupQbWarning = (position: Position, team: string) =>
   (position === 'WR' || position === 'TE') && BACKUP_QB_WARNING_TEAMS.has(team);
 const PARLAY_MIN_CONFIDENCE = 72;
+const PARLAY_MIN_WINNING_TOTAL: Record<string, number> = {
+  pass_yards: 175,
+  qb_rush_yards: 15,
+  rb_rush_yards: 30,
+  rec_yards: 20,
+  receptions: 3,
+};
+
+function clearsParlayLineFloor(position: Position, statKey: string, line: string | number) {
+  const minimum = PARLAY_MIN_WINNING_TOTAL[
+    statKey === 'rush_yards' ? `${position.toLowerCase()}_rush_yards` : statKey
+  ];
+  const lineNumber = Number(line);
+  return minimum !== undefined && Number.isFinite(lineNumber) && Math.ceil(lineNumber) >= minimum;
+}
 
 const STAT_TYPES: Record<Position, { key: string; label: string }[]> = {
   QB: [
@@ -722,6 +737,7 @@ function AppShell() {
     () => rankedProps.filter((prop) =>
       prop.lean.lean !== 'PASS'
       && prop.confidenceScore >= PARLAY_MIN_CONFIDENCE
+      && clearsParlayLineFloor(prop.position, prop.statKey, prop.line)
       && !PETES_NO_BET_PLAYERS.has(prop.player.name)
       && !PARLAY_EXCLUDED_TEAMS.has(prop.player.team)
       && !hasBackupQbWarning(prop.position, prop.player.team)
@@ -750,7 +766,8 @@ function AppShell() {
     const targetProbability = 0.77;
     const eligible = fourTicketCandidates.flatMap<SaferParlayLeg>((prop) => {
       const alternates = CURRENT_ALTERNATE_PROP_LINES
-        .filter((line) => line.player === prop.player.name && line.statKey === prop.statKey)
+        .filter((line) => line.player === prop.player.name && line.statKey === prop.statKey
+          && clearsParlayLineFloor(prop.position, line.statKey, line.line))
         .map((alternate) => ({
           alternate,
           impliedProbability: impliedProbabilityFromAmericanOdds(alternate.odds),
@@ -1245,7 +1262,8 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
     const alternate = CURRENT_ALTERNATE_PROP_LINES.find((line) =>
       line.player === leg.prop.player.name
       && line.statKey === leg.prop.statKey
-      && line.line === selectedLine,
+      && line.line === selectedLine
+      && clearsParlayLineFloor(leg.prop.position, line.statKey, line.line),
     ) ?? leg.alternate;
     return {
       ...leg,
@@ -1285,6 +1303,7 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
         {PARLAY_EXCLUDED_TEAMS.size > 0 && <div><Check size={15} /><span>{[...PARLAY_EXCLUDED_TEAMS].join(' and ')} excluded this week</span></div>}
         <div><Check size={15} /><span>Thursday teams excluded from Best Four, Safer Four, Stinky Unders, and round robins</span></div>
         <div><Check size={15} /><span>High confidence only: minimum {PARLAY_MIN_CONFIDENCE} signal and 8 prior games</span></div>
+        <div><Check size={15} /><span>Tiny lines excluded: minimum targets of 175 passing, 15 QB rushing, 30 RB rushing, 20 receiving yards, or 3 catches</span></div>
         <div><Check size={15} /><span>Overs must agree with a separate historical outcome check</span></div>
       </section>
       <div className="parlay-color-legend" aria-label="Confidence score color legend">
@@ -1368,7 +1387,8 @@ function ParlayView({ bestFour, parlayCandidates, fourTicketCandidates, saferFou
                 {displayedSaferFour.map((leg, index) => {
                   const selectionKey = `${leg.prop.player.name}:${leg.prop.statKey}`;
                   const alternateOptions = CURRENT_ALTERNATE_PROP_LINES
-                    .filter((line) => line.player === leg.prop.player.name && line.statKey === leg.prop.statKey)
+                    .filter((line) => line.player === leg.prop.player.name && line.statKey === leg.prop.statKey
+                      && clearsParlayLineFloor(leg.prop.position, line.statKey, line.line))
                     .sort((a, b) => b.line - a.line);
                   return (
                   <div className="safer-leg" key={leg.prop.key}>
